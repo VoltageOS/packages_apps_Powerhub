@@ -86,6 +86,11 @@
             android:summary="@string/use_old_mobiletype_summary"
             android:defaultValue="false" />            
 
+        <Preference
+            android:key="battery_settings"
+            android:title="@string/battery_style_category_title"
+            android:fragment="com.power.hub.fragments.StatusBarBattery" />			   
+
        <Preference
             android:key="systemui_tuner_statusbar"
             android:title="@string/statusbar_items_category" >
