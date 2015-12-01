@@ -18,6 +18,7 @@
         android:title="@string/button_title"
         xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 		
+
         <SwitchPreference
             android:key="force_show_navbar"
             android:title="@string/navigation_bar_title"
@@ -149,6 +150,13 @@
        android:summary="@string/volume_panel_on_left_summary"
        android:defaultValue="false" />
 
+    </PreferenceCategory>
+
+    <com.power.hub.preferences.SystemSettingSwitchPreference
+        android:key="volume_rocker_wake"
+        android:summary="@string/volume_rocker_wake_summary"
+        android:title="@string/volume_rocker_wake_title"
+        android:defaultValue="false" />
     </PreferenceCategory>
 
 </PreferenceScreen>
