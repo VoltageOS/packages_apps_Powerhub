@@ -17,5 +17,10 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:title="@string/misc_title"
         xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
+
+    <Preference
+        android:key="button_category"
+        android:fragment="com.power.hub.fragments.ButtonSettings"
+        android:title="@string/button_title" />
 		
 </PreferenceScreen>

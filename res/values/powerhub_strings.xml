@@ -145,4 +145,6 @@
     <string name="show_battery_percent_charging_title">Show percent when charging</string>
     <string name="show_battery_percent_charging_summary">Enforce showing the percent next to the icon when charging</string>
 
+    <!--Volume keys -->
+    <string name="volume_rocker_wake_summary">Pressing the volume keys will wake your device</string>
 </resources>
