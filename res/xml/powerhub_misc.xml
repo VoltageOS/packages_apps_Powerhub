@@ -57,5 +57,11 @@
 
     </PreferenceCategory>
 
+    <!-- Live volume steps -->
+    <Preference
+        android:key="volume_steps"
+        android:title="@string/volume_steps_title"
+        android:summary="@string/volume_steps_summary"
+        android:fragment="com.power.hub.fragments.sound.VolumeSteps" />
 
 </PreferenceScreen>
