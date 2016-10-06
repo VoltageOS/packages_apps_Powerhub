@@ -30,13 +30,20 @@
 
     </PreferenceCategory>
 
+    <!-- Live volume steps -->
+    <PreferenceScreen
+        android:key="volume_steps"
+        android:title="@string/volume_steps_title"
+        android:summary="@string/volume_steps_summary"
+        android:fragment="com.power.hub.fragments.sound.VolumeSteps" />
+
     <com.power.hub.preferences.SystemSettingSwitchPreference
         android:key="status_bar_brightness_control"
         android:title="@string/status_bar_toggle_brightness"
         android:summary="@string/status_bar_toggle_brightness_summary"
         android:defaultValue="false" />
 		
-		<com.power.hub.preferences.SystemSettingSwitchPreference
+    <com.power.hub.preferences.SystemSettingSwitchPreference
             android:key="charging_animation"
             android:title="@string/charging_animation_title"
             android:summary="@string/charging_animation_summary"
@@ -46,7 +53,6 @@
     <Preference
         android:key="gaming_category"
         android:title="@string/gaming_title"
-        android:fragment="com.android.settings.preferences.game.GamingModeSettings"
-        android:icon="@drawable/ic_settings_gaming"/>
+        android:fragment="com.android.settings.preferences.game.GamingModeSettings" />
 	
 </PreferenceScreen>
