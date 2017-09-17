@@ -122,10 +122,7 @@
     <string name="theme_select_title">Styles and Wallpapers</string>
     <string name="theme_select_summary">Browse and select installed themes</string>
 
-    <!-- Battery light -->
-    <string name="battery_light_settings">Battery charging light</string>
-	
-	<string name="notification_light_settings">Notifications light</string>
+    <string name="notification_light_settings">Notifications light</string>
 
     <!-- Volume rocker wake -->
     <string name="volume_rocker_wake_title">Volume rocker wake</string>
@@ -300,7 +297,6 @@
     <string name="screen_off_animation_crt">CRT</string>
     <string name="screen_off_animation_scale">Scale</string>
 
-	
     <!-- Double Tap Statusbar to Sleep -->
     <string name="statusbar_gesture_title">Gestures</string>
     <string name="double_tap_to_sleep_statusbar_title">Double tap to sleep</string>
@@ -319,7 +315,7 @@
     <string name="qs_show_battery_estimate_summary">Show estimated remaining battery life next to the icon</string>
 
     <!-- Notification guts kill app button -->
-	<string name="general_category">General</string>
+    <string name="general_category">General</string>
     <string name="notification_guts_kill_app_button_title">Kill app button</string>
     <string name="notification_guts_kill_app_button_summary">Show a kill app button in the notification\'s longpress menu</string>
 
@@ -376,4 +372,19 @@
     <string name="incall_vibrate_connect_title">Vibrate on connect</string>
     <string name="incall_vibrate_call_wait_title">Vibrate on call waiting</string>
     <string name="incall_vibrate_disconnect_title">Vibrate on disconnect</string>
+
+    <!-- Battery light -->
+    <string name="light_settings_header">Light settings</string>
+    <string name="battery_light_settings">Battery light</string>
+    <string name="battery_light_summary">Enable or disable battery light while on DND, low battery</string>
+    <string name="battery_light_enable">Battery light</string>
+    <string name="battery_full_light_enabled">Battery light when fully charged</string>
+    <string name="battery_light_allow_on_dnd_title">Battery light in Do Not Disturb mode</string>
+    <string name="battery_light_low_blinking_title">Pulse if battery low</string>
+    <string name="battery_light_cat">Battery light color when charging</string>
+    <string name="battery_light_low_color">Battery low</string>
+    <string name="battery_light_medium_color">Charging</string>
+    <string name="battery_light_full_color">Almost fully charged</string>
+    <string name="battery_light_reallyfull_color">Fully charged</string>
+
 </resources>

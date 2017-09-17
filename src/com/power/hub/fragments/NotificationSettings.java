@@ -17,6 +17,9 @@ import androidx.preference.Preference;
 import androidx.preference.Preference.OnPreferenceChangeListener;
 import androidx.preference.PreferenceCategory;
 import androidx.preference.PreferenceScreen;
+import androidx.preference.PreferenceGroup;
+import androidx.preference.PreferenceViewHolder;
+import androidx.preference.SwitchPreference;
 import android.provider.Settings;
 import androidx.preference.ListPreference;
 
@@ -40,20 +43,29 @@ import java.util.List;
 public class NotificationSettings extends SettingsPreferenceFragment implements Preference.OnPreferenceChangeListener{
 
     private static final String INCALL_VIB_OPTIONS = "incall_vib_options";
+
+    private Preference mChargingLeds;
+
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
 
         addPreferencesFromResource(R.xml.powerhub_notifications);
         ContentResolver resolver = getActivity().getContentResolver();
-        final PreferenceScreen prefScreen = getPreferenceScreen();
+        final PreferenceScreen prefSet = getPreferenceScreen();
         final Resources res = getResources();
 		
 		PreferenceCategory incallVibCategory = (PreferenceCategory) findPreference(INCALL_VIB_OPTIONS);
         if (!Utils.isVoiceCapable(getActivity())) {
-                prefScreen.removePreference(incallVibCategory);
+                prefSet.removePreference(incallVibCategory);
         }
         
+        mChargingLeds = (Preference) findPreference("charging_light");
+        if (mChargingLeds != null
+                && !getResources().getBoolean(
+                        com.android.internal.R.bool.config_intrusiveBatteryLed)) {
+            prefSet.removePreference(mChargingLeds);
+        }
     }
 
     @Override
