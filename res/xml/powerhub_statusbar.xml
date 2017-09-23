@@ -33,8 +33,6 @@
         android:title="@string/traffic_title"
         android:summary="@string/traffic_summary" />
 
-    <PreferenceCategory
-	
 	<PreferenceCategory
         android:key="statusbar_icons"
         android:title="@string/sb_icons">
