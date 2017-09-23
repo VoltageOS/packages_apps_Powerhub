@@ -43,6 +43,7 @@
     <string name="qs_category">QS category</string>
     <string name="navbar_title">Navigation bar</string>
     <string name="volume_keys_title">Volume keys</string>
+    <string name="fingerprint_category">Fingerprint</string>
 
     <!-- General strings -->
     <string name="ok">OK</string>
@@ -377,4 +378,9 @@
     <string name="smart_pulldown_dismissable">no dismissable</string>
     <string name="smart_pulldown_ongoing">no ongoing</string>
 
+    <!-- Fingerprint authentication vibration -->
+    <string name="fprint_sucess_vib_title">Fingerprint success vibration</string>
+    <string name="fprint_sucess_vib_summary">Vibrate on successful fingerprint authentication</string>
+    <string name="fprint_error_vib_title">Fingerprint error vibration</string>
+    <string name="fprint_error_vib_summary">Vibrate on failed fingerprint authentication</string>
 </resources>

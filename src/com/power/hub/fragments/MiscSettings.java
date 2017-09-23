@@ -9,7 +9,9 @@ import android.content.pm.ResolveInfo;
 import android.os.UserHandle;
 import android.content.Context;
 import android.content.ContentResolver;
+import android.content.pm.PackageManager;
 import android.content.res.Resources;
+import android.hardware.fingerprint.FingerprintManager;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceScreen;
@@ -41,17 +43,29 @@ import android.provider.SearchIndexableResource;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.power.hub.preferences.SystemSettingSwitchPreference;
+
 @SearchIndexable(forTarget = SearchIndexable.ALL & ~SearchIndexable.ARC)
 public class MiscSettings extends SettingsPreferenceFragment implements
         OnPreferenceChangeListener {
 
+    private static final String FINGERPRINT_SUCCESS_VIB = "fingerprint_success_vib";
+    private static final String FINGERPRINT_ERROR_VIB = "fingerprint_error_vib";
+
+    private FingerprintManager mFingerprintManager;
+    private SystemSettingSwitchPreference mFingerprintSuccessVib;
+    private SystemSettingSwitchPreference mFingerprintErrorVib;
+
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
-        ContentResolver resolver = getActivity().getContentResolver();
-
         addPreferencesFromResource(R.xml.powerhub_misc);
-		
+
+        final ContentResolver resolver = getActivity().getContentResolver();
+        final PreferenceScreen prefSet = getPreferenceScreen();
+        final PackageManager mPm = getActivity().getPackageManager();
+
+
 		Resources res = null;
         Context ctx = getContext();
         float density = Resources.getSystem().getDisplayMetrics().density;
@@ -61,11 +75,42 @@ public class MiscSettings extends SettingsPreferenceFragment implements
         } catch (NameNotFoundException e) {
             e.printStackTrace();
         }
+        mFingerprintManager = (FingerprintManager) getActivity().getSystemService(Context.FINGERPRINT_SERVICE);
+        mFingerprintSuccessVib = findPreference(FINGERPRINT_SUCCESS_VIB);
+        mFingerprintErrorVib = findPreference(FINGERPRINT_ERROR_VIB);
+        if (mPm.hasSystemFeature(PackageManager.FEATURE_FINGERPRINT) &&
+                 mFingerprintManager != null) {
+            if (!mFingerprintManager.isHardwareDetected()){
+                prefSet.removePreference(mFingerprintSuccessVib);
+                prefSet.removePreference(mFingerprintErrorVib);
+            } else {
+                mFingerprintSuccessVib.setChecked((Settings.System.getInt(getContentResolver(),
+                        Settings.System.FP_SUCCESS_VIBRATE, 1) == 1));
+                mFingerprintSuccessVib.setOnPreferenceChangeListener(this);
+                mFingerprintErrorVib.setChecked((Settings.System.getInt(getContentResolver(),
+                        Settings.System.FP_ERROR_VIBRATE, 1) == 1));
+                mFingerprintErrorVib.setOnPreferenceChangeListener(this);
+            }
+        } else {
+            prefSet.removePreference(mFingerprintSuccessVib);
+            prefSet.removePreference(mFingerprintErrorVib);
+        }
 
     }
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object objValue) {
+        if (preference == mFingerprintSuccessVib) {
+            boolean value = (Boolean) objValue;
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.FP_SUCCESS_VIBRATE, value ? 1 : 0);
+            return true;
+        } else if (preference == mFingerprintErrorVib) {
+            boolean value = (Boolean) objValue;
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.FP_ERROR_VIBRATE, value ? 1 : 0);
+            return true;
+        }
         return false;
     }
 	
