@@ -17,5 +17,22 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:title="@string/misc_title"
         xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
+
+    <PreferenceCategory
+        android:title="@string/fingerprint_category">
+
+    <com.power.hub.preferences.SystemSettingSwitchPreference
+        android:key="fingerprint_success_vib"
+        android:title="@string/fprint_sucess_vib_title"
+        android:summary="@string/fprint_sucess_vib_summary"
+        android:persistent="true" />
+
+    <com.power.hub.preferences.SystemSettingSwitchPreference
+        android:key="fingerprint_error_vib"
+        android:title="@string/fprint_error_vib_title"
+        android:summary="@string/fprint_error_vib_summary"
+        android:persistent="true" />
+
+    </PreferenceCategory>
 		
 </PreferenceScreen>
