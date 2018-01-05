@@ -596,4 +596,8 @@
     <string name="combined_signal_icons_title">Combined signal icons</string>
     <string name="combined_signal_icons_summary">Show signal and WiFi combined\nRequires a SystemUI restart</string>
 
+    <!-- Brightness control -->
+    <string name="status_bar_toggle_brightness">Brightness control</string>
+    <string name="status_bar_toggle_brightness_summary">Adjust brightness by sliding across the status bar</string>
+
 </resources>
