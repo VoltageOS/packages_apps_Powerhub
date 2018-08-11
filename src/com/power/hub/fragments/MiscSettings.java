@@ -3,6 +3,7 @@ package com.power.hub.fragments;
 import com.android.internal.logging.nano.MetricsProto;
 
 import android.os.Bundle;
+import com.power.hub.fragments.SmartPixels;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
@@ -53,8 +54,12 @@ public class MiscSettings extends SettingsPreferenceFragment implements
     private static final String SYS_PHOTOS_SPOOF = "persist.sys.pixelprops.gphotos";
     private static final String SYS_GAMES_SPOOF = "persist.sys.pixelprops.games";
 
+    private static final String SMART_PIXELS = "smart_pixels";
+
     private SwitchPreference mGamesSpoof;
     private SwitchPreference mPhotosSpoof;
+
+    private Preference mSmartPixels;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -73,16 +78,11 @@ public class MiscSettings extends SettingsPreferenceFragment implements
         mPhotosSpoof.setChecked(SystemProperties.getBoolean(SYS_PHOTOS_SPOOF, true));
         mPhotosSpoof.setOnPreferenceChangeListener(this);
 		
-		Resources res = null;
-        Context ctx = getContext();
-        float density = Resources.getSystem().getDisplayMetrics().density;
-
-        try {
-            res = ctx.getPackageManager().getResourcesForApplication("com.android.systemui");
-        } catch (NameNotFoundException e) {
-            e.printStackTrace();
-        }
-
+           mSmartPixels = (Preference) findPreference(SMART_PIXELS);
+           boolean mSmartPixelsSupported = getResources().getBoolean(
+                 com.android.internal.R.bool.config_supportSmartPixels);
+           if (!mSmartPixelsSupported)
+                 prefSet.removePreference(mSmartPixels);
     }
 
     @Override
@@ -111,22 +111,16 @@ public class MiscSettings extends SettingsPreferenceFragment implements
      */
 
     public static final SearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
-            new BaseSearchIndexProvider() {
-
-                @Override
-                public List<SearchIndexableResource> getXmlResourcesToIndex(Context context,
-                        boolean enabled) {
-                    ArrayList<SearchIndexableResource> result =
-                            new ArrayList<SearchIndexableResource>();
-                    SearchIndexableResource sir = new SearchIndexableResource(context);
-                    sir.xmlResId = R.xml.powerhub_misc;
-                    result.add(sir);
-                    return result;
-                }
-
+            new BaseSearchIndexProvider(R.xml.powerhub_misc) {
                 @Override
                 public List<String> getNonIndexableKeys(Context context) {
                     List<String> keys = super.getNonIndexableKeys(context);
+
+                    boolean mSmartPixelsSupported = context.getResources().getBoolean(
+                            com.android.internal.R.bool.config_supportSmartPixels);
+                    if (!mSmartPixelsSupported)
+                        keys.add(SMART_PIXELS);
+
                     return keys;
                 }
     };
