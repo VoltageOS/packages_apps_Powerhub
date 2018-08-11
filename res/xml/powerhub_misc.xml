@@ -66,6 +66,11 @@
         android:summary="@string/click_partial_screenshot_summary"
         android:defaultValue="false" />
 
+    <Preference
+        android:key="smart_pixels"
+        android:title="@string/smart_pixels_title"
+        android:fragment="com.power.hub.fragments.SmartPixels" />
+
     <!-- Freeform launch mode -->
     <com.voltage.support.preferences.SystemSettingListPreference
         android:key="freeform_launch_mode"

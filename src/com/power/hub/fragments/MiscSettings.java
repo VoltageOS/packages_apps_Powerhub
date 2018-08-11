@@ -3,6 +3,7 @@ package com.power.hub.fragments;
 import com.android.internal.logging.nano.MetricsProto;
 
 import android.os.Bundle;
+import com.power.hub.fragments.SmartPixels;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
@@ -46,6 +47,9 @@ import java.util.List;
 public class MiscSettings extends SettingsPreferenceFragment implements
         OnPreferenceChangeListener {
 
+    private static final String SMART_PIXELS = "smart_pixels";
+    private Preference mSmartPixels;
+
     private static final String HOMEPAGE_TOAST_TOGGLE = "homepage_toast_messages";
     private static final String HOMEPAGE_TOAST_TEXT = "homepage_toast_custom_text";
     private SwitchPreferenceCompat mToastToggle;
@@ -56,12 +60,16 @@ public class MiscSettings extends SettingsPreferenceFragment implements
         super.onCreate(icicle);
 
         addPreferencesFromResource(R.xml.powerhub_misc);
-		Resources res = null;
-        Context ctx = getContext();
-        float density = Resources.getSystem().getDisplayMetrics().density;
 
         final ContentResolver resolver = getContentResolver();
         final PreferenceScreen prefSet = getPreferenceScreen();
+
+        mSmartPixels = (Preference) findPreference(SMART_PIXELS);
+        boolean mSmartPixelsSupported = getResources().getBoolean(
+                com.android.internal.R.bool.config_supportSmartPixels);
+        if (!mSmartPixelsSupported) {
+            prefSet.removePreference(mSmartPixels);
+        }
 
         mToastToggle = (SwitchPreferenceCompat) findPreference(HOMEPAGE_TOAST_TOGGLE);
         mToastText = (EditTextPreference) findPreference(HOMEPAGE_TOAST_TEXT);
@@ -122,22 +130,16 @@ public class MiscSettings extends SettingsPreferenceFragment implements
      * For Search.
      */
     public static final SearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
-            new BaseSearchIndexProvider() {
-
-                @Override
-                public List<SearchIndexableResource> getXmlResourcesToIndex(Context context,
-                        boolean enabled) {
-                    ArrayList<SearchIndexableResource> result =
-                            new ArrayList<SearchIndexableResource>();
-                    SearchIndexableResource sir = new SearchIndexableResource(context);
-                    sir.xmlResId = R.xml.powerhub_misc;
-                    result.add(sir);
-                    return result;
-                }
-
+            new BaseSearchIndexProvider(R.xml.powerhub_misc) {
                 @Override
                 public List<String> getNonIndexableKeys(Context context) {
                     List<String> keys = super.getNonIndexableKeys(context);
+
+                    boolean mSmartPixelsSupported = context.getResources().getBoolean(
+                            com.android.internal.R.bool.config_supportSmartPixels);
+                    if (!mSmartPixelsSupported)
+                        keys.add(SMART_PIXELS);
+
                     return keys;
                 }
             };
