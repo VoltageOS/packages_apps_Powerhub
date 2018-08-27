@@ -589,4 +589,9 @@
     <string name="force_lockscreen_small">Force small LS clock</string>
     <string name="force_lockscreen_small_summary">Use small clock for Lockscreen clock</string>
 
+    <!-- Screen off animation -->
+    <string name="screen_off_animation_title">Screen off animation</string>
+    <string name="screen_off_animation_crt">CRT</string>
+    <string name="screen_off_animation_scale">Scale</string>
+
 </resources>
