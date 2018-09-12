@@ -18,13 +18,11 @@
     android:title="@string/powermenu_title"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 	
-    <!--
     <com.power.hub.preferences.SystemSettingSwitchPreference
-        android:key="lockscreen_power_menu_disabled"
-        android:title="@string/lockscreen_power_menu_disabled_title"
-        android:summary="@string/lockscreen_power_menu_disabled_summary"
-        android:defaultValue="true" />
-    -->
+            android:key="lockscreen_enable_power_menu"
+            android:title="@string/lockscreen_enable_power_menu_title"
+            android:summary="@string/lockscreen_enable_power_menu_summary"
+            android:defaultValue="true" />
 
     <PreferenceCategory
         android:title="@string/global_actions_title">
