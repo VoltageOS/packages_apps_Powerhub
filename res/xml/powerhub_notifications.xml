@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+'<?xml version="1.0" encoding="utf-8"?>
 <!--
     Copyright (C) 2016 Nitrogen Project
 
@@ -42,6 +42,14 @@
 
     </PreferenceCategory>
 	
+    <com.power.hub.preferences.SystemSettingSwitchPreference
+	
+        <com.power.hub.preferences.SystemSettingSwitchPreference
+           android:key="notification_guts_kill_app_button"
+           android:title="@string/notification_guts_kill_app_button_title"
+           android:summary="@string/notification_guts_kill_app_button_summary"
+           android:defaultValue="false" />
+
     <com.power.hub.preferences.SystemSettingSwitchPreference
         android:key="notification_sound_vib_screen_on"
         android:title="@string/notification_sound_vib_screen_on_title"
