@@ -43,6 +43,17 @@
     </PreferenceCategory>
 	
 	<PreferenceCategory
+           android:key="notifications_general_category"
+           android:title="@string/general_category">
+
+        <com.power.hub.preferences.SystemSettingSwitchPreference
+           android:key="notification_guts_kill_app_button"
+           android:title="@string/notification_guts_kill_app_button_title"
+           android:summary="@string/notification_guts_kill_app_button_summary"
+           android:defaultValue="false" />
+    </PreferenceCategory>
+	
+	<PreferenceCategory
         android:key="headsup_notifications_category"
         android:title="@string/headsup_category">
 
@@ -51,16 +62,16 @@
         android:summary="@string/heads_up_notifications_summary"
         android:title="@string/heads_up_notifications"
         android:fragment="com.power.hub.fragments.HeadsUpSettings"/>
-
-    </PreferenceCategory>
 	
-        <com.power.hub.preferences.SystemSettingSwitchPreference
+	<com.power.hub.preferences.SystemSettingSwitchPreference
         android:key="less_boring_heads_up"
         android:title="@string/less_boring_heads_up_title"
         android:summary="@string/less_boring_heads_up_summary"
         android:defaultValue="false" />
+
+    </PreferenceCategory>
 	
-        <com.power.hub.preferences.SystemSettingSwitchPreference
+	<com.power.hub.preferences.SystemSettingSwitchPreference
             android:key="toast_icon"
             android:title="@string/toast_icon_title"
             android:summary="@string/toast_icon_summary"
