@@ -39,6 +39,12 @@
             android:key="traffic"
             android:fragment="com.power.hub.fragments.Traffic"
             android:title="@string/traffic_title" />
+			
+		<com.power.hub.preferences.SystemSettingSwitchPreference
+            android:key="data_disabled_icon"
+            android:title="@string/data_disabled_icon_title"
+            android:summary="@string/data_disabled_icon_summary"
+            android:defaultValue="true"/>
 		
                 <com.power.hub.preferences.SystemSettingSwitchPreference
              android:key="show_fourg_icon"
