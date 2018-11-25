@@ -351,4 +351,8 @@
     <string name="fprint_success_vib_title">Fingerprint authentication vibration</string>
     <string name="fprint_success_vib_summary">Vibrate on successful fingerprint authentication</string>
 
+    <!-- Notification guts kill app button -->
+    <string name="notification_guts_kill_app_button_title">Kill app button</string>
+    <string name="notification_guts_kill_app_button_summary">Show a kill app button in the notification\'s longpress menu</string>
+
 </resources>

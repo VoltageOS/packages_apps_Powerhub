@@ -76,4 +76,10 @@
         android:summary="@string/data_disabled_icon_summary"
         android:defaultValue="true"/>
 
+        <com.voltage.support.preferences.SystemSettingSwitchPreference
+           android:key="notification_guts_kill_app_button"
+           android:title="@string/notification_guts_kill_app_button_title"
+           android:summary="@string/notification_guts_kill_app_button_summary"
+           android:defaultValue="false" />
+
 </PreferenceScreen>
