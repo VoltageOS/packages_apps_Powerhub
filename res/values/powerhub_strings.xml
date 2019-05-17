@@ -447,4 +447,8 @@
     <string name="location_privacy_indicator_title">Location privacy indicator</string>
     <string name="location_privacy_indicator_summary">Show separate indicator when an any app uses location</string>
 
+    <!-- Heads up options -->
+    <string name="less_boring_heads_up_title">Make heads up less annoying</string>
+    <string name="less_boring_heads_up_summary">Show heads up only for dialer or messaging app if they are not in foreground</string>
+
 </resources>
