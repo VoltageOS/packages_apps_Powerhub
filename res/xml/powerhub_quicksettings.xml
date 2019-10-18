@@ -56,9 +56,4 @@
 
     </PreferenceCategory>
 
-  <PreferenceCategory
-        android:title="@string/qs_category">
-
-    </PreferenceCategory>
-
 </PreferenceScreen>
