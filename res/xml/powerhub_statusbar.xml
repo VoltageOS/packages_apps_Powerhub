@@ -69,6 +69,12 @@
                 android:targetPackage="com.android.systemui"
                 android:targetClass="com.android.systemui.tuner.StatusbarItemsActivity" />
         </Preference>
+		
+		<Preference
+        android:key="battery_bar_category"
+        android:fragment="com.power.hub.fragments.BatterySettings"
+        android:title="@string/battery_settings_title" />
+        </Preference>
 
     </PreferenceCategory>
 
