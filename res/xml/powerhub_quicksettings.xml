@@ -75,4 +75,12 @@
         android:summary="@string/status_bar_toggle_brightness_summary"
         android:defaultValue="false" />
 
+        <com.power.hub.preferences.SystemSettingIntListPreference
+        android:key="qs_system_info"
+        android:title="@string/qs_system_info_title"
+        android:entries="@array/qs_system_info_entries"
+        android:entryValues="@array/qs_system_info_values"
+        android:defaultValue="0"
+        android:summary="%s" />
+
 </PreferenceScreen>
