@@ -471,4 +471,9 @@
     <string name="freeform_launch_mode_title">Freeform launch mode</string>
     <string name="freeform_launch_mode_1">Native AOSP</string>
     <string name="freeform_launch_mode_2">LMOFreeForm</string>
+
+    <!-- Annoying Notifications -->
+    <string name="notification_sound_vib_screen_on_title">Annoying Notifications</string>
+    <string name="notification_sound_vib_screen_on_summary">Play sound and vibration for notifications when screen is on</string>
+
 </resources>

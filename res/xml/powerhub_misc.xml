@@ -56,5 +56,11 @@
         android:entryValues="@array/freeform_launch_mode_values"
         android:defaultValue="0"
         android:summary="%s" />
+
+    <com.voltage.support.preferences.SystemSettingSwitchPreference
+        android:key="notification_sound_vib_screen_on"
+        android:title="@string/notification_sound_vib_screen_on_title"
+        android:summary="@string/notification_sound_vib_screen_on_summary"
+        android:defaultValue="true" />
 		
 </PreferenceScreen>
