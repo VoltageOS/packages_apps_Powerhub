@@ -441,4 +441,9 @@
     <string name="homepage_toast_summary">Replace suggestion card with random messages</string>
     <string name="homepage_toast_text_title">Custom message</string>
     <string name="homepage_toast_text_summary">Set a personal message to display</string>
+
+    <!-- Annoying Notifications -->
+    <string name="notification_sound_vib_screen_on_title">Annoying Notifications</string>
+    <string name="notification_sound_vib_screen_on_summary">Play sound and vibration for notifications when screen is on</string>
+
 </resources>
