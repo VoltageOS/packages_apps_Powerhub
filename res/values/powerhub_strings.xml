@@ -51,6 +51,7 @@
     <string name="save">Save</string>
     <string name="default_string">Default</string>
     <string name="disabled">Disabled</string>
+    <string name="none_string">None</string>
 
     <!-- Units -->
     <string name="unit_seconds">seconds</string>
@@ -519,4 +520,20 @@
     <!-- Screen off UDFPS -->
     <string name="screen_off_udfps_title">Screen off UDFPS</string>
     <string name="screen_off_udfps_summary">Keep UDFPS enabled when the screen is off</string>
+
+    <!-- Lock screen media artwork -->
+    <string name="lockscreen_media_blur_title">Media art blur level</string>
+    <string name="lockscreen_media_art_options_title">Lock screen media art</string>
+
+    <!-- Media art -->
+    <string name="media_art_title">Media cover art</string>
+    <string name="media_art_summary">Display media cover art when available</string>
+
+    <!-- Lock screen album art filter -->
+    <string name="lockscreen_albumart_filter_title">Media cover art filter</string>
+    <string name="lockscreen_albumart_filter_grayscale">Grayscale</string>
+    <string name="lockscreen_albumart_filter_tint">Accent tinted</string>
+    <string name="lockscreen_albumart_filter_blur">Blur</string>
+    <string name="lockscreen_albumart_filter_grayblur">Grayscale and blurred</string>
+
 </resources>
