@@ -52,6 +52,12 @@
             android:defaultValue="0"
             settings:controller="com.power.hub.fragments.NavBarInversePreferenceController" />
 
+        <com.power.hub.preferences.SystemSettingSwitchPreference
+            android:key="click_partial_screenshot"
+            android:title="@string/click_partial_screenshot_title"
+            android:summary="@string/click_partial_screenshot_summary"
+            android:defaultValue="false" />
+
 	<PreferenceCategory
         android:key="button_backlight_options_category"
         android:title="@string/button_backlight_options_category" >
