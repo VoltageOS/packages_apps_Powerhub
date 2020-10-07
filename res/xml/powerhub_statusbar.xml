@@ -21,4 +21,10 @@
         <intent android:action="com.android.settings.action.STATUS_BAR_TUNER" />
         </Preference>
 
+    <Preference
+        android:key="network_traffic_settings"
+        android:title="@string/network_traffic_settings_title"
+        android:summary="@string/network_traffic_settings_summary"
+        android:fragment="com.power.hub.fragments.NetworkTrafficSettings" />
+
 </PreferenceScreen>
