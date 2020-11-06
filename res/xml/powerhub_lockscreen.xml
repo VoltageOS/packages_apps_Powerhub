@@ -47,7 +47,7 @@
 
     </PreferenceCategory>
 	
-	<PreferenceCategory
+    <PreferenceCategory
         android:key="lockscreen_category"
         android:title="@string/ls_category">
 
@@ -57,6 +57,11 @@
             android:title="@string/lockscreen_shortcuts"
             android:summary="@string/ls_shortcut_summary" />
 
+    <com.power.hub.preferences.SystemSettingSwitchPreference
+        android:key="lockscreen_battery_info"
+        android:title="@string/lockscreen_battery_info_title"
+        android:summary="@string/lockscreen_battery_info_summary"
+        android:defaultValue="true" />
     </PreferenceCategory>
 
 
