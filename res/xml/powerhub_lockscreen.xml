@@ -51,6 +51,12 @@
         android:key="lockscreen_category"
         android:title="@string/ls_category">
 
+    <com.power.hub.preferences.SystemSettingSwitchPreference
+        android:key="lockscreen_battery_info"
+        android:title="@string/lockscreen_battery_info_title"
+        android:summary="@string/lockscreen_battery_info_summary"
+        android:defaultValue="true" />
+
     <com.power.hub.preferences.SystemSettingListPreference
         android:key="screen_off_animation"
         android:title="@string/screen_off_animation_title"
