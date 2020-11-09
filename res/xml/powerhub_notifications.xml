@@ -74,6 +74,14 @@
            android:defaultValue="false" />
     </PreferenceCategory>
 	
+    <!-- Pulse notifications lightning -->
+    <com.power.hub.preferences.SystemSettingMasterSwitchPreference
+        android:key="pulse_ambient_light"
+        android:title="@string/pulse_ambient_light_title"
+        android:summary="@string/pulse_ambient_light_summary"
+        android:fragment="com.power.hub.fragments.EdgeLightningSettings"
+        android:defaultValue="false" />
+
 	<PreferenceCategory
         android:key="headsup_notifications_category"
         android:title="@string/headsup_category">
