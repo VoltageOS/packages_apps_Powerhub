@@ -53,16 +53,20 @@ import java.util.List;
 public class LockScreenSettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
 
+    private boolean mShowFODPressedColor = true;
+
     private static final String FINGERPRINT_SUCCESS_VIB = "fingerprint_success_vib";
     private static final String FINGERPRINT_ERROR_VIB = "fingerprint_error_vib";
+    private static final String FOD_CUSTOMIZATION_CATEGORY = "fod_customization";
     private static final String SCREEN_OFF_FOD_KEY = "screen_off_fod";
     private static final String UDFPS_HAPTIC_FEEDBACK = "udfps_haptic_feedback";
-    private static final String FOD_CUSTOMIZATION_CATEGORY = "fod_customization";
+    private static final String FOD_PRESSED_COLOR = "fod_color";
 
     private FingerprintManager mFingerprintManager;
     private SwitchPreference mFingerprintSuccessVib;
     private SwitchPreference mFingerprintErrorVib;
     private PreferenceCategory mFODCustomizationCategory;
+    private SystemSettingListPreference mFODPressedColor;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -97,6 +101,12 @@ ContentResolver resolver = getActivity().getContentResolver();
         mFODCustomizationCategory = findPreference(FOD_CUSTOMIZATION_CATEGORY);
         if (mFODCustomizationCategory != null && !UdfpsUtils.hasUdfpsSupport(getContext())) {
             prefSet.removePreference(mFODCustomizationCategory);
+        }
+
+        mShowFODPressedColor = getContext().getResources().getBoolean(R.bool.config_show_fod_pressed_color_settings);
+        mFODPressedColor = (SystemSettingListPreference) findPreference(FOD_PRESSED_COLOR);
+        if (!mShowFODPressedColor) {
+            prefSet.removePreference(mFODPressedColor);
         }
     }
 
