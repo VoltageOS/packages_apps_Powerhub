@@ -35,4 +35,9 @@
              android:fragment="com.power.hub.fragments.Spoofing" />
      </PreferenceCategory>
 
+    <Preference
+        android:key="pulse_settings"
+        android:title="@string/pulse_settings"
+        android:fragment="com.power.hub.fragments.PulseSettings" />
+		
 </PreferenceScreen>
