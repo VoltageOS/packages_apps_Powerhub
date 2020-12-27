@@ -34,5 +34,10 @@
         android:key="button_category"
         android:fragment="com.power.hub.fragments.ButtonSettings"
         android:title="@string/button_title" />
+
+    <Preference
+        android:key="pulse_settings"
+        android:title="@string/pulse_settings"
+        android:fragment="com.power.hub.fragments.PulseSettings" />
 		
 </PreferenceScreen>
