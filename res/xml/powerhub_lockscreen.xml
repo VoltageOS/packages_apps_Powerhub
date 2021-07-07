@@ -61,5 +61,10 @@
         android:summary="@string/enable_fingerprint_ripple_effect_summary"
         android:defaultValue="true" />
 
+    <com.power.hub.preferences.SystemSettingSwitchPreference
+            android:key="hide_lockscreen_status_bar"
+            android:title="@string/hide_lockscreen_status_bar_title"
+            android:summary="@string/hide_lockscreen_status_bar_summary"
+            android:defaultValue="false" />
 
 </PreferenceScreen>
