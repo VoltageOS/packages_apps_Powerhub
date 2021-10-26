@@ -29,7 +29,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="CherishOS Font Preview : This is how fonts will appear"
+            android:text="VoltageOS Font Preview : This is how fonts will appear"
             android:textSize="24dp"
             android:textColor="?android:attr/colorAccent"
             android:layout_marginStart="24dp"
