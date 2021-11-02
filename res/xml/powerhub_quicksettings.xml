@@ -39,6 +39,12 @@
             android:summary="@string/qs_show_battery_estimate_summary"
             android:defaultValue="true"/>
 
+        <com.power.hub.preferences.SecureSettingSwitchPreference
+            android:key="hide_qs_call_strength"
+            android:title="@string/show_qs_call_strength_icon_title"
+            android:summary="@string/show_qs_call_strength_icon_summary"
+            android:defaultValue="true" />
+
 		<PreferenceCategory
         android:key="quick_settings_brighness_category"
         android:title="@string/qs_brightness_slider_category">
