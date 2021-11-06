@@ -602,4 +602,8 @@
     <!-- Volume key music control -->
     <string name="volume_button_music_control_title">Skip tracks with volume buttons</string>
     <string name="volume_button_music_control_summary">Long press volume up for skipping to the next track and vice-versa</string>
+
+    <!-- Tiles on secure keyguard -->
+    <string name="use_tiles_on_secure_keyguard_title">Require unlocking to use sensitive tiles</string>
+    <string name="use_tiles_on_secure_keyguard_summary">Ask to unlock lockscreen when using sensitive tiles</string>
 </resources>
