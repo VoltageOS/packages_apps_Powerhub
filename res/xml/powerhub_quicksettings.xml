@@ -104,6 +104,12 @@
             android:entryValues="@array/smart_pulldown_values"
             android:persistent="false" />
 
+        <com.power.hub.preferences.SystemSettingSwitchPreference
+            android:key="use_tiles_on_secure_keyguard"
+            android:title="@string/use_tiles_on_secure_keyguard_title"
+            android:summary="@string/use_tiles_on_secure_keyguard_summary"
+            android:defaultValue="true" />
+
     </PreferenceCategory>
 
 </PreferenceScreen>
