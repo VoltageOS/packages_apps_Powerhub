@@ -584,4 +584,7 @@
     <string name="qs_footer_settings_icon_title">Settings shortcut</string>
     <string name="background_processes_settings_title">Background processes</string>
 
+    <!-- Tiles on secure keyguard -->
+    <string name="use_tiles_on_secure_keyguard_title">Require unlocking to use sensitive tiles</string>
+    <string name="use_tiles_on_secure_keyguard_summary">Ask to unlock lockscreen when using sensitive tiles</string>
 </resources>
