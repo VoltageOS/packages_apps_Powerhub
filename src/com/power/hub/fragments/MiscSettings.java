@@ -53,10 +53,13 @@ public class MiscSettings extends SettingsPreferenceFragment implements
     private static final String FINGERPRINT_SUCCESS_VIB = "fingerprint_success_vib";
     private static final String FINGERPRINT_ERROR_VIB = "fingerprint_error_vib";
     private static final String SCREEN_OFF_FOD_KEY = "screen_off_fod";
+    private static final String UDFPS_HAPTIC_FEEDBACK = "udfps_haptic_feedback";
 
     private FingerprintManager mFingerprintManager;
     private SystemSettingSwitchPreference mFingerprintSuccessVib;
     private SystemSettingSwitchPreference mFingerprintErrorVib;
+    private SystemSettingSwitchPreference mFODScreenOff;
+    private SystemSettingSwitchPreference mUdfpsHapticFeedback;
 
     Preference mFODPref;
 
@@ -100,9 +103,11 @@ public class MiscSettings extends SettingsPreferenceFragment implements
             prefSet.removePreference(mFingerprintErrorVib);
         }
 
-        mFODPref = findPreference(SCREEN_OFF_FOD_KEY);
+        mFODScreenOff = (SystemSettingSwitchPreference) findPreference(SCREEN_OFF_FOD_KEY);
+        mUdfpsHapticFeedback = (SystemSettingSwitchPreference) findPreference(UDFPS_HAPTIC_FEEDBACK);
         if (!UdfpsUtils.hasUdfpsSupport(getContext())) {
-            removePreference(SCREEN_OFF_FOD_KEY);
+            prefSet.removePreference(mFODScreenOff);
+            prefSet.removePreference(mUdfpsHapticFeedback);
         }
 
     }
