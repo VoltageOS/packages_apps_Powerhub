@@ -12,10 +12,17 @@
 -->
 <PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:title="@string/statusbar_title"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 	
-	<PreferenceCategory
+    <Preference
+        android:key="traffic"
+        android:fragment="com.power.hub.fragments.Traffic"
+        android:title="@string/traffic_title"
+        android:summary="@string/traffic_summary" />
+
+    <PreferenceCategory
         android:key="statusbar_icons"
         android:title="@string/sb_icons">
 

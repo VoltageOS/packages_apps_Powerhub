@@ -191,4 +191,10 @@
     <string name="system_black_theme_title">Use black theme</string>
     <string name="system_black_theme_summary">Force black background colors</string>
 
+    <!-- Network Traffic -->
+    <string name="traffic_title">Traffic indicators</string>
+    <string name="traffic_summary">Customize the traffic indicators</string>
+    <string name="network_traffic_state_title">Show network traffic</string>
+    <string name="network_traffic_autohide_threshold_title">Auto-hide threshold</string>
+
 </resources>
