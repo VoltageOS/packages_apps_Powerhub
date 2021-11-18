@@ -31,6 +31,7 @@ import com.power.hub.preferences.SystemSettingSeekBarPreference;
 import com.power.hub.preferences.SystemSettingListPreference;
 import com.power.hub.preferences.SystemSettingSwitchPreference;
 import com.power.hub.preferences.SystemSettingMasterSwitchPreference;
+import com.power.hub.preferences.SecureSettingSwitchPreference;
 import com.android.settings.Utils;
 import com.android.internal.util.voltage.VoltageUtils;
 import android.util.Log;
@@ -46,7 +47,13 @@ import java.util.Collections;
 
 @SearchIndexable(forTarget = SearchIndexable.ALL & ~SearchIndexable.ARC)
 public class StatusBarSettings extends SettingsPreferenceFragment implements
-        OnPreferenceChangeListener {
+        Preference.OnPreferenceChangeListener {
+
+    private static final String COMBINED_STATUSBAR_ICONS = "show_combined_status_bar_signal_icons";
+    private static final String CONFIG_RESOURCE_NAME = "flag_combined_status_bar_signal_icons";
+    private static final String SYSTEMUI_PACKAGE = "com.android.systemui";
+    private SecureSettingSwitchPreference mCombinedIcons;
+
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
@@ -55,12 +62,37 @@ public class StatusBarSettings extends SettingsPreferenceFragment implements
 		
 		ContentResolver resolver = getActivity().getContentResolver();
 
-        PreferenceScreen prefSet = getPreferenceScreen();
+        mCombinedIcons = (SecureSettingSwitchPreference)
+                findPreference(COMBINED_STATUSBAR_ICONS);
+        Resources sysUIRes = null;
+        boolean def = false;
+        int resId = 0;
+        try {
+            sysUIRes = getActivity().getPackageManager()
+                    .getResourcesForApplication(SYSTEMUI_PACKAGE);
+        } catch (Exception ignored) {
+            // If you don't have system UI you have bigger issues
+        }
+        if (sysUIRes != null) {
+            resId = sysUIRes.getIdentifier(
+                    CONFIG_RESOURCE_NAME, "bool", SYSTEMUI_PACKAGE);
+            if (resId != 0) def = sysUIRes.getBoolean(resId);
+        }
+        boolean enabled = Settings.Secure.getInt(resolver,
+                COMBINED_STATUSBAR_ICONS, def ? 1 : 0) == 1;
+        mCombinedIcons.setChecked(enabled);
+        mCombinedIcons.setOnPreferenceChangeListener(this);
     }
 
     @Override
-    public boolean onPreferenceChange(Preference preference, Object objValue) {
+    public boolean onPreferenceChange(Preference preference, Object newValue) {
         ContentResolver resolver = getActivity().getContentResolver();
+        if (preference == mCombinedIcons) {
+            boolean enabled = (boolean) newValue;
+            Settings.Secure.putInt(resolver,
+                    COMBINED_STATUSBAR_ICONS, enabled ? 1 : 0);
+            return true;
+        }
         return false;
     }
 	

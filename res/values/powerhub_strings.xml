@@ -304,4 +304,9 @@
     <string name="statusbar_gesture_title">Gestures</string>
     <string name="double_tap_to_sleep_statusbar_title">Double tap to sleep</string>
     <string name="double_tap_to_sleep_statusbar_summary">Double tap on statusbar to put the device to sleep</string>
+
+    <!-- Combined signal icons in status bar -->
+    <string name="combined_status_bar_signal_icons">Combined signal icons</string>
+    <string name="combined_status_bar_signal_icons_summary">Enable combined signal icons in status bar.\nRequires a SystemUI restart</string>
+
 </resources>

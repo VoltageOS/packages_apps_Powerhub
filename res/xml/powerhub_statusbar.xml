@@ -39,6 +39,13 @@
         android:key="statusbar_icons"
         android:title="@string/sb_icons">
 
+        <!-- Combined signal icons -->
+        <com.power.hub.preferences.SecureSettingSwitchPreference
+            android:key="show_combined_status_bar_signal_icons"
+            android:title="@string/combined_status_bar_signal_icons"
+            android:summary="@string/combined_status_bar_signal_icons_summary"
+            android:defaultValue="false" />
+
        <Preference
             android:key="systemui_tuner_statusbar"
             android:title="@string/statusbar_items_category" >
