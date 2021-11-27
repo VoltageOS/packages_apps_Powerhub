@@ -51,7 +51,13 @@
         android:key="statusbar_icons"
         android:title="@string/sb_icons">
 
-       <Preference
+    <com.power.hub.preferences.SecureSettingSwitchPreference
+            android:key="enable_location_privacy_indicator"
+            android:title="@string/location_privacy_title"
+            android:summary="@string/location_privacy_summary"
+            android:defaultValue="true" />
+
+        <Preference
             android:key="systemui_tuner_statusbar"
             android:title="@string/statusbar_items_category" >
             <intent android:action="android.intent.action.MAIN"
