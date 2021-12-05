@@ -22,17 +22,25 @@
         android:key="navigation_keys"
         android:title="@string/navigation_title">
 
+        <SwitchPreference
+            android:key="force_show_navbar"
+            android:title="@string/navigation_bar_title"
+            android:summary="@string/navigation_bar_summary" />
+
         <Preference
             android:key="gesture_system_navigation_input_summary"
             android:title="@string/system_navigation_title"
             android:fragment="com.android.settings.gestures.SystemNavigationGestureSettings"
             settings:controller="com.android.settings.gestures.SystemNavigationPreferenceController"
             settings:keywords="@string/keywords_system_navigation" />
+    </PreferenceCategory>
 
-        <SwitchPreference
-            android:key="force_show_navbar"
-            android:title="@string/navigation_bar_title"
-            android:summary="@string/navigation_bar_summary" />
+    <PreferenceCategory android:key="hardware_keys"
+	android:title="@string/hardware_keys_category">
+
+	<SwitchPreference android:key="hardware_keys_disable"
+		android:title="@string/hardware_keys_disable_title" />
+    </PreferenceCategory>
 
         <Preference
             android:key="layout_settings"
@@ -43,22 +51,6 @@
                 android:targetPackage="com.android.systemui"
                 android:targetClass="com.android.systemui.tuner.NavbarActivity" />
         </Preference>
-
-        <com.power.hub.preferences.SystemSettingSwitchPreference
-            android:key="navigation_bar_menu_arrow_keys"
-            android:title="@string/navigation_bar_arrow_keys_title"
-            android:summary="@string/navigation_bar_arrow_keys_summary"
-            android:dependency="force_show_navbar"
-            android:defaultValue="false" />
-
-    </PreferenceCategory>
-
-    <PreferenceCategory android:key="hardware_keys"
-	android:title="@string/hardware_keys_category">
-
-	<SwitchPreference android:key="hardware_keys_disable"
-		android:title="@string/hardware_keys_disable_title" />
-    </PreferenceCategory>
 
 		<PreferenceCategory
         android:key="volume_category"
