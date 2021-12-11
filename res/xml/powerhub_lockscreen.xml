@@ -47,6 +47,11 @@
 
     </PreferenceCategory>
 
+    <Preference
+        android:key="always_on_display_schedule"
+        android:title="@string/always_on_display_schedule_title"
+        android:fragment="com.power.hub.fragments.AODSchedule" />
+
     <com.power.hub.preferences.SystemSettingSwitchPreference
         android:key="lockscreen_battery_info"
         android:title="@string/lockscreen_battery_info_title"
