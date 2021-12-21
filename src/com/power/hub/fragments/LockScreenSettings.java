@@ -43,6 +43,7 @@ import android.provider.Settings;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.internal.util.voltage.VoltageUtils;
+import com.android.internal.util.voltage.udfps.UdfpsUtils;
 import com.power.hub.preferences.SystemSettingListPreference;
 import com.power.hub.preferences.CustomSeekBarPreference;
 import com.power.hub.preferences.SecureSettingListPreference;
@@ -58,15 +59,16 @@ import java.util.List;
 @SearchIndexable(forTarget = SearchIndexable.ALL & ~SearchIndexable.ARC)
 public class LockScreenSettings extends SettingsPreferenceFragment implements
         OnPreferenceChangeListener {
-			
+
     private static final String FINGERPRINT_SUCCESS_VIB = "fingerprint_success_vib";
     private static final String FINGERPRINT_ERROR_VIB = "fingerprint_error_vib";
     private static final String AOD_SCHEDULE_KEY = "always_on_display_schedule";
+    private static final String UDFPS_CATEGORY = "udfps_category";
 
     private FingerprintManager mFingerprintManager;
     private SwitchPreference mFingerprintSuccessVib;
     private SwitchPreference mFingerprintErrorVib;
-			
+    private PreferenceCategory mUdfpsCategory;
 
     static final int MODE_DISABLED = 0;
     static final int MODE_NIGHT = 1;
@@ -81,7 +83,7 @@ public class LockScreenSettings extends SettingsPreferenceFragment implements
         addPreferencesFromResource(R.xml.powerhub_lockscreen);
 
         ContentResolver resolver = getActivity().getContentResolver();
-        PreferenceScreen prefScreen = getPreferenceScreen();
+        final PreferenceScreen prefSet = getPreferenceScreen();
         Resources resources = getResources();
         final PackageManager mPm = getActivity().getPackageManager();
 	
@@ -108,6 +110,11 @@ public class LockScreenSettings extends SettingsPreferenceFragment implements
 		
 	mAODPref = findPreference(AOD_SCHEDULE_KEY);
         updateAlwaysOnSummary();
+
+        mUdfpsCategory = findPreference(UDFPS_CATEGORY);
+        if (!UdfpsUtils.hasUdfpsSupport(getContext())) {
+            prefSet.removePreference(mUdfpsCategory);
+        }
     }
 
     @Override
