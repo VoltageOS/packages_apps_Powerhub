@@ -39,6 +39,7 @@ import com.power.hub.preferences.SecureSettingSwitchPreference;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settingslib.search.SearchIndexable;
 import android.provider.SearchIndexableResource;
+import com.android.internal.util.voltage.udfps.UdfpsUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,10 +52,13 @@ public class MiscSettings extends SettingsPreferenceFragment implements
 
     private static final String FINGERPRINT_SUCCESS_VIB = "fingerprint_success_vib";
     private static final String FINGERPRINT_ERROR_VIB = "fingerprint_error_vib";
+    private static final String SCREEN_OFF_FOD_KEY = "screen_off_fod";
 
     private FingerprintManager mFingerprintManager;
     private SystemSettingSwitchPreference mFingerprintSuccessVib;
     private SystemSettingSwitchPreference mFingerprintErrorVib;
+
+    Preference mFODPref;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -94,6 +98,11 @@ public class MiscSettings extends SettingsPreferenceFragment implements
         } else {
             prefSet.removePreference(mFingerprintSuccessVib);
             prefSet.removePreference(mFingerprintErrorVib);
+        }
+
+        mFODPref = findPreference(SCREEN_OFF_FOD_KEY);
+        if (!UdfpsUtils.hasUdfpsSupport(getContext())) {
+            removePreference(SCREEN_OFF_FOD_KEY);
         }
 
     }
