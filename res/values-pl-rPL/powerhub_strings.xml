@@ -14,45 +14,45 @@
     <!-- App Title -->
     <string name="powerhub_title">Power Hub</string>
     <!-- Categories -->
-    <string name="button_title">Buttons</string>
-    <string name="button_summary">Hardware keys, Navigation bar</string>
-    <string name="gestures_title">Gestures</string>
-    <string name="gestures_summary">Jump to camera, swipe to screenshot</string>
-    <string name="lockscreen_title">Lock screen</string>
-    <string name="lockscreen_summary">Music visualizer, charging animation, clock style</string>
-    <string name="misc_title">Miscellaneous</string>
-    <string name="misc_summary">Gaming mode, volume controls</string>
-    <string name="animations_title">Animations</string>
-    <string name="animations_summary">System animations</string>
-    <string name="powermenu_title">Power menu</string>
-    <string name="powermenu_summary">Advanced restart, power menu opacity</string>
-    <string name="theme_title">Themes</string>
-    <string name="theme_summary">Fonts, icon packs, monet</string>
-    <string name="quicksettings_title">Quick Settings</string>
-    <string name="quicksettings_summary">Tile layout, blur</string>
-    <string name="recents_title">Recents apps</string>
+    <string name="button_title">Przyciski</string>
+    <string name="button_summary">Przyciski sprzętowe, pasek nawigacji</string>
+    <string name="gestures_title">Gesty</string>
+    <string name="gestures_summary">Przejdź do aparatu, przesuń palcem aby zrobić zrzut ekranu</string>
+    <string name="lockscreen_title">Ekran blokady</string>
+    <string name="lockscreen_summary">Wizualizacja muzyki, animacja ładowania, styl zegara</string>
+    <string name="misc_title">Pozostałe</string>
+    <string name="misc_summary">Tryb gry, kontrola głośności</string>
+    <string name="animations_title">Animacje</string>
+    <string name="animations_summary">Animacje systemowe</string>
+    <string name="powermenu_title">Menu zasilania</string>
+    <string name="powermenu_summary">Zaawansowane opcje uruchamiania, przezroczystość menu zasilania</string>
+    <string name="theme_title">Motywy</string>
+    <string name="theme_summary">Czcionki, paczki ikon, silnik monet</string>
+    <string name="quicksettings_title">Szybkie ustawienia</string>
+    <string name="quicksettings_summary">Układ kafelków, rozmycie</string>
+    <string name="recents_title">Ostatnie aplikacje</string>
     <string name="recents_summary">Slim recents</string>
-    <string name="statusbar_title">Status bar</string>
+    <string name="statusbar_title">Belka powiadomień</string>
     <string name="statusbar_summary">Clock, carrier, status icons</string>
-    <string name="volume_title">Volume rockers</string>
-    <string name="volume_summary">Volume rockers</string>
-    <string name="notifications_title">Notifications</string>
+    <string name="volume_title">Przyciski głośności</string>
+    <string name="volume_summary">Przyciski głośności</string>
+    <string name="notifications_title">Powiadomienia</string>
     <string name="notifications_summary">Battery light, notifications header</string>
-    <string name="device_part_title">Device features</string>
+    <string name="device_part_title">Funkcje urządzenia</string>
     <string name="qs_category">QS category</string>
-    <string name="navbar_title">Navigation bar</string>
-    <string name="volume_keys_title">Volume keys</string>
-    <string name="fingerprint_category">Fingerprint</string>
+    <string name="navbar_title">Pasek nawigacyjny</string>
+    <string name="volume_keys_title">Klawisze głośności</string>
+    <string name="fingerprint_category">Odcisk palca</string>
     <!-- General strings -->
-    <string name="ok">OK</string>
-    <string name="reset">Reset</string>
-    <string name="cancel">Cancel</string>
-    <string name="save">Save</string>
-    <string name="default_string">Default</string>
-    <string name="disabled">Disabled</string>
+    <string name="ok">Ok</string>
+    <string name="reset">Resetuj</string>
+    <string name="cancel">Anuluj</string>
+    <string name="save">Zapisz</string>
+    <string name="default_string">Domyślny</string>
+    <string name="disabled">Nieaktywny</string>
     <!-- Color Picker -->
-    <string name="dialog_color_picker">Color Picker</string>
-    <string name="press_color_to_apply">Press on color below to apply</string>
+    <string name="dialog_color_picker">Selektor koloru</string>
+    <string name="press_color_to_apply">Naciśnij na kolor poniżej, aby go zastosować</string>
     <string name="arrow_right">→</string>
     <string name="arrow_down">↓</string>
     <string name="hex">Hex:</string>
@@ -91,14 +91,14 @@
     <string name="power_menu_animation">Power menu</string>
     <!-- QS header image -->
     <!-- Lockscreen -->
-    <string name="lockscreen_category">Lockscreen</string>
+    <string name="lockscreen_category">Ekran blokady</string>
     <!-- Themes -->
-    <string name="theme_type_title">System theme</string>
-    <string name="theme_type_summary">Select theme</string>
+    <string name="theme_type_title">Motyw systemowy</string>
+    <string name="theme_type_summary">Wybierz motyw</string>
     <!--Accenter -->
-    <string name="themes_hub_title">Themes</string>
-    <string name="themes_hub_summary">Accents-Gradients-Themes</string>
-    <string name="rgb_accent_picker_title_dark">Accent Picker</string>
+    <string name="themes_hub_title">Motywy</string>
+    <string name="themes_hub_summary">Motywy akcentów i gradientów</string>
+    <string name="rgb_accent_picker_title_dark">Kolor akcentu</string>
     <string name="rgb_accent_picker_summary">Choose the accent color yourself</string>
     <string name="theme_option_reset_title">Reset Theme Options</string>
     <string name="theme_option_reset_message">Are you sure you want to reset themes-accent to default?</string>
