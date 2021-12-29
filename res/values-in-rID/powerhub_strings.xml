@@ -73,11 +73,11 @@
     <string name="quick_settings_vibrate_summary">Bergetar saat menyentuh ubin QS</string>
     <!-- Lockscreen shortcuts -->
     <string name="ls_category">Item layar kunci</string>
-    <string name="ls_tuner">Enable Lockscreen tuner</string>
+    <string name="ls_tuner">Aktifkan setelan Layar Kunci</string>
     <string name="lockscreen_shortcuts">Pintasan layar kunci</string>
-    <string name="ls_shortcut_summary">Customize Lockscreen shortcuts</string>
+    <string name="ls_shortcut_summary">Kustomisasi pintasan layar kunci</string>
     <!-- Lockscreen icons -->
-    <string name="lockscreen_tuner_title">Lockscreen tuner</string>
+    <string name="lockscreen_tuner_title">Setelan Layar Kunci</string>
     <!-- Statusbar Items -->
     <string name="sb_icons">Ikon bilah status</string>
     <string name="statusbar_items_category">Item bilah status</string>
@@ -198,56 +198,56 @@
     <string name="dialog_delete_title">Hapus</string>
     <string name="dialog_delete_message">Hapus item yang dipilih?</string>
     <!-- Heads up timeout -->
-    <string name="heads_up_time_out_title">Time out</string>
-    <string name="heads_up_time_out_summary">Peeking notifications will show for <xliff:g id="number">%d</xliff:g> seconds</string>
-    <string name="heads_up_time_out_2sec">2 seconds</string>
-    <string name="heads_up_time_out_4sec">4 seconds</string>
-    <string name="heads_up_time_out_5sec">5 seconds</string>
-    <string name="heads_up_time_out_6sec">6 seconds</string>
-    <string name="heads_up_time_out_8sec">8 seconds</string>
-    <string name="heads_up_time_out_10sec">10 seconds</string>
+    <string name="heads_up_time_out_title">Batas waktu</string>
+    <string name="heads_up_time_out_summary">Notifikasi mengambang akan ditampilkan selama <xliff:g id="number">%d</xliff:g> detik</string>
+    <string name="heads_up_time_out_2sec">2 detik</string>
+    <string name="heads_up_time_out_4sec">4 detik</string>
+    <string name="heads_up_time_out_5sec">5 detik</string>
+    <string name="heads_up_time_out_6sec">6 detik</string>
+    <string name="heads_up_time_out_8sec">8 detik</string>
+    <string name="heads_up_time_out_10sec">10 detik</string>
     <!-- Heads up snooze -->
-    <string name="heads_up_snooze_title">Snooze timer</string>
-    <string name="heads_up_snooze_summary_one_minute">Swiping up on peeking notifications will snooze heads up from that application for 1 minute</string>
-    <string name="heads_up_snooze_summary">Swiping up on peeking notifications will snooze heads up from that application for <xliff:g id="number">%d</xliff:g> minutes</string>
-    <string name="heads_up_snooze_disabled_summary">Snooze timer is disabled</string>
-    <string name="heads_up_snooze_1min">1 minute</string>
-    <string name="heads_up_snooze_5min">5 minutes</string>
-    <string name="heads_up_snooze_10min">10 minutes</string>
-    <string name="heads_up_snooze_15min">15 minutes</string>
-    <string name="heads_up_snooze_20min">20 minutes</string>
+    <string name="heads_up_snooze_title">Waktu tunda</string>
+    <string name="heads_up_snooze_summary_one_minute">Menggesek ke atas saat mengintip notifikasi akan menunda notifikasi mengambang dari aplikasi tersebut untuk 1 menit</string>
+    <string name="heads_up_snooze_summary">Menggeser ke atas pada notifikasi mengambang akan menunda notifikasi itu dari aplikasi tersebut selama <xliff:g id="number">%d</xliff:g> menit</string>
+    <string name="heads_up_snooze_disabled_summary">Waktu tunda dinonaktifkan</string>
+    <string name="heads_up_snooze_1min">1 menit</string>
+    <string name="heads_up_snooze_5min">5 menit</string>
+    <string name="heads_up_snooze_10min">10 menit</string>
+    <string name="heads_up_snooze_15min">15 menit</string>
+    <string name="heads_up_snooze_20min">20 menit</string>
     <!-- Quick QS pulldown -->
-    <string name="status_bar_quick_qs_pulldown">Quick QS pulldown</string>
-    <string name="quick_pulldown_none">Disabled</string>
-    <string name="quick_pulldown_right">Pulldown statusbar from right side</string>
-    <string name="quick_pulldown_left">Pulldown statusbar from left side</string>
-    <string name="quick_pulldown_always">Always show quick settings on status bar pull down</string>
+    <string name="status_bar_quick_qs_pulldown">Menurunkan cepat Setelan Cepat</string>
+    <string name="quick_pulldown_none">Dinonaktifkan</string>
+    <string name="quick_pulldown_right">Menurunkan cepat dari sisi kanan bilah status</string>
+    <string name="quick_pulldown_left">Menurunkan cepat dari sisi kiri bilah status</string>
+    <string name="quick_pulldown_always">Selalu tampilkan setelan cepat pada menurunkan bilah status</string>
     <!-- Status bar clock and date options -->
-    <string name="status_bar_clock_title">Clock settings</string>
-    <string name="status_bar_clock">Clock &amp; Date</string>
-    <string name="clock_enabled">Enabled</string>
-    <string name="clock_disabled">Disabled</string>
-    <string name="status_bar_clock_style_reset">Reset color</string>
-    <string name="status_bar_show_clock_title">Show clock &amp; date</string>
+    <string name="status_bar_clock_title">Pengaturan Jam</string>
+    <string name="status_bar_clock">Jam &amp; Tanggal</string>
+    <string name="clock_enabled">Diaktifkan</string>
+    <string name="clock_disabled">Dinonaktifkan</string>
+    <string name="status_bar_clock_style_reset">Setel ulang warna</string>
+    <string name="status_bar_show_clock_title">Tampilkan jam &amp; tanggal</string>
     <string name="status_bar_am_pm_title">AM/PM</string>
-    <string name="status_bar_am_pm_info">24-hour clock is enabled</string>
-    <string name="enable_clock_weekday">Day of the week</string>
-    <string name="enable_clock_weekday_summary">Abbreviated day of the week before the time</string>
-    <string name="dont_show">Don\'t show</string>
-    <string name="clock_date_display">Date</string>
-    <string name="clock_date_display_summary">Display custom date before the clock</string>
-    <string name="clock_date_style">Date style</string>
-    <string name="clock_date_format">Date format</string>
-    <string name="clock_date_string_edittext_title">Must be in DateFormat eg. MM/dd/yy</string>
-    <string name="clock_date_string_edittext_summary">Enter string</string>
-    <string name="am_pm_clock_normal">Normal font size</string>
-    <string name="am_pm_clock_small">Small font size</string>
-    <string name="am_pm_clock_none">Don\'t show</string>
-    <string name="clock_date_display_none">Don\'t show</string>
-    <string name="clock_date_display_small">Small font size</string>
-    <string name="clock_date_display_normal">Normal font size</string>
+    <string name="status_bar_am_pm_info">mode 24 jam diaktifkan</string>
+    <string name="enable_clock_weekday">Hari di minggu ini</string>
+    <string name="enable_clock_weekday_summary">Singkatan hari dalam seminggu sebelum waktunya</string>
+    <string name="dont_show">Jangan tampilkan</string>
+    <string name="clock_date_display">Tanggal</string>
+    <string name="clock_date_display_summary">Tampilkan tanggal khusus di samping jam</string>
+    <string name="clock_date_style">Gaya tanggal</string>
+    <string name="clock_date_format">Format tanggal</string>
+    <string name="clock_date_string_edittext_title">Harus dalam format tanggal seperti. MM/dd/yy</string>
+    <string name="clock_date_string_edittext_summary">Masukkan teks</string>
+    <string name="am_pm_clock_normal">Ukuran font normal</string>
+    <string name="am_pm_clock_small">Ukuran font kecil</string>
+    <string name="am_pm_clock_none">Jangan tampilkan</string>
+    <string name="clock_date_display_none">Jangan tampilkan</string>
+    <string name="clock_date_display_small">Ukuran font kecil</string>
+    <string name="clock_date_display_normal">Ukuran font normal</string>
     <string name="clock_date_style_normal">Normal</string>
-    <string name="clock_date_style_lowercase">Lowercase</string>
+    <string name="clock_date_style_lowercase">Kecil</string>
     <string name="clock_date_style_uppercase">Huruf kapital</string>
     <string name="clock_date_right">Sebelah kanan jam</string>
     <string name="clock_date_left">Sebelah kiri jam</string>
@@ -349,120 +349,120 @@
     <string name="smart_pulldown_off">Mati</string>
     <string name="smart_pulldown_none">tidak ada pemberitahuan</string>
     <string name="smart_pulldown_dismissable">tidak dapat dihilangkan</string>
-    <string name="smart_pulldown_ongoing">no ongoing</string>
+    <string name="smart_pulldown_ongoing">tidak ada yang sedang berlangsung</string>
     <!-- Fingerprint authentication vibration -->
-    <string name="fprint_sucess_vib_title">Fingerprint success vibration</string>
-    <string name="fprint_sucess_vib_summary">Vibrate on successful fingerprint authentication</string>
-    <string name="fprint_error_vib_title">Fingerprint error vibration</string>
-    <string name="fprint_error_vib_summary">Vibrate on failed fingerprint authentication</string>
+    <string name="fprint_sucess_vib_title">Getarkan sukses sidik jari</string>
+    <string name="fprint_sucess_vib_summary">Bergetar saat autentikasi sidik jari sukses</string>
+    <string name="fprint_error_vib_title">Getarkan kesalahan sidik jari</string>
+    <string name="fprint_error_vib_summary">Bergetar saat autentikasi sidik jari gagal</string>
     <!-- Brightness control -->
-    <string name="status_bar_toggle_brightness">Brightness control</string>
-    <string name="status_bar_toggle_brightness_summary">Adjust brightness by sliding across the status bar</string>
+    <string name="status_bar_toggle_brightness">Kontrol kecerahan</string>
+    <string name="status_bar_toggle_brightness_summary">Sesuaikan kecerahan dengan menggeser di bilah status</string>
     <!-- Lockscreen battery info indicator  -->
-    <string name="lockscreen_battery_info_title">Lockscreen charging info</string>
-    <string name="lockscreen_battery_info_summary">Show charging current, voltage, wattage and battery temperature on lockscreen while charging</string>
+    <string name="lockscreen_battery_info_title">Info pengisian daya pada layar kunci</string>
+    <string name="lockscreen_battery_info_summary">Tampilkan arus pengisian, voltase, watt, dan suhu baterai pada layar kunci saat mengisi daya</string>
     <!-- Charging animation -->
-    <string name="charging_animation_title">Charging animation</string>
-    <string name="charging_animation_summary">Display an animation when the device is plugged in</string>
+    <string name="charging_animation_title">Animasi pengisian daya</string>
+    <string name="charging_animation_summary">Tampilkan animasi saat perangkat diisi daya</string>
     <!-- Monet Engine -->
-    <string name="monet_engine_custom_color_title">Use custom color</string>
-    <string name="monet_engine_custom_color_summary">Use custom color for monet engine instead of wallpaper colors</string>
-    <string name="monet_engine_color_override_title">Custom color</string>
-    <string name="monet_engine_white_luminance_user_title">White luminance</string>
-    <string name="monet_engine_accurate_shades_title">Use accurate shades</string>
-    <string name="monet_engine_chroma_factor_title">Chroma factor</string>
-    <string name="monet_engine_linear_lightness_title">Use linear lightness</string>
+    <string name="monet_engine_custom_color_title">Gunakan warna kustom</string>
+    <string name="monet_engine_custom_color_summary">Gunakan warna kustom untuk mesin monet alih-alih warna wallpaper</string>
+    <string name="monet_engine_color_override_title">Warna kustom</string>
+    <string name="monet_engine_white_luminance_user_title">Pencahayaan putih</string>
+    <string name="monet_engine_accurate_shades_title">Gunakan nuansa yang akurat</string>
+    <string name="monet_engine_chroma_factor_title">Faktor kroma</string>
+    <string name="monet_engine_linear_lightness_title">Gunakan cahaya linier</string>
     <!-- Battery Bar -->
-    <string name="battery_bar_title">Battery bar</string>
-    <string name="battery_bar_summary">Display and customize battery bar near status bar or navigation bar</string>
-    <string name="battery_bar_no_navbar">Battery bar location</string>
-    <string name="battery_bar_location_hide">Hide</string>
-    <string name="battery_bar_statusbar_top">Statusbar Top</string>
-    <string name="battery_bar_statusbar_bot">Statusbar bottom</string>
-    <string name="battery_bar_color">Battery bar color</string>
-    <string name="battery_bar_charging_color">Battery bar charging color</string>
-    <string name="battery_bar_battery_low_color">Battery bar low battery color</string>
-    <string name="battery_bar_cat">Battery bar style</string>
-    <string name="battery_bar_style_title">Battery bar alignment</string>
-    <string name="battery_bar_thickness_title">Battery bar thickness</string>
-    <string name="battery_bar_animate_title">Charging animation</string>
-    <string name="battery_bar_style_regular">Regular</string>
-    <string name="battery_bar_style_center_mirrored">Center-mirrored</string>
-    <string name="battery_bar_style_reversed">Reversed</string>
-    <string name="battery_bar_use_charging_color">Custom charging color</string>
-    <string name="battery_bar_blend_color_title">Blend colors</string>
-    <string name="battery_bar_blend_color_summary">Blend full/empty colors corresponding to battery percentage</string>
-    <string name="battery_bar_blend_color_reverse_title">Reverse color direction</string>
-    <string name="battery_bar_blend_color_reverse_summary_off">Full &#8594; empty: red &#8592; green &#8592; blue &#8592; red</string>
-    <string name="battery_bar_blend_color_reverse_summary_on">Full &#8594; empty: red &#8594; green &#8594; blue &#8594; red</string>
+    <string name="battery_bar_title">Bilah baterai</string>
+    <string name="battery_bar_summary">Tampilkan dan sesuaikan bilah baterai di dekat bilah status atau bilah navigasi</string>
+    <string name="battery_bar_no_navbar">Lokasi bilah baterai</string>
+    <string name="battery_bar_location_hide">Sembunyikan</string>
+    <string name="battery_bar_statusbar_top">Atas bilah status</string>
+    <string name="battery_bar_statusbar_bot">Bawah bilah status</string>
+    <string name="battery_bar_color">Warna bilah baterai</string>
+    <string name="battery_bar_charging_color">Warna bilah baterai saat pengisian</string>
+    <string name="battery_bar_battery_low_color">Warna bilah baterai saat rendah</string>
+    <string name="battery_bar_cat">Gaya bilah baterai</string>
+    <string name="battery_bar_style_title">Penempatan bilah baterai</string>
+    <string name="battery_bar_thickness_title">Ketebalan bilah baterai</string>
+    <string name="battery_bar_animate_title">Animasi pengisian daya</string>
+    <string name="battery_bar_style_regular">Biasa</string>
+    <string name="battery_bar_style_center_mirrored">Tengah-dicerminkan</string>
+    <string name="battery_bar_style_reversed">Terbalik</string>
+    <string name="battery_bar_use_charging_color">Sesuaikan warna pengisian</string>
+    <string name="battery_bar_blend_color_title">Perpaduan warna</string>
+    <string name="battery_bar_blend_color_summary">Perpaduan warna penuh/kosong yang sesuai dengan persentase baterai</string>
+    <string name="battery_bar_blend_color_reverse_title">Arah warna berbalik</string>
+    <string name="battery_bar_blend_color_reverse_summary_off">Penuh &#8594; Kosong: Merah &#8592; Hijau &#8592; Biru &#8592; Merah</string>
+    <string name="battery_bar_blend_color_reverse_summary_on">Penuh &#8594; Kosong: Merah &#8594; Hijau &#8594; Biru &#8594; Merah</string>
     <!-- Heads up options -->
-    <string name="less_boring_heads_up_title">Make heads up less annoying</string>
-    <string name="less_boring_heads_up_summary">Show heads up only for dialer or messaging app if they are not in foreground</string>
+    <string name="less_boring_heads_up_title">Buat notifikasi mengambang tidak mengganggu</string>
+    <string name="less_boring_heads_up_summary">Tampilkan notifikasi mengambang hanya untuk aplikasi telepon atau pesan jika mereka tidak berada di latar depan</string>
     <!-- Notification guts kill app button -->
-    <string name="general_category">General</string>
-    <string name="notification_guts_kill_app_button_title">Kill app button</string>
-    <string name="notification_guts_kill_app_button_summary">Show a kill app button in the notification\'s longpress menu</string>
+    <string name="general_category">Umum</string>
+    <string name="notification_guts_kill_app_button_title">Tombol matikan aplikasi</string>
+    <string name="notification_guts_kill_app_button_summary">Tampilkan tombol matikan aplikasi ketika tombol menu ditekan lama</string>
     <!-- Custom carrier label and position -->
-    <string name="carrier_label_settings_title">Carrier label</string>
-    <string name="carrier_label_settings_summary">Customize the carrier label</string>
-    <string name="custom_carrier_label_title">Custom carrier label</string>
-    <string name="custom_carrier_label_explain">Enter a custom label. Leave blank to use your network name</string>
-    <string name="custom_carrier_label_notset">Custom label currently not set</string>
-    <string name="show_carrier_title">Carrier label location</string>
-    <string name="show_carrier_disabled">Disabled</string>
-    <string name="show_carrier_keyguard">Lockscreen</string>
-    <string name="show_carrier_statusbar">Statusbar</string>
-    <string name="show_carrier_enabled">Both</string>
+    <string name="carrier_label_settings_title">Label operator</string>
+    <string name="carrier_label_settings_summary">Kustomisasi label operator</string>
+    <string name="custom_carrier_label_title">Nama operator kustom</string>
+    <string name="custom_carrier_label_explain">Masukkan label kustom. Biarkan kosong untuk menggunakan nama jaringan Anda</string>
+    <string name="custom_carrier_label_notset">Saat ini kustom label belum ditentukan</string>
+    <string name="show_carrier_title">Lokasi label operator</string>
+    <string name="show_carrier_disabled">Dinonaktifkan</string>
+    <string name="show_carrier_keyguard">Layar kunci</string>
+    <string name="show_carrier_statusbar">Bilah status</string>
+    <string name="show_carrier_enabled">Keduanya</string>
     <!-- Battery Settings -->
-    <string name="battery_settings_title">Battery Settings</string>
+    <string name="battery_settings_title">Setelan Baterai</string>
     <!-- Battery Styles -->
-    <string name="battery_style_category_title">Battery styles</string>
-    <string name="battery_percent_title">Battery percent</string>
+    <string name="battery_style_category_title">Gaya Baterai</string>
+    <string name="battery_percent_title">Persentasi Baterai</string>
     <!-- Status bar - Battery -->
-    <string name="status_bar_battery_style_title">Battery style</string>
-    <string name="status_bar_battery_style_icon_portrait">Icon portrait (default)</string>
-    <string name="status_bar_battery_style_circle">Circle</string>
-    <string name="status_bar_battery_style_dotted_circle">Circle (Dotted)</string>
-    <string name="status_bar_battery_style_filled_circle">Circle (Filled)</string>
-    <string name="status_bar_battery_style_big_circle">Big circle</string>
-    <string name="status_bar_battery_style_big_dotted_circle">Big dotted circle</string>
-    <string name="status_bar_battery_style_text">Text</string>
-    <string name="status_bar_battery_style_hidden">Hidden</string>
+    <string name="status_bar_battery_style_title">Gaya Baterai</string>
+    <string name="status_bar_battery_style_icon_portrait">Ikon tegak (standar)</string>
+    <string name="status_bar_battery_style_circle">Lingkaran</string>
+    <string name="status_bar_battery_style_dotted_circle">Lingkaran (Putus-putus)</string>
+    <string name="status_bar_battery_style_filled_circle">Lingkaran (Terisi)</string>
+    <string name="status_bar_battery_style_big_circle">Lingkaran besar</string>
+    <string name="status_bar_battery_style_big_dotted_circle">Lingkaran besar putus-putus</string>
+    <string name="status_bar_battery_style_text">Teks</string>
+    <string name="status_bar_battery_style_hidden">Sembunyikan</string>
     <!-- Status bar - Battery percentage -->
-    <string name="status_bar_battery_percentage_title">Battery percentage</string>
-    <string name="status_bar_battery_percentage_default">Hidden (default)</string>
-    <string name="status_bar_battery_percentage_text_inside">Inside the icon</string>
-    <string name="status_bar_battery_percentage_text_next">Next to the icon</string>
+    <string name="status_bar_battery_percentage_title">Persentase baterai</string>
+    <string name="status_bar_battery_percentage_default">Tersembunyi (bawaan)</string>
+    <string name="status_bar_battery_percentage_text_inside">Di dalam ikon</string>
+    <string name="status_bar_battery_percentage_text_next">Di samping ikon</string>
     <!-- QS battery estimates -->
-    <string name="qs_show_battery_estimate_title">Battery estimates</string>
-    <string name="qs_show_battery_estimate_summary">Show estimated remaining battery life next to the icon</string>
+    <string name="qs_show_battery_estimate_title">Perkiraan sisa baterai</string>
+    <string name="qs_show_battery_estimate_summary">Tampilkan perkiraan sisa baterai di sebelah ikon</string>
     <!-- Navigation bar -->
-    <string name="navigation_title">Navigation</string>
-    <string name="navigation_bar_category">Navigation bar</string>
-    <string name="navigation_bar_title">On-screen navigation bar</string>
-    <string name="navigation_bar_summary">Enable on-screen navigation keys</string>
-    <string name="navigation_bar_arrow_keys_title">Arrow keys</string>
-    <string name="navigation_bar_arrow_keys_summary">Show left &amp; right arrows to control the cursor while typing</string>
-    <string name="navigation_bar_invert_layout_title">Invert layout</string>
-    <string name="navigation_bar_invert_layout_summary">Inverts the layout of the navigation bar and other items</string>
-    <string name="nav_bar_tuner_title">Navigation bar tuner</string>
-    <string name="nav_bar_tuner_summary">Change navbar layout</string>
-    <string name="navbar_layout_title">Layout</string>
+    <string name="navigation_title">Navigasi</string>
+    <string name="navigation_bar_category">Bilah navigasi</string>
+    <string name="navigation_bar_title">Bilah navigasi di layar</string>
+    <string name="navigation_bar_summary">Aktifkan tombol navigasi pada layar</string>
+    <string name="navigation_bar_arrow_keys_title">Tombol panah</string>
+    <string name="navigation_bar_arrow_keys_summary">Tampilkan arah kiri &amp; kanan untuk mengontrol kursor saat mengetik</string>
+    <string name="navigation_bar_invert_layout_title">Tukar tata letak</string>
+    <string name="navigation_bar_invert_layout_summary">Menukar tata letak bilah navigasi dan item lainnya</string>
+    <string name="nav_bar_tuner_title">Atur bilah navigasi</string>
+    <string name="nav_bar_tuner_summary">Ubah tata letak tombol navigasi</string>
+    <string name="navbar_layout_title">Tata letak</string>
     <string name="navbar_layout_normal">Normal</string>
-    <string name="navbar_layout_compact">Compact</string>
-    <string name="navbar_layout_leftleaning">Left-leaning</string>
-    <string name="navbar_layout_rightleaning">Right-leaning</string>
-    <string name="system_navigation_summary">Choose which system navigation style to use</string>
+    <string name="navbar_layout_compact">Rapat</string>
+    <string name="navbar_layout_leftleaning">Evisiensi kiri</string>
+    <string name="navbar_layout_rightleaning">Evisiensi kanan</string>
+    <string name="system_navigation_summary">Pilih gaya navigasi sistem yang akan digunakan</string>
     <!-- Old mobile type icons -->
-    <string name="use_old_mobiletype_title">Small mobile type icon</string>
-    <string name="use_old_mobiletype_summary">Show mobile type icon on top of the signal indicator</string>
+    <string name="use_old_mobiletype_title">Tipe ikon seluler kecil</string>
+    <string name="use_old_mobiletype_summary">Tampilkan tipe ikon seluler di atas indikator sinyal</string>
     <!-- Call strength icons in QS -->
-    <string name="show_qs_call_strength_icon_title">Show call strength icon(s)</string>
-    <string name="show_qs_call_strength_icon_summary">Show call strength icons in QuickSettings panel when available</string>
+    <string name="show_qs_call_strength_icon_title">Tampilkan ikon kekuatan panggilan</string>
+    <string name="show_qs_call_strength_icon_summary">Tampilkan ikon kekuatan panggilan di panel Setelan Cepat jika tersedia</string>
     <!-- Tiles on secure keyguard -->
-    <string name="use_tiles_on_secure_keyguard_title">Require unlocking to use sensitive tiles</string>
-    <string name="use_tiles_on_secure_keyguard_summary">Ask to unlock lockscreen when using sensitive tiles</string>
+    <string name="use_tiles_on_secure_keyguard_title">Perlu membuka kunci untuk menggunakan ubin sensitif</string>
+    <string name="use_tiles_on_secure_keyguard_summary">Minta untuk membuka kunci layar saat menggunakan ubin sensitif</string>
     <!-- Combined signal icons in status bar -->
-    <string name="combined_status_bar_signal_icons">Combined signal icons</string>
-    <string name="combined_status_bar_signal_icons_summary">Enable combined signal icons in status bar.\nRequires a SystemUI restart</string>
+    <string name="combined_status_bar_signal_icons">Ikon sinyal gabungan</string>
+    <string name="combined_status_bar_signal_icons_summary">Aktifkan ikon sinyal gabungan di bilah status.\nMemerlukan mulai ulang SistemUI</string>
 </resources>
