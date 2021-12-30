@@ -15,57 +15,57 @@
     <string name="powerhub_title">Power Hub</string>
     <!-- Categories -->
     <string name="button_title">Butonat</string>
-    <string name="button_summary">Hardware keys, Navigation bar</string>
-    <string name="gestures_title">Gestures</string>
-    <string name="gestures_summary">Jump to camera, swipe to screenshot</string>
-    <string name="lockscreen_title">Lock screen</string>
-    <string name="lockscreen_summary">Music visualizer, charging animation, clock style</string>
-    <string name="misc_title">Miscellaneous</string>
-    <string name="misc_summary">Gaming mode, volume controls</string>
-    <string name="animations_title">Animations</string>
-    <string name="animations_summary">System animations</string>
-    <string name="powermenu_title">Power menu</string>
-    <string name="powermenu_summary">Advanced restart, power menu opacity</string>
-    <string name="theme_title">Themes</string>
-    <string name="theme_summary">Fonts, icon packs, monet</string>
-    <string name="quicksettings_title">Quick Settings</string>
-    <string name="quicksettings_summary">Tile layout, blur</string>
-    <string name="recents_title">Recents apps</string>
-    <string name="recents_summary">Slim recents</string>
-    <string name="statusbar_title">Status bar</string>
-    <string name="statusbar_summary">Clock, carrier, status icons</string>
-    <string name="volume_title">Volume rockers</string>
-    <string name="volume_summary">Volume rockers</string>
-    <string name="notifications_title">Notifications</string>
-    <string name="notifications_summary">Battery light, notifications header</string>
-    <string name="device_part_title">Device features</string>
-    <string name="qs_category">QS category</string>
-    <string name="navbar_title">Navigation bar</string>
-    <string name="volume_keys_title">Volume keys</string>
-    <string name="fingerprint_category">Fingerprint</string>
+    <string name="button_summary">Çelësat e harduerit, shiriti i navigimit</string>
+    <string name="gestures_title">Gjestet</string>
+    <string name="gestures_summary">Shkoni te kamera, rrëshqitni te fotografia e ekranit</string>
+    <string name="lockscreen_title">Ekrani bllokues</string>
+    <string name="lockscreen_summary">Vizualizues muzikor, animacion karikimi, stili i orës</string>
+    <string name="misc_title">Të ndryshme</string>
+    <string name="misc_summary">Modaliteti i lojës, kontrollet e volumit</string>
+    <string name="animations_title">Animacionet</string>
+    <string name="animations_summary">Animacionet sistemore</string>
+    <string name="powermenu_title">Menuja e energjisë</string>
+    <string name="powermenu_summary">Rinisja e avancuar, paqartësia e menysë së energjisë</string>
+    <string name="theme_title">Temat</string>
+    <string name="theme_summary">Fontet, paketat e ikonave, monet</string>
+    <string name="quicksettings_title">Cilësimet e shpejta</string>
+    <string name="quicksettings_summary">Paraqitja e pllakave, turbullim</string>
+    <string name="recents_title">Aplikacionet e fundit</string>
+    <string name="recents_summary">Të fundit të pakta</string>
+    <string name="statusbar_title">Shiriti i statusit</string>
+    <string name="statusbar_summary">Ikonat e orës, operatorit, statusit</string>
+    <string name="volume_title">Lëkundjet e volumit</string>
+    <string name="volume_summary">Lëkundjet e volumit</string>
+    <string name="notifications_title">Njoftimet</string>
+    <string name="notifications_summary">Drita e baterisë, koka e njoftimeve</string>
+    <string name="device_part_title">Karakteristikat e pajisjes</string>
+    <string name="qs_category">Kategoria QS</string>
+    <string name="navbar_title">Shiriti i lundrimit</string>
+    <string name="volume_keys_title">Tastet e zërit</string>
+    <string name="fingerprint_category">Shenjat e gishtave</string>
     <!-- General strings -->
-    <string name="ok">OK</string>
-    <string name="reset">Reset</string>
-    <string name="cancel">Cancel</string>
-    <string name="save">Save</string>
-    <string name="default_string">Default</string>
-    <string name="disabled">Disabled</string>
+    <string name="ok">Ok</string>
+    <string name="reset">Rivendos</string>
+    <string name="cancel">Anulo</string>
+    <string name="save">Ruaj</string>
+    <string name="default_string">E paracaktuar</string>
+    <string name="disabled">E çaktivizuar</string>
     <!-- Color Picker -->
-    <string name="dialog_color_picker">Color Picker</string>
-    <string name="press_color_to_apply">Press on color below to apply</string>
+    <string name="dialog_color_picker">Përzgjedhësi i ngjyrave</string>
+    <string name="press_color_to_apply">Trysni në ngjyrën përfundi për ta vendosur</string>
     <string name="arrow_right">→</string>
     <string name="arrow_down">↓</string>
     <string name="hex">Hex:</string>
     <string name="hex_hint">#ff000000</string>
-    <string name="set">Set</string>
-    <string name="color_default">Default</string>
-    <string name="led_color_green">Green</string>
-    <string name="led_color_red">Red</string>
+    <string name="set">Vendos</string>
+    <string name="color_default">E paracaktuar</string>
+    <string name="led_color_green">Jeshile</string>
+    <string name="led_color_red">E kuqe</string>
     <!-- Custom seekbar -->
-    <string name="custom_seekbar_value">Value: <xliff:g id="v">%s</xliff:g></string>
-    <string name="custom_seekbar_default_value">Default</string>
-    <string name="custom_seekbar_default_value_to_set">Default value: <xliff:g id="v">%s</xliff:g>\nLong press to set</string>
-    <string name="custom_seekbar_default_value_is_set">Default value is set</string>
+    <string name="custom_seekbar_value">Vlera: <xliff:g id="v">%s</xliff:g></string>
+    <string name="custom_seekbar_default_value">E paracaktuar</string>
+    <string name="custom_seekbar_default_value_to_set">Vlera e parazgjedhur: <xliff:g id="v">%s</xliff:g>\nShtyp gjatë për ta vendosur</string>
+    <string name="custom_seekbar_default_value_is_set">Është vendosur vlera e paracaktuar</string>
     <!-- QS settings -->
     <string name="qs_title">Quick settings</string>
     <!-- QuickSettings haptic feedback -->
@@ -139,25 +139,25 @@
     <!-- Double Tap Statusbar to Sleep -->
     <string name="statusbar_gesture_title">Gestures</string>
     <string name="double_tap_to_sleep_statusbar_title">Double tap to sleep</string>
-    <string name="double_tap_to_sleep_statusbar_summary">Double tap on statusbar to put the device to sleep</string>
+    <string name="double_tap_to_sleep_statusbar_summary">Trokit dy herë në shiritin e statusit për ta vënë pajisjen në gjumë</string>
     <!-- Buttons title -->
-    <string name="volume_category">Volume Rocker</string>
+    <string name="volume_category">Lëkundje volumi</string>
     <!--Volume keys -->
-    <string name="volume_rocker_wake_summary">Pressing the volume keys will wake your device</string>
-    <string name="volume_rocker_music_controls_title">Music control</string>
-    <string name="volume_rocker_music_controls_summary">Long press volume buttons to switch tracks while screen off</string>
+    <string name="volume_rocker_wake_summary">Shtypja e tasteve të volumit do ta zgjojë pajisjen tuaj</string>
+    <string name="volume_rocker_music_controls_title">Kontrolli i muzikës</string>
+    <string name="volume_rocker_music_controls_summary">Shtypni gjatë butonat e volumit për të ndërruar këngët ndërsa ekrani është i fikur</string>
     <!-- Torch Power button gestures -->
-    <string name="torch_power_button_gesture_title">Toggle torch when screen off</string>
-    <string name="torch_power_button_gesture_none">Disabled</string>
-    <string name="torch_power_button_gesture_dt">Double tap power button (slower single tap response), Disables double power tap for camera.</string>
-    <string name="torch_power_button_gesture_dt_toast">Jump to camera gesture is now disabled</string>
-    <string name="torch_power_button_gesture_lp">Long press power button</string>
+    <string name="torch_power_button_gesture_title">Ndrysho pishtarin kur ekrani fiket</string>
+    <string name="torch_power_button_gesture_none">E çaktivizuar</string>
+    <string name="torch_power_button_gesture_dt">Butoni i ndezjes me prekje të dyfishtë (përgjigje më e ngadaltë me një trokitje të vetme), Çaktivizon prekjen e dyfishtë të energjisë për kamerën.</string>
+    <string name="torch_power_button_gesture_dt_toast">Gjesti i \"Kërcimit te kamera\" është çaktivizuar tani</string>
+    <string name="torch_power_button_gesture_lp">Shtypni gjatë butonin e energjisë</string>
     <!-- Hardware button navigation -->
-    <string name="picker_activities">Activities</string>
-    <string name="select_custom_app_title">Select custom app</string>
-    <string name="select_custom_activity_title">Select custom activity</string>
-    <string name="profile_applist_title">Applications</string>
-    <string name="choose_action_title">Choose action</string>
+    <string name="picker_activities">Aktivitetet</string>
+    <string name="select_custom_app_title">Zgjidh një aplikacion të personalizuar</string>
+    <string name="select_custom_activity_title">Zgjidh një aktivitet të personalizuar</string>
+    <string name="profile_applist_title">Aplikacionet</string>
+    <string name="choose_action_title">Zgjidh veprimin</string>
     <string name="action_entry_default_action">Default settings</string>
     <string name="action_entry_select_app">Select application</string>
     <string name="action_entry_custom_action">Select custom action</string>
