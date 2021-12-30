@@ -147,7 +147,7 @@
     <string name="volume_rocker_music_controls_title">Sterowanie muzyką</string>
     <string name="volume_rocker_music_controls_summary">Dłuższe naciśnięcie przycisków głośności, aby przełączać utwory, kiedy ekran jest wyłączony</string>
     <!-- Torch Power button gestures -->
-    <string name="torch_power_button_gesture_title">Przełącz latarkę gdy ekran wyłączony</string>
+    <string name="torch_power_button_gesture_title">Przełącz latarkę gdy ekran jest wyłączony</string>
     <string name="torch_power_button_gesture_none">Wyłączony</string>
     <string name="torch_power_button_gesture_dt">Dwukrotne dotknięcie przycisku zasilania (wolniejsze pojedyńcze dotknięcie), wyłącza podwójne dotknięcie dla aparatu.</string>
     <string name="torch_power_button_gesture_dt_toast">Gest otwarcia aparatu jest teraz wyłączony</string>
@@ -161,7 +161,7 @@
     <string name="action_entry_default_action">Ustawienia domyślne</string>
     <string name="action_entry_select_app">Wybierz aplikację</string>
     <string name="action_entry_custom_action">Wybierz niestandardową akcję</string>
-    <string name="hardware_keys_volume_keys_title">Przyciski głośności</string>
+    <string name="hardware_keys_volume_keys_title">Przycisk głośności</string>
     <string name="hardware_keys_home_key_title">Przycisk Home</string>
     <string name="hardware_keys_menu_key_title">Przycisk Menu</string>
     <string name="hardware_keys_assist_key_title">Przycisk Wyszukiwania</string>
@@ -356,7 +356,7 @@
     <string name="smart_pulldown_none_summary">Otwórz szybkie ustawienie gdy nie ma powiadomień</string>
     <string name="smart_pulldown_off">Wyłączone</string>
     <string name="smart_pulldown_none">brak powiadomień</string>
-    <string name="smart_pulldown_dismissable">no dismissable</string>
+    <string name="smart_pulldown_dismissable">wyłącz rozsuwanie</string>
     <string name="smart_pulldown_ongoing">brak bieżących</string>
     <!-- Fingerprint authentication vibration -->
     <string name="fprint_sucess_vib_title">Wibracja potwierdzenia odblokowania odciskiem palca</string>
@@ -379,7 +379,7 @@
     <string name="monet_engine_white_luminance_user_title">Biała Iluminacja</string>
     <string name="monet_engine_accurate_shades_title">Używaj dokładnych odcieni</string>
     <string name="monet_engine_chroma_factor_title">Współczynnik chroma</string>
-    <string name="monet_engine_linear_lightness_title">Use linear lightness</string>
+    <string name="monet_engine_linear_lightness_title">Użyj światła liniowego</string>
     <!-- Battery Bar -->
     <string name="battery_bar_title">Pasek poziomu baterii</string>
     <string name="battery_bar_summary">Wyświetl i dostosuj pasek baterii w pobliżu paska stanu lub paska nawigacji</string>
