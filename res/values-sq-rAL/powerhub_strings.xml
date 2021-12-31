@@ -67,40 +67,40 @@
     <string name="custom_seekbar_default_value_to_set">Vlera e parazgjedhur: <xliff:g id="v">%s</xliff:g>\nShtyp gjatë për ta vendosur</string>
     <string name="custom_seekbar_default_value_is_set">Është vendosur vlera e paracaktuar</string>
     <!-- QS settings -->
-    <string name="qs_title">Quick settings</string>
+    <string name="qs_title">Parametra të shpejta</string>
     <!-- QuickSettings haptic feedback -->
-    <string name="quick_settings_vibrate_title">Vibrate on touch</string>
-    <string name="quick_settings_vibrate_summary">Vibrate when touching QS tiles</string>
+    <string name="quick_settings_vibrate_title">Dridhje pas trokitjes</string>
+    <string name="quick_settings_vibrate_summary">Dridhja kur prekni pllakat QS</string>
     <!-- Lockscreen shortcuts -->
-    <string name="ls_category">Lockscreen Items</string>
-    <string name="ls_tuner">Enable Lockscreen tuner</string>
-    <string name="lockscreen_shortcuts">Lockscreen shortcuts</string>
-    <string name="ls_shortcut_summary">Customize Lockscreen shortcuts</string>
+    <string name="ls_category">Artikujt te ekranit të kyçur</string>
+    <string name="ls_tuner">Aktivizo sintonizuesin e ekranit të kyçur</string>
+    <string name="lockscreen_shortcuts">Shkurtore e kyçjes se ekranit</string>
+    <string name="ls_shortcut_summary">Personalizo shkurtoret e ekranit të kyçur</string>
     <!-- Lockscreen icons -->
-    <string name="lockscreen_tuner_title">Lockscreen tuner</string>
+    <string name="lockscreen_tuner_title">Akordues i ekranit të kyçur</string>
     <!-- Statusbar Items -->
-    <string name="sb_icons">Statusbar Icons</string>
-    <string name="statusbar_items_category">Statusbar items</string>
+    <string name="sb_icons">Ikonat e shiritit të statusit</string>
+    <string name="statusbar_items_category">Artikujt e shiritit të statusit</string>
     <!-- Status bar - icons -->
-    <string name="status_bar_icons_title">Status bar icons</string>
+    <string name="status_bar_icons_title">Ikonat e shiritit të statusit</string>
     <!-- Lock screen visualizer -->
-    <string name="visualizer_title">Display music visualizer</string>
+    <string name="visualizer_title">Trego vizualizuesin e muzikës</string>
     <!-- Power menu and dialogs opacity -->
     <!-- AOKP custom system animations -->
     <!-- Power menu Animations  -->
-    <string name="power_menu_animation">Power menu</string>
+    <string name="power_menu_animation">Menuja e energjisë</string>
     <!-- QS header image -->
     <!-- Lockscreen -->
-    <string name="lockscreen_category">Lockscreen</string>
+    <string name="lockscreen_category">Kyçja e ekranit</string>
     <!-- Themes -->
-    <string name="theme_type_title">System theme</string>
-    <string name="theme_type_summary">Select theme</string>
+    <string name="theme_type_title">Tema e Sistemit</string>
+    <string name="theme_type_summary">Zgjidh temë</string>
     <!--Accenter -->
-    <string name="themes_hub_title">Themes</string>
-    <string name="themes_hub_summary">Accents-Gradients-Themes</string>
-    <string name="rgb_accent_picker_title_dark">Accent Picker</string>
-    <string name="rgb_accent_picker_summary">Choose the accent color yourself</string>
-    <string name="theme_option_reset_title">Reset Theme Options</string>
+    <string name="themes_hub_title">Temat</string>
+    <string name="themes_hub_summary">Thekse-Gradiente-Tema</string>
+    <string name="rgb_accent_picker_title_dark">Zgjedhësi i theksit</string>
+    <string name="rgb_accent_picker_summary">Zgjidhni vetë ngjyrën e theksit</string>
+    <string name="theme_option_reset_title">Rivendos Opcionet e Temës</string>
     <string name="theme_option_reset_message">Are you sure you want to reset themes-accent to default?</string>
     <!--ThemePicker-->
     <string name="theme_select_title">Styles and Wallpapers</string>
@@ -473,4 +473,10 @@
     <!-- Combined signal icons in status bar -->
     <string name="combined_status_bar_signal_icons">Combined signal icons</string>
     <string name="combined_status_bar_signal_icons_summary">Enable combined signal icons in status bar.\nRequires a SystemUI restart</string>
+    <!-- Screen off FOD -->
+    <string name="screen_off_fod_title">Screen off FOD</string>
+    <string name="screen_off_fod_summary">Keep FOD enabled when the screen is off</string>
+    <!-- Udfps Haptic Feedback -->
+    <string name="udfps_haptic_feedback_title">FOD haptic feedback</string>
+    <string name="udfps_haptic_feedback_summary">Vibrate when touching FOD icon</string>
 </resources>

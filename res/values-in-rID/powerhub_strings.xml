@@ -473,4 +473,10 @@
     <!-- Combined signal icons in status bar -->
     <string name="combined_status_bar_signal_icons">Ikon sinyal gabungan</string>
     <string name="combined_status_bar_signal_icons_summary">Aktifkan ikon sinyal gabungan di bilah status.\nMemerlukan mulai ulang SistemUI</string>
+    <!-- Screen off FOD -->
+    <string name="screen_off_fod_title">FOD layar mati</string>
+    <string name="screen_off_fod_summary">Tetap aktifkan FOD saat layar mati</string>
+    <!-- Udfps Haptic Feedback -->
+    <string name="udfps_haptic_feedback_title">Umpan balik FOD</string>
+    <string name="udfps_haptic_feedback_summary">Bergetar saat menyentuh ikon FOD</string>
 </resources>
