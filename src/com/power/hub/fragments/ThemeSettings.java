@@ -47,7 +47,6 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import com.android.settingslib.core.AbstractPreferenceController;
 import com.android.settings.SettingsPreferenceFragment;
-import com.android.settingslib.core.lifecycle.Lifecycle;
 import java.util.Locale;
 import android.text.TextUtils;
 import android.view.View;
@@ -55,6 +54,12 @@ import android.provider.SearchIndexableResource;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Objects;
+import org.json.JSONException;
+import org.json.JSONObject;
+import static android.os.UserHandle.USER_SYSTEM;
+import android.os.RemoteException;
+import android.os.ServiceManager;
+import static android.os.UserHandle.USER_CURRENT;
 
 import com.android.internal.util.voltage.VoltageUtils;
 import com.android.settings.dashboard.DashboardFragment;
@@ -68,12 +73,16 @@ import net.margaritov.preference.colorpicker.ColorPickerPreference;
 public class ThemeSettings extends DashboardFragment implements OnPreferenceChangeListener {
 			
 	public static final String TAG = "ThemeSettings";
+        private Context mContext;
 	
 	private String MONET_ENGINE_COLOR_OVERRIDE = "monet_engine_color_override";
     static final int DEFAULT_QS_PANEL_COLOR = 0xffffffff;
 	static final int DEFAULT = 0xff1a73e8;
-	private Context mContext;
 
+    private static final String CUSTOM_CLOCK_FACE = Settings.Secure.LOCK_SCREEN_CUSTOM_CLOCK_FACE;
+    private static final String DEFAULT_CLOCK = "com.android.keyguard.clock.DefaultClockController";
+
+    private ListPreference mLockClockStyles;
     private IOverlayManager mOverlayService;
     private UiModeManager mUiModeManager;
 	private ColorPickerPreference mMonetColor;
@@ -103,6 +112,12 @@ public class ThemeSettings extends DashboardFragment implements OnPreferenceChan
         mMonetColor.setNewPreviewColor(intColor);
         mMonetColor.setSummary(hexColor);
         mMonetColor.setOnPreferenceChangeListener(this);
+
+        mLockClockStyles = (ListPreference) findPreference(CUSTOM_CLOCK_FACE);
+        String mLockClockStylesValue = getLockScreenCustomClockFace();
+        mLockClockStyles.setValue(mLockClockStylesValue);
+        mLockClockStyles.setSummary(mLockClockStyles.getEntry());
+        mLockClockStyles.setOnPreferenceChangeListener(this);
         }
 
     public boolean isAvailable() {
@@ -110,15 +125,20 @@ public class ThemeSettings extends DashboardFragment implements OnPreferenceChan
     }
 	
     @Override
-    public boolean onPreferenceChange(Preference preference, Object objValue) {
+    public boolean onPreferenceChange(Preference preference, Object newValue) {
         ContentResolver resolver = getActivity().getContentResolver();
         if (preference == mMonetColor) {
             String hex = ColorPickerPreference.convertToARGB(Integer
-                .parseInt(String.valueOf(objValue)));
+                .parseInt(String.valueOf(newValue)));
             preference.setSummary(hex);
             int intHex = ColorPickerPreference.convertToColorInt(hex);
             Settings.Secure.putInt(resolver,
                 MONET_ENGINE_COLOR_OVERRIDE, intHex);
+            return true;
+        } else if (preference == mLockClockStyles) {
+            setLockScreenCustomClockFace((String) newValue);
+            int index = mLockClockStyles.findIndexOfValue((String) newValue);
+            mLockClockStyles.setSummary(mLockClockStyles.getEntries()[index]);
             return true;
         }
         return false;
@@ -138,6 +158,32 @@ public class ThemeSettings extends DashboardFragment implements OnPreferenceChan
                 "android.theme.customization.icon_pack"));
         return controllers;
     }
+
+    private String getLockScreenCustomClockFace() {
+        mContext = getActivity();
+        String value = Settings.Secure.getStringForUser(mContext.getContentResolver(),
+                CUSTOM_CLOCK_FACE, USER_CURRENT);
+
+        if (value == null || value.isEmpty()) value = DEFAULT_CLOCK;
+
+        try {
+            JSONObject json = new JSONObject(value);
+            return json.getString("clock");
+        } catch (JSONException ex) {
+        }
+        return value;
+    }
+
+    private void setLockScreenCustomClockFace(String value) {
+        try {
+            JSONObject json = new JSONObject();
+            json.put("clock", value);
+            Settings.Secure.putStringForUser(mContext.getContentResolver(), CUSTOM_CLOCK_FACE,
+                    json.toString(), USER_CURRENT);
+        } catch (JSONException ex) {
+        }
+    }
+
 
     @Override
     public int getMetricsCategory() {
