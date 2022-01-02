@@ -479,4 +479,6 @@
     <!-- Udfps Haptic Feedback -->
     <string name="udfps_haptic_feedback_title">FOD haptic feedback</string>
     <string name="udfps_haptic_feedback_summary">Vibrate when touching FOD icon</string>
+    <!-- FOD settings -->
+    <string name="fod_customization_title">FOD settings</string>
 </resources>
