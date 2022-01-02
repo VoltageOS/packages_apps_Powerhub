@@ -479,4 +479,6 @@
     <!-- Udfps Haptic Feedback -->
     <string name="udfps_haptic_feedback_title">Umpan balik FOD</string>
     <string name="udfps_haptic_feedback_summary">Bergetar saat menyentuh ikon FOD</string>
+    <!-- FOD settings -->
+    <string name="fod_customization_title">FOD settings</string>
 </resources>
