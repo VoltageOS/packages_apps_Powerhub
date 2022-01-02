@@ -17,39 +17,34 @@
  */
 package com.power.hub.fragments;
 
-import com.android.internal.logging.nano.MetricsProto;
-
 import android.app.Activity;
-import android.content.Context;
-import android.content.ContentResolver;
 import android.app.WallpaperManager;
+import android.content.ContentResolver;
+import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.Resources;
 import android.hardware.fingerprint.FingerprintManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.ParcelFileDescriptor;
 import android.os.UserHandle;
+import android.provider.Settings;
 import androidx.preference.SwitchPreference;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceCategory;
 import androidx.preference.PreferenceScreen;
-import android.os.SystemProperties;
-import android.provider.Settings;
+import com.android.internal.logging.nano.MetricsProto;
+import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
-import com.android.internal.util.voltage.VoltageUtils;
-import com.power.hub.preferences.SystemSettingListPreference;
-import com.power.hub.preferences.CustomSeekBarPreference;
-import com.power.hub.preferences.SecureSettingListPreference;
-import com.power.hub.preferences.SystemSettingSwitchPreference;
-import com.power.hub.preferences.SystemSettingListPreference;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settingslib.search.SearchIndexable;
 import android.provider.SearchIndexableResource;
+
+import com.android.internal.util.voltage.udfps.UdfpsUtils;
+import com.power.hub.preferences.SystemSettingListPreference;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -58,33 +53,65 @@ import java.util.List;
 public class LockScreenSettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
 
+    private static final String FINGERPRINT_SUCCESS_VIB = "fingerprint_success_vib";
+    private static final String FINGERPRINT_ERROR_VIB = "fingerprint_error_vib";
+    private static final String SCREEN_OFF_FOD_KEY = "screen_off_fod";
+    private static final String UDFPS_HAPTIC_FEEDBACK = "udfps_haptic_feedback";
+    private static final String FOD_CUSTOMIZATION_CATEGORY = "fod_customization";
+
+    private FingerprintManager mFingerprintManager;
+    private SwitchPreference mFingerprintSuccessVib;
+    private SwitchPreference mFingerprintErrorVib;
+    private PreferenceCategory mFODCustomizationCategory;
+
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
         addPreferencesFromResource(R.xml.powerhub_lockscreen);
 
-        ContentResolver resolver = getActivity().getContentResolver();
-        PreferenceScreen prefScreen = getPreferenceScreen();
-        Resources resources = getResources();
-		
-		Resources res = null;
-        Context ctx = getContext();
-        float density = Resources.getSystem().getDisplayMetrics().density;
+ContentResolver resolver = getActivity().getContentResolver();
+        final PreferenceScreen prefSet = getPreferenceScreen();
+        final PackageManager mPm = getActivity().getPackageManager();
 
-        try {
-            res = ctx.getPackageManager().getResourcesForApplication("com.android.systemui");
-        } catch (NameNotFoundException e) {
-            e.printStackTrace();
+        mFingerprintManager = (FingerprintManager) getActivity().getSystemService(Context.FINGERPRINT_SERVICE);
+        mFingerprintSuccessVib = (SwitchPreference) findPreference(FINGERPRINT_SUCCESS_VIB);
+        mFingerprintErrorVib = (SwitchPreference) findPreference(FINGERPRINT_ERROR_VIB);
+        if (mPm.hasSystemFeature(PackageManager.FEATURE_FINGERPRINT) &&
+                 mFingerprintManager != null) {
+            if (!mFingerprintManager.isHardwareDetected()){
+                prefSet.removePreference(mFingerprintSuccessVib);
+                prefSet.removePreference(mFingerprintErrorVib);
+            } else {
+                mFingerprintSuccessVib.setChecked((Settings.System.getInt(getContentResolver(),
+                        Settings.System.FP_SUCCESS_VIBRATE, 1) == 1));
+                mFingerprintSuccessVib.setOnPreferenceChangeListener(this);
+                mFingerprintErrorVib.setChecked((Settings.System.getInt(getContentResolver(),
+                        Settings.System.FP_ERROR_VIBRATE, 1) == 1));
+                mFingerprintErrorVib.setOnPreferenceChangeListener(this);
+            }
+        } else {
+            prefSet.removePreference(mFingerprintSuccessVib);
+            prefSet.removePreference(mFingerprintErrorVib);
+        }
+
+        mFODCustomizationCategory = findPreference(FOD_CUSTOMIZATION_CATEGORY);
+        if (mFODCustomizationCategory != null && !UdfpsUtils.hasUdfpsSupport(getContext())) {
+            prefSet.removePreference(mFODCustomizationCategory);
         }
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-    }
-
     public boolean onPreferenceChange(Preference preference, Object newValue) {
-        ContentResolver resolver = getActivity().getContentResolver();
+        if (preference == mFingerprintSuccessVib) {
+            boolean value = (Boolean) newValue;
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.FP_SUCCESS_VIBRATE, value ? 1 : 0);
+            return true;
+        } else if (preference == mFingerprintErrorVib) {
+            boolean value = (Boolean) newValue;
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.FP_ERROR_VIBRATE, value ? 1 : 0);
+            return true;
+        }
         return false;
     }
 
