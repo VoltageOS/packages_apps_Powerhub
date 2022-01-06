@@ -101,7 +101,7 @@
     <string name="rgb_accent_picker_title_dark">Zgjedhësi i theksit</string>
     <string name="rgb_accent_picker_summary">Zgjidhni vetë ngjyrën e theksit</string>
     <string name="theme_option_reset_title">Rivendos Opcionet e Temës</string>
-    <string name="theme_option_reset_message">Are you sure you want to reset themes-accent to default?</string>
+    <string name="theme_option_reset_message">Jeni i sigurt që dëshironi të rivendosni theksin e temave në parazgjedhje?</string>
     <!--ThemePicker-->
     <string name="theme_select_title">Styles and Wallpapers</string>
     <string name="theme_select_summary">Browse and select installed themes</string>
@@ -479,4 +479,9 @@
     <!-- Udfps Haptic Feedback -->
     <string name="udfps_haptic_feedback_title">FOD haptic feedback</string>
     <string name="udfps_haptic_feedback_summary">Vibrate when touching FOD icon</string>
+    <!-- FOD settings -->
+    <string name="fod_customization_title">FOD settings</string>
+    <!-- Nightlight Fod -->
+    <string name="fod_night_light_title">Disable Night Light when showing FOD</string>
+    <string name="fod_night_light_summary">Disable Night Light on lock screen if FOD is active. Disabling this option might affect your fingerprint accuracy with Night Light on.</string>
 </resources>

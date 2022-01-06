@@ -479,4 +479,9 @@
     <!-- Udfps Haptic Feedback -->
     <string name="udfps_haptic_feedback_title">Umpan balik FOD</string>
     <string name="udfps_haptic_feedback_summary">Bergetar saat menyentuh ikon FOD</string>
+    <!-- FOD settings -->
+    <string name="fod_customization_title">Pengaturan FOD</string>
+    <!-- Nightlight Fod -->
+    <string name="fod_night_light_title">Nonaktifkan Cahaya Malam saat menampilkan FOD</string>
+    <string name="fod_night_light_summary">Nonaktifkan Cahaya Malam di layar kunci jika FOD aktif. Menonaktifkan opsi ini dapat memengaruhi akurasi sidik jari Anda dengan Cahaya Malam menyala.</string>
 </resources>
