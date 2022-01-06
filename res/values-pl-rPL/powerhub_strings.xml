@@ -43,6 +43,8 @@
     <string name="navbar_title">Pasek nawigacyjny</string>
     <string name="volume_keys_title">Klawisze głośności</string>
     <string name="fingerprint_category">Odcisk palca</string>
+    <string name="navbar_invert_layout_title">Invert layout</string>
+    <string name="navbar_invert_layout_summary">Inverts the layout of the navigation bar and other items, such as the IME switcher</string>
     <!-- General strings -->
     <string name="ok">Ok</string>
     <string name="reset">Resetuj</string>
