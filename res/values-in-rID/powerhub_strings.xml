@@ -43,6 +43,8 @@
     <string name="navbar_title">Bilah navigasi</string>
     <string name="volume_keys_title">Tombol volume</string>
     <string name="fingerprint_category">Sidik jari</string>
+    <string name="navbar_invert_layout_title">Invert layout</string>
+    <string name="navbar_invert_layout_summary">Inverts the layout of the navigation bar and other items, such as the IME switcher</string>
     <!-- General strings -->
     <string name="ok">OKE</string>
     <string name="reset">Setel ulang</string>
