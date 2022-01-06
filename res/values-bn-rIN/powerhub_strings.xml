@@ -43,6 +43,8 @@
     <string name="navbar_title">ন্যাভিগেশন বার</string>
     <string name="volume_keys_title">ভলিউম রকার</string>
     <string name="fingerprint_category">ফিঙ্গারপ্রিন্ট</string>
+    <string name="navbar_invert_layout_title">Invert layout</string>
+    <string name="navbar_invert_layout_summary">Inverts the layout of the navigation bar and other items, such as the IME switcher</string>
     <!-- General strings -->
     <string name="ok">ওকে</string>
     <string name="reset">রিসেট</string>
