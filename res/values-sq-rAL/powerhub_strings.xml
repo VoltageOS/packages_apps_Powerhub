@@ -43,6 +43,8 @@
     <string name="navbar_title">Shiriti i lundrimit</string>
     <string name="volume_keys_title">Tastet e zërit</string>
     <string name="fingerprint_category">Shenjat e gishtave</string>
+    <string name="navbar_invert_layout_title">Invert layout</string>
+    <string name="navbar_invert_layout_summary">Inverts the layout of the navigation bar and other items, such as the IME switcher</string>
     <!-- General strings -->
     <string name="ok">Ok</string>
     <string name="reset">Rivendos</string>
