@@ -65,7 +65,7 @@
     <string name="led_color_red">लाल</string>
     <!-- Custom seekbar -->
     <string name="custom_seekbar_value">मूल्य: <xliff:g id="v">%s</xliff:g></string>
-    <string name="custom_seekbar_default_value">Default</string>
+    <string name="custom_seekbar_default_value">डिफॉल्ट</string>
     <string name="custom_seekbar_default_value_to_set">Default value: <xliff:g id="v">%s</xliff:g>\nLong press to set</string>
     <string name="custom_seekbar_default_value_is_set">Default value is set</string>
     <!-- QS settings -->
@@ -75,11 +75,11 @@
     <string name="quick_settings_vibrate_summary">Vibrate when touching QS tiles</string>
     <!-- Lockscreen shortcuts -->
     <string name="ls_category">Lockscreen Items</string>
-    <string name="ls_tuner">Enable Lockscreen tuner</string>
-    <string name="lockscreen_shortcuts">Lockscreen shortcuts</string>
-    <string name="ls_shortcut_summary">Customize Lockscreen shortcuts</string>
+    <string name="ls_tuner">लॉकस्क्रीन ट्युनर सक्षम करे</string>
+    <string name="lockscreen_shortcuts">लॉकस्क्रीन शॉर्टकट्स</string>
+    <string name="ls_shortcut_summary">लॉकस्क्रीन शॉर्टकट्स अनुकूलित करें</string>
     <!-- Lockscreen icons -->
-    <string name="lockscreen_tuner_title">Lockscreen tuner</string>
+    <string name="lockscreen_tuner_title">लॉकस्क्रीन ट्युनर</string>
     <!-- Statusbar Items -->
     <string name="sb_icons">Statusbar Icons</string>
     <string name="statusbar_items_category">Statusbar items</string>
@@ -93,7 +93,7 @@
     <string name="power_menu_animation">Power menu</string>
     <!-- QS header image -->
     <!-- Lockscreen -->
-    <string name="lockscreen_category">Lockscreen</string>
+    <string name="lockscreen_category">लॉकस्क्रीन</string>
     <!-- Themes -->
     <string name="theme_type_title">System theme</string>
     <string name="theme_type_summary">Select theme</string>
