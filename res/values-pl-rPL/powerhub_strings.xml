@@ -44,7 +44,7 @@
     <string name="volume_keys_title">Klawisze głośności</string>
     <string name="fingerprint_category">Odcisk palca</string>
     <string name="navbar_invert_layout_title">Invert layout</string>
-    <string name="navbar_invert_layout_summary">Inverts the layout of the navigation bar and other items, such as the IME switcher</string>
+    <string name="navbar_invert_layout_summary">Odwraca układ paska nawigacji i innych elementów takich jak przełącznik IME</string>
     <!-- General strings -->
     <string name="ok">Ok</string>
     <string name="reset">Resetuj</string>
@@ -186,7 +186,7 @@
     <string name="vowifi_icon_summary">Wyświetl ikonę VoWiFi, gdy jest dostępna</string>
     <!-- Volume swap buttons -->
     <string name="swap_volume_buttons_title">Zamień miejscami</string>
-    <string name="swap_volume_buttons_summary">Zamień przyciski głośności gdy ekran jest obrócony</string>
+    <string name="swap_volume_buttons_summary">Zamień miejscami przyciski głośności gdy ekran jest obrócony</string>
     <!-- Power menu on lockscreen -->
     <string name="lockscreen_power_menu_disabled_title">Wyłącz menu zasilania na ekranie blokady</string>
     <string name="lockscreen_power_menu_disabled_summary">Ta opcja spowoduje wyłączenie menu zasilania tylko na zabezpieczonym ekranie blokady</string>
@@ -387,8 +387,8 @@
     <string name="battery_bar_summary">Wyświetl i dostosuj pasek baterii w pobliżu paska stanu lub paska nawigacji</string>
     <string name="battery_bar_no_navbar">Lokalizacja paska baterii</string>
     <string name="battery_bar_location_hide">Ukryj</string>
-    <string name="battery_bar_statusbar_top">Górny pasek stanu</string>
-    <string name="battery_bar_statusbar_bot">Dolny pasek stanu</string>
+    <string name="battery_bar_statusbar_top">Górna pozycja na pasku statusu</string>
+    <string name="battery_bar_statusbar_bot">Dolna pozycja na pasku statusu</string>
     <string name="battery_bar_color">Kolor paska baterii</string>
     <string name="battery_bar_charging_color">Kolor paska baterii podczas ładowania</string>
     <string name="battery_bar_battery_low_color">Kolor paska przy niskim poziomie baterii</string>
