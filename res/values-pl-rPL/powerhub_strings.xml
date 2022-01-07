@@ -43,7 +43,7 @@
     <string name="navbar_title">Pasek nawigacyjny</string>
     <string name="volume_keys_title">Klawisze głośności</string>
     <string name="fingerprint_category">Odcisk palca</string>
-    <string name="navbar_invert_layout_title">Invert layout</string>
+    <string name="navbar_invert_layout_title">Odwróć układ</string>
     <string name="navbar_invert_layout_summary">Odwraca układ paska nawigacji i innych elementów takich jak przełącznik IME</string>
     <!-- General strings -->
     <string name="ok">Ok</string>
@@ -372,7 +372,7 @@
     <string name="lockscreen_battery_info_title">Informacje o ładowaniu na ekranie blokady</string>
     <string name="lockscreen_battery_info_summary">Wyświetl na ekranie blokady podczas ładowania aktualne informacje o napięciu, mocy oraz temperaturze ładowania</string>
     <!-- Charging animation -->
-    <string name="charging_animation_title">Animacja prądowania</string>
+    <string name="charging_animation_title">Animacja ładowania</string>
     <string name="charging_animation_summary">Wyświetl animację gdy telefon jest podłączony do ładowania</string>
     <!-- Monet Engine -->
     <string name="monet_engine_custom_color_title">Użyj niestandardowego koloru</string>
@@ -476,14 +476,14 @@
     <string name="combined_status_bar_signal_icons">Łączone ikony sygnału</string>
     <string name="combined_status_bar_signal_icons_summary">Włącz połączone ikony sygnału na pasku stanu.\nWymaga ponownego uruchomienia SystemUI</string>
     <!-- Screen off FOD -->
-    <string name="screen_off_fod_title">Screen off FOD</string>
-    <string name="screen_off_fod_summary">Keep FOD enabled when the screen is off</string>
+    <string name="screen_off_fod_title">FOD przy wyłączonym ekranie</string>
+    <string name="screen_off_fod_summary">Utrzymaj włączone FOD gdy ekran jest wyłączony</string>
     <!-- Udfps Haptic Feedback -->
-    <string name="udfps_haptic_feedback_title">FOD haptic feedback</string>
-    <string name="udfps_haptic_feedback_summary">Vibrate when touching FOD icon</string>
+    <string name="udfps_haptic_feedback_title">Ustawienia wibracji zwrotnej FOD</string>
+    <string name="udfps_haptic_feedback_summary">Wibruj podczas dotykania ikony FOD</string>
     <!-- FOD settings -->
-    <string name="fod_customization_title">FOD settings</string>
+    <string name="fod_customization_title">Ustawienia FOD</string>
     <!-- Nightlight Fod -->
-    <string name="fod_night_light_title">Disable Night Light when showing FOD</string>
-    <string name="fod_night_light_summary">Disable Night Light on lock screen if FOD is active. Disabling this option might affect your fingerprint accuracy with Night Light on.</string>
+    <string name="fod_night_light_title">Wyłącz podświetlenie nocne podczas gdy jest pokazany FOD</string>
+    <string name="fod_night_light_summary">Wyłącz podświetlenie nocne na ekranie blokady, jeśli FOD jest aktywne. Wyłączenie tej opcji może mieć wpływ na dokładność odcisku palca przy włączonym oświetleniu nocnym.</string>
 </resources>
