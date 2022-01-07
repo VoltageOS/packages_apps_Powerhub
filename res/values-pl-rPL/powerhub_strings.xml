@@ -43,8 +43,8 @@
     <string name="navbar_title">Pasek nawigacyjny</string>
     <string name="volume_keys_title">Klawisze głośności</string>
     <string name="fingerprint_category">Odcisk palca</string>
-    <string name="navbar_invert_layout_title">Invert layout</string>
-    <string name="navbar_invert_layout_summary">Inverts the layout of the navigation bar and other items, such as the IME switcher</string>
+    <string name="navbar_invert_layout_title">Odwróć układ</string>
+    <string name="navbar_invert_layout_summary">Odwraca układ paska nawigacji i innych elementów takich jak przełącznik IME</string>
     <!-- General strings -->
     <string name="ok">Ok</string>
     <string name="reset">Resetuj</string>
@@ -186,7 +186,7 @@
     <string name="vowifi_icon_summary">Wyświetl ikonę VoWiFi, gdy jest dostępna</string>
     <!-- Volume swap buttons -->
     <string name="swap_volume_buttons_title">Zamień miejscami</string>
-    <string name="swap_volume_buttons_summary">Zamień przyciski głośności gdy ekran jest obrócony</string>
+    <string name="swap_volume_buttons_summary">Zamień miejscami przyciski głośności gdy ekran jest obrócony</string>
     <!-- Power menu on lockscreen -->
     <string name="lockscreen_power_menu_disabled_title">Wyłącz menu zasilania na ekranie blokady</string>
     <string name="lockscreen_power_menu_disabled_summary">Ta opcja spowoduje wyłączenie menu zasilania tylko na zabezpieczonym ekranie blokady</string>
@@ -238,7 +238,7 @@
     <string name="clock_enabled">Włączony</string>
     <string name="clock_disabled">Wyłączony</string>
     <string name="status_bar_clock_style_reset">Resetuj kolor</string>
-    <string name="status_bar_show_clock_title">Pokaż zegar &amp; datę</string>
+    <string name="status_bar_show_clock_title">Pokaż zegar i datę</string>
     <string name="status_bar_am_pm_title">AM/PM</string>
     <string name="status_bar_am_pm_info">24-godzinny zegar jest aktywny</string>
     <string name="enable_clock_weekday">Dzień tygodnia</string>
@@ -264,8 +264,8 @@
     <string name="clock_date_position">Pozycja daty</string>
     <string name="status_bar_clock_auto_hide_title">Automatyczne ukrywanie zegara</string>
     <string name="status_bar_clock_auto_hide_summary">Ukrywaj i pokazuj zegar w regularnych odstępach czasu</string>
-    <string name="status_bar_clock_auto_hide_hdur_title">Ukryj czas trwania</string>
-    <string name="status_bar_clock_auto_hide_sdur_title">Pokaż czas trwania</string>
+    <string name="status_bar_clock_auto_hide_hdur_title">Czas ukrycia zegara</string>
+    <string name="status_bar_clock_auto_hide_sdur_title">Czas widoczności zegara</string>
     <!-- Running Services button -->
     <string name="qs_running_services_title">Ikona uruchomionych usług</string>
     <string name="qs_running_services_summary">Włącz ikonę uruchomionych usług w stopce</string>
@@ -372,7 +372,7 @@
     <string name="lockscreen_battery_info_title">Informacje o ładowaniu na ekranie blokady</string>
     <string name="lockscreen_battery_info_summary">Wyświetl na ekranie blokady podczas ładowania aktualne informacje o napięciu, mocy oraz temperaturze ładowania</string>
     <!-- Charging animation -->
-    <string name="charging_animation_title">Animacja prądowania</string>
+    <string name="charging_animation_title">Animacja ładowania</string>
     <string name="charging_animation_summary">Wyświetl animację gdy telefon jest podłączony do ładowania</string>
     <!-- Monet Engine -->
     <string name="monet_engine_custom_color_title">Użyj niestandardowego koloru</string>
@@ -387,8 +387,8 @@
     <string name="battery_bar_summary">Wyświetl i dostosuj pasek baterii w pobliżu paska stanu lub paska nawigacji</string>
     <string name="battery_bar_no_navbar">Lokalizacja paska baterii</string>
     <string name="battery_bar_location_hide">Ukryj</string>
-    <string name="battery_bar_statusbar_top">Górny pasek stanu</string>
-    <string name="battery_bar_statusbar_bot">Dolny pasek stanu</string>
+    <string name="battery_bar_statusbar_top">Górna pozycja na pasku statusu</string>
+    <string name="battery_bar_statusbar_bot">Dolna pozycja na pasku statusu</string>
     <string name="battery_bar_color">Kolor paska baterii</string>
     <string name="battery_bar_charging_color">Kolor paska baterii podczas ładowania</string>
     <string name="battery_bar_battery_low_color">Kolor paska przy niskim poziomie baterii</string>
@@ -476,14 +476,14 @@
     <string name="combined_status_bar_signal_icons">Łączone ikony sygnału</string>
     <string name="combined_status_bar_signal_icons_summary">Włącz połączone ikony sygnału na pasku stanu.\nWymaga ponownego uruchomienia SystemUI</string>
     <!-- Screen off FOD -->
-    <string name="screen_off_fod_title">Screen off FOD</string>
-    <string name="screen_off_fod_summary">Keep FOD enabled when the screen is off</string>
+    <string name="screen_off_fod_title">FOD przy wyłączonym ekranie</string>
+    <string name="screen_off_fod_summary">Utrzymaj włączone FOD gdy ekran jest wyłączony</string>
     <!-- Udfps Haptic Feedback -->
-    <string name="udfps_haptic_feedback_title">FOD haptic feedback</string>
-    <string name="udfps_haptic_feedback_summary">Vibrate when touching FOD icon</string>
+    <string name="udfps_haptic_feedback_title">Ustawienia wibracji zwrotnej FOD</string>
+    <string name="udfps_haptic_feedback_summary">Wibruj podczas dotykania ikony FOD</string>
     <!-- FOD settings -->
-    <string name="fod_customization_title">FOD settings</string>
+    <string name="fod_customization_title">Ustawienia FOD</string>
     <!-- Nightlight Fod -->
-    <string name="fod_night_light_title">Disable Night Light when showing FOD</string>
-    <string name="fod_night_light_summary">Disable Night Light on lock screen if FOD is active. Disabling this option might affect your fingerprint accuracy with Night Light on.</string>
+    <string name="fod_night_light_title">Wyłącz podświetlenie nocne podczas gdy jest pokazany FOD</string>
+    <string name="fod_night_light_summary">Wyłącz podświetlenie nocne na ekranie blokady, jeśli FOD jest aktywne. Wyłączenie tej opcji może mieć wpływ na dokładność odcisku palca przy włączonym oświetleniu nocnym.</string>
 </resources>

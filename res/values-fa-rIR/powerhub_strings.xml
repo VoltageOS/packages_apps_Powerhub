@@ -14,7 +14,7 @@
     <!-- App Title -->
     <string name="powerhub_title">Power Hub</string>
     <!-- Categories -->
-    <string name="button_title">الأزرار</string>
+    <string name="button_title">Buttons</string>
     <string name="button_summary">Hardware keys, Navigation bar</string>
     <string name="gestures_title">Gestures</string>
     <string name="gestures_summary">Jump to camera, swipe to screenshot</string>
