@@ -238,7 +238,7 @@
     <string name="clock_enabled">Włączony</string>
     <string name="clock_disabled">Wyłączony</string>
     <string name="status_bar_clock_style_reset">Resetuj kolor</string>
-    <string name="status_bar_show_clock_title">Pokaż zegar &amp; datę</string>
+    <string name="status_bar_show_clock_title">Pokaż zegar i datę</string>
     <string name="status_bar_am_pm_title">AM/PM</string>
     <string name="status_bar_am_pm_info">24-godzinny zegar jest aktywny</string>
     <string name="enable_clock_weekday">Dzień tygodnia</string>
@@ -264,8 +264,8 @@
     <string name="clock_date_position">Pozycja daty</string>
     <string name="status_bar_clock_auto_hide_title">Automatyczne ukrywanie zegara</string>
     <string name="status_bar_clock_auto_hide_summary">Ukrywaj i pokazuj zegar w regularnych odstępach czasu</string>
-    <string name="status_bar_clock_auto_hide_hdur_title">Ukryj czas trwania</string>
-    <string name="status_bar_clock_auto_hide_sdur_title">Pokaż czas trwania</string>
+    <string name="status_bar_clock_auto_hide_hdur_title">Czas ukrycia zegara</string>
+    <string name="status_bar_clock_auto_hide_sdur_title">Czas widoczności zegara</string>
     <!-- Running Services button -->
     <string name="qs_running_services_title">Ikona uruchomionych usług</string>
     <string name="qs_running_services_summary">Włącz ikonę uruchomionych usług w stopce</string>
