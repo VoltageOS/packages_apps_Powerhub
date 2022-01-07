@@ -12,19 +12,19 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- App Title -->
-    <string name="powerhub_title">Power Hub</string>
+    <string name="powerhub_title">पावर हब</string>
     <!-- Categories -->
-    <string name="button_title">Buttons</string>
-    <string name="button_summary">Hardware keys, Navigation bar</string>
-    <string name="gestures_title">Gestures</string>
-    <string name="gestures_summary">Jump to camera, swipe to screenshot</string>
-    <string name="lockscreen_title">Lock screen</string>
-    <string name="lockscreen_summary">Music visualizer, charging animation, clock style</string>
-    <string name="misc_title">Miscellaneous</string>
-    <string name="misc_summary">Gaming mode, volume controls</string>
-    <string name="animations_title">Animations</string>
-    <string name="animations_summary">System animations</string>
-    <string name="powermenu_title">Power menu</string>
+    <string name="button_title">श्रेणियाँ</string>
+    <string name="button_summary">हार्डवेयर कुंजियाँ, नेविगेशन बार</string>
+    <string name="gestures_title">इशारों</string>
+    <string name="gestures_summary">कैमरे पर जाएं, स्क्रीनशॉट के लिए स्वाइप करें</string>
+    <string name="lockscreen_title">लॉक स्क्रीन</string>
+    <string name="lockscreen_summary">संगीत विज़ुअलाइज़र, चार्जिंग एनिमेशन, घड़ी शैली</string>
+    <string name="misc_title">विविध</string>
+    <string name="misc_summary">गेमिंग मोड, वॉल्यूम नियंत्रण</string>
+    <string name="animations_title">एनिमेशन</string>
+    <string name="animations_summary">सिस्टम एनिमेशन</string>
+    <string name="powermenu_title">पावर मेनू</string>
     <string name="powermenu_summary">Advanced restart, power menu opacity</string>
     <string name="theme_title">Themes</string>
     <string name="theme_summary">Fonts, icon packs, monet</string>
