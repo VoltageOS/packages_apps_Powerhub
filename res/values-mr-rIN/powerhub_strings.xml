@@ -12,10 +12,10 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- App Title -->
-    <string name="powerhub_title">Power Hub</string>
+    <string name="powerhub_title">पॉवर हब</string>
     <!-- Categories -->
-    <string name="button_title">Buttons</string>
-    <string name="button_summary">Hardware keys, Navigation bar</string>
+    <string name="button_title">बटणे</string>
+    <string name="button_summary">हार्डवेअर बटणे, नेव्हिगेशन बार</string>
     <string name="gestures_title">Gestures</string>
     <string name="gestures_summary">Jump to camera, swipe to screenshot</string>
     <string name="lockscreen_title">Lock screen</string>
