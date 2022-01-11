@@ -54,6 +54,7 @@ public class LockScreenSettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
 
     private boolean mShowFODPressedColor = true;
+    private boolean mShowScreenOffPref;
 
     private static final String FINGERPRINT_SUCCESS_VIB = "fingerprint_success_vib";
     private static final String FINGERPRINT_ERROR_VIB = "fingerprint_error_vib";
@@ -67,6 +68,8 @@ public class LockScreenSettings extends SettingsPreferenceFragment implements
     private SwitchPreference mFingerprintErrorVib;
     private PreferenceCategory mFODCustomizationCategory;
     private SystemSettingListPreference mFODPressedColor;
+
+    Preference mFODPref;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -107,6 +110,12 @@ ContentResolver resolver = getActivity().getContentResolver();
         mFODPressedColor = (SystemSettingListPreference) findPreference(FOD_PRESSED_COLOR);
         if (!mShowFODPressedColor) {
             prefSet.removePreference(mFODPressedColor);
+        }
+
+        mShowScreenOffPref = getContext().getResources().getBoolean(R.bool.config_supportScreenOffFod);
+        mFODPref = findPreference(SCREEN_OFF_FOD_KEY);
+        if (!mShowScreenOffPref && !UdfpsUtils.hasUdfpsSupport(getContext())) {
+            prefSet.removePreference(mFODPref);
         }
     }
 
