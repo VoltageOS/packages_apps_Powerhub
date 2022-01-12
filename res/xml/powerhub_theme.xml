@@ -37,6 +37,12 @@
             android:title="@string/theme_customization_icon_pack_title"/>
     </PreferenceCategory>
 
+        <com.power.hub.preferences.SystemSettingSwitchPreference
+            android:key="lockscreen_small_clock"
+            android:title="@string/force_lockscreen_small"
+            android:summary="@string/force_lockscreen_small_summary"
+            android:defaultValue="false" />
+
     <PreferenceCategory
         android:key="monel_category"
         android:title="Monet">
