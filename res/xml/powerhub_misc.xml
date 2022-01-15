@@ -57,10 +57,28 @@
         android:defaultValue="0"
         android:summary="%s" />
 
-    <com.voltage.support.preferences.SystemSettingSwitchPreference
-        android:key="notification_sound_vib_screen_on"
-        android:title="@string/notification_sound_vib_screen_on_title"
-        android:summary="@string/notification_sound_vib_screen_on_summary"
-        android:defaultValue="true" />
+    <PreferenceCategory
+        android:key="heads_up"
+        android:title="@string/notification_heads_up_title">
+
+        <com.voltage.support.preferences.GlobalSettingSwitchPreference
+            android:key="heads_up_notifications_enabled"
+            android:title="@string/notification_heads_up_title"
+            android:summary="@string/notification_heads_up_summary"
+            android:defaultValue="true" />
+
+        <com.voltage.support.preferences.SystemSettingSwitchPreference
+            android:key="less_boring_heads_up"
+            android:title="@string/less_boring_heads_up_title"
+            android:summary="@string/less_boring_heads_up_summary"
+            android:defaultValue="false"
+            android:dependency="heads_up_notifications_enabled" />
+
+        <com.voltage.support.preferences.SystemSettingSwitchPreference
+            android:key="notification_sound_vib_screen_on"
+            android:title="@string/notification_sound_vib_screen_on_title"
+            android:summary="@string/notification_sound_vib_screen_on_summary"
+            android:defaultValue="true" />
+    </PreferenceCategory>
 		
 </PreferenceScreen>
