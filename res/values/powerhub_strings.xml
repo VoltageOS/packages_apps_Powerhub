@@ -441,8 +441,8 @@
     <string name="battery_light_full_color">Almost fully charged</string>
     <string name="battery_light_reallyfull_color">Fully charged</string>
 
-    <!-- Location Privacy Indicator -->
-    <string name="location_privacy_title"> Show Location Privacy Indicator</string>
-    <string name="location_privacy_summary">Enable - Disable location privacy indicator in qs and sb</string>
+    <!-- Location privacy indicator -->
+    <string name="location_privacy_indicator_title">Location privacy indicator</string>
+    <string name="location_privacy_indicator_summary">Show separate indicator when an any app uses location</string>
 
 </resources>
