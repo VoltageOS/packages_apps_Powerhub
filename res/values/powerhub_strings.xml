@@ -620,8 +620,8 @@
     <string name="unit_seconds">seconds</string>
     <string name="unit_x1000ms" translatable="false">x1000 ms</string>
 
-    <!-- Location Privacy Indicator -->
-    <string name="location_privacy_title"> Show Location Privacy Indicator</string>
-    <string name="location_privacy_summary">Enable - Disable location privacy indicator in qs and sb</string>
+    <!-- Location privacy indicator -->
+    <string name="location_privacy_indicator_title">Location privacy indicator</string>
+    <string name="location_privacy_indicator_summary">Show separate indicator when an any app uses location</string>
 
 </resources>
