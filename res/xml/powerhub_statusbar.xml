@@ -53,9 +53,9 @@
 
     <com.power.hub.preferences.SecureSettingSwitchPreference
             android:key="enable_location_privacy_indicator"
-            android:title="@string/location_privacy_title"
-            android:summary="@string/location_privacy_summary"
-            android:defaultValue="true" />
+            android:title="@string/location_privacy_indicator_title"
+            android:summary="@string/location_privacy_indicator_summary"
+            android:defaultValue="false" />
 
         <Preference
             android:key="systemui_tuner_statusbar"
