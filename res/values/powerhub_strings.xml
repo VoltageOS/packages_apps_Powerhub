@@ -160,4 +160,10 @@
     <string name="use_games_spoof_title">Unlock higher FPS in games</string>
     <string name="use_games_spoof_summary">Spoof your device as a different model for specific games to unlock higher FPS</string>
 
+    <!-- Buttons title -->
+    <string name="volume_category">Volume Rocker</string>
+
+    <string name="volume_panel_on_left_title">Show volume panel on left</string>
+    <string name="volume_panel_on_left_summary">Display volume panel on the left side of the screen</string>
+
 </resources>

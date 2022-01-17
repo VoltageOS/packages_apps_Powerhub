@@ -17,6 +17,18 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:title="@string/button_title"
         xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
+		
+    <PreferenceCategory
+        android:key="volume_category"
+        android:title="@string/volume_category">
 
+        <!-- Volume panel to left -->
+        <com.power.hub.preferences.SystemSettingSwitchPreference
+            android:key="left_volume_dialog"
+            android:title="@string/volume_panel_on_left_title"
+            android:summary="@string/volume_panel_on_left_summary"
+            android:defaultValue="false" />
+
+    </PreferenceCategory>
 
 </PreferenceScreen>
