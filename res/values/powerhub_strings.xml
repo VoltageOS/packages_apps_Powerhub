@@ -147,4 +147,11 @@
 
     <!--Volume keys -->
     <string name="volume_rocker_wake_summary">Pressing the volume keys will wake your device</string>
+
+    <!-- Buttons title -->
+    <string name="volume_category">Volume Rocker</string>
+
+    <string name="volume_panel_on_left_title">Show volume panel on left</string>
+    <string name="volume_panel_on_left_summary">Display volume panel on the left side of the screen</string>
+
 </resources>
