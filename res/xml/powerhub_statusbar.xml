@@ -76,6 +76,18 @@
         android:summary="@string/data_disabled_icon_summary"
         android:defaultValue="true"/>
 
+    <com.voltage.support.preferences.SecureSettingSwitchPreference
+        android:key="enable_camera_privacy_indicator"
+        android:title="@string/mic_camera_privacy_indicator_title"
+        android:summary="@string/mic_camera_privacy_indicator_summary"
+        android:defaultValue="true" />
+
+    <com.voltage.support.preferences.SecureSettingSwitchPreference
+        android:key="enable_location_privacy_indicator"
+        android:title="@string/location_privacy_indicator_title"
+        android:summary="@string/location_privacy_indicator_summary"
+        android:defaultValue="false" />
+
         <com.voltage.support.preferences.SystemSettingSwitchPreference
            android:key="notification_guts_kill_app_button"
            android:title="@string/notification_guts_kill_app_button_title"
