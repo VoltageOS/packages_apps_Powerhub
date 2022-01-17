@@ -418,7 +418,9 @@
     <string name="battery_light_full_color">Almost fully charged</string>
     <string name="battery_light_reallyfull_color">Fully charged</string>
 
-    <!-- Location privacy indicator -->
+    <!-- Privacy indicators -->
+    <string name="mic_camera_privacy_indicator_title">Mic and camera privacy indicator</string>
+    <string name="mic_camera_privacy_indicator_summary">Show separate indicator when an any app uses mic or camera</string>
     <string name="location_privacy_indicator_title">Location privacy indicator</string>
     <string name="location_privacy_indicator_summary">Show separate indicator when an any app uses location</string>
 
