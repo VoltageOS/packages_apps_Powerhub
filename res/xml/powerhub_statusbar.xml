@@ -81,13 +81,19 @@
              android:summary="@string/roaming_indicator_icon_summary"
              android:defaultValue="true"/>
 
-                <com.power.hub.preferences.SystemSettingSwitchPreference
+        <com.power.hub.preferences.SystemSettingSwitchPreference
             android:key="use_old_mobiletype"
             android:title="@string/use_old_mobiletype_title"
             android:summary="@string/use_old_mobiletype_summary"
             android:defaultValue="false" />            
 
-	        <com.power.hub.preferences.SecureSettingSwitchPreference
+        <com.power.hub.preferences.SecureSettingSwitchPreference
+            android:key="enable_camera_privacy_indicator"
+            android:title="@string/mic_camera_privacy_indicator_title"
+            android:summary="@string/mic_camera_privacy_indicator_summary"
+            android:defaultValue="true" />
+
+        <com.power.hub.preferences.SecureSettingSwitchPreference
             android:key="enable_location_privacy_indicator"
             android:title="@string/location_privacy_indicator_title"
             android:summary="@string/location_privacy_indicator_summary"
