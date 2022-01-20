@@ -383,11 +383,6 @@
     <string name="hardware_keys_category">Hardware navigation buttons</string>
     <string name="hardware_keys_disable_title">Disable hardware buttons</string>
 
-    <!-- Lock screen visualizer -->
-    <string name="lockscreen_visualizer_title">Visualizer</string>
-    <string name="lockscreen_visualizer_enable">Music Visualizer</string>
-    <string name="lockscreen_visualizer_enable_summary">Show visualizer bars while playing music</string>
-
     <!-- Quick Settings brightness slider -->
     <string name="qs_brightness_slider_category">Brightness slider</string>
     <string name="qs_brightness_slider_title">Show brightness slider</string>
