@@ -322,21 +322,6 @@
     <!-- Hardware keys -->
     <string name="hardware_keys_category">Tombol navigasi fisik</string>
     <string name="hardware_keys_disable_title">Nonaktifkan tombol fisik</string>
-    <!-- Lock screen visualizer -->
-    <string name="enable_visualizer">Aktifkan Visualisasi</string>
-    <string name="lockscreen_visualizer_title">Visualisasi</string>
-    <string name="lockscreen_visualizer_enable">Visualisasi Musik</string>
-    <string name="lockscreen_visualizer_enable_summary">Tampilkan bilah visualisasi saat memutar musik</string>
-    <string name="lockscreen_autocolor_title">Warna otomatis</string>
-    <string name="lockscreen_autocolor_summary">Sinkronkan warna dengan latar belakang layar kunci</string>
-    <string name="lockscreen_autocolor_lavalamp">Memerlukan lampu lava dinonaktifkan</string>
-    <string name="lockscreen_lavalamp_title">Lampu lava</string>
-    <string name="lockscreen_lavalamp_summary">Gunakan animasi perpaduan gaya warna lampu lava yang halus</string>
-    <string name="lockscreen_lavalamp_speed_title">Interval perpaduan warna</string>
-    <string name="lockscreen_solid_lines_category">Garis Padat</string>
-    <string name="lockscreen_solid_units_count_title">Jumlah garis</string>
-    <string name="lockscreen_solid_fudge_factor_title">Tingkat sanitas</string>
-    <string name="lockscreen_solid_units_opacity_title">Keburaman garis</string>
     <!-- Quick Settings brightness slider -->
     <string name="qs_brightness_slider_category">Slider kecerahan</string>
     <string name="qs_brightness_slider_title">Tampilkan panel slider kecerahan</string>
@@ -486,4 +471,77 @@
     <!-- Nightlight Fod -->
     <string name="fod_night_light_title">Nonaktifkan Cahaya Malam saat menampilkan FOD</string>
     <string name="fod_night_light_summary">Nonaktifkan Cahaya Malam di layar kunci jika FOD aktif. Menonaktifkan opsi ini dapat memengaruhi akurasi sidik jari Anda dengan Cahaya Malam menyala.</string>
+    <!-- Lockscreen Clocks -->
+    <string name="lock_screen_custom_clock_face_category">Jam Layar Kunci</string>
+    <string name="lock_screen_custom_clock_face_title">Gaya jam layar kunci</string>
+    <string name="lock_screen_custom_clock_face_default">Bawaan</string>
+    <string name="lock_screen_custom_clock_face_sfunny">Sfuny</string>
+    <string name="lock_screen_custom_clock_face_oos">OOS</string>
+    <string name="lock_screen_custom_clock_face_clockertino">Clockertino</string>
+    <!-- Lockscreen Clock -->
+    <string name="force_lockscreen_small">Paksa kecil jam layar kunci</string>
+    <string name="force_lockscreen_small_summary">Gunakan jam kecil untuk jam layar kunci</string>
+    <!-- Screen off animation -->
+    <string name="screen_off_animation_title">Animasi Layar Mati</string>
+    <string name="screen_off_animation_crt">CRT</string>
+    <string name="screen_off_animation_scale">Skala</string>
+    <!-- Pulse music visualizer -->
+    <string name="pulse_category">Visual Audio Musik</string>
+    <string name="pulse_help_policy_notice_title">Tentang Visual Audio</string>
+    <string name="pulse_help_policy_notice_summary">Visual Audio adalah equalizer grafis audio yang brilian saat musik diputar di perangkat</string>
+    <string name="pulse_settings">Visual Audio</string>
+    <string name="pulse_settings_summary">Equalizer grafis audio untuk bilah navigasi dan layar kunci</string>
+    <string name="show_navbar_pulse_title">Visual Audio Bilah Navigasi</string>
+    <string name="show_navbar_pulse_summary">Equalizer grafis audio pada bilah navigasi</string>
+    <string name="show_lockscreen_pulse_title">Grafis Audio Layar Kunci</string>
+    <string name="show_lockscreen_pulse_summary">Equalizer grafis audio pada layar kunci</string>
+    <string name="show_ambient_pulse_title">Grafis Audio Layar Ambien</string>
+    <string name="show_ambient_pulse_summary">Equalizer grafis audio pada layar ambien</string>
+    <string name="pulse_render_mode_title">Mode Render</string>
+    <string name="pulse_render_mode_fading_bars">Blok memudar</string>
+    <string name="pulse_render_mode_solid_lines">Garis padat</string>
+    <string name="pulse_legacy_mode_advanced_category">Setelan mode blok memudar</string>
+    <string name="pulse_custom_fudge_factor">Tingkat sanitas</string>
+    <string name="pulse_lavalamp_speed_title">Kecepatan lampu lava</string>
+    <string name="pulse_solid_units_count">Jumlah garis padat</string>
+    <string name="pulse_solid_units_opacity">Opasitas garis padat</string>
+    <string name="pulse_solid_units_rounded_title">Sudut melengkung</string>
+    <string name="pulse_solid_units_rounded_summary">Garis padat dengan ujung melengkung</string>
+    <string name="pulse_solid_dimen_category">Setelan mode garis padat</string>
+    <string name="pulse_color_mode_title">Warna</string>
+    <string name="pulse_color_accent">Aksen</string>
+    <string name="pulse_color_custom">Kustom</string>
+    <string name="pulse_color_lava_lamp">Lampu lava</string>
+    <string name="pulse_color_user_title">Pilih warna</string>
+    <string name="pulse_smoothing_enabled_title">Aktifkan smoothing</string>
+    <string name="pulse_smoothing_enabled_summary">Setiap bilah dianimasikan lebih lancar</string>
+    <string name="pulse_custom_dimen">Lebar bilah</string>
+    <string name="pulse_custom_div">Jarak bilah</string>
+    <string name="pulse_filled_block_size">Ukuran blok</string>
+    <string name="pulse_empty_block_size">Jarak blok</string>
+    <!-- Units -->
+    <string name="unit_milliseconds">milidetik</string>
+    <string name="unit_seconds">detik</string>
+    <!-- Privacy indicators -->
+    <string name="mic_camera_privacy_indicator_title">Indikator privasi mikrofon dan kamera</string>
+    <string name="mic_camera_privacy_indicator_summary">Tampilkan indikator terpisah saat aplikasi apa pun menggunakan mikrofon atau kamera</string>
+    <string name="location_privacy_indicator_title">Indikator privasi lokasi</string>
+    <string name="location_privacy_indicator_summary">Tampilkan indikator terpisah saat aplikasi apa pun menggunakan lokasi</string>
+    <!-- Live volume steps -->
+    <string name="volume_steps_title">Tingkat volume</string>
+    <string name="volume_steps_summary">Sesuaikan jumlah tingkat pada panel volume</string>
+    <string name="volume_steps_alarm_title">Tingkat volume: Alarm</string>
+    <string name="volume_steps_dtmf_title">Tingkat volume: DTMF</string>
+    <string name="volume_steps_music_title">Tingkat volume: Musik</string>
+    <string name="volume_steps_notification_title">Tingkat volume: Notifikasi</string>
+    <string name="volume_steps_ring_title">Tingkat volume: Dering</string>
+    <string name="volume_steps_system_title">Tingkat volume: Sistem</string>
+    <string name="volume_steps_voice_call_title">Tingkat volume: Panggilan Suara</string>
+    <string name="volume_steps_reset">Setel ulang</string>
+    <string name="volume_steps_60">60</string>
+    <string name="volume_steps_45">45</string>
+    <string name="volume_steps_30">30</string>
+    <string name="volume_steps_15">15</string>
+    <string name="volume_steps_7">7</string>
+    <string name="volume_steps_5">5</string>
 </resources>
