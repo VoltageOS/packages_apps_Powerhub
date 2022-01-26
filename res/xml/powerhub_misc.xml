@@ -31,7 +31,7 @@
     </PreferenceCategory>
 
     <!-- Live volume steps -->
-    <PreferenceScreen
+    <Preference
         android:key="volume_steps"
         android:title="@string/volume_steps_title"
         android:summary="@string/volume_steps_summary"
