@@ -12,14 +12,14 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- App Title -->
-    <string name="powerhub_title">Power Hub</string>
+    <string name="powerhub_title">Stromversorgung</string>
     <!-- Categories -->
-    <string name="button_title">Buttons</string>
-    <string name="button_summary">Hardware keys, Navigation bar</string>
-    <string name="gestures_title">Gestures</string>
-    <string name="gestures_summary">Jump to camera, swipe to screenshot</string>
-    <string name="lockscreen_title">Lock screen</string>
-    <string name="lockscreen_summary">Music visualizer, charging animation, clock style</string>
+    <string name="button_title">Schaltflächen</string>
+    <string name="button_summary">Hardware-Tasten, Navigationsleiste</string>
+    <string name="gestures_title">Gesten und Bewegungen</string>
+    <string name="gestures_summary">Zur Kamera springen, zum Screenshot wischen</string>
+    <string name="lockscreen_title">Sperrbildschirm</string>
+    <string name="lockscreen_summary">Musikvisualisierer, Ladeanimation, Uhrenstil</string>
     <string name="misc_title">Miscellaneous</string>
     <string name="misc_summary">Gaming mode, volume controls</string>
     <string name="animations_title">Animations</string>
