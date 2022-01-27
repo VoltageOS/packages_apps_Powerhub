@@ -573,45 +573,45 @@
     <string name="pulse_ambient_light_show_always_summary">Tampilkan cahaya untuk semua acara tertunda dan bukan sekadar notifikasi</string>
     <string name="pulse_ambient_light_repeat_direction_title">Mode pengulangan cahaya</string>
     <string name="pulse_ambient_light_repeat_direction_restart">Memulai ulang</string>
-    <string name="pulse_ambient_light_repeat_direction_reverse">Reverse</string>
-    <string name="pulse_ambient_light_layout_title">Light view</string>
-    <string name="pulse_ambient_light_layout_solid">Solid</string>
-    <string name="pulse_ambient_light_layout_faded">Faded</string>
-    <string name="pulse_ambient_light_width_title">Light width</string>
-    <string name="pulse_light_layout_style_title">Light Layout Style</string>
-    <string name="pulse_light_both">All Four Sides</string>
-    <string name="pulse_light_top_bottom">Only Top-Bottom</string>
-    <string name="pulse_light_left_right">Only Left-Right</string>
+    <string name="pulse_ambient_light_repeat_direction_reverse">Putar balik</string>
+    <string name="pulse_ambient_light_layout_title">Tampilan cahaya</string>
+    <string name="pulse_ambient_light_layout_solid">Padat</string>
+    <string name="pulse_ambient_light_layout_faded">Memudar</string>
+    <string name="pulse_ambient_light_width_title">Lebar cahaya</string>
+    <string name="pulse_light_layout_style_title">Gaya Tata Letak Cahaya</string>
+    <string name="pulse_light_both">Semua Empat Sisi</string>
+    <string name="pulse_light_top_bottom">Hanya Atas-Bawah</string>
+    <string name="pulse_light_left_right">Hanya Kiri-Kanan</string>
     <!-- Notification headers -->
-    <string name="notification_headers_title">Notification headers</string>
-    <string name="notification_headers_summary">Show headers in the notification shade</string>
+    <string name="notification_headers_title">Header pemberitahuan</string>
+    <string name="notification_headers_summary">Tampilkan tajuk di bayangan pemberitahuan</string>
     <!-- UDFPS settings -->
-    <string name="udfps_category">UDFPS</string>
-    <string name="udfps_customization">UDFPS customization</string>
-    <string name="udfps_recog_animation">UDFPS animation</string>
-    <string name="udfps_recog_animation_summary">Shows an animation while reading your finger</string>
-    <string name="udfps_recog_animation_effect_title">UDFPS animation effect</string>
-    <string name="udfps_recog_animation_effect_summary">Choose animation effect</string>
-    <string name="udfps_settings_title">UDFPS settings</string>
-    <string name="udfps_settings_summary">Settings for customizing the UDFPS</string>
+    <string name="udfps_category">Sidik Jari Dalam Layar</string>
+    <string name="udfps_customization">Kustomisasi Sidik Jari Dalam Layar</string>
+    <string name="udfps_recog_animation">Animasi Sidik Jari</string>
+    <string name="udfps_recog_animation_summary">Perlihatkan animasi saat jari Anda terdeteksi</string>
+    <string name="udfps_recog_animation_effect_title">Efek animasi Sidik Jari</string>
+    <string name="udfps_recog_animation_effect_summary">Pilih efek animasi</string>
+    <string name="udfps_settings_title">Setelan Sidik Jari Dalam Layar</string>
+    <string name="udfps_settings_summary">Setelan untuk menyesuaikan Sidik Jari Dalam Layar</string>
     <!-- UDFPS icon picker -->
-    <string name="udfps_icon_picker_title">UDFPS icon picker</string>
-    <string name="udfps_icon_picker_summary">Choose your favorite fingerprint icon</string>
+    <string name="udfps_icon_picker_title">Pilihan ikon Sidik Jari Dalam Layar</string>
+    <string name="udfps_icon_picker_summary">Pilih ikon sidik jari favorit Anda</string>
     <!-- UDFPS pressed color -->
-    <string name="udfps_pressed_color_title">UDFPS pressed color</string>
+    <string name="udfps_pressed_color_title">Warna tekan Sidik Jari Dalam Layar</string>
     <string name="udfps_pressed_color_cyan">Cyan</string>
-    <string name="udfps_pressed_color_white">White</string>
-    <string name="udfps_pressed_color_white_new">White (New)</string>
-    <string name="udfps_pressed_color_green">Green</string>
-    <string name="udfps_pressed_color_yellow">Yellow</string>
-    <string name="udfps_pressed_color_light_yellow">Light Yellow</string>
+    <string name="udfps_pressed_color_white">Putih</string>
+    <string name="udfps_pressed_color_white_new">Putih (Baru)</string>
+    <string name="udfps_pressed_color_green">Hijau</string>
+    <string name="udfps_pressed_color_yellow">Kuning</string>
+    <string name="udfps_pressed_color_light_yellow">Kuning Cerah</string>
     <!-- Screen off UDFPS -->
-    <string name="screen_off_udfps_title">Screen off UDFPS</string>
-    <string name="screen_off_udfps_summary">Keep UDFPS enabled when the screen is off</string>
+    <string name="screen_off_udfps_title">Layar mati Sidik Jari Dalam Layar</string>
+    <string name="screen_off_udfps_summary">Tetap aktifkan Sidik Jari Dalam Layar saat layar mati</string>
     <!-- UDFPS Haptic Feedback -->
-    <string name="udfps_haptic_feedback_title">UDFPS haptic feedback</string>
-    <string name="udfps_haptic_feedback_summary">Vibrate when touching UDFPS icon</string>
+    <string name="udfps_haptic_feedback_title">Umpan balik Sidik Jari Dalam Layar</string>
+    <string name="udfps_haptic_feedback_summary">Bergetar saat menyentuh ikon Sidik Jari Dalam Layar</string>
     <!-- Night Light UDFPS -->
-    <string name="udfps_night_light_title">Disable Night Light when showing UDFPS</string>
-    <string name="udfps_night_light_summary">Disable Night Light on lock screen if UDFPS is active. Disabling this option might affect your fingerprint accuracy with Night Light on.</string>
+    <string name="udfps_night_light_title">Nonaktifkan Cahaya Malam saat menampilkan Sidik Jari Dalam Layar</string>
+    <string name="udfps_night_light_summary">Nonaktifkan Cahaya Malam di layar kunci jika Sidik Jari Dalam Layar aktif. Menonaktifkan opsi ini dapat memengaruhi akurasi sidik jari Anda dengan Cahaya Malam menyala.</string>
 </resources>
