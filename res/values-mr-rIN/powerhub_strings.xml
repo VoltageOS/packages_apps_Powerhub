@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright (C) 2021 VoltageOS
+<!-- Copyright (C) 2022 VoltageOS
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
      You may obtain a copy of the License at
@@ -30,72 +30,72 @@
     <string name="theme_summary">अक्षरं समूह, चित्र समूह, मोनेट</string>
     <string name="quicksettings_title">जलद सेटिंग्ज</string>
     <string name="quicksettings_summary">टाइल मांडणी, अस्पष्टता</string>
-    <string name="recents_title">Recents apps</string>
-    <string name="recents_summary">Slim recents</string>
-    <string name="statusbar_title">Status bar</string>
-    <string name="statusbar_summary">Clock, carrier, status icons</string>
-    <string name="volume_title">Volume rockers</string>
-    <string name="volume_summary">Volume rockers</string>
-    <string name="notifications_title">Notifications</string>
-    <string name="notifications_summary">Battery light, notifications header</string>
-    <string name="device_part_title">Device features</string>
-    <string name="qs_category">QS category</string>
-    <string name="navbar_title">Navigation bar</string>
-    <string name="volume_keys_title">Volume keys</string>
-    <string name="fingerprint_category">Fingerprint</string>
-    <string name="navbar_invert_layout_title">Invert layout</string>
-    <string name="navbar_invert_layout_summary">Inverts the layout of the navigation bar and other items, such as the IME switcher</string>
+    <string name="recents_title">अलीकडील अॅप्स</string>
+    <string name="recents_summary">सडपातळ अलीकडील</string>
+    <string name="statusbar_title">स्थिती बार</string>
+    <string name="statusbar_summary">घड्याळ, वाहक, स्थिती चिन्ह</string>
+    <string name="volume_title">आवाजाचे बटण</string>
+    <string name="volume_summary">आवाजाचे बटण</string>
+    <string name="notifications_title">सूचना</string>
+    <string name="notifications_summary">बॅटरी प्रकाश, सूचना शीर्षलेख</string>
+    <string name="device_part_title">साधन वैशिष्ट्ये</string>
+    <string name="qs_category">QS श्रेणी</string>
+    <string name="navbar_title">नेव्हिगेशन बार</string>
+    <string name="volume_keys_title">आवाजाचे बटण</string>
+    <string name="fingerprint_category">बोटाचे ठसे</string>
+    <string name="navbar_invert_layout_title">उलटा मांडणी</string>
+    <string name="navbar_invert_layout_summary">नेव्हिगेशन बार आणि इतर आयटमचे लेआउट उलट करते, जसे की IME स्विचर</string>
     <!-- General strings -->
-    <string name="ok">OK</string>
-    <string name="reset">Reset</string>
-    <string name="cancel">Cancel</string>
-    <string name="save">Save</string>
-    <string name="default_string">Default</string>
-    <string name="disabled">Disabled</string>
+    <string name="ok">ठीक आहे</string>
+    <string name="reset">रीसेट</string>
+    <string name="cancel">रद्द करा</string>
+    <string name="save">सेव करा</string>
+    <string name="default_string">डीफॉल्ट</string>
+    <string name="disabled">अक्षम</string>
     <!-- Color Picker -->
-    <string name="dialog_color_picker">Color Picker</string>
-    <string name="press_color_to_apply">Press on color below to apply</string>
+    <string name="dialog_color_picker">रंग निवडक</string>
+    <string name="press_color_to_apply">लागू करण्यासाठी खालील रंगावर दाबा</string>
     <string name="arrow_right">→</string>
     <string name="arrow_down">↓</string>
-    <string name="hex">Hex:</string>
+    <string name="hex">हेक्स कोड:</string>
     <string name="hex_hint">#ff000000</string>
-    <string name="set">Set</string>
-    <string name="color_default">Default</string>
-    <string name="led_color_green">Green</string>
-    <string name="led_color_red">Red</string>
+    <string name="set">सेट</string>
+    <string name="color_default">डीफॉल्ट</string>
+    <string name="led_color_green">हिरवा</string>
+    <string name="led_color_red">लाल</string>
     <!-- Custom seekbar -->
     <string name="custom_seekbar_value">Value: <xliff:g id="v">%s</xliff:g></string>
-    <string name="custom_seekbar_default_value">Default</string>
+    <string name="custom_seekbar_default_value">डीफॉल्ट</string>
     <string name="custom_seekbar_default_value_to_set">Default value: <xliff:g id="v">%s</xliff:g>\nLong press to set</string>
-    <string name="custom_seekbar_default_value_is_set">Default value is set</string>
+    <string name="custom_seekbar_default_value_is_set">डीफॉल्ट मूल्य सेट केले</string>
     <!-- QS settings -->
-    <string name="qs_title">Quick settings</string>
+    <string name="qs_title">जलद सेटिंग्ज</string>
     <!-- QuickSettings haptic feedback -->
-    <string name="quick_settings_vibrate_title">Vibrate on touch</string>
-    <string name="quick_settings_vibrate_summary">Vibrate when touching QS tiles</string>
+    <string name="quick_settings_vibrate_title">स्पर्श केल्यावर कंपन करा</string>
+    <string name="quick_settings_vibrate_summary">QS टाइलला स्पर्श करताना कंपन करा</string>
     <!-- Lockscreen shortcuts -->
-    <string name="ls_category">Lockscreen Items</string>
-    <string name="ls_tuner">Enable Lockscreen tuner</string>
-    <string name="lockscreen_shortcuts">Lockscreen shortcuts</string>
-    <string name="ls_shortcut_summary">Customize Lockscreen shortcuts</string>
+    <string name="ls_category">लॉकस्क्रीन सेटिंग्ज</string>
+    <string name="ls_tuner">लॉकस्क्रीन ट्यूनर</string>
+    <string name="lockscreen_shortcuts">लॉकस्क्रीन शॉर्टकट</string>
+    <string name="ls_shortcut_summary">लॉकस्क्रीन शॉर्टकट सानुकूलित करा</string>
     <!-- Lockscreen icons -->
-    <string name="lockscreen_tuner_title">Lockscreen tuner</string>
+    <string name="lockscreen_tuner_title">लॉकस्क्रीन ट्यूनर</string>
     <!-- Statusbar Items -->
-    <string name="sb_icons">Statusbar Icons</string>
-    <string name="statusbar_items_category">Statusbar items</string>
+    <string name="sb_icons">स्टेटसबार चिन्ह</string>
+    <string name="statusbar_items_category">स्टेटसबार आयटम</string>
     <!-- Status bar - icons -->
-    <string name="status_bar_icons_title">Status bar icons</string>
+    <string name="status_bar_icons_title">स्टेटस बार चिन्ह</string>
     <!-- Lock screen visualizer -->
-    <string name="visualizer_title">Display music visualizer</string>
+    <string name="visualizer_title">संगीत व्हिज्युअलायझर प्रदर्शित करा</string>
     <!-- Power menu and dialogs opacity -->
     <!-- AOKP custom system animations -->
     <!-- Power menu Animations  -->
-    <string name="power_menu_animation">Power menu</string>
+    <string name="power_menu_animation">शक्ती मेनू</string>
     <!-- QS header image -->
     <!-- Lockscreen -->
-    <string name="lockscreen_category">Lockscreen</string>
+    <string name="lockscreen_category">लॉक स्क्रीन</string>
     <!-- Themes -->
-    <string name="theme_type_title">System theme</string>
+    <string name="theme_type_title">प्रणाली थीम</string>
     <string name="theme_type_summary">Select theme</string>
     <!--Accenter -->
     <string name="themes_hub_title">Themes</string>
@@ -160,21 +160,21 @@
     <string name="choose_action_title">Choose action</string>
     <string name="action_entry_default_action">Default settings</string>
     <string name="action_entry_select_app">Select application</string>
-    <string name="action_entry_custom_action">Select custom action</string>
-    <string name="hardware_keys_volume_keys_title">Volume rocker</string>
-    <string name="hardware_keys_home_key_title">Home button</string>
-    <string name="hardware_keys_menu_key_title">Menu button</string>
-    <string name="hardware_keys_assist_key_title">Search button</string>
-    <string name="hardware_keys_appswitch_key_title">Overview button</string>
-    <string name="hardware_keys_back_key_title">Back button</string>
-    <string name="hardware_keys_double_tap_summary">Set double tap action</string>
-    <string name="hardware_keys_single_tap_summary">Set single tap action</string>
-    <string name="hardware_keys_long_press_summary">Set long press action</string>
-    <string name="hardware_keys_single_tap_title">Single tap action</string>
-    <string name="hardware_keys_long_press_title">Long press action</string>
-    <string name="hardware_keys_double_tap_title">Double tap action</string>
+    <string name="action_entry_custom_action">सानुकूल क्रिया निवडा</string>
+    <string name="hardware_keys_volume_keys_title">आवाजाचे बटण</string>
+    <string name="hardware_keys_home_key_title">घर बटण</string>
+    <string name="hardware_keys_menu_key_title">मेनू बटण</string>
+    <string name="hardware_keys_assist_key_title">शोध बटण</string>
+    <string name="hardware_keys_appswitch_key_title">आढावा बटण</string>
+    <string name="hardware_keys_back_key_title">मागे बटण</string>
+    <string name="hardware_keys_double_tap_summary">डबल टॅप क्रिया सेट करा</string>
+    <string name="hardware_keys_single_tap_summary">एकल टॅप क्रिया सेट करा</string>
+    <string name="hardware_keys_long_press_summary">दीर्घ दाबा क्रिया सेट करा</string>
+    <string name="hardware_keys_single_tap_title">सिंगल टॅप क्रिया</string>
+    <string name="hardware_keys_long_press_title">दीर्घ दाबा क्रिया</string>
+    <string name="hardware_keys_double_tap_title">डबल टॅप क्रिया</string>
     <!-- 4G icon -->
-    <string name="show_fourg_icon_title">4G icon</string>
+    <string name="show_fourg_icon_title">4G चिन्ह</string>
     <string name="show_fourg_icon_summary">Display 4G icon in signal icon instead LTE</string>
     <!-- VoLTE icon -->
     <string name="volte_icon_title">VoLTE icon</string>
@@ -458,17 +458,6 @@
     <!-- Combined signal icons in status bar -->
     <string name="combined_status_bar_signal_icons">Combined signal icons</string>
     <string name="combined_status_bar_signal_icons_summary">Enable combined signal icons in status bar.\nRequires a SystemUI restart</string>
-    <!-- Screen off FOD -->
-    <string name="screen_off_fod_title">Screen off FOD</string>
-    <string name="screen_off_fod_summary">Keep FOD enabled when the screen is off</string>
-    <!-- Udfps Haptic Feedback -->
-    <string name="udfps_haptic_feedback_title">FOD haptic feedback</string>
-    <string name="udfps_haptic_feedback_summary">Vibrate when touching FOD icon</string>
-    <!-- FOD settings -->
-    <string name="fod_customization_title">FOD settings</string>
-    <!-- Nightlight Fod -->
-    <string name="fod_night_light_title">Disable Night Light when showing FOD</string>
-    <string name="fod_night_light_summary">Disable Night Light on lock screen if FOD is active. Disabling this option might affect your fingerprint accuracy with Night Light on.</string>
     <!-- Lockscreen Clocks -->
     <string name="lock_screen_custom_clock_face_category">Lockscreen Clock</string>
     <string name="lock_screen_custom_clock_face_title">Lockscreen clock style</string>
@@ -596,4 +585,33 @@
     <!-- Notification headers -->
     <string name="notification_headers_title">Notification headers</string>
     <string name="notification_headers_summary">Show headers in the notification shade</string>
+    <!-- UDFPS settings -->
+    <string name="udfps_category">UDFPS</string>
+    <string name="udfps_customization">UDFPS customization</string>
+    <string name="udfps_recog_animation">UDFPS animation</string>
+    <string name="udfps_recog_animation_summary">Shows an animation while reading your finger</string>
+    <string name="udfps_recog_animation_effect_title">UDFPS animation effect</string>
+    <string name="udfps_recog_animation_effect_summary">Choose animation effect</string>
+    <string name="udfps_settings_title">UDFPS settings</string>
+    <string name="udfps_settings_summary">Settings for customizing the UDFPS</string>
+    <!-- UDFPS icon picker -->
+    <string name="udfps_icon_picker_title">UDFPS icon picker</string>
+    <string name="udfps_icon_picker_summary">Choose your favorite fingerprint icon</string>
+    <!-- UDFPS pressed color -->
+    <string name="udfps_pressed_color_title">UDFPS pressed color</string>
+    <string name="udfps_pressed_color_cyan">Cyan</string>
+    <string name="udfps_pressed_color_white">White</string>
+    <string name="udfps_pressed_color_white_new">White (New)</string>
+    <string name="udfps_pressed_color_green">Green</string>
+    <string name="udfps_pressed_color_yellow">Yellow</string>
+    <string name="udfps_pressed_color_light_yellow">Light Yellow</string>
+    <!-- Screen off UDFPS -->
+    <string name="screen_off_udfps_title">Screen off UDFPS</string>
+    <string name="screen_off_udfps_summary">Keep UDFPS enabled when the screen is off</string>
+    <!-- UDFPS Haptic Feedback -->
+    <string name="udfps_haptic_feedback_title">UDFPS haptic feedback</string>
+    <string name="udfps_haptic_feedback_summary">Vibrate when touching UDFPS icon</string>
+    <!-- Night Light UDFPS -->
+    <string name="udfps_night_light_title">Disable Night Light when showing UDFPS</string>
+    <string name="udfps_night_light_summary">Disable Night Light on lock screen if UDFPS is active. Disabling this option might affect your fingerprint accuracy with Night Light on.</string>
 </resources>
