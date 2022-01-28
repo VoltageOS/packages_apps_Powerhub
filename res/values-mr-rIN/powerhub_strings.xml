@@ -175,50 +175,50 @@
     <string name="hardware_keys_double_tap_title">डबल टॅप क्रिया</string>
     <!-- 4G icon -->
     <string name="show_fourg_icon_title">4G चिन्ह</string>
-    <string name="show_fourg_icon_summary">Display 4G icon in signal icon instead LTE</string>
+    <string name="show_fourg_icon_summary">LTE ऐवजी सिग्नल चिन्हात 4G चिन्ह प्रदर्शित करा</string>
     <!-- VoLTE icon -->
-    <string name="volte_icon_title">VoLTE icon</string>
-    <string name="volte_icon_summary">Display VoLTE icon when available</string>
+    <string name="volte_icon_title">VoLTE चिन्ह</string>
+    <string name="volte_icon_summary">उपलब्ध असताना VoLTE चिन्ह प्रदर्शित करा</string>
     <!-- VoWiFi icon -->
-    <string name="vowifi_icon_title">VoWiFi icon</string>
-    <string name="vowifi_icon_summary">Display VoWiFi icon when available</string>
+    <string name="vowifi_icon_title">VoWiFi चिन्ह</string>
+    <string name="vowifi_icon_summary">उपलब्ध असताना VoWiFi चिन्ह प्रदर्शित करा</string>
     <!-- Volume swap buttons -->
-    <string name="swap_volume_buttons_title">Reorient</string>
-    <string name="swap_volume_buttons_summary">Swap volume buttons when the screen is rotated</string>
+    <string name="swap_volume_buttons_title">रीऑरिएंट</string>
+    <string name="swap_volume_buttons_summary">स्क्रीन फिरवल्यावर व्हॉल्यूम बटणे स्वॅप करा</string>
     <!-- Power menu on lockscreen -->
-    <string name="lockscreen_power_menu_disabled_title">Disable power menu on lock screen</string>
-    <string name="lockscreen_power_menu_disabled_summary">This will only disable the power menu on secure lock screens</string>
+    <string name="lockscreen_power_menu_disabled_title">लॉक स्क्रीनवर पॉवर मेनू अक्षम करा</string>
+    <string name="lockscreen_power_menu_disabled_summary">हे केवळ सुरक्षित लॉक स्क्रीनवरील पॉवर मेनू अक्षम करेल</string>
     <!-- Toast app icon -->
-    <string name="toast_icon_title">Toast app icon</string>
-    <string name="toast_icon_summary">Display the app\'s icon corresponding with the toast</string>
+    <string name="toast_icon_title">टोस्ट अॅप चिन्ह</string>
+    <string name="toast_icon_summary">टोस्टशी संबंधित अॅपचे चिन्ह प्रदर्शित करा</string>
     <!-- Heads up -->
-    <string name="headsup_category">HeadsUp Settings</string>
-    <string name="heads_up_notifications">Heads up</string>
-    <string name="heads_up_notifications_summary">Customise heads up notifications settings</string>
-    <string name="summary_heads_up_enabled">Pop-up notifications are enabled</string>
-    <string name="summary_heads_up_disabled">Pop-up notifications are disabled</string>
+    <string name="headsup_category">हेडअप सेटिंग्ज</string>
+    <string name="heads_up_notifications">डोके वर काढा</string>
+    <string name="heads_up_notifications_summary">हेड अप सूचना सेटिंग्ज कस्टमाइझ करा</string>
+    <string name="summary_heads_up_enabled">पॉप-अप सूचना सक्षम केल्या आहेत</string>
+    <string name="summary_heads_up_disabled">पॉप-अप सूचना अक्षम केल्या आहेत</string>
     <string name="add_heads_up_package">Add app</string>
-    <string name="add_heads_up_stoplist_summary">Disable heads up notifications in these applications</string>
-    <string name="add_heads_up_blacklist_summary">Disable heads up from these applications</string>
-    <string name="heads_up_stoplist_title">Stoplist</string>
-    <string name="heads_up_blacklist_title">Blacklist</string>
-    <string name="profile_choose_app">Choose app</string>
-    <string name="dialog_delete_title">Delete</string>
-    <string name="dialog_delete_message">Remove selected item?</string>
+    <string name="add_heads_up_stoplist_summary">या ऍप्लिकेशन्समधील हेड अप नोटिफिकेशन्स अक्षम करा</string>
+    <string name="add_heads_up_blacklist_summary">या ऍप्लिकेशन्समधून हेड अप अक्षम करा</string>
+    <string name="heads_up_stoplist_title">स्टॉपलिस्ट</string>
+    <string name="heads_up_blacklist_title">ब्लॅकलिस्ट</string>
+    <string name="profile_choose_app">अँप्लिकेशन निवड</string>
+    <string name="dialog_delete_title">हटवा</string>
+    <string name="dialog_delete_message">निवडलेला आयटम काढायचा?</string>
     <!-- Heads up timeout -->
-    <string name="heads_up_time_out_title">Time out</string>
-    <string name="heads_up_time_out_summary">Peeking notifications will show for <xliff:g id="number">%d</xliff:g> seconds</string>
-    <string name="heads_up_time_out_2sec">2 seconds</string>
-    <string name="heads_up_time_out_4sec">4 seconds</string>
-    <string name="heads_up_time_out_5sec">5 seconds</string>
-    <string name="heads_up_time_out_6sec">6 seconds</string>
-    <string name="heads_up_time_out_8sec">8 seconds</string>
-    <string name="heads_up_time_out_10sec">10 seconds</string>
+    <string name="heads_up_time_out_title">वेळ संपला</string>
+    <string name="heads_up_time_out_summary">साठी पीकिंग सूचना दर्शविल्या जातील <xliff:g id="number">%d</xliff:g> सेकंद</string>
+    <string name="heads_up_time_out_2sec">2 सेकंद</string>
+    <string name="heads_up_time_out_4sec">4 सेकंद</string>
+    <string name="heads_up_time_out_5sec">5 सेकंद</string>
+    <string name="heads_up_time_out_6sec">6 सेकंद</string>
+    <string name="heads_up_time_out_8sec">8 सेकंद</string>
+    <string name="heads_up_time_out_10sec">10 सेकंद</string>
     <!-- Heads up snooze -->
-    <string name="heads_up_snooze_title">Snooze timer</string>
-    <string name="heads_up_snooze_summary_one_minute">Swiping up on peeking notifications will snooze heads up from that application for 1 minute</string>
-    <string name="heads_up_snooze_summary">Swiping up on peeking notifications will snooze heads up from that application for <xliff:g id="number">%d</xliff:g> minutes</string>
-    <string name="heads_up_snooze_disabled_summary">Snooze timer is disabled</string>
+    <string name="heads_up_snooze_title">टाइमर स्नूझ करा</string>
+    <string name="heads_up_snooze_summary_one_minute">पीकिंग नोटिफिकेशन्स वर स्वाइप केल्याने त्या अॅप्लिकेशनमधून 1 मिनिटासाठी हेड अप स्नूझ होईल</string>
+    <string name="heads_up_snooze_summary">पीकिंग नोटिफिकेशन्स वर स्वाइप केल्याने त्या ऍप्लिकेशनवरून हेड अप स्नूझ होईल <xliff:g id="number">%d</xliff:g> मिनिटे</string>
+    <string name="heads_up_snooze_disabled_summary">स्नूझ टाइमर अक्षम आहे</string>
     <string name="heads_up_snooze_1min">1 minute</string>
     <string name="heads_up_snooze_5min">5 minutes</string>
     <string name="heads_up_snooze_10min">10 minutes</string>
