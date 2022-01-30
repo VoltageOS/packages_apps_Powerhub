@@ -580,4 +580,8 @@
     <string name="smart_pixels_shift_title">Burn-in protection</string>
     <string name="smart_pixels_shift_summary">Prevents burn-in on OLED devices by shifting pixels every so often</string>
 
+    <!-- Fingerprint Ripple Effect -->
+    <string name="enable_fingerprint_ripple_effect_title">Ripple effect</string>
+    <string name="enable_fingerprint_ripple_effect_summary">Show ripple effect on unlock with fingerprint</string>
+
 </resources>
