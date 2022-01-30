@@ -191,4 +191,8 @@
     <string name="fprint_success_vib_title">Fingerprint authentication vibration</string>
     <string name="fprint_success_vib_summary">Vibrate on successful fingerprint authentication</string>
 
+    <!-- Fingerprint Ripple Effect -->
+    <string name="enable_fingerprint_ripple_effect_title">Ripple effect</string>
+    <string name="enable_fingerprint_ripple_effect_summary">Show ripple effect on unlock with fingerprint</string>
+
 </resources>
