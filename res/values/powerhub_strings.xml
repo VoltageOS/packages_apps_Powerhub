@@ -692,4 +692,8 @@
     <string name="force_lockscreen_small">Force small LS clock</string>
     <string name="force_lockscreen_small_summary">Use small clock for Lockscreen clock</string>
 
+    <!-- Fingerprint Ripple Effect -->
+    <string name="enable_fingerprint_ripple_effect_title">Ripple effect</string>
+    <string name="enable_fingerprint_ripple_effect_summary">Show ripple effect on unlock with fingerprint</string>
+
 </resources>
