@@ -17,6 +17,7 @@ import androidx.preference.Preference.OnPreferenceChangeListener;
 import androidx.preference.SwitchPreference;
 import com.power.hub.preferences.CustomSeekBarPreference;
 import android.provider.Settings;
+import android.widget.Toast;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import java.util.Locale;
@@ -45,12 +46,24 @@ import java.util.List;
 public class MiscSettings extends SettingsPreferenceFragment implements
         OnPreferenceChangeListener {
 
+    private static final String KEY_PHOTOS_SPOOF = "use_photos_spoof";
+    private static final String SYS_PHOTOS_SPOOF = "persist.sys.pixelprops.gphotos";
+
+    private SwitchPreference mPhotosSpoof;
+
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
         ContentResolver resolver = getActivity().getContentResolver();
 
         addPreferencesFromResource(R.xml.powerhub_misc);
+
+        final ContentResolver resolver = getActivity().getContentResolver();
+        final PreferenceScreen prefSet = getPreferenceScreen();
+
+        mPhotosSpoof = (SwitchPreference) findPreference(KEY_PHOTOS_SPOOF);
+        mPhotosSpoof.setChecked(SystemProperties.getBoolean(SYS_PHOTOS_SPOOF, true));
+        mPhotosSpoof.setOnPreferenceChangeListener(this);
 		
 		Resources res = null;
         Context ctx = getContext();
@@ -66,6 +79,10 @@ public class MiscSettings extends SettingsPreferenceFragment implements
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object objValue) {
+        if (preference == mPhotosSpoof) {
+            SystemProperties.set(SYS_PHOTOS_SPOOF, value ? "true" : "false");
+            return true;
+        }
         return false;
     }
 	
