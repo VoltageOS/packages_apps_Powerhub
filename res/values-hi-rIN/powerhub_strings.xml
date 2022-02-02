@@ -66,22 +66,22 @@
     <!-- Custom seekbar -->
     <string name="custom_seekbar_value">मूल्य: <xliff:g id="v">%s</xliff:g></string>
     <string name="custom_seekbar_default_value">डिफॉल्ट</string>
-    <string name="custom_seekbar_default_value_to_set">Default value: <xliff:g id="v">%s</xliff:g>\nLong press to set</string>
-    <string name="custom_seekbar_default_value_is_set">Default value is set</string>
+    <string name="custom_seekbar_default_value_to_set">पूर्व निर्धारित मान:<xliff:g id="v">%s</xliff:g>\n लंबा दबा कर चालू करे।</string>
+    <string name="custom_seekbar_default_value_is_set">पूर्व निर्धारित मान पहले से सेट है।</string>
     <!-- QS settings -->
-    <string name="qs_title">Quick settings</string>
+    <string name="qs_title">शीग्र सेटिंग्स</string>
     <!-- QuickSettings haptic feedback -->
-    <string name="quick_settings_vibrate_title">Vibrate on touch</string>
-    <string name="quick_settings_vibrate_summary">Vibrate when touching QS tiles</string>
+    <string name="quick_settings_vibrate_title">स्पर्श पर कंपन करें</string>
+    <string name="quick_settings_vibrate_summary">क्विक सेटिंग्स टाइल दबाने पर कंपन करें</string>
     <!-- Lockscreen shortcuts -->
-    <string name="ls_category">Lockscreen Items</string>
+    <string name="ls_category">लॉकसक्रीन वस्तुएं</string>
     <string name="ls_tuner">लॉकस्क्रीन ट्युनर सक्षम करे</string>
     <string name="lockscreen_shortcuts">लॉकस्क्रीन शॉर्टकट्स</string>
     <string name="ls_shortcut_summary">लॉकस्क्रीन शॉर्टकट्स अनुकूलित करें</string>
     <!-- Lockscreen icons -->
     <string name="lockscreen_tuner_title">लॉकस्क्रीन ट्युनर</string>
     <!-- Statusbar Items -->
-    <string name="sb_icons">Statusbar Icons</string>
+    <string name="sb_icons">स्टेटसबार चिह्न</string>
     <string name="statusbar_items_category">Statusbar items</string>
     <!-- Status bar - icons -->
     <string name="status_bar_icons_title">Status bar icons</string>
