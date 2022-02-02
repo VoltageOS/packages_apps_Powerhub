@@ -200,53 +200,53 @@
     <string name="add_heads_up_package">Anwendung hinzufügen</string>
     <string name="add_heads_up_stoplist_summary">Pop-Up-Benachrichtigungen in diesen Apps deaktivieren</string>
     <string name="add_heads_up_blacklist_summary">Deaktiviere Pop-Up Benachrichtigungen von diesen Anwendungen</string>
-    <string name="heads_up_stoplist_title">Stoplist</string>
+    <string name="heads_up_stoplist_title">Stopliste</string>
     <string name="heads_up_blacklist_title">Blacklist</string>
-    <string name="profile_choose_app">Choose app</string>
-    <string name="dialog_delete_title">Delete</string>
-    <string name="dialog_delete_message">Remove selected item?</string>
+    <string name="profile_choose_app">App auswählen</string>
+    <string name="dialog_delete_title">Löschen</string>
+    <string name="dialog_delete_message">Ausgewähltes Element löschen?</string>
     <!-- Heads up timeout -->
-    <string name="heads_up_time_out_title">Time out</string>
-    <string name="heads_up_time_out_summary">Peeking notifications will show for <xliff:g id="number">%d</xliff:g> seconds</string>
-    <string name="heads_up_time_out_2sec">2 seconds</string>
-    <string name="heads_up_time_out_4sec">4 seconds</string>
-    <string name="heads_up_time_out_5sec">5 seconds</string>
-    <string name="heads_up_time_out_6sec">6 seconds</string>
-    <string name="heads_up_time_out_8sec">8 seconds</string>
-    <string name="heads_up_time_out_10sec">10 seconds</string>
+    <string name="heads_up_time_out_title">Zeit abgelaufen</string>
+    <string name="heads_up_time_out_summary">Heads-Up Benachrichtigung werden für <xliff:g id="number">%d</xliff:g> Sekunden angezeigt</string>
+    <string name="heads_up_time_out_2sec">2 Sekunden</string>
+    <string name="heads_up_time_out_4sec">4 Sekunden</string>
+    <string name="heads_up_time_out_5sec">5 Sekunden</string>
+    <string name="heads_up_time_out_6sec">6 Sekunden</string>
+    <string name="heads_up_time_out_8sec">8 Sekunden</string>
+    <string name="heads_up_time_out_10sec">10 Sekunden</string>
     <!-- Heads up snooze -->
-    <string name="heads_up_snooze_title">Snooze timer</string>
-    <string name="heads_up_snooze_summary_one_minute">Swiping up on peeking notifications will snooze heads up from that application for 1 minute</string>
-    <string name="heads_up_snooze_summary">Swiping up on peeking notifications will snooze heads up from that application for <xliff:g id="number">%d</xliff:g> minutes</string>
-    <string name="heads_up_snooze_disabled_summary">Snooze timer is disabled</string>
-    <string name="heads_up_snooze_1min">1 minute</string>
-    <string name="heads_up_snooze_5min">5 minutes</string>
-    <string name="heads_up_snooze_10min">10 minutes</string>
-    <string name="heads_up_snooze_15min">15 minutes</string>
-    <string name="heads_up_snooze_20min">20 minutes</string>
+    <string name="heads_up_snooze_title">Schlummerfunktion</string>
+    <string name="heads_up_snooze_summary_one_minute">Durch das Hochwischen der Pop-Up Benachrichtigung werden alle Meldungen der entsprechenden Anwendung für 1 Minute pausiert</string>
+    <string name="heads_up_snooze_summary">Durch das Hochwischen der Pop-Up Benachrichtigung, werden alle Meldungen der entsprechenden App für <xliff:g id="number">%d</xliff:g> Minuten pausiert</string>
+    <string name="heads_up_snooze_disabled_summary">Schlummertimer ist deaktiviert</string>
+    <string name="heads_up_snooze_1min">1 Minute</string>
+    <string name="heads_up_snooze_5min">5 Minuten</string>
+    <string name="heads_up_snooze_10min">10 Minuten</string>
+    <string name="heads_up_snooze_15min">15 Minuten</string>
+    <string name="heads_up_snooze_20min">20 Minuten</string>
     <!-- Quick QS pulldown -->
-    <string name="status_bar_quick_qs_pulldown">Quick QS pulldown</string>
-    <string name="quick_pulldown_none">Disabled</string>
-    <string name="quick_pulldown_right">Pulldown statusbar from right side</string>
-    <string name="quick_pulldown_left">Pulldown statusbar from left side</string>
-    <string name="quick_pulldown_always">Always show quick settings on status bar pull down</string>
+    <string name="status_bar_quick_qs_pulldown">Schnelles QS Herunterziehen</string>
+    <string name="quick_pulldown_none">Deaktiviert</string>
+    <string name="quick_pulldown_right">Statusleiste von rechts herunterziehen</string>
+    <string name="quick_pulldown_left">Statusleiste von links herunterziehen</string>
+    <string name="quick_pulldown_always">Die Schnelleinstellungen beim Herunterziehen der Statusleiste immer anzeigen</string>
     <!-- Status bar clock and date options -->
-    <string name="status_bar_clock_title">Clock settings</string>
-    <string name="status_bar_clock">Clock &amp; Date</string>
-    <string name="clock_enabled">Enabled</string>
-    <string name="clock_disabled">Disabled</string>
-    <string name="status_bar_clock_style_reset">Reset color</string>
-    <string name="status_bar_show_clock_title">Show clock &amp; date</string>
-    <string name="status_bar_am_pm_title">AM/PM</string>
-    <string name="status_bar_am_pm_info">24-hour clock is enabled</string>
-    <string name="enable_clock_weekday">Day of the week</string>
-    <string name="enable_clock_weekday_summary">Abbreviated day of the week before the time</string>
-    <string name="dont_show">Don\'t show</string>
-    <string name="clock_date_display">Date</string>
-    <string name="clock_date_display_summary">Display custom date before the clock</string>
-    <string name="clock_date_style">Date style</string>
-    <string name="clock_date_format">Date format</string>
-    <string name="clock_date_string_edittext_title">Must be in DateFormat eg. MM/dd/yy</string>
+    <string name="status_bar_clock_title">Uhreinstellungen</string>
+    <string name="status_bar_clock">Uhr und Datum</string>
+    <string name="clock_enabled">Aktiviert</string>
+    <string name="clock_disabled">Deaktiviert</string>
+    <string name="status_bar_clock_style_reset">Farbe zurücksetzen</string>
+    <string name="status_bar_show_clock_title">Uhr und Datum anzeigen</string>
+    <string name="status_bar_am_pm_title">Vormittags/nachmittags</string>
+    <string name="status_bar_am_pm_info">24 Stunden-Format ist aktiviert</string>
+    <string name="enable_clock_weekday">Wochentag</string>
+    <string name="enable_clock_weekday_summary">Abgekürzter Wochentag vor der Uhrzeit</string>
+    <string name="dont_show">Nicht anzeigen</string>
+    <string name="clock_date_display">Datum</string>
+    <string name="clock_date_display_summary">Zeige benutzerdefiniertes Datum vor der Uhr</string>
+    <string name="clock_date_style">Datum Style</string>
+    <string name="clock_date_format">Datumsformat</string>
+    <string name="clock_date_string_edittext_title">Muss im Datumsformat sein z. B. MM/dd/yy</string>
     <string name="clock_date_string_edittext_summary">Enter string</string>
     <string name="am_pm_clock_normal">Normal font size</string>
     <string name="am_pm_clock_small">Small font size</string>
