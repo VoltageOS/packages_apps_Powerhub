@@ -37,6 +37,12 @@
         android:summary="%s"
         android:defaultValue="0" />
 
+        <com.power.hub.preferences.SecureSettingSwitchPreference
+            android:key="secure_lockscreen_qs_disabled"
+            android:title="@string/disable_qs_title"
+            android:summary="@string/disable_qs_summary"
+            android:defaultValue="false" />
+
     <!-- Udfps options -->
     <PreferenceCategory
         android:key="udfps_category"
