@@ -726,4 +726,6 @@
     <string name="gaming_mode_title">Game space</string>
     <string name="gaming_mode_summary">Extra features for immersive gaming experience</string>
 
+    <string name="search">Search</string>
+    <string name="search_apps">Search apps</string>
 </resources>
