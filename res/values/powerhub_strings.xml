@@ -534,6 +534,20 @@
     <string name="pulse_filled_block_size">Block size</string>
     <string name="pulse_empty_block_size">Block spacing</string>
 
+    <!-- Qs Pulse Option -->
+    <string name="show_qs_pulse_title">Quick Settings Pulse</string>
+    <string name="show_qs_pulse_summary">Audio visualizer on the quick settings</string>
+
+    <!-- Pulse Gravity n Mirror Options -->
+    <string name="pulse_custom_gravity_title">Gravity</string>
+    <string name="pulse_custom_gravity_bottom">Bottom</string>
+    <string name="pulse_custom_gravity_top">Top</string>
+    <string name="pulse_custom_gravity_center">Center</string>
+    <string name="visualizer_center_mirrored_title">Center mirrored</string>
+    <string name="visualizer_center_mirrored_summary">Set the visualizer in center mirrored mode</string>
+    <string name="pulse_vertical_mirror_title">Vertical Mirror</string>
+    <string name="pulse_vertical_mirror_summary">Create other pulse and flip vertically</string>
+
     <!-- Units -->
     <string name="unit_milliseconds">milliseconds</string>
     <string name="unit_percent" translatable="false">\u0025</string>
