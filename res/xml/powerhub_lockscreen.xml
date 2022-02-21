@@ -47,6 +47,12 @@
 
     </PreferenceCategory>
 
+    <Preference
+        android:title="@string/weather_title"
+        android:key="weather_option"
+        android:summary="@string/weather_config_title"
+        android:fragment="com.power.hub.fragments.Weather" />
+
     <com.power.hub.preferences.SystemSettingSwitchPreference
         android:key="lockscreen_battery_info"
         android:title="@string/lockscreen_battery_info_title"
