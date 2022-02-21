@@ -197,7 +197,7 @@
     <string name="heads_up_notifications_summary">Настройка дополнительных параметров всплывающих уведомлений</string>
     <string name="summary_heads_up_enabled">Всплывающие уведомления включены</string>
     <string name="summary_heads_up_disabled">Всплывающие уведомления выключены</string>
-    <string name="add_heads_up_package">Add app</string>
+    <string name="add_heads_up_package">Добавить приложение</string>
     <string name="add_heads_up_stoplist_summary">Disable heads up notifications in these applications</string>
     <string name="add_heads_up_blacklist_summary">Disable heads up from these applications</string>
     <string name="heads_up_stoplist_title">Stoplist</string>
