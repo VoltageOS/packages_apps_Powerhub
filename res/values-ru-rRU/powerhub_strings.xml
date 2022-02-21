@@ -270,13 +270,13 @@
     <string name="qs_edit_title">Иконка редактирования</string>
     <string name="qs_edit_summary">Включить кнопку редактирования плиток в нижней части панели быстрых настроек</string>
     <!-- Statusbar net monitor -->
-    <string name="traffic_title">Traffic Indicators</string>
-    <string name="network_traffic">Network traffic</string>
-    <string name="network_traffic_state_title">Network traffic display</string>
-    <string name="network_traffic_location">Traffic indicator placement</string>
-    <string name="traffic_disabled">Disabled</string>
-    <string name="traffic_statusbar">Statusbar</string>
-    <string name="traffic_expanded_statusbar">Expanded header</string>
+    <string name="traffic_title">Индикаторы трафика</string>
+    <string name="network_traffic">Сетевой трафик</string>
+    <string name="network_traffic_state_title">Отображение индикатора сетевого трафика</string>
+    <string name="network_traffic_location">Расположение индикатора трафика</string>
+    <string name="traffic_disabled">Отключено</string>
+    <string name="traffic_statusbar">Строка состояния</string>
+    <string name="traffic_expanded_statusbar">Расширенный заголовок</string>
     <string name="network_traffic_autohide_threshold_title">Net activity autohide threshold (KB/s)</string>
     <string name="network_traffic_arrow">Show arrows</string>
     <string name="network_traffic_arrow_summary">Show the network traffic indicator arrows</string>
