@@ -614,4 +614,10 @@
     <!-- Night Light UDFPS -->
     <string name="udfps_night_light_title">Nachtlicht deaktivieren, wenn der Display-Fingerabdrucksensor angezeigt wird</string>
     <string name="udfps_night_light_summary">Nachtlicht auf dem Sperrbildschirm deaktivieren, wenn der Display-Fingerabdrucksensor aktiv ist. Das Deaktivieren dieser Option kann deine Fingerabdruckgenauigkeit bei aktiviertem Nachtlicht beeinflussen.</string>
+    <!-- Black theme -->
+    <string name="system_black_theme_title">Schwarzes Design anwenden</string>
+    <string name="system_black_theme_summary">Schwarze Hintergrundfarben erzwingen</string>
+    <!-- Gaming mode -->
+    <string name="gaming_mode_title">Game space</string>
+    <string name="gaming_mode_summary">Extra features for immersive gaming experience</string>
 </resources>

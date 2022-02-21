@@ -614,4 +614,10 @@
     <!-- Night Light UDFPS -->
     <string name="udfps_night_light_title">Disable Night Light when showing UDFPS</string>
     <string name="udfps_night_light_summary">Disable Night Light on lock screen if UDFPS is active. Disabling this option might affect your fingerprint accuracy with Night Light on.</string>
+    <!-- Black theme -->
+    <string name="system_black_theme_title">Use black theme</string>
+    <string name="system_black_theme_summary">Force black background colors</string>
+    <!-- Gaming mode -->
+    <string name="gaming_mode_title">Game space</string>
+    <string name="gaming_mode_summary">Extra features for immersive gaming experience</string>
 </resources>
