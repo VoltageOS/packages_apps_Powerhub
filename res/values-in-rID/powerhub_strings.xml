@@ -620,4 +620,6 @@
     <!-- Gaming mode -->
     <string name="gaming_mode_title">Ruang Permainan</string>
     <string name="gaming_mode_summary">Fitur ekstra untuk pengalaman bermain game yang impresif</string>
+    <string name="search">Search</string>
+    <string name="search_apps">Search apps</string>
 </resources>
