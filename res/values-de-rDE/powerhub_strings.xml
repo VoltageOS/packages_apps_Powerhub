@@ -449,9 +449,6 @@
     <!-- Old mobile type icons -->
     <string name="use_old_mobiletype_title">Kleines Symbol für Mobilfunk-Typ</string>
     <string name="use_old_mobiletype_summary">Symbol des Mobilfunk-Typs oberhalb des Signalstärke-Symbols anzeigen</string>
-    <!-- Call strength icons in QS -->
-    <string name="show_qs_call_strength_icon_title">Symbole für Anrufstärke anzeigen</string>
-    <string name="show_qs_call_strength_icon_summary">Zeige Anrufstärkesymbol in den Schnelleinstellungen, falls verfügbar</string>
     <!-- Tiles on secure keyguard -->
     <string name="use_tiles_on_secure_keyguard_title">Entsperren zur Verwendung sensibler Kacheln erforderlich</string>
     <string name="use_tiles_on_secure_keyguard_summary">Sperrbildschirm bei Verwendung sensibler Kacheln entsperren</string>
