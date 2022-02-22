@@ -618,6 +618,6 @@
     <string name="system_black_theme_title">Gunakan tema gelap</string>
     <string name="system_black_theme_summary">Paksa warna latar belakang hitam</string>
     <!-- Gaming mode -->
-    <string name="gaming_mode_title">Game space</string>
-    <string name="gaming_mode_summary">Extra features for immersive gaming experience</string>
+    <string name="gaming_mode_title">Ruang Permainan</string>
+    <string name="gaming_mode_summary">Fitur ekstra untuk pengalaman bermain game yang impresif</string>
 </resources>
