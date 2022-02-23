@@ -250,4 +250,7 @@
     <string name="custom_fp_select_title">Select Custom UDFPS Icon</string>
     <string name="custom_fp_select_summary">Select custom image from your saved files or gallery</string>
 
+    <!-- NavBar Inverse -->
+    <string name="navigation_bar_inverse_title">Invert 3 button navigation bar</string>
+
 </resources>
