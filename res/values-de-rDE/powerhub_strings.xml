@@ -615,8 +615,8 @@
     <string name="system_black_theme_title">Schwarzes Design anwenden</string>
     <string name="system_black_theme_summary">Schwarze Hintergrundfarben erzwingen</string>
     <!-- Gaming mode -->
-    <string name="gaming_mode_title">Game space</string>
-    <string name="gaming_mode_summary">Extra features for immersive gaming experience</string>
-    <string name="search">Search</string>
-    <string name="search_apps">Search apps</string>
+    <string name="gaming_mode_title">Spielmodus</string>
+    <string name="gaming_mode_summary">Zusätzliche Funktionen für ungestörtes Spieleerlebnis</string>
+    <string name="search">Suchen</string>
+    <string name="search_apps">Apps suchen</string>
 </resources>
