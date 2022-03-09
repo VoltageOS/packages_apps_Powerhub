@@ -68,11 +68,13 @@ public class Udfps extends SettingsPreferenceFragment implements
     private static final String CUSTOM_FOD_ICON_KEY = "custom_fp_icon_enabled";
     private static final String CUSTOM_FP_FILE_SELECT = "custom_fp_file_select";
     private static final int REQUEST_PICK_IMAGE = 0;
+    private static final String SCREEN_OFF_UDFPS = "screen_off_udfps";
 
     private PreferenceCategory mUdfpsCustomization;
     private Preference mCustomFPImage;
     private SystemSettingSwitchPreference mCustomFodIcon;
     private Preference mUdfpsIconPicker;
+    private Preference mScreenOffUdfps;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -106,6 +108,12 @@ public class Udfps extends SettingsPreferenceFragment implements
         } else {
             mUdfpsIconPicker.setEnabled(true);
         }
+
+        mScreenOffUdfps = (Preference) prefSet.findPreference(SCREEN_OFF_UDFPS);
+        boolean mScreenOffUdfpsAvailable = resources.getBoolean(
+                com.android.internal.R.bool.config_supportScreenOffUdfps);
+        if (!mScreenOffUdfpsAvailable)
+            prefSet.removePreference(mScreenOffUdfps);
     }
 
     @Override
