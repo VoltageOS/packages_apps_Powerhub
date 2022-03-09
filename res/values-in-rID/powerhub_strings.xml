@@ -449,9 +449,6 @@
     <!-- Old mobile type icons -->
     <string name="use_old_mobiletype_title">Tipe ikon seluler kecil</string>
     <string name="use_old_mobiletype_summary">Tampilkan tipe ikon seluler di atas indikator sinyal</string>
-    <!-- Call strength icons in QS -->
-    <string name="show_qs_call_strength_icon_title">Tampilkan ikon kekuatan panggilan</string>
-    <string name="show_qs_call_strength_icon_summary">Tampilkan ikon kekuatan panggilan di panel Setelan Cepat jika tersedia</string>
     <!-- Tiles on secure keyguard -->
     <string name="use_tiles_on_secure_keyguard_title">Perlu membuka kunci untuk menggunakan ubin sensitif</string>
     <string name="use_tiles_on_secure_keyguard_summary">Minta untuk membuka kunci layar saat menggunakan ubin sensitif</string>
@@ -620,4 +617,6 @@
     <!-- Gaming mode -->
     <string name="gaming_mode_title">Ruang Permainan</string>
     <string name="gaming_mode_summary">Fitur ekstra untuk pengalaman bermain game yang impresif</string>
+    <string name="search">Cari</string>
+    <string name="search_apps">Cari aplikasi</string>
 </resources>

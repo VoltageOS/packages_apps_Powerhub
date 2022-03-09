@@ -449,9 +449,6 @@
     <!-- Old mobile type icons -->
     <string name="use_old_mobiletype_title">Kleines Symbol für Mobilfunk-Typ</string>
     <string name="use_old_mobiletype_summary">Symbol des Mobilfunk-Typs oberhalb des Signalstärke-Symbols anzeigen</string>
-    <!-- Call strength icons in QS -->
-    <string name="show_qs_call_strength_icon_title">Symbole für Anrufstärke anzeigen</string>
-    <string name="show_qs_call_strength_icon_summary">Zeige Anrufstärkesymbol in den Schnelleinstellungen, falls verfügbar</string>
     <!-- Tiles on secure keyguard -->
     <string name="use_tiles_on_secure_keyguard_title">Entsperren zur Verwendung sensibler Kacheln erforderlich</string>
     <string name="use_tiles_on_secure_keyguard_summary">Sperrbildschirm bei Verwendung sensibler Kacheln entsperren</string>
@@ -618,6 +615,8 @@
     <string name="system_black_theme_title">Schwarzes Design anwenden</string>
     <string name="system_black_theme_summary">Schwarze Hintergrundfarben erzwingen</string>
     <!-- Gaming mode -->
-    <string name="gaming_mode_title">Game space</string>
-    <string name="gaming_mode_summary">Extra features for immersive gaming experience</string>
+    <string name="gaming_mode_title">Spielmodus</string>
+    <string name="gaming_mode_summary">Zusätzliche Funktionen für ungestörtes Spieleerlebnis</string>
+    <string name="search">Suchen</string>
+    <string name="search_apps">Apps suchen</string>
 </resources>

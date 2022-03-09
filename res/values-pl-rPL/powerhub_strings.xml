@@ -449,9 +449,6 @@
     <!-- Old mobile type icons -->
     <string name="use_old_mobiletype_title">Mała ikona typu mobilnego</string>
     <string name="use_old_mobiletype_summary">Pokaż ikonę typu mobilnego na górze wskaźnika sygnału</string>
-    <!-- Call strength icons in QS -->
-    <string name="show_qs_call_strength_icon_title">Pokaż ikonę(y) siły połączenia</string>
-    <string name="show_qs_call_strength_icon_summary">Pokaż ikony siły połączenia w panelu szybkich ustawień, gdy dostępne</string>
     <!-- Tiles on secure keyguard -->
     <string name="use_tiles_on_secure_keyguard_title">Wymaga odblokowania, aby używać wrażliwych kafelków</string>
     <string name="use_tiles_on_secure_keyguard_summary">Poproś o odblokowanie ekranu blokady podczas używania wrażliwych kafelków</string>
@@ -620,4 +617,6 @@
     <!-- Gaming mode -->
     <string name="gaming_mode_title">Game space</string>
     <string name="gaming_mode_summary">Extra features for immersive gaming experience</string>
+    <string name="search">Search</string>
+    <string name="search_apps">Search apps</string>
 </resources>
