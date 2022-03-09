@@ -174,6 +174,11 @@ public class Udfps extends SettingsPreferenceFragment implements
             catch (Exception e) {}
     }
 
+    public static void reset(Context mContext) {
+        ContentResolver resolver = mContext.getContentResolver();
+        Settings.System.putIntForUser(resolver,
+                Settings.System.SCREEN_OFF_UDFPS, 1, UserHandle.USER_CURRENT);
+    }
 
     @Override
     public int getMetricsCategory() {
