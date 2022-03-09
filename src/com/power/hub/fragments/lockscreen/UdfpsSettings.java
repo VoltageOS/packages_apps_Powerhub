@@ -47,9 +47,11 @@ public class UdfpsSettings extends SettingsPreferenceFragment {
 
     private static final String UDFPS_ICON_PICKER = "udfps_icon_picker";
     private static final String UDFPS_ANIM_PREVIEW = "udfps_recognizing_animation_preview";
+    private static final String SCREEN_OFF_UDFPS_ENABLED = "screen_off_udfps_enabled";
 
     private Preference mUdfpsIconPicker;
     private Preference mUdfpsAnimPreview;
+    private Preference mScreenOffUdfps;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -67,6 +69,12 @@ public class UdfpsSettings extends SettingsPreferenceFragment {
             prefSet.removePreference(mUdfpsIconPicker);
             prefSet.removePreference(mUdfpsAnimPreview);
         }
+
+        mScreenOffUdfps = (Preference) prefSet.findPreference(SCREEN_OFF_UDFPS_ENABLED);
+        boolean mScreenOffUdfpsAvailable = resources.getBoolean(
+                com.android.internal.R.bool.config_supportScreenOffUdfps);
+        if (!mScreenOffUdfpsAvailable)
+            prefSet.removePreference(mScreenOffUdfps);
     }
 
     @Override
