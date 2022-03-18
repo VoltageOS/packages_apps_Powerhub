@@ -51,8 +51,11 @@ public class StatusBarSettings extends SettingsPreferenceFragment implements
 
     private static final String COMBINED_STATUSBAR_ICONS = "show_combined_status_bar_signal_icons";
     private static final String CONFIG_RESOURCE_NAME = "flag_combined_status_bar_signal_icons";
+    private static final String STATUS_BAR_CLOCK_STYLE = "status_bar_clock";
+
     private static final String SYSTEMUI_PACKAGE = "com.android.systemui";
     private SecureSettingSwitchPreference mCombinedIcons;
+    private SystemSettingListPreference mStatusBarClock;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -60,7 +63,9 @@ public class StatusBarSettings extends SettingsPreferenceFragment implements
 
         addPreferencesFromResource(R.xml.powerhub_statusbar);
 		
-		ContentResolver resolver = getActivity().getContentResolver();
+	PreferenceScreen prefSet = getPreferenceScreen();
+	final Context mContext = getActivity().getApplicationContext();
+        final ContentResolver resolver = getActivity().getContentResolver();
 
         mCombinedIcons = (SecureSettingSwitchPreference)
                 findPreference(COMBINED_STATUSBAR_ICONS);
@@ -82,6 +87,23 @@ public class StatusBarSettings extends SettingsPreferenceFragment implements
                 COMBINED_STATUSBAR_ICONS, def ? 1 : 0) == 1;
         mCombinedIcons.setChecked(enabled);
         mCombinedIcons.setOnPreferenceChangeListener(this);
+		
+		mStatusBarClock =
+                (SystemSettingListPreference) findPreference(STATUS_BAR_CLOCK_STYLE);
+
+        // Adjust status bar preferences for RTL
+        if (getResources().getConfiguration().getLayoutDirection() == View.LAYOUT_DIRECTION_RTL) {
+            if (VoltageUtils.hasNotch(mContext)) {
+                mStatusBarClock.setEntries(R.array.status_bar_clock_position_entries_notch_rtl);
+                mStatusBarClock.setEntryValues(R.array.status_bar_clock_position_values_notch_rtl);
+            } else {
+                mStatusBarClock.setEntries(R.array.status_bar_clock_position_entries_rtl);
+                mStatusBarClock.setEntryValues(R.array.status_bar_clock_position_values_rtl);
+            }
+        } else if (VoltageUtils.hasNotch(mContext)) {
+            mStatusBarClock.setEntries(R.array.status_bar_clock_position_entries_notch);
+            mStatusBarClock.setEntryValues(R.array.status_bar_clock_position_values_notch);
+        }
     }
 
     @Override
