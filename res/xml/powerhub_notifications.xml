@@ -73,5 +73,16 @@
            android:summary="@string/notification_guts_kill_app_button_summary"
            android:defaultValue="false" />
     </PreferenceCategory>
+
+    <com.power.hub.preferences.SystemSettingSwitchPreference
+        android:key="reticker_status"
+        android:title="@string/reticker_title"
+        android:summary="@string/reticker_summary" />
+
+    <com.power.hub.preferences.SystemSettingSwitchPreference
+        android:key="reticker_colored"
+        android:title="@string/reticker_colored_title"
+        android:summary="@string/reticker_colored_summary"
+        android:dependency="reticker_status" />
 	
 </PreferenceScreen>
