@@ -158,7 +158,7 @@ public class ColorPickerPreference extends Preference implements
 
         widgetFrameView.addView(defView);
         widgetFrameView.setMinimumWidth(0);
-        defView.setBackground(getContext().getDrawable(R.drawable.ic_settings_backup_restore));
+//        defView.setBackground(getContext().getDrawable(R.drawable.ic_settings_backup_restore));
         defView.setTag("default");
         defView.setOnClickListener(new View.OnClickListener() {
             @Override

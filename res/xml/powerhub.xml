@@ -42,21 +42,21 @@
             android:fragment="com.power.hub.fragments.ThemeSettings"
             android:icon="@drawable/ic_powerhub_theme_settings"/>
 
-        <!-- Buttons -->
+        <!-- Buttons
 		<com.power.hub.preferences.powerhubPreference
             android:key="button_settings"
             android:title="@string/button_title"
 	    android:summary="@string/button_summary"
             android:icon="@drawable/ic_powerhub_button_settings"
-            android:fragment="com.power.hub.fragments.ButtonSettings"/>
+            android:fragment="com.power.hub.fragments.ButtonSettings"/> -->
 			
-		<!-- Animations -->
+		<!-- Animations -
 		<com.power.hub.preferences.powerhubPreference
             android:key="animations_category"
             android:title="@string/animations_title"
 	    android:summary="@string/animations_summary"
             android:icon="@drawable/ic_powerhub_animation_settings"
-            android:fragment="com.power.hub.fragments.AnimationsSettings"/>
+            android:fragment="com.power.hub.fragments.AnimationsSettings"/> -->
 
         <!-- Lock Screen -->
         <com.power.hub.preferences.powerhubPreference
