@@ -26,6 +26,32 @@
         android:fragment="com.power.hub.fragments.BatterySettings"
         android:title="@string/battery_settings_title" />
 
+    <PreferenceCategory
+        android:key="quick_settings_brighness_category"
+        android:title="@string/qs_brightness_slider_category">
+
+        <!-- Brightness slider -->
+        <com.voltage.support.preferences.SecureSettingListPreference
+            android:key="qs_show_brightness_slider"
+            android:title="@string/qs_show_brightness_slider_title"
+            android:entries="@array/qs_show_brightness_slider_entries"
+            android:entryValues="@array/qs_show_brightness_slider_values"
+            android:defaultValue="2" />
+
+        <com.voltage.support.preferences.SecureSettingListPreference
+            android:key="qs_brightness_slider_position"
+            android:title="@string/qs_brightness_slider_position_title"
+            android:entries="@array/qs_brightness_slider_position_entries"
+            android:entryValues="@array/qs_brightness_slider_position_values"
+            android:defaultValue="1" /> -->
+
+        <com.voltage.support.preferences.SecureSettingSwitchPreference
+            android:key="qs_show_auto_brightness"
+            android:title="@string/qs_show_auto_brightness_title"
+            android:summary="@string/qs_show_auto_brightness_summary"
+            android:defaultValue="true" />
+    </PreferenceCategory>
+
     <Preference
         android:key="network_traffic_settings"
         android:title="@string/network_traffic_settings_title"
