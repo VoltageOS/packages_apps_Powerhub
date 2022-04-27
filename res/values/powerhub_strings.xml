@@ -733,4 +733,8 @@
     <string name="qs_system_info_gpu_clock">GPU frequency</string>
     <string name="qs_system_info_gpu_busy">GPU utilization</string>
 
+    <!-- Colorful battery icon -->
+    <string name="battery_level_colors_title">Toggle colorful battery icon</string>
+    <string name="battery_level_colors_summary">Each battery level drop is color coded</string>
+
 </resources>
