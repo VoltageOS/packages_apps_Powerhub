@@ -53,6 +53,12 @@
             settings:controller="com.power.hub.fragments.NavBarInversePreferenceController" />
 
         <com.power.hub.preferences.SystemSettingSwitchPreference
+            android:key="navigation_bar_compact_layout"
+            android:title="@string/navigation_bar_compact_layout_title"
+            android:summary="@string/navigation_bar_compact_layout_summary"
+            android:defaultValue="false" />
+
+        <com.power.hub.preferences.SystemSettingSwitchPreference
             android:key="click_partial_screenshot"
             android:title="@string/click_partial_screenshot_title"
             android:summary="@string/click_partial_screenshot_summary"

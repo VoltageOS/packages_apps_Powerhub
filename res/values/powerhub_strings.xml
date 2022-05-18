@@ -422,6 +422,8 @@
     <string name="nav_bar_tuner_summary">Change navbar layout</string>
     <string name="navbar_layout_title">Layout</string>
     <string name="navbar_layout_normal">Normal</string>
+    <string name="navigation_bar_compact_layout_title">Compact layout</string>
+    <string name="navigation_bar_compact_layout_summary">Use a compact layout in the navigation bar</string>
     <string name="navbar_layout_compact">Compact</string>
     <string name="navbar_layout_leftleaning">Left-leaning</string>
     <string name="navbar_layout_rightleaning">Right-leaning</string>
