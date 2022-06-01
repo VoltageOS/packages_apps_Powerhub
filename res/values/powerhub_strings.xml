@@ -174,4 +174,7 @@
     <string name="volume_key_cursor_control_on">Volume Up/Down - Cursor Left/Right</string>
     <string name="volume_key_cursor_control_on_reverse">Volume Up/Down - Cursor Right/Left</string>
 	
+    <!-- Volume key music control -->
+    <string name="volume_button_music_control_title">Skip tracks with volume buttons</string>
+    <string name="volume_button_music_control_summary">Long press volume up for skipping to the next track and vice-versa</string>
 </resources>
