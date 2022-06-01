@@ -17,7 +17,6 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:title="@string/button_title"
         xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
-		
 
         <SwitchPreference
             android:key="force_show_navbar"
@@ -151,6 +150,13 @@
        android:defaultValue="false" />
 
     </PreferenceCategory>
+
+    <!-- Volume key music control -->
+    <com.power.hub.preferences.SystemSettingSwitchPreference
+        android:key="volume_button_music_control"
+        android:title="@string/volume_button_music_control_title"
+        android:summary="@string/volume_button_music_control_summary"
+        android:defaultValue="false" />
 
     <com.power.hub.preferences.SystemSettingSwitchPreference
         android:key="volume_rocker_wake"
