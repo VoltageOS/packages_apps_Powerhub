@@ -598,4 +598,8 @@
     <!-- Screen off UDFPS -->
     <string name="screen_off_udfps_title">Screen off UDFPS</string>
     <string name="screen_off_udfps_summary">Keep UDFPS enabled when the screen is off</string>
+
+    <!-- Volume key music control -->
+    <string name="volume_button_music_control_title">Skip tracks with volume buttons</string>
+    <string name="volume_button_music_control_summary">Long press volume up for skipping to the next track and vice-versa</string>
 </resources>
