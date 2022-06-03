@@ -18,25 +18,6 @@
         android:title="@string/theme_title"
         xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 		
-    <PreferenceCategory
-        android:key="theme_customization_category"
-        android:title="@string/theme_customization_category">
-
-        <Preference
-            android:key="dark_ui_mode"
-            android:title="@string/dark_ui_mode"
-            android:summary="@string/dark_ui_mode_summary"
-            android:fragment="com.android.settings.display.darkmode.DarkModeSettingsFragment"
-            settings:controller="com.android.settings.display.DarkUIPreferenceController" />
-
-        <ListPreference
-            android:key="android.theme.customization.font"
-            android:title="@string/theme_customization_font_title"/>
-        <ListPreference
-            android:key="android.theme.customization.icon_pack"
-            android:title="@string/theme_customization_icon_pack_title"/>
-    </PreferenceCategory>
-
         <com.power.hub.preferences.SystemSettingSwitchPreference
             android:key="lockscreen_small_clock"
             android:title="@string/force_lockscreen_small"
@@ -46,6 +27,7 @@
     <PreferenceCategory
         android:key="monel_category"
         android:title="Monet">
+
 
     <com.power.hub.preferences.SecureSettingSwitchPreference
         android:key="system_black_theme"

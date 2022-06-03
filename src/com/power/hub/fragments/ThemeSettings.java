@@ -47,6 +47,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import com.android.settingslib.core.AbstractPreferenceController;
 import com.android.settings.SettingsPreferenceFragment;
+import com.android.settingslib.core.AbstractPreferenceController;
 import com.android.settingslib.core.lifecycle.Lifecycle;
 import java.util.Locale;
 import android.text.TextUtils;
@@ -60,8 +61,6 @@ import com.android.internal.util.voltage.VoltageUtils;
 import com.android.settings.dashboard.DashboardFragment;
 import com.power.hub.preferences.SystemSettingListPreference;
 import com.power.hub.preferences.SystemSettingSwitchPreference;
-import com.android.settings.development.OverlayCategoryPreferenceController;
-
 import net.margaritov.preference.colorpicker.ColorPickerPreference;
 
 @SearchIndexable(forTarget = SearchIndexable.ALL & ~SearchIndexable.ARC)
@@ -86,6 +85,18 @@ public class ThemeSettings extends DashboardFragment implements OnPreferenceChan
 	@Override
     protected int getPreferenceScreenResId() {
         return R.xml.powerhub_theme;
+    }
+	
+	@Override
+    protected List<AbstractPreferenceController> createPreferenceControllers(Context context) {
+        return buildPreferenceControllers(context, getSettingsLifecycle(), this);
+    }
+
+    private static List<AbstractPreferenceController> buildPreferenceControllers(
+            Context context, Lifecycle lifecycle, Fragment fragment) {
+
+        final List<AbstractPreferenceController> controllers = new ArrayList<>();
+        return controllers;
     }
 	
     @Override
@@ -122,21 +133,6 @@ public class ThemeSettings extends DashboardFragment implements OnPreferenceChan
             return true;
         }
         return false;
-    }
-
-    @Override
-    protected List<AbstractPreferenceController> createPreferenceControllers(Context context) {
-        return buildPreferenceControllers(context, getSettingsLifecycle(), this);
-    }
-
-    private static List<AbstractPreferenceController> buildPreferenceControllers(
-            Context context, Lifecycle lifecycle, Fragment fragment) {
-        final List<AbstractPreferenceController> controllers = new ArrayList<>();
-        controllers.add(new OverlayCategoryPreferenceController(context,
-                "android.theme.customization.font"));
-        controllers.add(new OverlayCategoryPreferenceController(context,
-                "android.theme.customization.icon_pack"));
-        return controllers;
     }
 
     @Override

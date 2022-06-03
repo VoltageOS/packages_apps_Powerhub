@@ -28,7 +28,7 @@
     <string name="powermenu_title">Power menu</string>
     <string name="powermenu_summary">Advanced restart, power menu opacity</string>
     <string name="theme_title">Themes</string>
-    <string name="theme_summary">Fonts, icon packs, monet</string>
+    <string name="theme_summary">Monet Settings</string>
     <string name="quicksettings_title">Quick Settings</string>
     <string name="quicksettings_summary">Tile layout, blur</string>
     <string name="recents_title">Recents apps</string>
@@ -127,17 +127,8 @@
 
     <!-- Volume rocker wake -->
     <string name="volume_rocker_wake_title">Volume rocker wake</string>
-	
-    <!-- Themes customization -->
-    <string name="dark_ui_mode_summary">Browse the dark theme options</string>
-    <!-- [CHAR_LIMIT=NONE] Developer Settings: Title of the settings category for theme overlays. -->
-    <string name="theme_customization_category">Theming</string>
-    <!-- [CHAR_LIMIT=NONE] Developer Settings: Title of the setting which enables overlays to customize headline and body fonts. -->
-    <string name="theme_customization_font_title">Headline / Body font</string>
-    <!-- [CHAR_LIMIT=NONE] Developer Settings: Title of the setting which enables overlays to customize the system wide icon pack. -->
-    <string name="theme_customization_icon_pack_title">Icon pack</string>
 
-    <!-- Torch Power button gestures -->
+	<!-- Torch Power button gestures -->
     <string name="torch_power_button_gesture_title">Toggle torch when screen off</string>
     <string name="torch_power_button_gesture_none">Disabled</string>
     <string name="torch_power_button_gesture_dt">Double tap power button (slower single tap response), Disables double power tap for camera.</string>
