@@ -28,7 +28,7 @@
     <string name="powermenu_title">Power menu</string>
     <string name="powermenu_summary">Advanced restart, power menu opacity</string>
     <string name="theme_title">Themes</string>
-    <string name="theme_summary">Monet Settings</string>
+    <string name="theme_summary">System theme, rounded, switch theme</string>
     <string name="quicksettings_title">Quick Settings</string>
     <string name="quicksettings_summary">Tile layout, blur</string>
     <string name="recents_title">Recents apps</string>
@@ -176,15 +176,6 @@
     <!-- Gaming mode -->
     <string name="gaming_mode_title">Game space</string>
     <string name="gaming_mode_summary">Extra features for immersive gaming experience</string>
-
-    <!-- Monet Engine -->
-    <string name="monet_engine_custom_color_title">Use custom color</string>
-    <string name="monet_engine_custom_color_summary">Use custom color for monet engine instead of wallpaper colors</string>
-    <string name="monet_engine_color_override_title">Custom color</string>
-    <string name="monet_engine_white_luminance_user_title">White luminance</string>
-    <string name="monet_engine_accurate_shades_title">Use accurate shades</string>
-    <string name="monet_engine_chroma_factor_title">Chroma factor</string>
-    <string name="monet_engine_linear_lightness_title">Use linear lightness</string>
 
     <!-- Network Traffic -->
     <string name="traffic_title">Traffic indicators</string>

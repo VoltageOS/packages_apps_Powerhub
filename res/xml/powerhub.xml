@@ -34,13 +34,13 @@
             android:fragment="com.power.hub.fragments.QuickSettings"
             android:icon="@drawable/ic_powerhub_quick_settings"/>
 			
-		<!-- Themes -->
+		<!-- Themes
         <com.power.hub.preferences.powerhubPreference
             android:key="theme_category"
             android:title="@string/theme_title"
 	    android:summary="@string/theme_summary"
             android:fragment="com.power.hub.fragments.ThemeSettings"
-            android:icon="@drawable/ic_powerhub_theme_settings"/>
+            android:icon="@drawable/ic_powerhub_theme_settings"/> -->
 
         <!-- Buttons -->
 		<com.power.hub.preferences.powerhubPreference
