@@ -135,4 +135,10 @@
         android:title="@string/screenshot_type_title"
         android:defaultValue="0" />
 
+    <com.power.hub.preferences.GlobalSettingSwitchPreference
+        android:key="strict_standby_policy"
+        android:title="@string/strict_standby_policy_title"
+        android:summary="@string/strict_standby_policy_summary"
+        android:defaultValue="false"/>
+
 </PreferenceScreen>
