@@ -21,6 +21,12 @@
         <intent android:action="com.android.settings.action.STATUS_BAR_TUNER" />
         </Preference>
 
+    <Preference
+        android:key="clock"
+        android:title="@string/status_bar_clock_title"
+        android:summary="@string/status_bar_clock_summary"
+        android:fragment="com.power.hub.fragments.Clock" />
+
         <com.voltage.support.preferences.SecureSettingListPreference
             android:key="qs_show_brightness_slider"
             android:title="@string/qs_brightness_slider_title"

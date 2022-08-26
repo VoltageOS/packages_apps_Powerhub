@@ -8,8 +8,8 @@ import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.os.UserHandle;
 import android.content.ContentResolver;
-import android.content.Context;
 import android.content.res.Resources;
+import android.content.Context;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceGroup;
@@ -17,10 +17,9 @@ import androidx.preference.PreferenceScreen;
 import androidx.preference.PreferenceCategory;
 import androidx.preference.Preference.OnPreferenceChangeListener;
 import androidx.preference.PreferenceFragment;
-import androidx.preference.SwitchPreference;
+import androidx.preference.SwitchPreferenceCompat;
 import android.provider.Settings;
 import com.android.settings.R;
-
 import java.util.Locale;
 import android.text.TextUtils;
 import android.view.View;
@@ -32,12 +31,15 @@ import com.voltage.support.preferences.SystemSettingListPreference;
 import com.voltage.support.preferences.SystemSettingSwitchPreference;
 import com.voltage.support.preferences.SecureSettingListPreference;
 import com.voltage.support.preferences.SystemSettingMasterSwitchPreference;
+import com.voltage.support.preferences.SystemSettingSeekBarPreference;
+
+import com.power.hub.utils.DeviceUtils;
 import com.android.settings.Utils;
 import com.android.internal.util.voltage.VoltageUtils;
-import android.util.Log;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settingslib.search.SearchIndexable;
 import android.provider.SearchIndexableResource;
+import android.util.Log;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -51,7 +53,9 @@ public class StatusBarSettings extends SettingsPreferenceFragment implements
 
     private static final String KEY_QS_SHOW_BRIGHTNESS_SLIDER = "qs_show_brightness_slider";
     private static final String KEY_QS_BRIGHTNESS_SLIDER_POSITION = "qs_brightness_slider_position";
+    private static final String STATUS_BAR_CLOCK_STYLE = "status_bar_clock";
 
+    private SystemSettingListPreference mStatusBarClock;
     private SecureSettingListPreference mQsShowBrightnessSlider;
     private SecureSettingListPreference mQsBrightnessSliderPosition;
 
@@ -109,7 +113,7 @@ public class StatusBarSettings extends SettingsPreferenceFragment implements
         }
         return false;
     }
-	
+
     @Override
     public int getMetricsCategory() {
         return MetricsProto.MetricsEvent.VOLTAGE;
@@ -128,10 +132,8 @@ public class StatusBarSettings extends SettingsPreferenceFragment implements
      /**
      * For Search.
      */
-
     public static final SearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
             new BaseSearchIndexProvider() {
-
                 @Override
                 public List<SearchIndexableResource> getXmlResourcesToIndex(Context context,
                         boolean enabled) {
@@ -142,12 +144,10 @@ public class StatusBarSettings extends SettingsPreferenceFragment implements
                     result.add(sir);
                     return result;
                 }
-
                 @Override
                 public List<String> getNonIndexableKeys(Context context) {
                     List<String> keys = super.getNonIndexableKeys(context);
                     return keys;
                 }
     };
-
 }
