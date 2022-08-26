@@ -22,6 +22,12 @@
         </Preference>
 
     <Preference
+        android:key="clock"
+        android:title="@string/status_bar_clock_title"
+        android:summary="@string/status_bar_clock_summary"
+        android:fragment="com.power.hub.fragments.Clock" />
+
+    <Preference
         android:key="battery_bar_category"
         android:fragment="com.power.hub.fragments.BatterySettings"
         android:title="@string/battery_settings_title" />
