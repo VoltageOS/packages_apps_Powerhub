@@ -8,6 +8,20 @@
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
     android:title="@string/status_bar_clock_title">
 
+    <!-- QS date -->
+    <com.power.hub.preferences.SystemSettingSwitchPreference
+        android:key="show_qs_date"
+        android:title="@string/qs_date_title"
+        android:summary="@string/qs_date_summary"
+        android:defaultValue="true" />
+
+    <!-- QS clock -->
+    <com.power.hub.preferences.SystemSettingSwitchPreference
+        android:key="show_qs_clock"
+        android:title="@string/qs_clock_title"
+        android:summary="@string/qs_clock_summary"
+        android:defaultValue="true" />
+
     <com.power.hub.preferences.SystemSettingSwitchPreference
         android:key="status_bar_clock_auto_hide_launcher"
         android:title="@string/status_bar_clock_auto_hide_title"
