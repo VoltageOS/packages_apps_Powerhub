@@ -29,9 +29,6 @@
             android:summary="@string/volume_panel_on_left_summary"
             android:defaultValue="false" />
 
-    </PreferenceCategory>
-
-    <!-- Volume key music control -->
     <com.power.hub.preferences.SystemSettingSwitchPreference
         android:key="volume_button_music_control"
         android:title="@string/volume_button_music_control_title"
@@ -54,4 +51,5 @@
         android:entryValues="@array/volume_key_cursor_control_values"
         android:defaultValue="0" />
 
+    </PreferenceCategory>
 </PreferenceScreen>
