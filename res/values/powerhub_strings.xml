@@ -200,4 +200,18 @@
     <string name="custom_timeout_summary_4hours">4 hours</string>
     <string name="custom_timeout_summary_8hours">8 hours</string>
 
+    <!-- Network traffic -->
+    <string name="network_traffic_category_title">Network traffic</string>
+    <string name="network_traffic_intro_text">
+        Shows current network traffic speed in statusbar.
+        The monitor shows the speed dynamically such that it alternates between
+        upload and download speed each second
+    </string>
+    <string name="enable_network_traffic">Enable network traffic monitor</string>
+    <string name="statusbar_network_traffic_threshold_tx_title">Auto hide threshold for upload</string>
+    <string name="statusbar_network_traffic_threshold_rx_title">Auto hide threshold for download</string>
+    <string name="statusbar_network_traffic_unit_text_size_title">Network traffic unit text size</string>
+    <string name="statusbar_network_traffic_rate_text_scale_factor_title">Network traffic rate text scale factor</string>
+    <string name="statusbar_network_traffic_rate_text_scale_factor_dialog_title">Scale factor</string>
+
 </resources>

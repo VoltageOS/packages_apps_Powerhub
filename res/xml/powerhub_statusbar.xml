@@ -26,6 +26,12 @@
 
     </PreferenceCategory>
 
+    <Preference
+        android:key="network_traffic_enabled"
+        android:title="@string/network_traffic_category_title"
+        android:defaultValue="false"
+        android:fragment="com.power.hub.fragments.NetworkTrafficMonitorSettings" />
+
 	<PreferenceCategory
         android:key="statusbar_icons"
         android:title="@string/sb_icons">
