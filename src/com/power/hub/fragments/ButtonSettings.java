@@ -37,9 +37,12 @@ import com.android.settings.R;
 import com.power.hub.preferences.SystemSettingSwitchPreference;
 import com.power.hub.preferences.SecureSettingSwitchPreference;
 import com.android.internal.logging.nano.MetricsProto;
+import com.android.internal.util.hwkeys.ActionConstants;
+import com.android.internal.util.hwkeys.ActionUtils;
 
 import com.power.hub.preferences.CustomSeekBarPreference;
-import com.android.settings.SettingsPreferenceFragment;
+import com.power.hub.preferences.ActionFragment;
+
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settingslib.search.SearchIndexable;
 import android.provider.SearchIndexableResource;
@@ -47,8 +50,7 @@ import android.provider.SearchIndexableResource;
 import java.util.ArrayList;
 import java.util.List;
 @SearchIndexable(forTarget = SearchIndexable.ALL & ~SearchIndexable.ARC)
-public class ButtonSettings extends SettingsPreferenceFragment implements
-        Preference.OnPreferenceChangeListener {
+public class ButtonSettings extends ActionFragment implements OnPreferenceChangeListener {
 
 
     @Override
