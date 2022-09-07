@@ -575,4 +575,8 @@
     <!-- UDFPS Animations -->
     <string name="udfps_recog_animation_effect_title">UDFPS custom animation</string>
     <string name="udfps_recog_animation_effect_summary">Choose animation effect</string>
+
+    <string name="quick_settings_data_usage_title">Data usage</string>
+    <string name="quick_settings_data_usage_summary">Display data usage summary in quick settings footer</string>
+
 </resources>
