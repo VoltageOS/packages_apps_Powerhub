@@ -80,7 +80,7 @@
     <string name="led_color_green">Green</string>
     <string name="led_color_red">Red</string>
 
-	<!-- QS settings -->
+    <!-- QS settings -->
     <string name="qs_title">Quick settings</string>
 
     <!-- Lockscreen shortcuts -->
@@ -96,21 +96,15 @@
     <string name="sb_icons">Statusbar Icons</string>
     <string name="statusbar_items_category">Statusbar items</string>
 
-	<!-- Status bar - icons -->
+    <!-- Status bar - icons -->
     <string name="status_bar_icons_title">Status bar icons</string>
 
-	<!-- Lock screen visualizer -->
+    <!-- Lock screen visualizer -->
     <string name="visualizer_title">Display music visualizer</string>
 
-	<!-- Power menu and dialogs opacity -->
-
-	<!-- AOKP custom system animations -->
-	
     <!-- Power menu Animations  -->
     <string name="power_menu_animation">Power menu</string>
 	
-	<!-- QS header image -->
-
     <!-- Lockscreen -->
     <string name="lockscreen_category">Lockscreen</string>
 
@@ -566,4 +560,18 @@
     <!-- Screen off UDFPS -->
     <string name="screen_off_udfps_title">Screen off UDFPS</string>
     <string name="screen_off_udfps_summary">Keep UDFPS enabled when the screen is off</string>
+
+    <!-- QS footer warnings -->
+    <string name="qs_footer_warnings_title">Footer alerts</string>
+    <string name="qs_footer_warnings_summary">Display an alert at bottom of QS panel when network is monitored by external apps or VPN</string>
+
+    <!-- QS footer icons -->
+    <string name="qs_footer_users_icon_title">User account icon</string>
+    <string name="qs_footer_users_icon_summary">Display multiuser accessibility icon when available</string>
+    <string name="qs_footer_edit_icon_title">Edit tiles icon</string>
+    <string name="qs_footer_show_power_menu_title">Power menu shortcut</string>
+    <string name="qs_footer_services_icon_title">Running services shortcut</string>
+    <string name="qs_footer_settings_icon_title">Settings shortcut</string>
+    <string name="background_processes_settings_title">Background processes</string>
+
 </resources>
