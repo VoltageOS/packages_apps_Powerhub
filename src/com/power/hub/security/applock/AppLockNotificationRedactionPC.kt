@@ -68,7 +68,7 @@ class AppLockNotificationRedactionPC(
     }
 
     override fun displayPreference(screen: PreferenceScreen) {
-        super.displayPreference(screen);
+        super.displayPreference(screen)
         preference = screen.findPreference(preferenceKey)
     }
 }
