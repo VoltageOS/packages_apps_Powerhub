@@ -25,8 +25,6 @@ import android.view.MenuItem
 import com.android.internal.logging.nano.MetricsProto
 import com.android.settings.R
 import com.android.settings.search.BaseSearchIndexProvider
-import com.android.settingslib.core.AbstractPreferenceController
-import com.android.settingslib.core.lifecycle.Lifecycle
 import com.android.settingslib.search.SearchIndexable
 import com.android.settings.dashboard.DashboardFragment
 
@@ -41,9 +39,6 @@ class AppLockSettingsFragment : DashboardFragment(),
     override fun getMetricsCategory() = MetricsProto.MetricsEvent.VOLTAGE
 
     override protected fun getLogTag() = TAG
-
-    override protected fun createPreferenceControllers(context: Context) =
-        buildPreferenceControllers(context, settingsLifecycle)
 
     override fun onCreateOptionsMenu(menu: Menu, menuInflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, menuInflater)
@@ -80,22 +75,6 @@ class AppLockSettingsFragment : DashboardFragment(),
         private const val MENU_ITEM_DEBUG_ID = 101
 
         @JvmField
-        val SEARCH_INDEX_DATA_PROVIDER = object : BaseSearchIndexProvider(
-            R.xml.powerhub_app_lock
-        ) {
-            override fun createPreferenceControllers(context: Context) =
-                buildPreferenceControllers(context)
-        }
-
-        fun buildPreferenceControllers(
-            context: Context,
-            lifecycle: Lifecycle? = null
-        ): List<AbstractPreferenceController> =
-            listOf(
-                AppLockNotificationPreferenceController(
-                    context,
-                    lifecycle,
-                )
-            )
+        val SEARCH_INDEX_DATA_PROVIDER = BaseSearchIndexProvider(R.xml.powerhub_app_lock)
     }
 }
