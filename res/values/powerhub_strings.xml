@@ -159,10 +159,6 @@
     <string name="search">Search</string>
     <string name="search_apps">Search apps</string>
 
-    <!-- Hidden apps -->
-    <string name="hidden_apps_title">Hidden apps</string>
-    <string name="hidden_apps_summary">Applications that should be hidden from launcher. Requires a launcher restart for changes to take effect</string>
-
     <!-- App lock -->
     <string name="app_lock_title">App lock</string>
     <string name="app_lock_summary">Apps will require fingerprint authentication to launch</string>
@@ -182,6 +178,10 @@
     <string name="app_lock_biometrics_allowed_title">Enable biometrics for unlocking</string>
     <string name="app_lock_footer_text">Bubbles will be automatically dismissed after timeout</string>
     <string name="enable_protection">Enable protection</string>
+    <string name="hide_from_launcher_title">Hide from launcher</string>
+    <string name="hide_from_launcher_summary">
+        Prevent this application from showing up in launcher. Requires a launcher restart for changes to take effect.
+    </string>
 
     <!--  screen, setting option summary to change custom timeout -->
     <string name="custom_timeout_summary_never">Never</string>

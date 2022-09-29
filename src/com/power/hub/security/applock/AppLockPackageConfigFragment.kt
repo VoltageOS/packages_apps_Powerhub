@@ -73,6 +73,7 @@ class AppLockPackageConfigFragment : PowerhubDashboardFragment() {
     ) : List<AbstractPreferenceController> = listOf(
         AppLockPackageProtectionPC(context, packageInfo.packageName, lifecycleScope),
         AppLockNotificationRedactionPC(context, packageInfo.packageName, lifecycleScope),
+        AppLockHideAppPC(context, packageInfo.packageName, lifecycleScope)
     )
 
     override protected fun getPreferenceScreenResId() = R.xml.app_lock_package_config_settings
