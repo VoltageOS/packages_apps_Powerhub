@@ -25,6 +25,7 @@ import androidx.lifecycle.lifecycleScope
 
 import com.android.settings.R
 import com.android.settings.widget.EntityHeaderController
+import com.android.settingslib.applications.ApplicationsState.AppEntry
 import com.android.settingslib.core.AbstractPreferenceController
 import com.android.settingslib.widget.LayoutPreference
 import com.power.hub.PowerhubDashboardFragment
@@ -34,17 +35,16 @@ private const val KEY_HEADER = "header_view"
 
 class AppLockPackageConfigFragment : PowerhubDashboardFragment() {
 
-    private lateinit var pm: PackageManager
     private lateinit var packageInfo: PackageInfo
 
     override fun onAttach(context: Context) {
-        pm = context.packageManager
         packageInfo = arguments?.getParcelable(PACKAGE_INFO, PackageInfo::class.java)!!
         super.onAttach(context)
     }
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         super.onCreatePreferences(savedInstanceState, rootKey)
+        val appEntry = AppEntry(requireContext(), packageInfo.applicationInfo, 0)
         val header = preferenceScreen.findPreference<LayoutPreference>(KEY_HEADER)
         EntityHeaderController.newInstance(
             requireActivity(),
@@ -57,16 +57,10 @@ class AppLockPackageConfigFragment : PowerhubDashboardFragment() {
                 EntityHeaderController.ActionType.ACTION_NONE
             )
             .bindHeaderButtons()
-            .setLabel(getLabel(packageInfo))
-            .setIcon(getIcon(packageInfo))
+            .setLabel(appEntry)
+            .setIcon(appEntry)
             .done(requireActivity(), false /* rebindActions */)
     }
-
-    private fun getLabel(packageInfo: PackageInfo) =
-        packageInfo.applicationInfo.loadLabel(pm).toString()
-
-    private fun getIcon(packageInfo: PackageInfo) =
-        packageInfo.applicationInfo.loadIcon(pm)
 
     override protected fun createPreferenceControllers(
         context: Context
