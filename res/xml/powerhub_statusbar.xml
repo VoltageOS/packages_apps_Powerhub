@@ -15,7 +15,7 @@
     android:title="@string/statusbar_title"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 	
-        <PreferenceCategory
+    <PreferenceCategory
         android:title="@string/statusbar_gesture_title">
 
         <com.power.hub.preferences.SystemSettingSwitchPreference
@@ -47,6 +47,12 @@
         android:summary="@string/status_bar_clock_summary"
         android:fragment="com.power.hub.fragments.Clock" />
 
+    <Preference
+        android:key="sbbatteryicons"
+        android:title="@string/status_bar_battery_style_title"
+        android:summary="@string/status_bar_battery_style_summary"
+        android:fragment="com.power.hub.fragments.BatteryStyleSettings" />
+
 	<PreferenceCategory
         android:key="statusbar_icons"
         android:title="@string/sb_icons">
@@ -57,13 +63,13 @@
             android:summary="@string/data_disabled_icon_summary"
             android:defaultValue="true"/>
 		
-                <com.power.hub.preferences.SystemSettingSwitchPreference
+        <com.power.hub.preferences.SystemSettingSwitchPreference
              android:key="show_fourg_icon"
              android:title="@string/show_fourg_icon_title"
              android:summary="@string/show_fourg_icon_summary"
              android:defaultValue="false"/>
 			 
-		<com.power.hub.preferences.SystemSettingSwitchPreference
+	<com.power.hub.preferences.SystemSettingSwitchPreference
              android:key="roaming_indicator_icon"
              android:title="@string/roaming_indicator_icon_title"
              android:summary="@string/roaming_indicator_icon_summary"
@@ -87,67 +93,13 @@
             android:summary="@string/use_old_mobiletype_summary"
             android:defaultValue="false" />            
 
-       <Preference
+        <Preference
             android:key="systemui_tuner_statusbar"
             android:title="@string/statusbar_items_category" >
             <intent android:action="android.intent.action.MAIN"
                 android:targetPackage="com.android.systemui"
                 android:targetClass="com.android.systemui.tuner.StatusbarItemsActivity" />
         </Preference>
-
-    </PreferenceCategory>
-
-    <!-- Status bar battery customizations -->
-    <PreferenceCategory
-        android:title="@string/status_bar_battery_category_title" >
-
-         <com.power.hub.preferences.SystemSettingListPreference
-            android:key="status_bar_battery_style"
-            android:title="@string/status_bar_battery_style_title"
-            android:entries="@array/status_bar_battery_style_entries"
-            android:entryValues="@array/status_bar_battery_style_values"
-            android:defaultValue="0" />
-
-         <com.power.hub.preferences.SystemSettingListPreference
-            android:key="status_bar_show_battery_percent"
-            android:title="@string/status_bar_battery_percent_title"
-            android:entries="@array/status_bar_battery_percent_entries"
-            android:entryValues="@array/status_bar_battery_percent_values"
-            android:defaultValue="0" />
-
-        <com.power.hub.preferences.SystemSettingSwitchPreference
-            android:key="status_bar_battery_text_charging"
-            android:title="@string/status_bar_battery_text_charging_title"
-            android:summary="@string/status_bar_battery_text_charging_summary"
-            android:defaultValue="true" />
-
-    </PreferenceCategory>
-
-    <!-- Qs battery customizations -->
-    <PreferenceCategory
-        android:title="@string/qs_battery_category_title" >
-
-        <!-- Battery styles -->
-        <com.power.hub.preferences.SystemSettingListPreference
-            android:key="qs_battery_style"
-            android:title="@string/status_bar_battery_style_title"
-            android:entries="@array/qs_battery_style_entries"
-            android:entryValues="@array/qs_battery_style_values"
-            android:defaultValue="-1" />
-
-        <!-- Battery percent -->
-        <com.power.hub.preferences.SystemSettingListPreference
-            android:key="qs_show_battery_percent"
-            android:title="@string/status_bar_battery_percent_title"
-            android:entries="@array/status_bar_battery_percent_entries"
-            android:entryValues="@array/status_bar_battery_percent_values"
-            android:defaultValue="2" />
-
-        <!-- Battery estimate -->
-        <com.power.hub.preferences.SystemSettingSwitchPreference
-            android:key="qs_show_battery_estimate"
-            android:title="@string/battery_estimate_title"
-            android:summary="@string/battery_estimate_summary" />
 
     </PreferenceCategory>
 </PreferenceScreen>
