@@ -75,11 +75,11 @@
     <string name="quick_settings_vibrate_summary">触摸快速设置磁贴时振动</string>
     <!-- Lockscreen shortcuts -->
     <string name="ls_category">锁屏项目</string>
-    <string name="ls_tuner">Enable Lockscreen tuner</string>
+    <string name="ls_tuner">启用锁屏界面调整</string>
     <string name="lockscreen_shortcuts">锁屏快捷方式</string>
     <string name="ls_shortcut_summary">自定义锁屏快捷方式</string>
     <!-- Lockscreen icons -->
-    <string name="lockscreen_tuner_title">锁屏调节</string>
+    <string name="lockscreen_tuner_title">锁屏调整</string>
     <!-- Statusbar Items -->
     <string name="sb_icons">状态栏图标</string>
     <string name="statusbar_items_category">状态栏项目</string>
@@ -154,7 +154,7 @@
     <string name="torch_power_button_gesture_lp">长按电源按钮</string>
     <!-- Hardware button navigation -->
     <string name="picker_activities">激活</string>
-    <string name="select_custom_app_title">选择自定义应用</string>
+    <string name="select_custom_app_title">选择自定义应用程序</string>
     <string name="select_custom_activity_title">选择自定义Activity</string>
     <string name="profile_applist_title">应用程序</string>
     <string name="choose_action_title">选择行为</string>
@@ -198,7 +198,7 @@
     <string name="summary_heads_up_enabled">弹出式通知已启用</string>
     <string name="summary_heads_up_disabled">弹出式通知已禁用</string>
     <string name="add_heads_up_package">添加应用程序</string>
-    <string name="add_heads_up_stoplist_summary">使用这些应用程序时停止浮动通知</string>
+    <string name="add_heads_up_stoplist_summary">使用这些应用程序时，停止浮动通知</string>
     <string name="add_heads_up_blacklist_summary">禁用来自这些应用程序的浮动通知</string>
     <string name="heads_up_stoplist_title">停止列表</string>
     <string name="heads_up_blacklist_title">禁用列表</string>
@@ -288,9 +288,9 @@
     <string name="show_network_traffic_all">两者</string>
     <string name="nettraf_font_size">网络活动显示字体大小</string>
     <!-- Lockscreen media artwork -->
-    <string name="lockscreen_media_blur_title">媒体图片模糊级别</string>
+    <string name="lockscreen_media_blur_title">媒体封面模糊级别</string>
     <string name="show_lockscreen_media_art_title">显示媒体封面</string>
-    <string name="lockscreen_media_art_options_title">锁屏专辑封面</string>
+    <string name="lockscreen_media_art_options_title">锁屏媒体封面</string>
     <!-- Volume rocker cursor control -->
     <string name="cursor_section_header">光标</string>
     <string name="volume_key_cursor_control_title">键盘光标控制</string>
@@ -393,7 +393,7 @@
     <string name="less_boring_heads_up_summary">只显示不在前台运行的电话和短信的浮动通知</string>
     <!-- Notification guts kill app button -->
     <string name="general_category">通用</string>
-    <string name="notification_guts_kill_app_button_title">终止应用按钮</string>
+    <string name="notification_guts_kill_app_button_title">终止应用程序按钮</string>
     <string name="notification_guts_kill_app_button_summary">在通知的长按菜单中显示终止应用按钮</string>
     <!-- Custom carrier label and position -->
     <string name="carrier_label_settings_title">运营商标签</string>
@@ -447,14 +447,14 @@
     <string name="navbar_layout_rightleaning">靠右</string>
     <string name="system_navigation_summary">选择要使用的系统导航样式</string>
     <!-- Old mobile type icons -->
-    <string name="use_old_mobiletype_title">Small mobile type icon</string>
+    <string name="use_old_mobiletype_title">精简移动网络图标</string>
     <string name="use_old_mobiletype_summary">在信号指示器顶部显示移动网络类型图标</string>
     <!-- Tiles on secure keyguard -->
-    <string name="use_tiles_on_secure_keyguard_title">Require unlocking to use sensitive tiles</string>
+    <string name="use_tiles_on_secure_keyguard_title">需要解锁才能使用敏感瓷块</string>
     <string name="use_tiles_on_secure_keyguard_summary">使用敏感瓷贴时要求解锁锁屏幕</string>
     <!-- Combined signal icons in status bar -->
-    <string name="combined_status_bar_signal_icons">Combined signal icons</string>
-    <string name="combined_status_bar_signal_icons_summary">Enable combined signal icons in status bar.\nRequires a SystemUI restart</string>
+    <string name="combined_status_bar_signal_icons">合并信号图标</string>
+    <string name="combined_status_bar_signal_icons_summary">在状态栏启用合并的信号图标\n (需要重启系统界面)</string>
     <!-- Lockscreen Clocks -->
     <string name="lock_screen_custom_clock_face_category">锁屏时钟</string>
     <string name="lock_screen_custom_clock_face_title">锁屏时钟样式</string>
@@ -504,24 +504,24 @@
     <string name="pulse_filled_block_size">色块尺寸</string>
     <string name="pulse_empty_block_size">色块间距</string>
     <!-- Units -->
-    <string name="unit_milliseconds">milliseconds</string>
-    <string name="unit_seconds">seconds</string>
+    <string name="unit_milliseconds">毫秒</string>
+    <string name="unit_seconds">秒</string>
     <!-- Privacy indicators -->
-    <string name="mic_camera_privacy_indicator_title">Mic and camera privacy indicator</string>
-    <string name="mic_camera_privacy_indicator_summary">Show separate indicator when an any app uses mic or camera</string>
-    <string name="location_privacy_indicator_title">Location privacy indicator</string>
-    <string name="location_privacy_indicator_summary">Show separate indicator when an any app uses location</string>
+    <string name="mic_camera_privacy_indicator_title">麦克风与相机隐私指示器</string>
+    <string name="mic_camera_privacy_indicator_summary">当任何应用使用麦克风或相机时显示单独的指示器</string>
+    <string name="location_privacy_indicator_title">位置隐私指示器</string>
+    <string name="location_privacy_indicator_summary">当任何应用程序使用定位时，显示单独的指示器</string>
     <!-- Live volume steps -->
-    <string name="volume_steps_title">Volume steps</string>
-    <string name="volume_steps_summary">Customize no. of steps in volume panel</string>
-    <string name="volume_steps_alarm_title">Volume steps: Alarm</string>
-    <string name="volume_steps_dtmf_title">Volume steps: DTMF</string>
-    <string name="volume_steps_music_title">Volume steps: Music</string>
-    <string name="volume_steps_notification_title">Volume steps: Notification</string>
-    <string name="volume_steps_ring_title">Volume steps: Ringer</string>
-    <string name="volume_steps_system_title">Volume steps: System</string>
-    <string name="volume_steps_voice_call_title">Volume steps: Voice Call</string>
-    <string name="volume_steps_reset">Reset</string>
+    <string name="volume_steps_title">音量级数</string>
+    <string name="volume_steps_summary">自定义音量面板中的步进数量</string>
+    <string name="volume_steps_alarm_title">音量级数：闹钟</string>
+    <string name="volume_steps_dtmf_title">音量级数：双音多频</string>
+    <string name="volume_steps_music_title">音量级数：音乐</string>
+    <string name="volume_steps_notification_title">音量级数：通知</string>
+    <string name="volume_steps_ring_title">音量级数：铃声</string>
+    <string name="volume_steps_system_title">音量级数：系统</string>
+    <string name="volume_steps_voice_call_title">音量级数：语音通话</string>
+    <string name="volume_steps_reset">重置</string>
     <string name="volume_steps_60">60</string>
     <string name="volume_steps_45">45</string>
     <string name="volume_steps_30">30</string>
@@ -529,48 +529,48 @@
     <string name="volume_steps_7">7</string>
     <string name="volume_steps_5">5</string>
     <!-- Battery light -->
-    <string name="light_settings_header">Light settings</string>
-    <string name="battery_light_settings">Battery light</string>
-    <string name="battery_light_summary">Enable or disable battery light while on DND, low battery</string>
-    <string name="battery_light_enable">Battery light</string>
-    <string name="battery_full_light_enabled">Battery light when fully charged</string>
-    <string name="battery_light_allow_on_dnd_title">Battery light in Do Not Disturb mode</string>
+    <string name="light_settings_header">指示灯设置</string>
+    <string name="battery_light_settings">电量指示灯</string>
+    <string name="battery_light_summary">在勿扰模式、低电量时启用或禁用电池指示灯</string>
+    <string name="battery_light_enable">电量指示灯</string>
+    <string name="battery_full_light_enabled">充满后的指示灯</string>
+    <string name="battery_light_allow_on_dnd_title">勿扰模式下的指示灯</string>
     <string name="battery_light_low_blinking_title">电量低时闪烁</string>
-    <string name="battery_light_cat">Battery light color when charging</string>
-    <string name="battery_light_low_color">Battery low</string>
-    <string name="battery_light_medium_color">Charging</string>
-    <string name="battery_light_full_color">Almost fully charged</string>
-    <string name="battery_light_reallyfull_color">Fully charged</string>
+    <string name="battery_light_cat">充电时电量指示灯颜色</string>
+    <string name="battery_light_low_color">低电量</string>
+    <string name="battery_light_medium_color">充电中</string>
+    <string name="battery_light_full_color">接近满电</string>
+    <string name="battery_light_reallyfull_color">已充满</string>
     <!-- Pulse notifications lightning -->
     <string name="pulse_ambient_light_title">息屏界面边缘闪光</string>
-    <string name="pulse_ambient_light_summary">息屏时收到通知在屏幕边缘显示光效</string>
-    <string name="ambient_notification_light_enabled_title">Show on AOD</string>
-    <string name="ambient_notification_light_enabled_summary">Keep showing edge lightning on AOD</string>
-    <string name="ambient_notification_light_hide_aod_title">Hide AOD content</string>
-    <string name="ambient_notification_light_hide_aod_summary">Hide AOD content when edges are lighted</string>
-    <string name="ambient_notification_light_duration_title">Duration</string>
-    <string name="ambient_notification_light_duration_summary">Time it takes for each animation to complete</string>
-    <string name="ambient_notification_light_repeats_title">Repeats</string>
-    <string name="ambient_notification_light_repeats_summary">Amount of times the animation should show\n0 for infinite</string>
-    <string name="ambient_notification_light_timeout_title">Timeout</string>
-    <string name="ambient_notification_light_timeout_forever">Forever</string>
-    <string name="ambient_notification_light_timeout_half_minute">30 seconds</string>
-    <string name="ambient_notification_light_timeout_minute">1 minute</string>
-    <string name="ambient_notification_light_timeout_three_minutes">3 minutes</string>
-    <string name="ambient_notification_light_timeout_five_minutes">5 minutes</string>
-    <string name="ambient_notification_light_timeout_ten_minutes">10 minutes</string>
-    <string name="set_to_zero">Set repeats to 0 to enable</string>
-    <string name="ambient_notification_color_mode_title">Color mode</string>
-    <string name="ambient_notification_color_mode_accent">Accent color</string>
-    <string name="ambient_notification_color_mode_wall">Wallpaper dominant color</string>
-    <string name="ambient_notification_color_mode_notification">Notification icon color</string>
+    <string name="pulse_ambient_light_summary">息屏时收到通知会在屏幕边缘显示光效</string>
+    <string name="ambient_notification_light_enabled_title">在息屏显示中显示</string>
+    <string name="ambient_notification_light_enabled_summary">保持息屏显示上的边缘闪光</string>
+    <string name="ambient_notification_light_hide_aod_title">隐藏息屏显示内容</string>
+    <string name="ambient_notification_light_hide_aod_summary">边缘闪光开启时隐藏息屏显示内容</string>
+    <string name="ambient_notification_light_duration_title">持续时间</string>
+    <string name="ambient_notification_light_duration_summary">每个动画完成所需的时间</string>
+    <string name="ambient_notification_light_repeats_title">重复</string>
+    <string name="ambient_notification_light_repeats_summary">动画应显示的次数\n0 表示无限</string>
+    <string name="ambient_notification_light_timeout_title">超时</string>
+    <string name="ambient_notification_light_timeout_forever">无限重复</string>
+    <string name="ambient_notification_light_timeout_half_minute">30 秒</string>
+    <string name="ambient_notification_light_timeout_minute">1 分钟</string>
+    <string name="ambient_notification_light_timeout_three_minutes">3 分钟</string>
+    <string name="ambient_notification_light_timeout_five_minutes">5 分钟</string>
+    <string name="ambient_notification_light_timeout_ten_minutes">10 分钟</string>
+    <string name="set_to_zero">将重复次数设置为 0 以启用</string>
+    <string name="ambient_notification_color_mode_title">色彩模式</string>
+    <string name="ambient_notification_color_mode_accent">强调色</string>
+    <string name="ambient_notification_color_mode_wall">壁纸主要颜色</string>
+    <string name="ambient_notification_color_mode_notification">通知图标颜色</string>
     <string name="ambient_notification_color_mode_custom">@string/ambient_notification_light_color_title</string>
-    <string name="ambient_notification_light_color_title">Custom color</string>
+    <string name="ambient_notification_light_color_title">自定义颜色</string>
     <string name="pulse_ambient_light_show_always_title">始终显示</string>
     <string name="pulse_ambient_light_show_always_summary">显示所有唤醒事件的闪光，而不仅仅是通知</string>
     <string name="pulse_ambient_light_repeat_direction_title">闪光循环模式</string>
     <string name="pulse_ambient_light_repeat_direction_restart">重启</string>
-    <string name="pulse_ambient_light_repeat_direction_reverse">Reverse</string>
+    <string name="pulse_ambient_light_repeat_direction_reverse">反向</string>
     <string name="pulse_ambient_light_layout_title">闪光样式预览</string>
     <string name="pulse_ambient_light_layout_solid">固定</string>
     <string name="pulse_ambient_light_layout_faded">渐变</string>
@@ -580,43 +580,43 @@
     <string name="pulse_light_top_bottom">仅顶部和底部</string>
     <string name="pulse_light_left_right">仅左侧和右侧</string>
     <!-- Notification headers -->
-    <string name="notification_headers_title">Notification headers</string>
-    <string name="notification_headers_summary">Show headers in the notification shade</string>
+    <string name="notification_headers_title">通知信头</string>
+    <string name="notification_headers_summary">在通知面板背景板中显示通知类型</string>
     <!-- UDFPS settings -->
-    <string name="udfps_category">UDFPS</string>
-    <string name="udfps_customization">UDFPS customization</string>
-    <string name="udfps_recog_animation">UDFPS animation</string>
-    <string name="udfps_recog_animation_summary">Shows an animation while reading your finger</string>
-    <string name="udfps_recog_animation_effect_title">UDFPS animation effect</string>
-    <string name="udfps_recog_animation_effect_summary">Choose animation effect</string>
-    <string name="udfps_settings_title">UDFPS settings</string>
-    <string name="udfps_settings_summary">Settings for customizing the UDFPS</string>
+    <string name="udfps_category">屏幕指纹</string>
+    <string name="udfps_customization">屏下指纹自定义</string>
+    <string name="udfps_recog_animation">屏下指纹动画</string>
+    <string name="udfps_recog_animation_summary">在识别指纹时显示动画</string>
+    <string name="udfps_recog_animation_effect_title">屏下指纹动画效果</string>
+    <string name="udfps_recog_animation_effect_summary">选择动画效果</string>
+    <string name="udfps_settings_title">屏下指纹设置</string>
+    <string name="udfps_settings_summary">屏下指纹自定义设置</string>
     <!-- UDFPS icon picker -->
-    <string name="udfps_icon_picker_title">UDFPS icon picker</string>
-    <string name="udfps_icon_picker_summary">Choose your favorite fingerprint icon</string>
+    <string name="udfps_icon_picker_title">屏下指纹图标选择器</string>
+    <string name="udfps_icon_picker_summary">选择您最喜欢的指纹图标</string>
     <!-- UDFPS pressed color -->
-    <string name="udfps_pressed_color_title">UDFPS pressed color</string>
-    <string name="udfps_pressed_color_cyan">Cyan</string>
-    <string name="udfps_pressed_color_white">White</string>
-    <string name="udfps_pressed_color_white_new">White (New)</string>
-    <string name="udfps_pressed_color_green">Green</string>
-    <string name="udfps_pressed_color_yellow">Yellow</string>
-    <string name="udfps_pressed_color_light_yellow">Light Yellow</string>
+    <string name="udfps_pressed_color_title">屏下指纹按下颜色</string>
+    <string name="udfps_pressed_color_cyan">青色</string>
+    <string name="udfps_pressed_color_white">白色</string>
+    <string name="udfps_pressed_color_white_new">白色 (新)</string>
+    <string name="udfps_pressed_color_green">绿</string>
+    <string name="udfps_pressed_color_yellow">黄色</string>
+    <string name="udfps_pressed_color_light_yellow">淡黄</string>
     <!-- Screen off UDFPS -->
-    <string name="screen_off_udfps_title">息屏指纹识别器</string>
-    <string name="screen_off_udfps_summary">息屏状态保持屏下指纹识别器开启</string>
+    <string name="screen_off_udfps_title">息屏屏下指纹</string>
+    <string name="screen_off_udfps_summary">息屏状态保持屏下指纹识别</string>
     <!-- UDFPS Haptic Feedback -->
-    <string name="udfps_haptic_feedback_title">UDFPS haptic feedback</string>
-    <string name="udfps_haptic_feedback_summary">Vibrate when touching UDFPS icon</string>
+    <string name="udfps_haptic_feedback_title">屏下指纹触摸反馈</string>
+    <string name="udfps_haptic_feedback_summary">触摸屏下指纹识别图标时振动</string>
     <!-- Night Light UDFPS -->
-    <string name="udfps_night_light_title">Disable Night Light when showing UDFPS</string>
-    <string name="udfps_night_light_summary">如果屏下指纹识别器已激活，请在锁定屏幕上禁用夜灯。 禁用此选项可能会在夜灯开启时影响您的指纹准确性。</string>
+    <string name="udfps_night_light_title">显示屏下指纹时禁用夜灯</string>
+    <string name="udfps_night_light_summary">如果屏下指纹识别已激活，夜灯将禁用。 禁用此选项可能会在夜灯开启时影响您的指纹识别准确性。</string>
     <!-- Black theme -->
-    <string name="system_black_theme_title">Use black theme</string>
-    <string name="system_black_theme_summary">Force black background colors</string>
+    <string name="system_black_theme_title">使用黑色主题</string>
+    <string name="system_black_theme_summary">强制使用黑色背景</string>
     <!-- Gaming mode -->
-    <string name="gaming_mode_title">Game space</string>
-    <string name="gaming_mode_summary">Extra features for immersive gaming experience</string>
-    <string name="search">Search</string>
-    <string name="search_apps">Search apps</string>
+    <string name="gaming_mode_title">游戏空间</string>
+    <string name="gaming_mode_summary">额外的功能，保证沉浸式的游戏体验</string>
+    <string name="search">搜索</string>
+    <string name="search_apps">搜索应用程序</string>
 </resources>
