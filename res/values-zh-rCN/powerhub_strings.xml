@@ -81,24 +81,24 @@
     <!-- Lockscreen icons -->
     <string name="lockscreen_tuner_title">Lockscreen tuner</string>
     <!-- Statusbar Items -->
-    <string name="sb_icons">Statusbar Icons</string>
-    <string name="statusbar_items_category">Statusbar items</string>
+    <string name="sb_icons">状态栏图标</string>
+    <string name="statusbar_items_category">状态栏项目</string>
     <!-- Status bar - icons -->
-    <string name="status_bar_icons_title">Status bar icons</string>
+    <string name="status_bar_icons_title">状态栏图标</string>
     <!-- Lock screen visualizer -->
-    <string name="visualizer_title">Display music visualizer</string>
+    <string name="visualizer_title">显示音乐可视化</string>
     <!-- Power menu and dialogs opacity -->
     <!-- AOKP custom system animations -->
     <!-- Power menu Animations  -->
-    <string name="power_menu_animation">Power menu</string>
+    <string name="power_menu_animation">电源菜单</string>
     <!-- QS header image -->
     <!-- Lockscreen -->
-    <string name="lockscreen_category">Lockscreen</string>
+    <string name="lockscreen_category">锁屏</string>
     <!-- Themes -->
-    <string name="theme_type_title">System theme</string>
-    <string name="theme_type_summary">Select theme</string>
+    <string name="theme_type_title">系统主题</string>
+    <string name="theme_type_summary">选择主题</string>
     <!--Accenter -->
-    <string name="themes_hub_title">Themes</string>
+    <string name="themes_hub_title">主题</string>
     <string name="themes_hub_summary">Accents-Gradients-Themes</string>
     <string name="rgb_accent_picker_title_dark">Accent Picker</string>
     <string name="rgb_accent_picker_summary">Choose the accent color yourself</string>
