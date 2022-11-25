@@ -331,124 +331,124 @@
     <string name="brightness_icon_summary">显示自适应亮度按钮</string>
     <!-- Quick QS Panel brightness slider -->
     <string name="quick_qs_brightness_slider_title">在快速设置面板中显示亮度滑块</string>
-    <string name="quick_qs_brightness_slider_summary">Show a brightness slider in the quick qs panel</string>
+    <string name="quick_qs_brightness_slider_summary">在快速设置面板中显示亮度滑块</string>
     <!-- QS footer warnings -->
-    <string name="qs_footer_warnings_title">QS footer warnings</string>
-    <string name="qs_footer_warnings_summary">Display a warning at bottom of QS panel when network is monitored by external apps or vpn</string>
+    <string name="qs_footer_warnings_title">快捷设置页脚警告</string>
+    <string name="qs_footer_warnings_summary">在外部应用程序或 VPN 监视网络时, 在快速设置面板底部显示警告</string>
     <!-- Smart pulldown-->
-    <string name="smart_pulldown_title">Smart pulldown</string>
-    <string name="smart_pulldown_summary">Open quick settings when there are %1$s notifications</string>
-    <string name="smart_pulldown_none_summary">Open quick settings when there are no notifications</string>
-    <string name="smart_pulldown_off">Off</string>
-    <string name="smart_pulldown_none">no notifications</string>
-    <string name="smart_pulldown_dismissable">no dismissable</string>
-    <string name="smart_pulldown_ongoing">no ongoing</string>
+    <string name="smart_pulldown_title">智能下拉</string>
+    <string name="smart_pulldown_summary">当 %1$s 通知时展开快速设置</string>
+    <string name="smart_pulldown_none_summary">没有通知时展开快速设置</string>
+    <string name="smart_pulldown_off">关闭</string>
+    <string name="smart_pulldown_none">没有通知</string>
+    <string name="smart_pulldown_dismissable">没有可清除通知</string>
+    <string name="smart_pulldown_ongoing">没有正在进行的通知</string>
     <!-- Fingerprint authentication vibration -->
-    <string name="fprint_sucess_vib_title">Fingerprint success vibration</string>
-    <string name="fprint_sucess_vib_summary">Vibrate on successful fingerprint authentication</string>
-    <string name="fprint_error_vib_title">Fingerprint error vibration</string>
-    <string name="fprint_error_vib_summary">Vibrate on failed fingerprint authentication</string>
+    <string name="fprint_sucess_vib_title">指纹成功振动</string>
+    <string name="fprint_sucess_vib_summary">验证指纹身份成功时振动</string>
+    <string name="fprint_error_vib_title">指纹错误振动</string>
+    <string name="fprint_error_vib_summary">验证指纹身份失败时振动</string>
     <!-- Brightness control -->
-    <string name="status_bar_toggle_brightness">Brightness control</string>
-    <string name="status_bar_toggle_brightness_summary">Adjust brightness by sliding across the status bar</string>
+    <string name="status_bar_toggle_brightness">亮度控制</string>
+    <string name="status_bar_toggle_brightness_summary">在状态栏上横向滑动调整亮度</string>
     <!-- Lockscreen battery info indicator  -->
     <string name="lockscreen_battery_info_title">锁屏充电信息</string>
     <string name="lockscreen_battery_info_summary">充电时在锁屏上显示充电电流、电压、功率和电池温度</string>
     <!-- Charging animation -->
-    <string name="charging_animation_title">Charging animation</string>
-    <string name="charging_animation_summary">Display an animation when the device is plugged in</string>
+    <string name="charging_animation_title">充电动画</string>
+    <string name="charging_animation_summary">设备插入充电器时显示动画</string>
     <!-- Monet Engine -->
-    <string name="monet_engine_custom_color_title">Use custom color</string>
-    <string name="monet_engine_custom_color_summary">Use custom color for monet engine instead of wallpaper colors</string>
-    <string name="monet_engine_color_override_title">Custom color</string>
-    <string name="monet_engine_white_luminance_user_title">White luminance</string>
+    <string name="monet_engine_custom_color_title">使用自定义颜色</string>
+    <string name="monet_engine_custom_color_summary">使用自定义颜色而非壁纸颜色着色</string>
+    <string name="monet_engine_color_override_title">自定义颜色</string>
+    <string name="monet_engine_white_luminance_user_title">亮度</string>
     <string name="monet_engine_accurate_shades_title">Use accurate shades</string>
-    <string name="monet_engine_chroma_factor_title">Chroma factor</string>
-    <string name="monet_engine_linear_lightness_title">Use linear lightness</string>
+    <string name="monet_engine_chroma_factor_title">色度因子</string>
+    <string name="monet_engine_linear_lightness_title">使用线性亮度</string>
     <!-- Battery Bar -->
-    <string name="battery_bar_title">Battery bar</string>
-    <string name="battery_bar_summary">Display and customize battery bar near status bar or navigation bar</string>
-    <string name="battery_bar_no_navbar">Battery bar location</string>
-    <string name="battery_bar_location_hide">Hide</string>
-    <string name="battery_bar_statusbar_top">Statusbar Top</string>
-    <string name="battery_bar_statusbar_bot">Statusbar bottom</string>
-    <string name="battery_bar_color">Battery bar color</string>
-    <string name="battery_bar_charging_color">Battery bar charging color</string>
-    <string name="battery_bar_battery_low_color">Battery bar low battery color</string>
-    <string name="battery_bar_cat">Battery bar style</string>
-    <string name="battery_bar_style_title">Battery bar alignment</string>
-    <string name="battery_bar_thickness_title">Battery bar thickness</string>
-    <string name="battery_bar_animate_title">Charging animation</string>
-    <string name="battery_bar_style_regular">Regular</string>
-    <string name="battery_bar_style_center_mirrored">Center-mirrored</string>
-    <string name="battery_bar_style_reversed">Reversed</string>
-    <string name="battery_bar_use_charging_color">Custom charging color</string>
-    <string name="battery_bar_blend_color_title">Blend colors</string>
-    <string name="battery_bar_blend_color_summary">Blend full/empty colors corresponding to battery percentage</string>
-    <string name="battery_bar_blend_color_reverse_title">Reverse color direction</string>
-    <string name="battery_bar_blend_color_reverse_summary_off">Full &#8594; empty: red &#8592; green &#8592; blue &#8592; red</string>
-    <string name="battery_bar_blend_color_reverse_summary_on">Full &#8594; empty: red &#8594; green &#8594; blue &#8594; red</string>
+    <string name="battery_bar_title">电量条</string>
+    <string name="battery_bar_summary">显示和自定义在状态栏或导航栏旁的电量条</string>
+    <string name="battery_bar_no_navbar">电量条位置</string>
+    <string name="battery_bar_location_hide">隐藏</string>
+    <string name="battery_bar_statusbar_top">状态栏顶部</string>
+    <string name="battery_bar_statusbar_bot">状态栏底部</string>
+    <string name="battery_bar_color">电量条颜色</string>
+    <string name="battery_bar_charging_color">电量条颜色 (充电时)</string>
+    <string name="battery_bar_battery_low_color">电量条颜色 (低电量时)</string>
+    <string name="battery_bar_cat">电量条样式</string>
+    <string name="battery_bar_style_title">电量条对齐</string>
+    <string name="battery_bar_thickness_title">电量条厚度</string>
+    <string name="battery_bar_animate_title">充电动画</string>
+    <string name="battery_bar_style_regular">正常</string>
+    <string name="battery_bar_style_center_mirrored">中心镜像</string>
+    <string name="battery_bar_style_reversed">反向</string>
+    <string name="battery_bar_use_charging_color">自定义充电时颜色</string>
+    <string name="battery_bar_blend_color_title">混合颜色</string>
+    <string name="battery_bar_blend_color_summary">根据电量百分比混合满电量/空电量的颜色</string>
+    <string name="battery_bar_blend_color_reverse_title">反转颜色方向</string>
+    <string name="battery_bar_blend_color_reverse_summary_off">满 &#8594; 空: 红色 &#8592; 绿色 &#8592; 蓝色 &#8592; 红色</string>
+    <string name="battery_bar_blend_color_reverse_summary_on">满 &#8594; 空: 红色 &#8594; 绿色 &#8594; 蓝色 &#8594; 红色</string>
     <!-- Heads up options -->
-    <string name="less_boring_heads_up_title">Make heads up less annoying</string>
-    <string name="less_boring_heads_up_summary">Show heads up only for dialer or messaging app if they are not in foreground</string>
+    <string name="less_boring_heads_up_title">减少浮动通知频率</string>
+    <string name="less_boring_heads_up_summary">只显示不在前台运行的电话和短信的浮动通知</string>
     <!-- Notification guts kill app button -->
-    <string name="general_category">General</string>
-    <string name="notification_guts_kill_app_button_title">Kill app button</string>
-    <string name="notification_guts_kill_app_button_summary">Show a kill app button in the notification\'s longpress menu</string>
+    <string name="general_category">通用</string>
+    <string name="notification_guts_kill_app_button_title">终止应用按钮</string>
+    <string name="notification_guts_kill_app_button_summary">在通知的长按菜单中显示终止应用按钮</string>
     <!-- Custom carrier label and position -->
-    <string name="carrier_label_settings_title">Carrier label</string>
-    <string name="carrier_label_settings_summary">Customize the carrier label</string>
-    <string name="custom_carrier_label_title">Custom carrier label</string>
-    <string name="custom_carrier_label_explain">Enter a custom label. Leave blank to use your network name</string>
-    <string name="custom_carrier_label_notset">Custom label currently not set</string>
-    <string name="show_carrier_title">Carrier label location</string>
-    <string name="show_carrier_disabled">Disabled</string>
+    <string name="carrier_label_settings_title">运营商标签</string>
+    <string name="carrier_label_settings_summary">自定义运营商标签</string>
+    <string name="custom_carrier_label_title">自定义运营商标签</string>
+    <string name="custom_carrier_label_explain">输入自定义标签，留空则使用您的运营商标签</string>
+    <string name="custom_carrier_label_notset">当前未设置自定义标签</string>
+    <string name="show_carrier_title">运营商标签位置</string>
+    <string name="show_carrier_disabled">禁用</string>
     <string name="show_carrier_keyguard">锁屏</string>
-    <string name="show_carrier_statusbar">Statusbar</string>
-    <string name="show_carrier_enabled">Both</string>
+    <string name="show_carrier_statusbar">状态栏</string>
+    <string name="show_carrier_enabled">两者</string>
     <!-- Battery Settings -->
-    <string name="battery_settings_title">Battery Settings</string>
+    <string name="battery_settings_title">电池设置</string>
     <!-- Battery Styles -->
-    <string name="battery_style_category_title">Battery styles</string>
-    <string name="battery_percent_title">Battery percent</string>
+    <string name="battery_style_category_title">电池样式</string>
+    <string name="battery_percent_title">电量百分比</string>
     <!-- Status bar - Battery -->
-    <string name="status_bar_battery_style_title">Battery style</string>
-    <string name="status_bar_battery_style_icon_portrait">Icon portrait (default)</string>
-    <string name="status_bar_battery_style_circle">Circle</string>
-    <string name="status_bar_battery_style_dotted_circle">Circle (Dotted)</string>
-    <string name="status_bar_battery_style_filled_circle">Circle (Filled)</string>
-    <string name="status_bar_battery_style_big_circle">Big circle</string>
-    <string name="status_bar_battery_style_big_dotted_circle">Big dotted circle</string>
-    <string name="status_bar_battery_style_text">Text</string>
-    <string name="status_bar_battery_style_hidden">Hidden</string>
+    <string name="status_bar_battery_style_title">电池样式</string>
+    <string name="status_bar_battery_style_icon_portrait">竖置图标 (默认)</string>
+    <string name="status_bar_battery_style_circle">圆圈</string>
+    <string name="status_bar_battery_style_dotted_circle">圆圈 (虚线)</string>
+    <string name="status_bar_battery_style_filled_circle">圆圈 (实心)</string>
+    <string name="status_bar_battery_style_big_circle">大圆圈</string>
+    <string name="status_bar_battery_style_big_dotted_circle">大圆圈 (虚线)</string>
+    <string name="status_bar_battery_style_text">文本</string>
+    <string name="status_bar_battery_style_hidden">隐藏</string>
     <!-- Status bar - Battery percentage -->
-    <string name="status_bar_battery_percentage_title">Battery percentage</string>
-    <string name="status_bar_battery_percentage_default">Hidden (default)</string>
-    <string name="status_bar_battery_percentage_text_inside">Inside the icon</string>
-    <string name="status_bar_battery_percentage_text_next">Next to the icon</string>
+    <string name="status_bar_battery_percentage_title">电量百分比</string>
+    <string name="status_bar_battery_percentage_default">隐藏 (默认)</string>
+    <string name="status_bar_battery_percentage_text_inside">图标内</string>
+    <string name="status_bar_battery_percentage_text_next">图标旁</string>
     <!-- QS battery estimates -->
-    <string name="qs_show_battery_estimate_title">Battery estimates</string>
-    <string name="qs_show_battery_estimate_summary">Show estimated remaining battery life next to the icon</string>
+    <string name="qs_show_battery_estimate_title">电量预估</string>
+    <string name="qs_show_battery_estimate_summary">在图标旁边显示预计剩余电量使用时间</string>
     <!-- Navigation bar -->
-    <string name="navigation_title">Navigation</string>
-    <string name="navigation_bar_category">Navigation bar</string>
+    <string name="navigation_title">导航</string>
+    <string name="navigation_bar_category">导航栏</string>
     <string name="navigation_bar_title">屏内导航栏</string>
     <string name="navigation_bar_summary">启用屏幕内导航键</string>
-    <string name="navigation_bar_arrow_keys_title">Arrow keys</string>
-    <string name="navigation_bar_arrow_keys_summary">Show left &amp; right arrows to control the cursor while typing</string>
-    <string name="navigation_bar_invert_layout_title">Invert layout</string>
-    <string name="navigation_bar_invert_layout_summary">Inverts the layout of the navigation bar and other items</string>
-    <string name="nav_bar_tuner_title">Navigation bar tuner</string>
-    <string name="nav_bar_tuner_summary">Change navbar layout</string>
-    <string name="navbar_layout_title">Layout</string>
-    <string name="navbar_layout_normal">Normal</string>
-    <string name="navbar_layout_compact">Compact</string>
-    <string name="navbar_layout_leftleaning">Left-leaning</string>
-    <string name="navbar_layout_rightleaning">Right-leaning</string>
-    <string name="system_navigation_summary">Choose which system navigation style to use</string>
+    <string name="navigation_bar_arrow_keys_title">方向键</string>
+    <string name="navigation_bar_arrow_keys_summary">在键入时显示左 &amp; 右箭头来控制光标</string>
+    <string name="navigation_bar_invert_layout_title">反转布局</string>
+    <string name="navigation_bar_invert_layout_summary">反转导航栏和其他项目的布局</string>
+    <string name="nav_bar_tuner_title">导航栏调整</string>
+    <string name="nav_bar_tuner_summary">更改导航栏布局</string>
+    <string name="navbar_layout_title">布局</string>
+    <string name="navbar_layout_normal">正常</string>
+    <string name="navbar_layout_compact">紧凑</string>
+    <string name="navbar_layout_leftleaning">靠左</string>
+    <string name="navbar_layout_rightleaning">靠右</string>
+    <string name="system_navigation_summary">选择要使用的系统导航样式</string>
     <!-- Old mobile type icons -->
     <string name="use_old_mobiletype_title">Small mobile type icon</string>
-    <string name="use_old_mobiletype_summary">Show mobile type icon on top of the signal indicator</string>
+    <string name="use_old_mobiletype_summary">在信号指示器顶部显示移动网络类型图标</string>
     <!-- Tiles on secure keyguard -->
     <string name="use_tiles_on_secure_keyguard_title">Require unlocking to use sensitive tiles</string>
     <string name="use_tiles_on_secure_keyguard_summary">使用敏感瓷贴时要求解锁锁屏幕</string>
