@@ -54,9 +54,11 @@
     <string name="none_string">None</string>
 
     <!-- Units -->
-    <string name="unit_seconds">seconds</string>
     <string name="unit_milliseconds">milliseconds</string>
-    <string name="unit_pixels">dp</string>
+    <string name="unit_percent" translatable="false">\u0025</string>
+    <string name="unit_pixels" translatable="false">dp</string>
+    <string name="unit_seconds">seconds</string>
+    <string name="unit_x1000ms" translatable="false">x1000 ms</string>
 
     <!-- Custom seekbar -->
     <string name="custom_seekbar_value">Value: <xliff:g id="v">%s</xliff:g></string>
