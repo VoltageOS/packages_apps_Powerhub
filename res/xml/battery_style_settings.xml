@@ -49,12 +49,6 @@
             android:entryValues="@array/status_bar_battery_percent_values"
             android:defaultValue="2" />
 
-        <!-- Battery estimate -->
-        <com.power.hub.preferences.SystemSettingSwitchPreference
-            android:key="qs_show_battery_estimate"
-            android:title="@string/battery_estimate_title"
-            android:summary="@string/battery_estimate_summary" />
-
     </PreferenceCategory>
 
 </PreferenceScreen>
