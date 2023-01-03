@@ -174,32 +174,32 @@
     <string name="hardware_keys_long_press_title">Ação para toque longo</string>
     <string name="hardware_keys_double_tap_title">Ação para toque duplo</string>
     <!-- 4G icon -->
-    <string name="show_fourg_icon_title">4G icon</string>
-    <string name="show_fourg_icon_summary">Display 4G icon in signal icon instead LTE</string>
+    <string name="show_fourg_icon_title">Icone 4G</string>
+    <string name="show_fourg_icon_summary">Mostrar ícone 4G em vez LTE</string>
     <!-- VoLTE icon -->
-    <string name="volte_icon_title">VoLTE icon</string>
-    <string name="volte_icon_summary">Display VoLTE icon when available</string>
+    <string name="volte_icon_title">Ícone VoLTE</string>
+    <string name="volte_icon_summary">Mostrar ícone VoLTE quando disponível</string>
     <!-- VoWiFi icon -->
-    <string name="vowifi_icon_title">VoWiFi icon</string>
-    <string name="vowifi_icon_summary">Display VoWiFi icon when available</string>
+    <string name="vowifi_icon_title">Ícone VoWiFi</string>
+    <string name="vowifi_icon_summary">Mostrar ícone VoWIFI quando disponível</string>
     <!-- Volume swap buttons -->
-    <string name="swap_volume_buttons_title">Reorient</string>
-    <string name="swap_volume_buttons_summary">Swap volume buttons when the screen is rotated</string>
+    <string name="swap_volume_buttons_title">Reorientar</string>
+    <string name="swap_volume_buttons_summary">Inverter botões de volume quando virar a tela</string>
     <!-- Power menu on lockscreen -->
-    <string name="lockscreen_power_menu_disabled_title">Disable power menu on lock screen</string>
-    <string name="lockscreen_power_menu_disabled_summary">This will only disable the power menu on secure lock screens</string>
+    <string name="lockscreen_power_menu_disabled_title">Desativar o menu de energia na tela de bloqueio</string>
+    <string name="lockscreen_power_menu_disabled_summary">Esta opção vai desativar o acesso ao menu de energia apenas na tela de bloqueio</string>
     <!-- Toast app icon -->
-    <string name="toast_icon_title">Toast app icon</string>
-    <string name="toast_icon_summary">Display the app\'s icon corresponding with the toast</string>
+    <string name="toast_icon_title">Ícone do app na mensagem toast</string>
+    <string name="toast_icon_summary">Mostrar o ícone do aplicativo correspondente na mensagem toast</string>
     <!-- Heads up -->
-    <string name="headsup_category">HeadsUp Settings</string>
-    <string name="heads_up_notifications">Heads up</string>
-    <string name="heads_up_notifications_summary">Customise heads up notifications settings</string>
-    <string name="summary_heads_up_enabled">Pop-up notifications are enabled</string>
-    <string name="summary_heads_up_disabled">Pop-up notifications are disabled</string>
-    <string name="add_heads_up_package">Add app</string>
-    <string name="add_heads_up_stoplist_summary">Disable heads up notifications in these applications</string>
-    <string name="add_heads_up_blacklist_summary">Disable heads up from these applications</string>
+    <string name="headsup_category">Configurações das notificações flutuantes</string>
+    <string name="heads_up_notifications">Notificações flutuantes</string>
+    <string name="heads_up_notifications_summary">Personalizar configurações de notificações flutuantes</string>
+    <string name="summary_heads_up_enabled">As notificações flutuantes estão ativadas</string>
+    <string name="summary_heads_up_disabled">As notificações flutuantes estão desativadas</string>
+    <string name="add_heads_up_package">Adicionar aplicativo</string>
+    <string name="add_heads_up_stoplist_summary">Desativar notificações flutuantes nestes aplicativos</string>
+    <string name="add_heads_up_blacklist_summary">Desativar notificações flutuantes para estes aplicativos</string>
     <string name="heads_up_stoplist_title">Stoplist</string>
     <string name="heads_up_blacklist_title">Blacklist</string>
     <string name="profile_choose_app">Choose app</string>
