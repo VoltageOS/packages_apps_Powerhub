@@ -598,5 +598,16 @@
     <string name="lock_screen_weather_condition_icon_title">Condition icon display</string>
     <string name="lock_screen_weather_condition_icon_summaryOn">Condition icon is shown on Lockscreen</string>
     <string name="lock_screen_weather_condition_icon_summaryOff">Condition icon is hidden on Lockscreen</string>
+
+    <!-- Lockscreen bottom shortcuts -->
+    <string name="lockscreen_shortcut_category">Bottom shortcuts</string>
+    <string name="lockscreen_shortcut_start_title">Left shortcut</string>
+    <string name="lockscreen_shortcut_end_title">Right shortcut</string>
+    <string name="lockscreen_shortcut_wallet">Wallet</string>
+    <string name="lockscreen_shortcut_home">Home</string>
+    <string name="lockscreen_shortcut_flashlight">Flashlight</string>
+    <string name="lockscreen_shortcut_qr">QR</string>
+    <string name="lockscreen_shortcut_camera">Camera</string>
+    <string name="lockscreen_shortcut_none">None</string>
 	
 </resources>
