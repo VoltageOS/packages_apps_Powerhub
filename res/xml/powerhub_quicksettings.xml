@@ -78,7 +78,8 @@
 
         <com.power.hub.preferences.SystemSettingSwitchPreference
             android:key="qs_footer_show_services"
-            android:title="@string/qs_footer_services_icon_title" />
+            android:title="@string/qs_footer_services_icon_title"
+            android:defaultValue="false" />
 
         <com.power.hub.preferences.SystemSettingSwitchPreference
             android:key="qs_footer_show_settings"
