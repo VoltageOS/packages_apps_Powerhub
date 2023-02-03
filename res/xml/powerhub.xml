@@ -34,9 +34,9 @@
 			
 	<!-- Themes -->
         <com.power.hub.preferences.powerhubPreference
-            android:key="theme_category"
+            android:key="monet_settings"
             android:title="@string/theme_title"
-            android:fragment="com.power.hub.fragments.ThemeSettings"
+            android:fragment="com.power.hub.fragments.MonetSettings"
             android:icon="@drawable/ic_powerhub_theme_settings"/>
 
         <!-- Buttons -->
