@@ -17,5 +17,12 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:title="@string/theme_title"
         xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
+
+    <!-- Monet settings -->
+    <Preference
+        android:key="monet_settings"
+        android:title="@string/monet_settings_title"
+        android:summary="@string/monet_settings_sammary"
+        android:fragment="com.power.hub.fragments.MonetSettings" />
 		
 </PreferenceScreen>

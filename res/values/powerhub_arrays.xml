@@ -186,4 +186,18 @@
         <item>@string/status_bar_date_format_custom</item>
     </string-array>
 
+    <!-- Monet color sources  -->
+    <string-array name="color_source_entries">
+        <item>@string/color_source_both</item>
+        <item>@string/color_source_home</item>
+        <item>@string/color_source_lock</item>
+        <item>@string/color_source_preset</item>
+    </string-array>
+    <string-array name="color_source_values" translatable="false">
+        <item>both</item>
+        <item>home_wallpaper</item>
+        <item>lock_wallpaper</item>
+        <item>preset</item>
+    </string-array>
+
 </resources>
