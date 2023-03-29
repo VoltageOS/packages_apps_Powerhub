@@ -123,11 +123,10 @@
 
     </PreferenceCategory>
 
-    <!-- Qs battery customizations -->
+	<!--
     <PreferenceCategory
         android:title="@string/qs_battery_category_title" >
 
-        <!-- Battery styles -->
         <com.power.hub.preferences.SystemSettingListPreference
             android:key="qs_battery_style"
             android:title="@string/status_bar_battery_style_title"
@@ -135,7 +134,6 @@
             android:entryValues="@array/qs_battery_style_values"
             android:defaultValue="-1" />
 
-        <!-- Battery percent -->
         <com.power.hub.preferences.SystemSettingListPreference
             android:key="qs_show_battery_percent"
             android:title="@string/status_bar_battery_percent_title"
@@ -143,11 +141,10 @@
             android:entryValues="@array/status_bar_battery_percent_values"
             android:defaultValue="2" />
 
-        <!-- Battery estimate -->
         <com.power.hub.preferences.SystemSettingSwitchPreference
             android:key="qs_show_battery_estimate"
             android:title="@string/battery_estimate_title"
             android:summary="@string/battery_estimate_summary" />
-
-    </PreferenceCategory>
+                
+    </PreferenceCategory> -->
 </PreferenceScreen>
