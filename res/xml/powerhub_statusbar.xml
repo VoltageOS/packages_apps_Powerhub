@@ -123,7 +123,6 @@
 
     </PreferenceCategory>
 
-	<!--
     <PreferenceCategory
         android:title="@string/qs_battery_category_title" >
 
@@ -146,5 +145,5 @@
             android:title="@string/battery_estimate_title"
             android:summary="@string/battery_estimate_summary" />
                 
-    </PreferenceCategory> -->
+    </PreferenceCategory>
 </PreferenceScreen>
