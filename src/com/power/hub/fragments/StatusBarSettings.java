@@ -24,6 +24,7 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.Resources;
+import android.content.Context;
 import java.util.Locale;
 import android.text.TextUtils;
 import android.view.View;
@@ -33,6 +34,7 @@ import com.power.hub.preferences.SecureSettingSwitchPreference;
 import com.power.hub.preferences.SystemSettingListPreference;
 import com.android.settings.SettingsPreferenceFragment;
 import com.power.hub.preferences.SystemSettingSeekBarPreference;
+import com.power.hub.utils.DeviceUtils;
 import com.android.settings.Utils;
 import android.util.Log;
 
@@ -55,17 +57,25 @@ public class StatusBarSettings extends SettingsPreferenceFragment implements
 
         addPreferencesFromResource(R.xml.powerhub_statusbar);
 
-        PreferenceScreen prefSet = getPreferenceScreen();
-        ContentResolver resolver = getActivity().getContentResolver();
+	        final ContentResolver resolver = getActivity().getContentResolver();
+        	final Context mContext = getActivity().getApplicationContext();
+        	final PreferenceScreen prefScreen = getPreferenceScreen();
 
-        mStatusBarClock =
-                (SystemSettingListPreference) findPreference(STATUS_BAR_CLOCK_STYLE);
+                mStatusBarClock = (SystemSettingListPreference) findPreference(STATUS_BAR_CLOCK_STYLE);
 
-        // Adjust status bar preferences for RTL
-        if (getResources().getConfiguration().getLayoutDirection() == View.LAYOUT_DIRECTION_RTL) {
-            mStatusBarClock.setEntries(R.array.status_bar_clock_position_entries_rtl);
-            mStatusBarClock.setEntryValues(R.array.status_bar_clock_position_values_rtl);
-        }
+                // Adjust status bar preferences for RTL
+                if (getResources().getConfiguration().getLayoutDirection() == View.LAYOUT_DIRECTION_RTL) {
+            if (DeviceUtils.hasCenteredCutout(mContext)) {
+                mStatusBarClock.setEntries(R.array.status_bar_clock_position_entries_notch_rtl);
+                mStatusBarClock.setEntryValues(R.array.status_bar_clock_position_values_notch_rtl);
+            } else {
+                mStatusBarClock.setEntries(R.array.status_bar_clock_position_entries_rtl);
+                mStatusBarClock.setEntryValues(R.array.status_bar_clock_position_values_rtl);
+            }
+        } else if (DeviceUtils.hasCenteredCutout(mContext)) {
+            mStatusBarClock.setEntries(R.array.status_bar_clock_position_entries_notch);
+            mStatusBarClock.setEntryValues(R.array.status_bar_clock_position_values_notch);
+                }
     }
 
     @Override
