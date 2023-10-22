@@ -43,6 +43,7 @@ import android.provider.Settings;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.internal.util.voltage.VoltageUtils;
+import com.android.internal.util.voltage.udfps.CustomUdfpsUtils;
 import com.power.hub.preferences.SystemSettingListPreference;
 import com.power.hub.preferences.CustomSeekBarPreference;
 import com.power.hub.preferences.SecureSettingListPreference;
@@ -62,11 +63,17 @@ public class LockScreenSettings extends SettingsPreferenceFragment implements
 
     private static final String FINGERPRINT_SUCCESS_VIB = "fingerprint_success_vib";
     private static final String FINGERPRINT_ERROR_VIB = "fingerprint_error_vib";
+
+    private static final String UDFPS_CATEGORY = "udfps_category";
+
     private static final String KEY_WEATHER = "lockscreen_weather_enabled";
 
     private FingerprintManager mFingerprintManager;
     private SwitchPreference mFingerprintSuccessVib;
     private SwitchPreference mFingerprintErrorVib;
+
+    private PreferenceCategory mUdfpsCategory;
+
     private Preference mWeather;
     private OmniJawsClient mWeatherClient;
 
@@ -100,7 +107,10 @@ public class LockScreenSettings extends SettingsPreferenceFragment implements
             prefSet.removePreference(mFingerprintSuccessVib);
             prefSet.removePreference(mFingerprintErrorVib);
         }
-
+        mUdfpsCategory = findPreference(UDFPS_CATEGORY);
+        if (!CustomUdfpsUtils.hasUdfpsSupport(getContext())) {
+            prefSet.removePreference(mUdfpsCategory);
+        }
        mWeather = (Preference) findPreference(KEY_WEATHER);
        mWeatherClient = new OmniJawsClient(getContext());
        updateWeatherSettings();
