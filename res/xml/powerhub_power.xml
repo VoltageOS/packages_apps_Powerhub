@@ -18,49 +18,81 @@
     android:title="@string/powermenu_title"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 	
-	<com.power.hub.preferences.SystemSettingSwitchPreference
-            android:key="powermenu_power"
-            android:title="@string/powermenu_power"
+    <!--
+    <com.power.hub.preferences.SystemSettingSwitchPreference
+        android:key="lockscreen_power_menu_disabled"
+        android:title="@string/lockscreen_power_menu_disabled_title"
+        android:summary="@string/lockscreen_power_menu_disabled_summary"
+        android:defaultValue="true" />
+    -->
+
+    <PreferenceCategory
+        android:title="@string/global_actions_title">
+
+        <com.power.hub.preferences.SystemSettingSwitchPreference
+            android:key="global_actions_power"
+            android:title="@string/global_actions_power"
             android:defaultValue="true" />
 
-         <com.power.hub.preferences.SystemSettingSwitchPreference
-            android:key="powermenu_restart"
-            android:title="@string/powermenu_restart"
+        <com.power.hub.preferences.SystemSettingSwitchPreference
+            android:key="global_actions_restart"
+            android:title="@string/global_actions_restart"
             android:defaultValue="true" />
 
-         <com.power.hub.preferences.SystemSettingSwitchPreference
-            android:key="powermenu_advanced"
-            android:title="@string/powermenu_advanced"
+        <com.power.hub.preferences.SystemSettingSwitchPreference
+            android:key="global_actions_advanced"
+            android:title="@string/global_actions_advanced"
             android:defaultValue="true" />
 
-         <com.power.hub.preferences.SystemSettingSwitchPreference
-            android:key="powermenu_screenshot"
-            android:title="@string/powermenu_screenshot"
+        <com.power.hub.preferences.SystemSettingSwitchPreference
+            android:key="global_actions_screenshot"
+            android:title="@string/global_actions_screenshot"
             android:defaultValue="false" />
 
-         <com.power.hub.preferences.SystemSettingSwitchPreference
-            android:key="powermenu_settings"
-            android:title="@string/powermenu_settings"
+        <!--
+        <com.power.hub.preferences.SystemSettingSwitchPreference
+            android:key="global_actions_on_the_go"
+            android:title="@string/global_actions_on_the_go"
+            android:defaultValue="false" />
+        -->
+
+        <com.power.hub.preferences.SystemSettingSwitchPreference
+            android:key="global_actions_settings"
+            android:title="@string/global_actions_settings"
             android:defaultValue="false" />
 
-         <com.power.hub.preferences.SystemSettingSwitchPreference
-            android:key="powermenu_lockdown"
-            android:title="@string/powermenu_lockdown"
+        <com.power.hub.preferences.SystemSettingSwitchPreference
+            android:key="global_actions_lockdown"
+            android:title="@string/global_actions_lockdown"
             android:defaultValue="false" />
 
-         <com.power.hub.preferences.SystemSettingSwitchPreference
-            android:key="powermenu_emergency"
-            android:title="@string/powermenu_emergency"
+        <com.power.hub.preferences.SystemSettingSwitchPreference
+            android:key="global_actions_emergency"
+            android:title="@string/global_actions_emergency"
             android:defaultValue="false" />
 
-         <com.power.hub.preferences.SystemSettingSwitchPreference
-            android:key="powermenu_users"
-            android:title="@string/powermenu_users"
+        <com.power.hub.preferences.SystemSettingSwitchPreference
+            android:key="global_actions_device_controls"
+            android:title="@string/global_actions_device_controls"
             android:defaultValue="false" />
 
-         <com.power.hub.preferences.SystemSettingSwitchPreference
-            android:key="powermenu_logout"
-            android:title="@string/powermenu_logout"
+        <com.power.hub.preferences.SystemSettingSwitchPreference
+            android:key="global_actions_users"
+            android:title="@string/global_actions_users"
             android:defaultValue="false" />
+
+        <com.power.hub.preferences.SystemSettingSwitchPreference
+            android:key="global_actions_logout"
+            android:title="@string/global_actions_logout"
+            android:defaultValue="false" />
+
+        <!--
+        <com.power.hub.preferences.GlobalSettingSwitchPreference
+            android:key="bugreport_in_power_menu"
+            android:title="@string/global_actions_bugreport"
+            android:defaultValue="false" />
+        -->
+
+    </PreferenceCategory>
 
 </PreferenceScreen>
