@@ -387,4 +387,8 @@
     <string name="global_actions_device_controls">Device controls</string>
     <string name="global_actions_bugreport">Bug report</string>
 	
+    <!-- QSTile requires unlocking before being accessible -->
+    <string name="qstile_requires_unlocking_title">Secure QS tiles require unlocking</string>
+    <string name="qstile_requires_unlocking_summary">The following QS tiles require unlocking before you can access them from the lock screen:\nAirplane, Cellular, NFC, Hotspot, USB tethering and Location</string>
+	
 </resources>
