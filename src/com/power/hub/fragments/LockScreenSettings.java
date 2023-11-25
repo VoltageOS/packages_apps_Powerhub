@@ -51,6 +51,7 @@ import com.power.hub.preferences.SystemSettingListPreference;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settingslib.search.SearchIndexable;
 import android.provider.SearchIndexableResource;
+import com.android.internal.util.crdroid.OmniJawsClient;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -61,10 +62,13 @@ public class LockScreenSettings extends SettingsPreferenceFragment implements
 
     private static final String FINGERPRINT_SUCCESS_VIB = "fingerprint_success_vib";
     private static final String FINGERPRINT_ERROR_VIB = "fingerprint_error_vib";
+    private static final String KEY_WEATHER = "lockscreen_weather_enabled";
 
     private FingerprintManager mFingerprintManager;
     private SwitchPreference mFingerprintSuccessVib;
     private SwitchPreference mFingerprintErrorVib;
+    private Preference mWeather;
+    private OmniJawsClient mWeatherClient;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -96,11 +100,10 @@ public class LockScreenSettings extends SettingsPreferenceFragment implements
             prefSet.removePreference(mFingerprintSuccessVib);
             prefSet.removePreference(mFingerprintErrorVib);
         }
-    }
 
-    @Override
-    public void onResume() {
-        super.onResume();
+       mWeather = (Preference) findPreference(KEY_WEATHER);
+       mWeatherClient = new OmniJawsClient(getContext());
+       updateWeatherSettings();
     }
 
     public boolean onPreferenceChange(Preference preference, Object newValue) {
@@ -117,6 +120,21 @@ public class LockScreenSettings extends SettingsPreferenceFragment implements
             return true;
         }
         return false;
+    }
+
+    private void updateWeatherSettings() {
+        if (mWeatherClient == null || mWeather == null) return;
+
+        boolean weatherEnabled = mWeatherClient.isOmniJawsEnabled();
+        mWeather.setEnabled(weatherEnabled);
+        mWeather.setSummary(weatherEnabled ? R.string.lockscreen_weather_summary :
+            R.string.lockscreen_weather_enabled_info);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        updateWeatherSettings();
     }
 
     @Override

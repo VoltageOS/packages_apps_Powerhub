@@ -469,5 +469,15 @@
     <!-- QSTile requires unlocking before being accessible -->
     <string name="qstile_requires_unlocking_title">Secure QS tiles require unlocking</string>
     <string name="qstile_requires_unlocking_summary">The following QS tiles require unlocking before you can access them from the lock screen:\nAirplane, Cellular, NFC, Hotspot, USB tethering and Location</string>
+
+    <!-- Weather -->
+    <string name="weather_category_title">Weather</string>
+    <string name="weather_settings_title">Weather settings</string>
+    <string name="weather_settings_summary">Setup icon pack and weather service</string>
+    <string name="lockscreen_weather_title">Weather condition</string>
+    <string name="lockscreen_weather_summary">Display current weather condition and temperature</string>
+    <string name="lockscreen_weather_enabled_info">Requires weather service to be enabled</string>
+    <string name="lockscreen_weather_location_title">Weather location</string>
+    <string name="lockscreen_weather_location_summary">Display current weather location</string>
 	
 </resources>
