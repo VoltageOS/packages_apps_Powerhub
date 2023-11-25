@@ -1,4 +1,4 @@
-'<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <!--
     Copyright (C) 2016 Nitrogen Project
 
@@ -21,19 +21,16 @@
     <PreferenceCategory
         android:key="incall_vib_options"
         android:title="@string/incall_vibration_category">
-
         <com.power.hub.preferences.SystemSettingSwitchPreference
             android:key="vibrate_on_connect"
             android:icon="@drawable/ic_vibrate"
             android:title="@string/incall_vibrate_connect_title"
             android:defaultValue="true" />
-
         <com.power.hub.preferences.SystemSettingSwitchPreference
             android:key="vibrate_on_callwaiting"
             android:icon="@drawable/ic_vibrate"
             android:title="@string/incall_vibrate_call_wait_title"
             android:defaultValue="true" />
-
         <com.power.hub.preferences.SystemSettingSwitchPreference
             android:key="vibrate_on_disconnect"
             android:icon="@drawable/ic_vibrate"
@@ -41,22 +38,25 @@
             android:defaultValue="true" />
 
     </PreferenceCategory>
-	
-    <com.power.hub.preferences.SystemSettingSwitchPreference
-	
+
+        <Preference
+            android:key="island_notification"
+            android:title="@string/island_notification_title"
+            android:summary="@string/island_notification_summary"
+            android:fragment="com.power.hub.fragments.IslandSettings" />
+
         <com.power.hub.preferences.SystemSettingSwitchPreference
            android:key="notification_guts_kill_app_button"
            android:title="@string/notification_guts_kill_app_button_title"
            android:summary="@string/notification_guts_kill_app_button_summary"
            android:defaultValue="false" />
-
     <com.power.hub.preferences.SystemSettingSwitchPreference
         android:key="notification_sound_vib_screen_on"
         android:title="@string/notification_sound_vib_screen_on_title"
         android:summary="@string/notification_sound_vib_screen_on_summary"
         android:defaultValue="true" />
 
-        <com.power.hub.preferences.SystemSettingSwitchPreference
+    <com.power.hub.preferences.SystemSettingSwitchPreference
             android:key="less_boring_heads_up"
             android:title="@string/less_boring_heads_up_title"
             android:summary="@string/less_boring_heads_up_summary"
