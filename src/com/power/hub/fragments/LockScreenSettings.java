@@ -50,6 +50,7 @@ import com.voltage.support.preferences.SystemSettingListPreference;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settingslib.search.SearchIndexable;
 import android.provider.SearchIndexableResource;
+import com.android.internal.util.crdroid.OmniJawsClient;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -57,6 +58,11 @@ import java.util.List;
 @SearchIndexable(forTarget = SearchIndexable.ALL & ~SearchIndexable.ARC)
 public class LockScreenSettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
+
+    private static final String KEY_WEATHER = "lockscreen_weather_enabled";
+
+    private Preference mWeather;
+    private OmniJawsClient mWeatherClient;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -76,16 +82,30 @@ public class LockScreenSettings extends SettingsPreferenceFragment implements
         } catch (NameNotFoundException e) {
             e.printStackTrace();
         }
-    }
 
-    @Override
-    public void onResume() {
-        super.onResume();
+       mWeather = (Preference) findPreference(KEY_WEATHER);
+       mWeatherClient = new OmniJawsClient(getContext());
+       updateWeatherSettings();
     }
 
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         ContentResolver resolver = getActivity().getContentResolver();
         return false;
+    }
+
+    private void updateWeatherSettings() {
+        if (mWeatherClient == null || mWeather == null) return;
+
+        boolean weatherEnabled = mWeatherClient.isOmniJawsEnabled();
+        mWeather.setEnabled(weatherEnabled);
+        mWeather.setSummary(weatherEnabled ? R.string.lockscreen_weather_summary :
+            R.string.lockscreen_weather_enabled_info);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        updateWeatherSettings();
     }
 
     @Override

@@ -255,4 +255,15 @@
      <string name="gameprops_summary">Enables per-app game spoofing options</string>
      <string name="gameprops_load_json_title">Select per-app game props JSON file</string>
      <string name="gameprops_load_json_summary">Choose the JSON file to be used to spoof more games</string>	
+
+    <!-- Weather -->
+    <string name="weather_category_title">Weather</string>
+    <string name="weather_settings_title">Weather settings</string>
+    <string name="weather_settings_summary">Setup icon pack and weather service</string>
+    <string name="lockscreen_weather_title">Weather condition</string>
+    <string name="lockscreen_weather_summary">Display current weather condition and temperature</string>
+    <string name="lockscreen_weather_enabled_info">Requires weather service to be enabled</string>
+    <string name="lockscreen_weather_location_title">Weather location</string>
+    <string name="lockscreen_weather_location_summary">Display current weather location</string>
+	
 </resources>
