@@ -42,17 +42,4 @@
 
     </PreferenceCategory>
 	
-    <com.power.hub.preferences.SystemSettingSwitchPreference
-        android:key="reticker_status"
-        android:title="@string/reticker_title"
-        android:summary="@string/reticker_summary"
-        android:defaultValue="false" />
-
-    <com.power.hub.preferences.SystemSettingSwitchPreference
-        android:key="reticker_colored"
-        android:title="@string/reticker_colored_title"
-        android:summary="@string/reticker_colored_summary"
-        android:dependency="reticker_status"
-        android:defaultValue="false" />
-	
 </PreferenceScreen>
