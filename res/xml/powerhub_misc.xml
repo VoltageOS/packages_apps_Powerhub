@@ -58,6 +58,13 @@
             android:summary="@string/spoof_recent_pixel_summary"
             android:defaultValue="true" />
 
+        <!-- Spoof all gapps as recent Pixel -->
+        <com.power.hub.preferences.SystemPropertySwitchPreference
+            android:key="persist.sys.pixelprops.recent.all"
+            android:title="@string/spoof_recent_pixel_all_title"
+            android:summary="@string/spoof_recent_pixel_all_summary"
+            android:defaultValue="false" />
+
         <!-- Unlimited Photos storage -->
         <SwitchPreference
             android:key="use_photos_spoof"
