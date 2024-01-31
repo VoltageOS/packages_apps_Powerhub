@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright (C) 2021 VoltageOS
+<!-- Copyright (C) 2024 VoltageOS
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
      You may obtain a copy of the License at
@@ -52,6 +52,8 @@
     <string name="default_string">Default</string>
     <string name="disabled">Disabled</string>
     <string name="none_string">None</string>
+    <string name="enable">Enable</string>
+    <string name="disable">Disable</string>
 
     <!-- Units -->
     <string name="unit_seconds">seconds</string>
@@ -520,6 +522,10 @@
     <!-- Screen off UDFPS -->
     <string name="screen_off_udfps_title">Screen off UDFPS</string>
     <string name="screen_off_udfps_summary">Keep UDFPS enabled when the screen is off</string>
+
+    <!-- UDFPS Animations -->
+    <string name="udfps_recog_animation_effect_title">UDFPS custom animation</string>
+    <string name="udfps_recog_animation_effect_summary">Choose animation effect</string>
 
     <!-- Lock screen media artwork -->
     <string name="lockscreen_media_blur_title">Media art blur level</string>

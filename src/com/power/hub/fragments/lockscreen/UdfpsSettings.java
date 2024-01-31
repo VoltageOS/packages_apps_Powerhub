@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2023 VoltageOS
+ * Copyright (C) 2024 VoltageOS
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -46,8 +46,10 @@ import com.android.settings.SettingsPreferenceFragment;
 
 public class UdfpsSettings extends SettingsPreferenceFragment {
 
+    private static final String KEY_UDFPS_ANIMATIONS = "udfps_recognizing_animation_preview";
     private static final String SCREEN_OFF_UDFPS_ENABLED = "screen_off_udfps_enabled";
 
+    private Preference mUdfpsAnimations;
     private Preference mScreenOffUdfps;
 
     @Override
@@ -57,6 +59,13 @@ public class UdfpsSettings extends SettingsPreferenceFragment {
 
         final PreferenceScreen prefSet = getPreferenceScreen();
         Resources resources = getResources();
+
+        final boolean udfpsResPkgInstalled = VoltageUtils.isPackageInstalled(getContext(),
+                "com.power.hub.udfps.animations");
+        mUdfpsAnimations = findPreference(KEY_UDFPS_ANIMATIONS);
+        if (!udfpsResPkgInstalled) {
+            prefSet.removePreference(mUdfpsAnimations);
+        }
 
         mScreenOffUdfps = (Preference) prefSet.findPreference(SCREEN_OFF_UDFPS_ENABLED);
         boolean screenOffUdfpsAvailable = resources.getBoolean(

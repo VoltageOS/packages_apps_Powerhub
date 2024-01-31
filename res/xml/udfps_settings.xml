@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-     Copyright (C) 2023 VoltageOS
+     Copyright (C) 2024 VoltageOS
      SPDX-License-Identifier: Apache-2.0
 -->
 <PreferenceScreen 
@@ -14,4 +14,11 @@
         android:title="@string/screen_off_udfps_title"
         android:summary="@string/screen_off_udfps_summary"
         android:defaultValue="false" />
+
+    <!-- UDFPS ANIMATIONS -->
+    <Preference
+        android:key="udfps_recognizing_animation_preview"
+        android:title="@string/udfps_recog_animation_effect_title"
+        android:summary="@string/udfps_recog_animation_effect_summary"
+        android:fragment="com.power.hub.fragments.lockscreen.UdfpsAnimation" />
 </PreferenceScreen>
