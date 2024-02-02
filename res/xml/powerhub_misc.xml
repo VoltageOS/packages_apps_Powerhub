@@ -19,66 +19,16 @@
         xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
     <Preference
+        android:key="spoof_settings"
+        android:title="@string/spoof_title"
+        android:summary="@string/spoof_summary"
+        android:fragment="com.power.hub.fragments.SpoofSettings" />
+
+    <Preference
         android:key="pulse_settings"
         android:title="@string/pulse_settings"
         android:summary="@string/pulse_settings_summary"
         android:fragment="com.power.hub.fragments.PulseSettings" />
-
-    <PreferenceCategory
-        android:key="spoof_category"
-        android:title="@string/spoof_title">
-
-        <!-- Play integrity fix -->
-        <com.power.hub.preferences.SystemPropertySwitchPreference
-            android:key="persist.sys.pif"
-            android:title="@string/pif_spoof_title"
-            android:summary="@string/pif_spoof_summary"
-            android:defaultValue="true" />
-
-        <Preference
-            android:key="pif"
-            android:title="@string/pif_title"
-            android:summary="@string/pif_summary">
-            <intent android:action="android.intent.action.MAIN"
-                android:targetPackage="com.goolag.pif"
-                android:targetClass="com.goolag.pif.PifActivity" />
-        </Preference>
-
-        <!-- Pixel Props (spoof gapps as Pixel 5) -->
-        <com.power.hub.preferences.SystemPropertySwitchPreference
-            android:key="persist.sys.pixelprops"
-            android:title="@string/spoof_as_pixel_title"
-            android:summary="@string/spoof_as_pixel_summary"
-            android:defaultValue="true" />
-
-        <!-- Spoof only some gapps as recent Pixel -->
-        <com.power.hub.preferences.SystemPropertySwitchPreference
-            android:key="persist.sys.pixelprops.recent"
-            android:title="@string/spoof_recent_pixel_title"
-            android:summary="@string/spoof_recent_pixel_summary"
-            android:defaultValue="true" />
-
-        <!-- Spoof all gapps as recent Pixel -->
-        <com.power.hub.preferences.SystemPropertySwitchPreference
-            android:key="persist.sys.pixelprops.recent.all"
-            android:title="@string/spoof_recent_pixel_all_title"
-            android:summary="@string/spoof_recent_pixel_all_summary"
-            android:defaultValue="false" />
-
-        <!-- Unlimited Photos storage -->
-        <SwitchPreference
-            android:key="use_photos_spoof"
-            android:title="@string/use_photos_spoof_title"
-            android:summary="@string/use_photos_spoof_summary"
-            android:defaultValue="true" />
-
-        <!-- Unlock FPS for specific games -->
-        <SwitchPreference
-            android:key="use_games_spoof"
-            android:title="@string/use_games_spoof_title"
-            android:summary="@string/use_games_spoof_summary" />
-
-    </PreferenceCategory>
 
     <com.power.hub.preferences.SystemSettingSwitchPreference
         android:key="click_partial_screenshot"
