@@ -22,25 +22,17 @@ import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.Drawable;
-import android.net.Uri;
 import android.os.Bundle;
-import android.provider.SearchIndexableResource;
+import android.os.UserHandle;
 import android.provider.Settings;
-import android.text.TextUtils;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup.LayoutParams;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.content.res.ResourcesCompat;
 import androidx.preference.Preference.OnPreferenceChangeListener;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceScreen;
@@ -55,15 +47,8 @@ import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
 import com.android.settings.R;
 import com.android.settings.SettingsActivity;
 import com.android.settings.SettingsPreferenceFragment;
-import com.android.settings.search.BaseSearchIndexProvider;
-import com.android.settingslib.search.Indexable;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class UdfpsAnimation extends SettingsPreferenceFragment {
 
@@ -80,8 +65,8 @@ public class UdfpsAnimation extends SettingsPreferenceFragment {
     private UdfpsAnimAdapter mUdfpsAnimAdapter;
 
     @Override
-    public void onCreate(Bundle icicle) {
-        super.onCreate(icicle);
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         getActivity().setTitle(R.string.udfps_recog_animation_effect_title);
 
         loadResources();
@@ -105,7 +90,7 @@ public class UdfpsAnimation extends SettingsPreferenceFragment {
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
-            @Nullable Bundle icicle) {
+            @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(
                 R.layout.item_view, container, false);
 
@@ -113,25 +98,20 @@ public class UdfpsAnimation extends SettingsPreferenceFragment {
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 3);
         mRecyclerView.setLayoutManager(gridLayoutManager);
         mUdfpsAnimAdapter = new UdfpsAnimAdapter(getActivity());
+        mRecyclerView.setAdapter(mUdfpsAnimAdapter);
 
         return view;
     }
 
-    @Override
-    public void onActivityCreated(Bundle icicle) {
-        super.onActivityCreated(icicle);
-        final SettingsActivity activity = (SettingsActivity) getActivity();
-        mRecyclerView.setAdapter(mUdfpsAnimAdapter);
+    public static void reset(Context mContext) {
+        ContentResolver resolver = mContext.getContentResolver();
+        Settings.System.putIntForUser(resolver,
+                Settings.System.UDFPS_ANIM_STYLE, 0, UserHandle.USER_CURRENT);
     }
 
     @Override
     public int getMetricsCategory() {
         return MetricsEvent.VOLTAGE;
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
     }
 
     public class UdfpsAnimAdapter extends RecyclerView.Adapter<UdfpsAnimAdapter.UdfpsAnimViewHolder> {
