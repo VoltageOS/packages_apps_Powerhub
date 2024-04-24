@@ -17,5 +17,17 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:title="@string/misc_title"
         xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
-		
+
+    <PreferenceCategory
+         android:key="miscellaneous_spoofing_category"
+         android:title="@string/miscellaneous_spoofing_category">
+
+         <!-- Component spoofing -->
+         <Preference
+             android:key="spoofing"
+             android:title="@string/spoofing_title"
+             android:summary="@string/spoofing_summary"
+             android:fragment="com.power.hub.fragments.Spoofing" />
+     </PreferenceCategory>
+
 </PreferenceScreen>
