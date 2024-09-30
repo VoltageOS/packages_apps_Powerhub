@@ -15,10 +15,15 @@
     android:title="@string/statusbar_title"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 	
-       <Preference
+    <Preference
         android:key="systemui_tuner_statusbar"
         android:title="@string/statusbar_items_category" >
         <intent android:action="com.android.settings.action.STATUS_BAR_TUNER" />
         </Preference>
+
+    <Preference
+        android:key="battery_bar_category"
+        android:fragment="com.power.hub.fragments.BatterySettings"
+        android:title="@string/battery_settings_title" />
 
 </PreferenceScreen>
