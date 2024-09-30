@@ -27,6 +27,11 @@
         android:summary="@string/status_bar_clock_summary"
         android:fragment="com.power.hub.fragments.Clock" />
 
+    <Preference
+        android:key="battery_bar_category"
+        android:fragment="com.power.hub.fragments.BatterySettings"
+        android:title="@string/battery_settings_title" />
+
         <com.voltage.support.preferences.SecureSettingListPreference
             android:key="qs_show_brightness_slider"
             android:title="@string/qs_brightness_slider_title"

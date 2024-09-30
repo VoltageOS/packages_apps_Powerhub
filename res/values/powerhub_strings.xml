@@ -559,4 +559,25 @@
     <string name="qs_vibrant_shade_title">Vibrant shade elements</string>
     <string name="qs_vibrant_shade_summary">Use vibrant accent colors for QS tiles and brightness slider</string>
 
+    <!-- Battery customizations -->
+    <string name="battery_settings_title">Battery Settings</string>   
+    <string name="battery_options">Battery</string>
+    <string name="battery_style_title">Battery Style</string>
+    <!-- Status bar - Battery -->
+    <string name="status_bar_battery_style_title">Battery style</string>
+    <string name="status_bar_battery_style_icon_portrait">Icon portrait</string>
+    <string name="status_bar_battery_style_icon_rlandscape">Icon landscape (Right)</string>
+    <string name="status_bar_battery_style_icon_landscape">Icon landscape (Left)</string>
+    <string name="status_bar_battery_style_circle">Circle</string>
+    <string name="status_bar_battery_style_dotted_circle">Dotted circle</string>
+    <string name="status_bar_battery_style_filled_circle">Filled circle</string>
+    <string name="status_bar_battery_style_text">Text</string>
+    <string name="status_bar_battery_style_hidden">Hidden</string>
+    <string name="status_bar_battery_percent_title">Battery percent</string>
+    <string name="status_bar_battery_percent_hidden">Hidden</string>
+    <string name="status_bar_battery_percent_text_inside">Inside the icon</string>
+    <string name="status_bar_battery_percent_text_next">Next to the icon</string> 
+    <string name="status_bar_battery_percent_text_next_right">Next to the icon (right)</string> 
+    <string name="status_bar_battery_percent_text_next_left">Next to the icon (left)</string> 
+
 </resources>
