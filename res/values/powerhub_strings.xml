@@ -189,4 +189,14 @@
     <string name="global_actions_device_controls">Device controls</string>
     <string name="global_actions_bugreport">Bug report</string>
 	
+    <!-- Battery customizations -->
+    <string name="battery_settings_title">Battery Settings</string>   
+    <string name="battery_options">Battery</string>
+    <string name="battery_style_title">Battery Style</string>
+    <string name="battery_style_port">Portrait</string>
+    <string name="battery_style_circle">Circle</string>
+    <string name="battery_style_text">Text</string>
+    <string name="battery_percent_title">Show percent</string>
+    <string name="battery_percent_summary">Always show the battery percent with the icon</string>
+
 </resources>
