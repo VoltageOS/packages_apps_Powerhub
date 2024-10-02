@@ -58,6 +58,7 @@ public class Clock extends SettingsPreferenceFragment implements
 
     private static final String TAG = "Clock";
 
+    private static final String STATUS_BAR_CLOCK_STYLE = "status_bar_clock";
     private static final String STATUS_BAR_AM_PM = "status_bar_am_pm";
     private static final String CLOCK_DATE_DISPLAY = "status_bar_clock_date_display";
     private static final String CLOCK_DATE_POSITION = "status_bar_clock_date_position";
@@ -68,6 +69,7 @@ public class Clock extends SettingsPreferenceFragment implements
     private static final int CLOCK_DATE_STYLE_UPPERCASE = 2;
     private static final int CUSTOM_CLOCK_DATE_FORMAT_INDEX = 18;
 
+    private SystemSettingListPreference mStatusBarClock;
     private SystemSettingListPreference mStatusBarAmPm;
     private SystemSettingListPreference mClockDateDisplay;
     private SystemSettingListPreference mClockDatePosition;

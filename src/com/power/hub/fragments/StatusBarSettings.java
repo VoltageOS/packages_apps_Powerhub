@@ -20,11 +20,6 @@ import androidx.preference.PreferenceFragment;
 import androidx.preference.SwitchPreferenceCompat;
 import android.provider.Settings;
 import com.android.settings.R;
-import android.content.DialogInterface;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
-import android.content.res.Resources;
 import java.util.Locale;
 import android.text.TextUtils;
 import android.view.View;
@@ -39,6 +34,10 @@ import com.voltage.support.preferences.SystemSettingSeekBarPreference;
 
 import com.power.hub.utils.DeviceUtils;
 import com.android.settings.Utils;
+import com.android.internal.util.voltage.VoltageUtils;
+import com.android.settings.search.BaseSearchIndexProvider;
+import com.android.settingslib.search.SearchIndexable;
+import android.provider.SearchIndexableResource;
 import android.util.Log;
 
 import java.util.List;
@@ -47,6 +46,7 @@ import java.util.Map;
 import java.util.HashMap;
 import java.util.Collections;
 
+@SearchIndexable(forTarget = SearchIndexable.ALL & ~SearchIndexable.ARC)
 public class StatusBarSettings extends SettingsPreferenceFragment implements
         OnPreferenceChangeListener {
 
@@ -59,30 +59,13 @@ public class StatusBarSettings extends SettingsPreferenceFragment implements
         super.onCreate(icicle);
 
         addPreferencesFromResource(R.xml.powerhub_statusbar);
+		ContentResolver resolver = getActivity().getContentResolver();
 
-	        final ContentResolver resolver = getActivity().getContentResolver();
-        	final Context mContext = getActivity().getApplicationContext();
-        	final PreferenceScreen prefScreen = getPreferenceScreen();
-
-                mStatusBarClock = (SystemSettingListPreference) findPreference(STATUS_BAR_CLOCK_STYLE);
-
-                // Adjust status bar preferences for RTL
-                if (getResources().getConfiguration().getLayoutDirection() == View.LAYOUT_DIRECTION_RTL) {
-            if (DeviceUtils.hasCenteredCutout(mContext)) {
-                mStatusBarClock.setEntries(R.array.status_bar_clock_position_entries_notch_rtl);
-                mStatusBarClock.setEntryValues(R.array.status_bar_clock_position_values_notch_rtl);
-            } else {
-                mStatusBarClock.setEntries(R.array.status_bar_clock_position_entries_rtl);
-                mStatusBarClock.setEntryValues(R.array.status_bar_clock_position_values_rtl);
-            }
-        } else if (DeviceUtils.hasCenteredCutout(mContext)) {
-            mStatusBarClock.setEntries(R.array.status_bar_clock_position_entries_notch);
-            mStatusBarClock.setEntryValues(R.array.status_bar_clock_position_values_notch);
-                }
+        PreferenceScreen prefSet = getPreferenceScreen();
     }
 
     @Override
-    public boolean onPreferenceChange(Preference preference, Object newValue) {
+    public boolean onPreferenceChange(Preference preference, Object objValue) {
         ContentResolver resolver = getActivity().getContentResolver();
         return false;
     }
@@ -92,4 +75,25 @@ public class StatusBarSettings extends SettingsPreferenceFragment implements
         return MetricsProto.MetricsEvent.VOLTAGE;
     }
 
+	/**
+     * For Search.
+     */
+    public static final SearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
+            new BaseSearchIndexProvider() {
+                @Override
+                public List<SearchIndexableResource> getXmlResourcesToIndex(Context context,
+                        boolean enabled) {
+                    ArrayList<SearchIndexableResource> result =
+                            new ArrayList<SearchIndexableResource>();
+                    SearchIndexableResource sir = new SearchIndexableResource(context);
+                    sir.xmlResId = R.xml.powerhub_statusbar;
+                    result.add(sir);
+                    return result;
+                }
+                @Override
+                public List<String> getNonIndexableKeys(Context context) {
+                    List<String> keys = super.getNonIndexableKeys(context);
+                    return keys;
+                }
+    };
 }
