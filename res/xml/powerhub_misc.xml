@@ -18,6 +18,11 @@
         android:title="@string/misc_title"
         xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
+    <Preference
+        android:key="button_category"
+        android:fragment="com.power.hub.fragments.ButtonSettings"
+        android:title="@string/button_title" />
+
     <PreferenceCategory
          android:key="miscellaneous_spoofing_category"
          android:title="@string/miscellaneous_spoofing_category">
