@@ -32,7 +32,7 @@ import android.hardware.fingerprint.FingerprintManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.UserHandle;
-import androidx.preference.SwitchPreference;
+import androidx.preference.SwitchPreferenceCompat;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceCategory;
@@ -64,8 +64,8 @@ public class LockScreenSettings extends SettingsPreferenceFragment implements
     private static final String FINGERPRINT_ERROR_VIB = "fingerprint_error_vib";
 
     private FingerprintManager mFingerprintManager;
-    private SwitchPreference mFingerprintSuccessVib;
-    private SwitchPreference mFingerprintErrorVib;
+    private SwitchPreferenceCompat mFingerprintSuccessVib;
+    private SwitchPreferenceCompat mFingerprintErrorVib;
 
     private static final String KEY_WEATHER = "lockscreen_weather_enabled";
 
@@ -83,8 +83,8 @@ public class LockScreenSettings extends SettingsPreferenceFragment implements
 
         final PackageManager mPm = getActivity().getPackageManager();
      mFingerprintManager = (FingerprintManager) getActivity().getSystemService(Context.FINGERPRINT_SERVICE);
-        mFingerprintSuccessVib = (SwitchPreference) findPreference(FINGERPRINT_SUCCESS_VIB);
-        mFingerprintErrorVib = (SwitchPreference) findPreference(FINGERPRINT_ERROR_VIB);
+        mFingerprintSuccessVib = (SwitchPreferenceCompat) findPreference(FINGERPRINT_SUCCESS_VIB);
+        mFingerprintErrorVib = (SwitchPreferenceCompat) findPreference(FINGERPRINT_ERROR_VIB);
         if (mPm.hasSystemFeature(PackageManager.FEATURE_FINGERPRINT) &&
                  mFingerprintManager != null) {
             if (!mFingerprintManager.isHardwareDetected()){
