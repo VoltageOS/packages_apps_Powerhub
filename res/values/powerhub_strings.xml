@@ -466,4 +466,9 @@
  
      The progress bar dynamically switches between media and download states, ensuring you always have the most relevant information at a glance."
      </string>
+
+    <!-- Freeform launch mode -->
+    <string name="freeform_launch_mode_title">Freeform launch mode</string>
+    <string name="freeform_launch_mode_1">Native AOSP</string>
+    <string name="freeform_launch_mode_2">LMOFreeForm</string>
 </resources>
