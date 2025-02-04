@@ -36,6 +36,13 @@
         android:title="@string/theme_customization_icon_pack_title"
         android:summary="%s" />
 
+        <!-- Wallpaper Settings -->
+        <Preference
+            android:key="wallpaper_settings"
+            android:title="@string/wallpaper_settings_title"
+            android:summary="@string/wallpaper_settings_summary"
+            android:fragment="com.power.hub.fragments.Wallpaper" />
+
     <ListPreference
         android:key="color_source"
         android:title="@string/color_source_title"

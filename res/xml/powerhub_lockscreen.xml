@@ -63,5 +63,5 @@
             android:title="@string/lockscreen_battery_info_title"
             android:summary="@string/lockscreen_battery_info_summary"
             android:defaultValue="true" />
-	
+
 </PreferenceScreen>
