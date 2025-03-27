@@ -14,4 +14,18 @@
         android:title="@string/screen_off_udfps_title"
         android:summary="@string/screen_off_udfps_summary"
         android:defaultValue="false" />
+
+    <!-- UDFPS Icons -->
+    <Preference
+        android:key="udfps_icon_picker"
+        android:title="@string/udfps_icon_picker_title"
+        android:summary="@string/udfps_icon_picker_summary"
+        android:fragment="com.power.hub.fragments.lockscreen.UdfpsIconPicker" />
+
+    <!-- UDFPS Animations -->
+    <Preference
+        android:key="udfps_recognizing_animation_preview"
+        android:title="@string/udfps_recog_animation_effect_title"
+        android:summary="@string/udfps_recog_animation_effect_summary"
+        android:fragment="com.power.hub.fragments.lockscreen.UdfpsAnimation" />
 </PreferenceScreen>

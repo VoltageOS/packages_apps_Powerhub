@@ -44,6 +44,8 @@ import android.text.TextUtils;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.internal.util.voltage.VoltageUtils;
+import com.power.hub.fragments.lockscreen.UdfpsIconPicker;
+import com.power.hub.fragments.lockscreen.UdfpsAnimation;
 import com.voltage.support.preferences.SystemSettingListPreference;
 import com.voltage.support.preferences.CustomSeekBarPreference;
 import com.voltage.support.preferences.SecureSettingListPreference;
@@ -65,11 +67,15 @@ public class LockScreenSettings extends SettingsPreferenceFragment implements
     private static final String FINGERPRINT_ERROR_VIB = "fingerprint_error_vib";
     private static final String UDFPS_CATEGORY = "udfps_category";
     private static final String SCREEN_OFF_UDFPS_ENABLED = "screen_off_udfps_enabled";
+    private static final String KEY_UDFPS_ICONS = "udfps_icon_picker";
+    private static final String KEY_UDFPS_ANIMATIONS = "udfps_recognizing_animation_preview";
 
     private FingerprintManager mFingerprintManager;
     private SwitchPreferenceCompat mFingerprintSuccessVib;
     private SwitchPreferenceCompat mFingerprintErrorVib;
     private Preference mScreenOffUdfps;
+    private Preference mUdfpsIcons;
+    private Preference mUdfpsAnimations;
 
     private static final String KEY_WEATHER = "lockscreen_weather_enabled";
 
@@ -111,11 +117,21 @@ public class LockScreenSettings extends SettingsPreferenceFragment implements
 
         FingerprintManager mFingerprintManager = (FingerprintManager)
                 getActivity().getSystemService(Context.FINGERPRINT_SERVICE);
+        mUdfpsAnimations = (Preference) findPreference(KEY_UDFPS_ANIMATIONS);
+        mUdfpsIcons = (Preference) findPreference(KEY_UDFPS_ICONS);
         mScreenOffUdfps = (Preference) findPreference(SCREEN_OFF_UDFPS_ENABLED);
 
         if (mFingerprintManager == null || !mFingerprintManager.isHardwareDetected()) {
+            gestCategory.removePreference(mUdfpsAnimations);
+            gestCategory.removePreference(mUdfpsIcons);
             gestCategory.removePreference(mScreenOffUdfps);
         } else {
+            if (!VoltageUtils.isPackageInstalled(getContext(), "com.power.hub.udfps.animations")) {
+                gestCategory.removePreference(mUdfpsAnimations);
+            }
+            if (!VoltageUtils.isPackageInstalled(getContext(), "com.power.hub.udfps.icons")) {
+                gestCategory.removePreference(mUdfpsIcons);
+            }
             boolean screenOffUdfpsAvailable = resources.getBoolean(
                     com.android.internal.R.bool.config_supportScreenOffUdfps) ||
                     !TextUtils.isEmpty(resources.getString(
@@ -149,6 +165,8 @@ public class LockScreenSettings extends SettingsPreferenceFragment implements
         ContentResolver resolver = mContext.getContentResolver();
         Settings.Secure.putIntForUser(resolver,
                 Settings.Secure.SCREEN_OFF_UDFPS_ENABLED, 0, UserHandle.USER_CURRENT);
+        UdfpsIconPicker.reset(mContext);
+        UdfpsAnimation.reset(mContext);
     }
 
     private void updateWeatherSettings() {
