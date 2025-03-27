@@ -40,6 +40,7 @@ import androidx.preference.PreferenceScreen;
 import androidx.preference.Preference.OnPreferenceChangeListener;
 import android.os.SystemProperties;
 import android.provider.Settings;
+import android.text.TextUtils;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.internal.util.voltage.VoltageUtils;
@@ -62,10 +63,13 @@ public class LockScreenSettings extends SettingsPreferenceFragment implements
 
     private static final String FINGERPRINT_SUCCESS_VIB = "fingerprint_success_vib";
     private static final String FINGERPRINT_ERROR_VIB = "fingerprint_error_vib";
+    private static final String UDFPS_CATEGORY = "udfps_category";
+    private static final String SCREEN_OFF_UDFPS_ENABLED = "screen_off_udfps_enabled";
 
     private FingerprintManager mFingerprintManager;
     private SwitchPreferenceCompat mFingerprintSuccessVib;
     private SwitchPreferenceCompat mFingerprintErrorVib;
+    private Preference mScreenOffUdfps;
 
     private static final String KEY_WEATHER = "lockscreen_weather_enabled";
 
@@ -103,6 +107,23 @@ public class LockScreenSettings extends SettingsPreferenceFragment implements
             prefSet.removePreference(mFingerprintErrorVib);
         }
 
+        PreferenceCategory gestCategory = (PreferenceCategory) findPreference(UDFPS_CATEGORY);
+
+        FingerprintManager mFingerprintManager = (FingerprintManager)
+                getActivity().getSystemService(Context.FINGERPRINT_SERVICE);
+        mScreenOffUdfps = (Preference) findPreference(SCREEN_OFF_UDFPS_ENABLED);
+
+        if (mFingerprintManager == null || !mFingerprintManager.isHardwareDetected()) {
+            gestCategory.removePreference(mScreenOffUdfps);
+        } else {
+            boolean screenOffUdfpsAvailable = resources.getBoolean(
+                    com.android.internal.R.bool.config_supportScreenOffUdfps) ||
+                    !TextUtils.isEmpty(resources.getString(
+                        com.android.internal.R.string.config_dozeUdfpsLongPressSensorType));
+            if (!screenOffUdfpsAvailable)
+                gestCategory.removePreference(mScreenOffUdfps);
+        }
+
        mWeather = (Preference) findPreference(KEY_WEATHER);
        mWeatherClient = new OmniJawsClient(getContext());
        updateWeatherSettings();
@@ -122,6 +143,12 @@ public class LockScreenSettings extends SettingsPreferenceFragment implements
             return true;
         }
         return false;
+    }
+
+    public static void reset(Context mContext) {
+        ContentResolver resolver = mContext.getContentResolver();
+        Settings.Secure.putIntForUser(resolver,
+                Settings.Secure.SCREEN_OFF_UDFPS_ENABLED, 0, UserHandle.USER_CURRENT);
     }
 
     private void updateWeatherSettings() {

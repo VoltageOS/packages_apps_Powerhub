@@ -62,6 +62,19 @@
              android:dependency="ls_media_art_enabled"
              android:defaultValue="0" />
 
+    <!-- Udfps options -->
+    <PreferenceCategory
+        android:key="udfps_category"
+        android:title="@string/udfps_settings_title"
+        android:summary="@string/udfps_settings_summary">
+
+        <com.voltage.support.preferences.SecureSettingSwitchPreference
+            android:key="screen_off_udfps_enabled"
+            android:title="@string/screen_off_udfps_title"
+            android:summary="@string/screen_off_udfps_summary"
+            android:defaultValue="false" />
+    </PreferenceCategory>
+
 	<PreferenceCategory
         android:key="lockscreen_ui_finterprint_category"
         android:title="@string/fingerprint_category">
