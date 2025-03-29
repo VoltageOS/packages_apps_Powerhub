@@ -19,6 +19,7 @@ package com.power.hub.fragments;
 
 import com.android.internal.logging.nano.MetricsProto;
 
+import android.util.Log;
 import android.app.Activity;
 import android.content.Context;
 import android.content.ContentResolver;
@@ -60,6 +61,8 @@ import java.util.List;
 public class LockScreenSettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
 
+    private static final String TAG = "LockScreenSettings";
+    private static final String FINGERPRINT_CATEGORY_KEY = "lockscreen_ui_fingerprint_category";
     private static final String FINGERPRINT_SUCCESS_VIB = "fingerprint_success_vib";
     private static final String FINGERPRINT_ERROR_VIB = "fingerprint_error_vib";
 
@@ -80,32 +83,22 @@ public class LockScreenSettings extends SettingsPreferenceFragment implements
         final PreferenceScreen prefSet = getPreferenceScreen();
         Resources resources = getResources();
 
-        final PackageManager mPm = getActivity().getPackageManager();
-     mFingerprintManager = (FingerprintManager) getActivity().getSystemService(Context.FINGERPRINT_SERVICE);
-        mFingerprintSuccessVib = (SwitchPreferenceCompat) findPreference(FINGERPRINT_SUCCESS_VIB);
-        mFingerprintErrorVib = (SwitchPreferenceCompat) findPreference(FINGERPRINT_ERROR_VIB);
-        if (mPm.hasSystemFeature(PackageManager.FEATURE_FINGERPRINT) &&
-                 mFingerprintManager != null) {
-            if (!mFingerprintManager.isHardwareDetected()){
-                prefSet.removePreference(mFingerprintSuccessVib);
-                prefSet.removePreference(mFingerprintErrorVib);
+        final boolean hasFingerprintHardware = checkFingerprintHardware();
+
+        PreferenceCategory fingerprintCategory = findPreference(FINGERPRINT_CATEGORY_KEY);
+        if (fingerprintCategory != null) {
+            if (!hasFingerprintHardware) {
+                prefSet.removePreference(fingerprintCategory);
             } else {
-                mFingerprintSuccessVib.setChecked((Settings.System.getInt(getContentResolver(),
-                        Settings.System.FP_SUCCESS_VIBRATE, 1) == 1));
-                mFingerprintSuccessVib.setOnPreferenceChangeListener(this);
-                mFingerprintErrorVib.setChecked((Settings.System.getInt(getContentResolver(),
-                        Settings.System.FP_ERROR_VIBRATE, 1) == 1));
-                mFingerprintErrorVib.setOnPreferenceChangeListener(this);
+                initFingerprintPreferences(fingerprintCategory);
             }
-        } else {
-            prefSet.removePreference(mFingerprintSuccessVib);
-            prefSet.removePreference(mFingerprintErrorVib);
         }
 
        mWeather = (Preference) findPreference(KEY_WEATHER);
        updateWeatherSettings();
     }
 
+    @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         ContentResolver resolver = getActivity().getContentResolver();
         if (preference == mFingerprintSuccessVib) {
@@ -121,6 +114,37 @@ public class LockScreenSettings extends SettingsPreferenceFragment implements
         }
         return false;
     }
+
+    private boolean checkFingerprintHardware() {
+        final PackageManager pm = getActivity().getPackageManager();
+        if (!pm.hasSystemFeature(PackageManager.FEATURE_FINGERPRINT)) return false;
+
+        try {
+            mFingerprintManager = (FingerprintManager) getActivity().getSystemService(Context.FINGERPRINT_SERVICE);
+            return mFingerprintManager != null && mFingerprintManager.isHardwareDetected();
+        } catch (Exception e) {
+            Log.e(TAG, "Fingerprint service error", e);
+            return false;
+        }
+    }
+
+    private void initFingerprintPreferences(PreferenceCategory category) {
+        mFingerprintSuccessVib = findPreference(FINGERPRINT_SUCCESS_VIB);
+        mFingerprintErrorVib = findPreference(FINGERPRINT_ERROR_VIB);
+
+        if (mFingerprintSuccessVib != null) {
+            mFingerprintSuccessVib.setChecked(Settings.System.getInt(
+                getContentResolver(), Settings.System.FP_SUCCESS_VIBRATE, 1) == 1);
+            mFingerprintSuccessVib.setOnPreferenceChangeListener(this);
+        }
+
+        if (mFingerprintErrorVib != null) {
+            mFingerprintErrorVib.setChecked(Settings.System.getInt(
+                getContentResolver(), Settings.System.FP_ERROR_VIBRATE, 1) == 1);
+            mFingerprintErrorVib.setOnPreferenceChangeListener(this);
+        }
+    }
+
 
     private void updateWeatherSettings() {
         if (mWeather == null) return;
@@ -140,13 +164,13 @@ public class LockScreenSettings extends SettingsPreferenceFragment implements
     @Override
     public int getMetricsCategory() {
         return MetricsProto.MetricsEvent.VOLTAGE;
-   }
+    }
 
-	/**
-     * For Search.
-     */
+    /**
+      * For Search.
+      */
 
-    public static final SearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
+    public static final BaseSearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
             new BaseSearchIndexProvider() {
 
                 @Override
