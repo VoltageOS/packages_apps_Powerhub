@@ -19,6 +19,8 @@ package com.power.hub.fragments;
 
 import com.android.internal.logging.nano.MetricsProto;
 
+import android.util.Log;
+import com.android.settings.R;
 import android.app.Activity;
 import android.content.Context;
 import android.content.ContentResolver;
@@ -63,12 +65,15 @@ import java.util.List;
 public class LockScreenSettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
 
+    private static final String TAG = "LockScreenSettings";
+    private static final String FINGERPRINT_CATEGORY_KEY = "lockscreen_ui_fingerprint_category";
     private static final String FINGERPRINT_SUCCESS_VIB = "fingerprint_success_vib";
     private static final String FINGERPRINT_ERROR_VIB = "fingerprint_error_vib";
     private static final String UDFPS_CATEGORY = "udfps_category";
     private static final String SCREEN_OFF_UDFPS_ENABLED = "screen_off_udfps_enabled";
     private static final String KEY_UDFPS_ICONS = "udfps_icon_picker";
     private static final String KEY_UDFPS_ANIMATIONS = "udfps_recognizing_animation_preview";
+    private static final String KEY_WEATHER = "lockscreen_weather_enabled";
 
     private FingerprintManager mFingerprintManager;
     private SwitchPreferenceCompat mFingerprintSuccessVib;
@@ -76,9 +81,6 @@ public class LockScreenSettings extends SettingsPreferenceFragment implements
     private Preference mScreenOffUdfps;
     private Preference mUdfpsIcons;
     private Preference mUdfpsAnimations;
-
-    private static final String KEY_WEATHER = "lockscreen_weather_enabled";
-
     private Preference mWeather;
     private OmniJawsClient mWeatherClient;
 
@@ -91,60 +93,94 @@ public class LockScreenSettings extends SettingsPreferenceFragment implements
         final PreferenceScreen prefSet = getPreferenceScreen();
         Resources resources = getResources();
 
-        final PackageManager mPm = getActivity().getPackageManager();
-     mFingerprintManager = (FingerprintManager) getActivity().getSystemService(Context.FINGERPRINT_SERVICE);
-        mFingerprintSuccessVib = (SwitchPreferenceCompat) findPreference(FINGERPRINT_SUCCESS_VIB);
-        mFingerprintErrorVib = (SwitchPreferenceCompat) findPreference(FINGERPRINT_ERROR_VIB);
-        if (mPm.hasSystemFeature(PackageManager.FEATURE_FINGERPRINT) &&
-                 mFingerprintManager != null) {
-            if (!mFingerprintManager.isHardwareDetected()){
-                prefSet.removePreference(mFingerprintSuccessVib);
-                prefSet.removePreference(mFingerprintErrorVib);
+        // Combined fingerprint hardware check
+        final boolean hasFingerprintHardware = checkFingerprintHardware();
+
+        // Handle fingerprint category
+        PreferenceCategory fingerprintCategory = findPreference(FINGERPRINT_CATEGORY_KEY);
+        if (fingerprintCategory != null) {
+            if (!hasFingerprintHardware) {
+                prefSet.removePreference(fingerprintCategory);
             } else {
-                mFingerprintSuccessVib.setChecked((Settings.System.getInt(getContentResolver(),
-                        Settings.System.FP_SUCCESS_VIBRATE, 1) == 1));
-                mFingerprintSuccessVib.setOnPreferenceChangeListener(this);
-                mFingerprintErrorVib.setChecked((Settings.System.getInt(getContentResolver(),
-                        Settings.System.FP_ERROR_VIBRATE, 1) == 1));
-                mFingerprintErrorVib.setOnPreferenceChangeListener(this);
+                initFingerprintPreferences(fingerprintCategory);
             }
-        } else {
-            prefSet.removePreference(mFingerprintSuccessVib);
-            prefSet.removePreference(mFingerprintErrorVib);
         }
 
-        PreferenceCategory gestCategory = (PreferenceCategory) findPreference(UDFPS_CATEGORY);
-
-        FingerprintManager mFingerprintManager = (FingerprintManager)
-                getActivity().getSystemService(Context.FINGERPRINT_SERVICE);
-        mUdfpsAnimations = (Preference) findPreference(KEY_UDFPS_ANIMATIONS);
-        mUdfpsIcons = (Preference) findPreference(KEY_UDFPS_ICONS);
-        mScreenOffUdfps = (Preference) findPreference(SCREEN_OFF_UDFPS_ENABLED);
-
-        if (mFingerprintManager == null || !mFingerprintManager.isHardwareDetected()) {
-            gestCategory.removePreference(mUdfpsAnimations);
-            gestCategory.removePreference(mUdfpsIcons);
-            gestCategory.removePreference(mScreenOffUdfps);
-        } else {
-            if (!VoltageUtils.isPackageInstalled(getContext(), "com.power.hub.udfps.animations")) {
-                gestCategory.removePreference(mUdfpsAnimations);
+        // Handle UDFPS category
+        PreferenceCategory gestCategory = findPreference(UDFPS_CATEGORY);
+        if (gestCategory != null) {
+            if (!hasFingerprintHardware) {
+                prefSet.removePreference(gestCategory);
+            } else {
+                initUdfpsPreferences(gestCategory, resources);
+                // Remove category if empty after initialization
+                if (gestCategory.getPreferenceCount() == 0) {
+                    prefSet.removePreference(gestCategory);
+                    Log.d(TAG, "Removed empty UDFPS category");
+                }
             }
-            if (!VoltageUtils.isPackageInstalled(getContext(), "com.power.hub.udfps.icons")) {
-                gestCategory.removePreference(mUdfpsIcons);
-            }
-            boolean screenOffUdfpsAvailable = resources.getBoolean(
-                    com.android.internal.R.bool.config_supportScreenOffUdfps) ||
-                    !TextUtils.isEmpty(resources.getString(
-                        com.android.internal.R.string.config_dozeUdfpsLongPressSensorType));
-            if (!screenOffUdfpsAvailable)
-                gestCategory.removePreference(mScreenOffUdfps);
         }
 
-       mWeather = (Preference) findPreference(KEY_WEATHER);
-       mWeatherClient = new OmniJawsClient(getContext());
-       updateWeatherSettings();
+        // Weather initialization
+        mWeather = findPreference(KEY_WEATHER);
+        mWeatherClient = new OmniJawsClient(getContext());
+        updateWeatherSettings();
     }
 
+    private boolean checkFingerprintHardware() {
+        final PackageManager pm = getActivity().getPackageManager();
+        if (!pm.hasSystemFeature(PackageManager.FEATURE_FINGERPRINT)) return false;
+        
+        try {
+            mFingerprintManager = (FingerprintManager) getActivity().getSystemService(Context.FINGERPRINT_SERVICE);
+            return mFingerprintManager != null && mFingerprintManager.isHardwareDetected();
+        } catch (Exception e) {
+            Log.e(TAG, "Fingerprint service error", e);
+            return false;
+        }
+    }
+
+    private void initFingerprintPreferences(PreferenceCategory category) {
+        mFingerprintSuccessVib = findPreference(FINGERPRINT_SUCCESS_VIB);
+        mFingerprintErrorVib = findPreference(FINGERPRINT_ERROR_VIB);
+
+        if (mFingerprintSuccessVib != null) {
+            mFingerprintSuccessVib.setChecked(Settings.System.getInt(
+                getContentResolver(), Settings.System.FP_SUCCESS_VIBRATE, 1) == 1);
+            mFingerprintSuccessVib.setOnPreferenceChangeListener(this);
+        }
+
+        if (mFingerprintErrorVib != null) {
+            mFingerprintErrorVib.setChecked(Settings.System.getInt(
+                getContentResolver(), Settings.System.FP_ERROR_VIBRATE, 1) == 1);
+            mFingerprintErrorVib.setOnPreferenceChangeListener(this);
+        }
+    }
+
+    private void initUdfpsPreferences(PreferenceCategory gestCategory, Resources resources) {
+        mUdfpsAnimations = findPreference(KEY_UDFPS_ANIMATIONS);
+        mUdfpsIcons = findPreference(KEY_UDFPS_ICONS);
+        mScreenOffUdfps = findPreference(SCREEN_OFF_UDFPS_ENABLED);
+
+        // Remove preferences based on package availability
+        if (!VoltageUtils.isPackageInstalled(getContext(), "com.power.hub.udfps.animations")) {
+            gestCategory.removePreference(mUdfpsAnimations);
+        }
+        if (!VoltageUtils.isPackageInstalled(getContext(), "com.power.hub.udfps.icons")) {
+            gestCategory.removePreference(mUdfpsIcons);
+        }
+
+        // Check screen-off UDFPS availability
+        boolean screenOffUdfpsAvailable = resources.getBoolean(
+                com.android.internal.R.bool.config_supportScreenOffUdfps) ||
+                !TextUtils.isEmpty(resources.getString(
+                    com.android.internal.R.string.config_dozeUdfpsLongPressSensorType));
+        if (!screenOffUdfpsAvailable && mScreenOffUdfps != null) {
+            gestCategory.removePreference(mScreenOffUdfps);
+        }
+    }
+
+    @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         ContentResolver resolver = getActivity().getContentResolver();
         if (preference == mFingerprintSuccessVib) {
@@ -187,15 +223,13 @@ public class LockScreenSettings extends SettingsPreferenceFragment implements
     @Override
     public int getMetricsCategory() {
         return MetricsProto.MetricsEvent.VOLTAGE;
-   }
+    }
 
-	/**
+    /**
      * For Search.
      */
-
-    public static final SearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
+    public static final BaseSearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
             new BaseSearchIndexProvider() {
-
                 @Override
                 public List<SearchIndexableResource> getXmlResourcesToIndex(Context context,
                         boolean enabled) {
@@ -212,6 +246,5 @@ public class LockScreenSettings extends SettingsPreferenceFragment implements
                     List<String> keys = super.getNonIndexableKeys(context);
                     return keys;
                 }
-    };
-
+            };
 }
