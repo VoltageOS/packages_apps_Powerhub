@@ -523,4 +523,8 @@
     <!-- UDFPS Animations -->
     <string name="udfps_recog_animation_effect_title">UDFPS custom animation</string>
     <string name="udfps_recog_animation_effect_summary">Choose animation effect</string>
+
+    <!-- Floating rotation button -->
+    <string name="floating_rotation_button_title">Floating rotate button</string>
+    <string name="floating_rotation_button_summary">Show a floating rotate button when device is rotated</string>
 </resources>

@@ -60,5 +60,12 @@
         android:entryValues="@array/freeform_launch_mode_values"
         android:defaultValue="0"
         android:summary="%s" />
+
+    <!-- Rotation button -->
+    <com.voltage.support.preferences.SystemSettingSwitchPreference
+        android:key="enable_rotation_button"
+        android:title="@string/floating_rotation_button_title"
+        android:summary="@string/floating_rotation_button_summary"
+        android:defaultValue="true" />
 		
 </PreferenceScreen>
