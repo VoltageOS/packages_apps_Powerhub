@@ -45,6 +45,13 @@
         android:title="@string/smart_pixels_title"
         android:fragment="com.power.hub.fragments.SmartPixels" />
 
+    <!-- Rotation button -->
+    <com.voltage.support.preferences.SystemSettingSwitchPreference
+        android:key="enable_rotation_button"
+        android:title="@string/floating_rotation_button_title"
+        android:summary="@string/floating_rotation_button_summary"
+        android:defaultValue="true" />
+
     <!-- click to take partial SS -->		
     <com.voltage.support.preferences.SystemSettingSwitchPreference
         android:key="click_partial_screenshot"
