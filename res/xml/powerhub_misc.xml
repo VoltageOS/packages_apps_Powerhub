@@ -39,5 +39,11 @@
         android:key="pulse_settings"
         android:title="@string/pulse_settings"
         android:fragment="com.power.hub.fragments.PulseSettings" />
-		
+
+    <!-- click to take partial SS -->		
+    <com.voltage.support.preferences.SystemSettingSwitchPreference
+        android:key="click_partial_screenshot"
+        android:title="@string/click_partial_screenshot_title"
+        android:summary="@string/click_partial_screenshot_summary"
+        android:defaultValue="false" />
 </PreferenceScreen>
