@@ -27,4 +27,10 @@
         android:summary="@string/network_traffic_settings_summary"
         android:fragment="com.power.hub.fragments.NetworkTrafficSettings" />
 
+     <Preference
+        android:key="ongoing_progress_settings"
+        android:title="@string/ongoing_progress_settings_title"
+        android:summary="@string/ongoing_progress_settings_summary"
+        android:fragment="com.power.hub.fragments.OngoingProgressBar" />
+
 </PreferenceScreen>
