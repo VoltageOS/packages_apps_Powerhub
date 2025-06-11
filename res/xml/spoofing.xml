@@ -51,6 +51,17 @@
             android:summary="@string/tensor_spoof_summary"
             android:defaultValue="false" />
 
+        <!-- Keybox import -->
+        <Preference
+            android:key="import_keybox"
+            android:title="@string/import_keybox_title"
+            android:summary="@string/import_keybox_summary" />
+
+        <Preference
+            android:key="clear_keybox"
+            android:title="@string/clear_keybox_title"
+            android:summary="@string/clear_keybox_summary" />
+
     </PreferenceCategory>
 
     <PreferenceCategory
