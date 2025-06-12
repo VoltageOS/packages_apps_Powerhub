@@ -559,4 +559,15 @@
  
      The progress bar dynamically switches between media and download states, ensuring you always have the most relevant information at a glance."
      </string>
+
+    <!-- Keybox import -->
+    <string name="import_keybox_title">Import Keybox</string>
+    <string name="import_keybox_summary">Import custom keybox for keybox spoofing. The keybox must be in PKCS#8 format</string>
+    <string name="import_success">Keybox imported successfully!</string>
+    <string name="import_failed">Failed to import keybox</string>
+    <string name="import_io_error">File operation error</string>
+    <string name="clear_keybox_title">Clear Keybox</string>
+    <string name="clear_keybox_summary">Disable keybox spoofing</string>
+    <string name="clear_success">Keybox removed successfully. Disabling keybox spoofing</string>
+    <string name="clear_failed">Failed to remove keybox</string>
 </resources>
