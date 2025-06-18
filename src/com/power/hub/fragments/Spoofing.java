@@ -15,6 +15,7 @@
  import android.content.Intent;
  import android.net.Uri;
  import android.os.Bundle;
+ import android.view.View;
  import android.os.Handler;
  import android.os.SystemProperties;
  import android.text.Editable;
@@ -55,6 +56,11 @@
  
  import com.voltage.support.preferences.SystemPropertySwitchPreference;
  import com.power.hub.utils.Utils;
+
+ import com.power.hub.fragments.KeyboxDataPreference;
+ import androidx.activity.result.ActivityResultLauncher;
+ import androidx.activity.result.contract.ActivityResultContracts;
+ import androidx.preference.Preference;
  
  import org.json.JSONArray;
  import org.json.JSONException;
@@ -77,6 +83,7 @@
      private static final String SYS_SNAP_SPOOF = "persist.sys.snap.enable";
      private static final String SYS_VENDING_SPOOF = "persist.sys.vending.enable";
      private static final String SYS_ENABLE_TENSOR_FEATURES = "persist.sys.features.tensor";
+     private static final String KEYBOX_DATA_KEY = "keybox_data_setting";
 
      private Preference mGamePropsJsonFilePreference;
      private Preference mPifJsonFilePreference;
@@ -89,6 +96,8 @@
      private SystemPropertySwitchPreference mSnapSpoof;
      private SystemPropertySwitchPreference mVendingSpoof;
      private SystemPropertySwitchPreference mTensorFeaturesToggle;
+     private ActivityResultLauncher<Intent> mKeyboxFilePickerLauncher;
+     private KeyboxDataPreference mKeyboxDataPreference;
  
      private Handler mHandler;
  
@@ -152,6 +161,19 @@
              updatePropertiesFromUrl("https://raw.githubusercontent.com/VoltageOS/.github/refs/heads/main/profile/pif.json");
              return true;
          });
+
+         mKeyboxFilePickerLauncher = registerForActivityResult(
+             new ActivityResultContracts.StartActivityForResult(),
+             result -> {
+                 if (result.getResultCode() == Activity.RESULT_OK && result.getData() != null) {
+                     Uri uri = result.getData().getData();
+                     Preference pref = findPreference(KEYBOX_DATA_KEY);
+                     if (pref instanceof KeyboxDataPreference) {
+                         ((KeyboxDataPreference) pref).handleFileSelected(uri);
+                     }
+                 }
+             }
+         );
  
          Preference showPropertiesPref = findPreference("show_pif_properties");
          if (showPropertiesPref != null) {
@@ -184,6 +206,16 @@
                      loadGameSpoofingJson(uri);
                  }
              }
+         }
+     }
+
+     @Override
+     public void onViewCreated(View view, Bundle savedInstanceState) {
+         super.onViewCreated(view, savedInstanceState);
+
+         mKeyboxDataPreference = findPreference(KEYBOX_DATA_KEY);
+         if (mKeyboxDataPreference != null) {
+             mKeyboxDataPreference.setFilePickerLauncher(mKeyboxFilePickerLauncher);
          }
      }
  
