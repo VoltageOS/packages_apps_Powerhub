@@ -18,11 +18,6 @@
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
     android:title=" " >
 
-    <PreferenceCategory
-        android:title="@string/powerhub_title"
-        android:layout="@layout/powerhub_preference_category">
-    </PreferenceCategory>
-
         <!-- Status Bar -->
         <Preference
             android:key="statusbar_category"
