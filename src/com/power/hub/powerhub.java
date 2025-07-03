@@ -19,14 +19,19 @@ package com.power.hub;
 import com.android.internal.logging.nano.MetricsProto;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.Surface;
+import android.view.View;
 import android.preference.Preference;
 import com.android.settings.R;
 
 import com.android.settings.SettingsPreferenceFragment;
+
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 public class powerhub extends SettingsPreferenceFragment {
 
@@ -36,6 +41,26 @@ public class powerhub extends SettingsPreferenceFragment {
 
         addPreferencesFromResource(R.xml.powerhub);
 
+    }
+
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        RecyclerView recyclerView = getListView();
+        if (recyclerView != null) {
+            // Disable the overscroll glow effect
+            recyclerView.setOverScrollMode(View.OVER_SCROLL_NEVER);
+            final Context context = getContext();
+            if (context != null) {
+                // Set a custom LayoutManager that disables vertical scrolling
+                recyclerView.setLayoutManager(new LinearLayoutManager(context) {
+                    @Override
+                    public boolean canScrollVertically() {
+                        return false;
+                    }
+                });
+            }
+        }
     }
 
     @Override
