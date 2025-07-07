@@ -24,11 +24,13 @@
             android:summary="@string/enable_fingerprint_ripple_effect_summary"
             android:defaultValue="true" />
 
-        <com.voltage.support.preferences.SystemSettingSwitchPreference
-            android:key="secure_lockscreen_qs_disabled"
-            android:title="@string/disable_qs_title"
-            android:summary="@string/disable_qs_summary"
-            android:defaultValue="false" />
+        <!-- Hide on secure lock screen -->
+        <com.voltage.support.preferences.SecureSettingListPreference
+            android:key="enable_lockscreen_quick_settings"
+            android:title="@string/quick_settings_secure_lock_screen_title"
+            android:entries="@array/quick_settings_secure_lock_screen_entries"
+            android:entryValues="@array/quick_settings_secure_lock_screen_values"
+            android:defaultValue="1" />
 
         <com.voltage.support.preferences.SecureSettingSwitchPreference
             android:key="qstile_requires_unlocking"

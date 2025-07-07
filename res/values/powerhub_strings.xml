@@ -51,6 +51,8 @@
     <string name="save">Save</string>
     <string name="default_string">Default</string>
     <string name="disabled">Disabled</string>
+    <string name="enable">Enable</string>
+    <string name="disable">Disable</string>
 
     <!-- Units -->
     <string name="unit_seconds">seconds</string>
@@ -314,4 +316,7 @@
     <!-- click to take partial SS -->
     <string name="click_partial_screenshot_title">Click to partial screenshot</string>
     <string name="click_partial_screenshot_summary">Short click Volume Down and Power to take partial screenshot</string>
+
+    <string name="quick_settings_secure_lock_screen_title">Disable QS pull on secure lock screen</string>
+
 </resources>
