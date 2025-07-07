@@ -51,6 +51,8 @@
     <string name="save">Save</string>
     <string name="default_string">Default</string>
     <string name="disabled">Disabled</string>
+    <string name="enable">Enable</string>
+    <string name="disable">Disable</string>
 
     <!-- Units -->
     <string name="unit_seconds">seconds</string>
@@ -475,5 +477,7 @@
     <!-- Annoying Notifications -->
     <string name="notification_sound_vib_screen_on_title">Annoying Notifications</string>
     <string name="notification_sound_vib_screen_on_summary">Play sound and vibration for notifications when screen is on</string>
+
+    <string name="quick_settings_secure_lock_screen_title">Disable QS pull on secure lock screen</string>
 
 </resources>
