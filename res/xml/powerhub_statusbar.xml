@@ -15,6 +15,17 @@
     android:title="@string/statusbar_title"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 	
+    <PreferenceCategory
+        android:title="UI Refactor">
+
+        <SwitchPreferenceCompat
+            android:key="new_status_bar_icons"
+            android:title="Use new status bar icons"
+            android:summary="Enables modernized icons. Disables most of statusbar customization."
+            android:defaultValue="false" />
+
+    </PreferenceCategory>
+
     <Preference
         android:key="systemui_tuner_statusbar"
         android:title="@string/statusbar_items_category" >
