@@ -24,6 +24,12 @@
         android:summary="@string/notification_row_transparency_summary"
         android:defaultValue="false" />
 
+    <SwitchPreferenceCompat
+        android:key="qs_dual_tone"
+        android:title="@string/dual_tone_shade_title"
+        android:summary="@string/dual_tone_shade_summary"
+        android:defaultValue="true" />
+
 </PreferenceCategory>
 
         <!-- Wallpaper Settings -->
