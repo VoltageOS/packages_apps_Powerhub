@@ -17,11 +17,7 @@ package com.power.hub.fragments;
 
 import android.content.ContentResolver;
 import android.content.Context;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.os.Handler;
 import android.os.UserHandle;
 import android.provider.SearchIndexableResource;
 import android.provider.Settings;
@@ -30,9 +26,9 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 
+import android.provider.Settings;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
-import androidx.preference.Preference.OnPreferenceChangeListener;
 import androidx.preference.PreferenceScreen;
 
 import com.android.internal.logging.nano.MetricsProto;
@@ -47,7 +43,6 @@ import com.voltage.support.preferences.SystemSettingListPreference;
 import com.voltage.support.preferences.SystemSettingSwitchPreference;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 @SearchIndexable
@@ -58,6 +53,7 @@ public class BatterySettings extends SettingsPreferenceFragment
     private static final String SHOW_BATTERY_PERCENT = "status_bar_show_battery_percent";
     private static final String SHOW_BATTERY_PERCENT_CHARGING = "status_bar_show_battery_percent_charging";
     private static final String SHOW_BATTERY_PERCENT_INSIDE = "status_bar_show_battery_percent_inside";
+    private static final String NEW_STATUS_BAR_ICONS = "new_status_bar_icons_enabled";
 
     private SystemSettingListPreference mBatteryStyle;
     private SystemSettingSwitchPreference mBatteryPercent;
@@ -70,70 +66,88 @@ public class BatterySettings extends SettingsPreferenceFragment
 
         addPreferencesFromResource(R.xml.battery_settings);
 
-        PreferenceScreen prefSet = getPreferenceScreen();
         final ContentResolver resolver = getActivity().getContentResolver();
+        final PreferenceScreen prefScreen = getPreferenceScreen();
 
-        mBatteryPercent = findPreference(SHOW_BATTERY_PERCENT);
-        final boolean percentEnabled = Settings.System.getIntForUser(resolver,
-                SHOW_BATTERY_PERCENT, 0, UserHandle.USER_CURRENT) == 1;
-        mBatteryPercent.setChecked(percentEnabled);
-        mBatteryPercent.setOnPreferenceChangeListener(this);
-
-        mBatteryPercentInside = findPreference(SHOW_BATTERY_PERCENT_INSIDE);
-        mBatteryPercentInside.setEnabled(percentEnabled);
-        final boolean percentInside = Settings.System.getIntForUser(resolver,
-                SHOW_BATTERY_PERCENT_INSIDE, 0, UserHandle.USER_CURRENT) == 1;
-        mBatteryPercentInside.setChecked(percentInside);
-        mBatteryPercentInside.setOnPreferenceChangeListener(this);
+        boolean modernIconsEnabled = Settings.System.getIntForUser(
+                resolver, NEW_STATUS_BAR_ICONS, 0, UserHandle.USER_CURRENT) == 1;
 
         mBatteryStyle = findPreference(BATTERY_STYLE);
-        int value = Settings.System.getIntForUser(resolver,
-                BATTERY_STYLE, 0, UserHandle.USER_CURRENT);
-        mBatteryStyle.setValue(Integer.toString(value));
-        mBatteryStyle.setSummary(mBatteryStyle.getEntry());
-        mBatteryStyle.setOnPreferenceChangeListener(this);
-        updatePercentEnablement(value != 2);
-
+        mBatteryPercent = findPreference(SHOW_BATTERY_PERCENT);
         mBatteryPercentCharging = findPreference(SHOW_BATTERY_PERCENT_CHARGING);
-        updatePercentChargingEnablement(value, percentEnabled, percentInside);
+        mBatteryPercentInside = findPreference(SHOW_BATTERY_PERCENT_INSIDE);
+
+        if (modernIconsEnabled) {
+            // Modern UI is ON: Hide legacy options, show only the master percentage toggle.
+            mBatteryStyle.setVisible(false);
+            mBatteryPercentInside.setVisible(false);
+            mBatteryPercentCharging.setVisible(false);
+
+            mBatteryPercent.setChecked(Settings.System.getIntForUser(resolver,
+                    SHOW_BATTERY_PERCENT, 0, UserHandle.USER_CURRENT) == 1);
+            mBatteryPercent.setOnPreferenceChangeListener(this);
+
+        } else {
+            // Modern UI is OFF (legacy mode): Show all options and set up dependencies.
+            final boolean percentEnabled = Settings.System.getIntForUser(resolver,
+                    SHOW_BATTERY_PERCENT, 0, UserHandle.USER_CURRENT) == 1;
+            mBatteryPercent.setChecked(percentEnabled);
+            mBatteryPercent.setOnPreferenceChangeListener(this);
+
+            final boolean percentInside = Settings.System.getIntForUser(resolver,
+                    SHOW_BATTERY_PERCENT_INSIDE, 0, UserHandle.USER_CURRENT) == 1;
+            mBatteryPercentInside.setChecked(percentInside);
+            mBatteryPercentInside.setEnabled(percentEnabled);
+            mBatteryPercentInside.setOnPreferenceChangeListener(this);
+
+            int value = Settings.System.getIntForUser(resolver,
+                    BATTERY_STYLE, 0, UserHandle.USER_CURRENT);
+            mBatteryStyle.setValue(Integer.toString(value));
+            mBatteryStyle.setSummary(mBatteryStyle.getEntry());
+            mBatteryStyle.setOnPreferenceChangeListener(this);
+
+            updateLegacyPercentEnablement(value != 2);
+            updateLegacyPercentChargingEnablement(value, percentEnabled, percentInside);
+        }
     }
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object objValue) {
         final ContentResolver resolver = getActivity().getContentResolver();
-        if (preference == mBatteryStyle) {
-            int value = Integer.valueOf((String) objValue);
-            int index = mBatteryStyle.findIndexOfValue((String) objValue);
-            mBatteryStyle.setSummary(mBatteryStyle.getEntries()[index]);
-            Settings.System.putIntForUser(resolver,
-                    BATTERY_STYLE, value, UserHandle.USER_CURRENT);
-            updatePercentEnablement(value != 2);
-            updatePercentChargingEnablement(value, null, null);
-            return true;
-        } else if (preference == mBatteryPercent) {
+        boolean modernIconsEnabled = Settings.System.getIntForUser(
+                resolver, NEW_STATUS_BAR_ICONS, 0, UserHandle.USER_CURRENT) == 1;
+
+        if (preference == mBatteryPercent) {
             boolean enabled = (boolean) objValue;
-            Settings.System.putInt(resolver,
-                    SHOW_BATTERY_PERCENT, enabled ? 1 : 0);
-            mBatteryPercentInside.setEnabled(enabled);
-            updatePercentChargingEnablement(null, enabled, null);
+            Settings.System.putInt(resolver, SHOW_BATTERY_PERCENT, enabled ? 1 : 0);
+            if (!modernIconsEnabled) {
+                mBatteryPercentInside.setEnabled(enabled);
+                updateLegacyPercentChargingEnablement(null, enabled, null);
+            }
+            return true;
+        }
+        else if (preference == mBatteryStyle) {
+            int value = Integer.valueOf((String) objValue);
+            mBatteryStyle.setSummary(mBatteryStyle.getEntries()[mBatteryStyle.findIndexOfValue((String) objValue)]);
+            Settings.System.putIntForUser(resolver, BATTERY_STYLE, value, UserHandle.USER_CURRENT);
+            updateLegacyPercentEnablement(value != 2);
+            updateLegacyPercentChargingEnablement(value, null, null);
             return true;
         } else if (preference == mBatteryPercentInside) {
             boolean enabled = (boolean) objValue;
-            Settings.System.putInt(resolver,
-                    SHOW_BATTERY_PERCENT_INSIDE, enabled ? 1 : 0);
-            // we already know style isn't text and percent is enabled
-            mBatteryPercentCharging.setEnabled(enabled);
+            Settings.System.putInt(resolver, SHOW_BATTERY_PERCENT_INSIDE, enabled ? 1 : 0);
+            updateLegacyPercentChargingEnablement(null, null, enabled);
             return true;
         }
         return false;
     }
 
-    private void updatePercentEnablement(boolean enabled) {
+    private void updateLegacyPercentEnablement(boolean enabled) {
         mBatteryPercent.setEnabled(enabled);
         mBatteryPercentInside.setEnabled(enabled && mBatteryPercent.isChecked());
     }
 
-    private void updatePercentChargingEnablement(Integer style, Boolean percent, Boolean inside) {
+    private void updateLegacyPercentChargingEnablement(Integer style, Boolean percent, Boolean inside) {
         if (style == null) style = Integer.valueOf(mBatteryStyle.getValue());
         if (percent == null) percent = mBatteryPercent.isChecked();
         if (inside == null) inside = mBatteryPercentInside.isChecked();
