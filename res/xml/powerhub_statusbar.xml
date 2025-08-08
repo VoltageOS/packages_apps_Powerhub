@@ -43,6 +43,15 @@
         android:fragment="com.power.hub.fragments.BatterySettings"
         android:title="@string/battery_settings_title" />
 
+    <com.voltage.support.preferences.SecureSettingListPreference
+        android:key="qs_brightness_slider_enabled"
+        android:title="@string/status_bar_brightness_slider_title"
+        android:summary="%s"
+        android:dialogTitle="@string/status_bar_brightness_slider_title"
+        android:entries="@array/status_bar_brightness_slider_entries"
+        android:entryValues="@array/status_bar_brightness_slider_values"
+        android:defaultValue="2" />
+
     <Preference
         android:key="network_traffic_settings"
         android:title="@string/network_traffic_settings_title"
