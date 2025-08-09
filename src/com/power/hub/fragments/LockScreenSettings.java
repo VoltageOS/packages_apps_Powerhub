@@ -44,6 +44,7 @@ import android.provider.Settings;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.internal.util.voltage.VoltageUtils;
+import com.android.internal.util.voltage.udfps.UdfpsUtils;
 import com.voltage.support.preferences.SystemSettingListPreference;
 import com.voltage.support.preferences.CustomSeekBarPreference;
 import com.voltage.support.preferences.SecureSettingListPreference;
@@ -65,10 +66,12 @@ public class LockScreenSettings extends SettingsPreferenceFragment implements
     private static final String FINGERPRINT_CATEGORY_KEY = "lockscreen_ui_fingerprint_category";
     private static final String FINGERPRINT_SUCCESS_VIB = "fingerprint_success_vib";
     private static final String FINGERPRINT_ERROR_VIB = "fingerprint_error_vib";
+    private static final String UDFPS_CATEGORY = "udfps_category";
 
     private FingerprintManager mFingerprintManager;
     private SwitchPreferenceCompat mFingerprintSuccessVib;
     private SwitchPreferenceCompat mFingerprintErrorVib;
+    private PreferenceCategory mUdfpsCategory;
 
     private static final String KEY_WEATHER = "lockscreen_weather_enabled";
 
@@ -96,6 +99,11 @@ public class LockScreenSettings extends SettingsPreferenceFragment implements
 
        mWeather = (Preference) findPreference(KEY_WEATHER);
        updateWeatherSettings();
+
+        mUdfpsCategory = findPreference(UDFPS_CATEGORY);
+        if (!UdfpsUtils.hasUdfpsSupport(getContext()) || !hasFingerprintHardware) {
+            prefSet.removePreference(mUdfpsCategory);
+        }
     }
 
     @Override

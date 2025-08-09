@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2025 VoltageOS
+     SPDX-License-Identifier: Apache-2.0
+-->
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
+    android:title="@string/udfps_category"
+    android:summary="@string/udfps_settings_summary">
+
+    <PreferenceCategory
+        android:key="udfps_customization"
+        android:title="@string/udfps_settings_title">
+
+    <!-- UDFPS Icons -->
+    <Preference
+            android:key="udfps_icon_picker"
+            android:title="@string/udfps_icon_picker_title"
+            android:summary="@string/udfps_icon_picker_summary"
+            android:fragment="com.power.hub.fragments.UdfpsIconPicker" />
+
+    <!-- UDFPS Animations -->
+        <Preference
+            android:key="udfps_recognizing_animation_preview"
+            android:title="@string/udfps_recog_animation_effect_title"
+            android:summary="@string/udfps_recog_animation_effect_summary"
+            android:fragment="com.power.hub.fragments.UdfpsAnimation" />
+
+    </PreferenceCategory>
+</PreferenceScreen>

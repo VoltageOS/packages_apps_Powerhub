@@ -507,4 +507,15 @@
     <!-- Floating rotation button -->
     <string name="floating_rotation_button_title">Floating rotate button</string>
     <string name="floating_rotation_button_summary">Show a floating rotate button when device is rotated</string>
+
+    <!-- UDFPS settings -->
+    <string name="udfps_category">UDFPS</string>
+    <string name="udfps_settings_title">UDFPS Customization</string>
+    <string name="udfps_settings_summary">Customize under-display fingerprint scanner</string>
+    <!-- UDFPS Icons -->
+    <string name="udfps_icon_picker_title">UDFPS icon picker</string>
+    <string name="udfps_icon_picker_summary">Choose your favorite fingerprint icon</string>
+    <!-- UDFPS Animations -->
+    <string name="udfps_recog_animation_effect_title">UDFPS custom animation</string>
+    <string name="udfps_recog_animation_effect_summary">Choose animation effect</string>
 </resources>
