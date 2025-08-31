@@ -58,6 +58,12 @@ public class StatusBarSettings extends SettingsPreferenceFragment implements
 
     private SwitchPreferenceCompat mNewStatusBarIconsPref;
 
+    private static final String KEY_QS_DATA_USAGE = "qs_show_data_usage";
+    private static final String KEY_QS_DATA_USAGE_CYCLE_TYPE = "qs_data_usage_cycle_type";
+
+    private Preference mDataUsagePreference;
+    private ListPreference mDataUsageCycleTypePreference;
+
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
@@ -74,6 +80,16 @@ public class StatusBarSettings extends SettingsPreferenceFragment implements
             resolver, "new_status_bar_icons_enabled", 0, UserHandle.USER_CURRENT) == 1;
         mNewStatusBarIconsPref.setChecked(newIconsEnabled);
         updatePreferenceStates(newIconsEnabled);
+
+        mDataUsagePreference = findPreference(KEY_QS_DATA_USAGE);
+        mDataUsageCycleTypePreference = (ListPreference) findPreference(KEY_QS_DATA_USAGE_CYCLE_TYPE);
+
+        if (mDataUsageCycleTypePreference != null) {
+            mDataUsageCycleTypePreference.setOnPreferenceChangeListener(this);
+        }
+
+        updateDataUsageSummary();
+
     }
 
     /**
@@ -113,10 +129,48 @@ public class StatusBarSettings extends SettingsPreferenceFragment implements
 
             VoltageUtils.showSystemUiRestartDialog(context);
             return true;
+        } else if (preference == mDataUsageCycleTypePreference) {
+            updateDataUsageSummary(objValue.toString());
+            return true;
         }
 
         return false;
 
+    }
+
+    private void updateDataUsageSummary() {
+        updateDataUsageSummary(null);
+    }
+
+    private void updateDataUsageSummary(String cycleTypeValue) {
+        if (mDataUsagePreference == null) return;
+
+        final ContentResolver resolver = getActivity().getContentResolver();
+        int cycleType;
+
+        if (cycleTypeValue != null) {
+            try {
+                cycleType = Integer.parseInt(cycleTypeValue);
+            } catch (NumberFormatException e) {
+                cycleType = 0;
+            }
+        } else {
+            cycleType = Settings.Secure.getInt(resolver, KEY_QS_DATA_USAGE_CYCLE_TYPE, 0);
+        }
+
+        int summaryResId;
+        switch (cycleType) {
+            case 0:
+                summaryResId = R.string.qs_footer_datausage_summary_daily;
+                break;
+            case 1:
+                summaryResId = R.string.qs_footer_datausage_summary_weekly;
+                break;
+            default:
+                summaryResId = R.string.qs_footer_datausage_summary_daily;
+                break;
+        }
+        mDataUsagePreference.setSummary(getString(summaryResId));
     }
 
     @Override

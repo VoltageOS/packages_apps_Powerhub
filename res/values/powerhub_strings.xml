@@ -578,6 +578,8 @@
 
     <string name="quick_settings_data_usage_title">Data usage</string>
     <string name="quick_settings_data_usage_summary">Display data usage summary in quick settings footer</string>
+    <string name="qs_footer_datausage_summary_daily">Display daily data usage summary in quick settings footer</string>
+    <string name="qs_footer_datausage_summary_weekly">Display weekly data usage summary in quick settings footer</string>
     <string name="qs_data_usage_cycle_type_title">Data usage cycle</string>
     <string name="qs_data_usage_cycle_type_summary">Choose between daily or weekly data usage display</string>
     <string name="qs_data_usage_cycle_daily">Daily</string>
