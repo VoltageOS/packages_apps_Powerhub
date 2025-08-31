@@ -343,4 +343,14 @@
         <item>2</item>
     </string-array>
 
+    <!-- Data usage cycle type -->
+    <string-array name="qs_data_usage_cycle_type_entries">
+        <item>@string/qs_data_usage_cycle_daily</item>
+        <item>@string/qs_data_usage_cycle_weekly</item>
+    </string-array>
+
+    <string-array name="qs_data_usage_cycle_type_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
 </resources>

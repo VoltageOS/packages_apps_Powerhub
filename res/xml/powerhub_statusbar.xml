@@ -64,6 +64,14 @@
         android:summary="@string/quick_settings_data_usage_summary"
         android:defaultValue="false" />
 
+    <com.voltage.support.preferences.SecureSettingListPreference
+        android:key="qs_data_usage_cycle_type"
+        android:title="@string/qs_data_usage_cycle_type_title"
+        android:summary="@string/qs_data_usage_cycle_type_summary"
+        android:entries="@array/qs_data_usage_cycle_type_entries"
+        android:entryValues="@array/qs_data_usage_cycle_type_values"
+        android:defaultValue="0" />
+
      <Preference
         android:key="ongoing_progress_settings"
         android:title="@string/ongoing_progress_settings_title"
