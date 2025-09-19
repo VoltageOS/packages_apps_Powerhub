@@ -550,6 +550,9 @@
     <string name="dual_tone_shade_title">Use dual-tone shade</string>
     <string name="dual_tone_shade_summary">Use a secondary background for the notification shade</string>
 
+    <string name="shade_blur_radius_title">Notification shade blur</string>
+    <string name="shade_blur_radius_summary">Adjust the blur intensity behind the notification shade</string>
+
     <string name="status_bar_brightness_slider_title">Brightness slider</string>
     <string name="qs_show_brightness_slider_never">Never show</string>
     <string name="qs_show_brightness_slider_expanded">Show when expanded</string>

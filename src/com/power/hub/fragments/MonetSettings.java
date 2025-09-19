@@ -74,6 +74,7 @@ public class MonetSettings extends DashboardFragment implements
     private static final String PREF_TINT_BACKGROUND = "tint_background";
     private static final String PREF_NOTIFICATION_ROW_TRANSPARENCY = "notification_row_transparency";
     private static final String PREF_DUAL_TONE_SHADE = "qs_dual_tone";
+    private static final String PREF_SHADE_BLUR_RADIUS = "shade_blur_radius";
 
     private ListPreference mColorSourcePref;
     private ColorPickerPreference mAccentColorPref;
@@ -84,6 +85,7 @@ public class MonetSettings extends DashboardFragment implements
     private SwitchPreferenceCompat mTintBackgroundPref;
     private SwitchPreferenceCompat mNotificationRowTransparencyPref;
     private SwitchPreferenceCompat mDualToneShadePref;
+    private CustomSeekBarPreference mShadeBlurRadiusPref;
 
     @Override
     protected int getPreferenceScreenResId() {
@@ -103,6 +105,7 @@ public class MonetSettings extends DashboardFragment implements
         mTintBackgroundPref = findPreference(PREF_TINT_BACKGROUND);
 	mNotificationRowTransparencyPref = findPreference(PREF_NOTIFICATION_ROW_TRANSPARENCY);
         mDualToneShadePref = findPreference(PREF_DUAL_TONE_SHADE);
+        mShadeBlurRadiusPref = findPreference(PREF_SHADE_BLUR_RADIUS);
 
         updatePreferences();
 
@@ -115,6 +118,7 @@ public class MonetSettings extends DashboardFragment implements
         mTintBackgroundPref.setOnPreferenceChangeListener(this);
         mNotificationRowTransparencyPref.setOnPreferenceChangeListener(this);
         mDualToneShadePref.setOnPreferenceChangeListener(this);
+        mShadeBlurRadiusPref.setOnPreferenceChangeListener(this);
     }
 
     @Override
@@ -176,6 +180,18 @@ public class MonetSettings extends DashboardFragment implements
         boolean dualToneEnabled = Settings.System.getIntForUser(resolver,
                 PREF_DUAL_TONE_SHADE, 1, UserHandle.USER_CURRENT) == 1;
         mDualToneShadePref.setChecked(dualToneEnabled);
+
+        int shadeBlurRadius = Settings.System.getIntForUser(resolver,
+                PREF_SHADE_BLUR_RADIUS, 20, UserHandle.USER_CURRENT);
+        mShadeBlurRadiusPref.setValue(shadeBlurRadius);
+        boolean blurEnabled = Settings.Global.getInt(resolver,
+                Settings.Global.DISABLE_WINDOW_BLURS, 0) == 0;
+        mShadeBlurRadiusPref.setEnabled(blurEnabled);
+        if (!blurEnabled) {
+            mShadeBlurRadiusPref.setSummary("System blur is disabled");
+        } else {
+            mShadeBlurRadiusPref.setSummary(R.string.shade_blur_radius_summary);
+        }
     }
 
     @Override
@@ -222,6 +238,11 @@ public class MonetSettings extends DashboardFragment implements
             Settings.System.putIntForUser(resolver, PREF_DUAL_TONE_SHADE,
                     value ? 1 : 0, UserHandle.USER_CURRENT);
            return true;
+        } else if (preference == mShadeBlurRadiusPref) {
+            int value = (Integer) newValue;
+            Settings.System.putIntForUser(resolver, PREF_SHADE_BLUR_RADIUS,
+                    value, UserHandle.USER_CURRENT);
+            return true;
         }
         return false;
     }

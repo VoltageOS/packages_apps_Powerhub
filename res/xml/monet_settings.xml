@@ -30,6 +30,16 @@
         android:summary="@string/dual_tone_shade_summary"
         android:defaultValue="true" />
 
+    <com.voltage.support.preferences.CustomSeekBarPreference
+        android:key="shade_blur_radius"
+        android:title="@string/shade_blur_radius_title"
+        android:summary="@string/shade_blur_radius_summary"
+        android:max="80"
+        android:min="5"
+        android:defaultValue="20"
+        settings:units="dp"
+        settings:interval="1" />
+
 </PreferenceCategory>
 
         <!-- Wallpaper Settings -->
