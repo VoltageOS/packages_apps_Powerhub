@@ -86,6 +86,7 @@ public class MonetSettings extends DashboardFragment implements
     private static final String PREF_DUAL_TONE_SHADE = "qs_dual_tone";
     private static final String PREF_FONT = "android.theme.customization.font";
     private static final String PREF_ICON_PACK = "android.theme.customization.icon_pack.android";
+    private static final String PREF_SHADE_BLUR_RADIUS = "shade_blur_radius";
 
     private ListPreference mColorSourcePref;
     private ColorPickerPreference mAccentColorPref;
@@ -98,6 +99,7 @@ public class MonetSettings extends DashboardFragment implements
     private FontListPreference mFontPref;
     private IconPackListPreference mIconPackPref;
     private ThemeUtils mThemeUtils;
+    private CustomSeekBarPreference mShadeBlurRadiusPref;
 
     @Override
     protected int getPreferenceScreenResId() {
@@ -119,6 +121,7 @@ public class MonetSettings extends DashboardFragment implements
         mFontPref = findPreference(PREF_FONT);
         mIconPackPref = findPreference(PREF_ICON_PACK);
         mThemeUtils = new ThemeUtils(getActivity());
+        mShadeBlurRadiusPref = findPreference(PREF_SHADE_BLUR_RADIUS);
 
         updatePreferences();
 
@@ -132,6 +135,7 @@ public class MonetSettings extends DashboardFragment implements
         mDualToneShadePref.setOnPreferenceChangeListener(this);
         mFontPref.setOnPreferenceChangeListener(this);
         mIconPackPref.setOnPreferenceChangeListener(this);
+        mShadeBlurRadiusPref.setOnPreferenceChangeListener(this);
     }
 
     @Override
@@ -189,6 +193,18 @@ public class MonetSettings extends DashboardFragment implements
         boolean dualToneEnabled = Settings.System.getIntForUser(resolver,
                 PREF_DUAL_TONE_SHADE, 1, UserHandle.USER_CURRENT) == 1;
         mDualToneShadePref.setChecked(dualToneEnabled);
+
+        int shadeBlurRadius = Settings.System.getIntForUser(resolver,
+                PREF_SHADE_BLUR_RADIUS, 20, UserHandle.USER_CURRENT);
+        mShadeBlurRadiusPref.setValue(shadeBlurRadius);
+        boolean blurEnabled = Settings.Global.getInt(resolver,
+                Settings.Global.DISABLE_WINDOW_BLURS, 0) == 0;
+        mShadeBlurRadiusPref.setEnabled(blurEnabled);
+        if (!blurEnabled) {
+            mShadeBlurRadiusPref.setSummary("System blur is disabled");
+        } else {
+            mShadeBlurRadiusPref.setSummary(R.string.shade_blur_radius_summary);
+        }
 
         updateThemePreference(mFontPref, ThemeUtils.FONT_KEY);
         updateThemePreference(mIconPackPref, "android.theme.customization.icon_pack.android");
@@ -274,6 +290,11 @@ public class MonetSettings extends DashboardFragment implements
             mThemeUtils.setOverlayEnabled("android.theme.customization.icon_pack.android", (String) newValue, "android");
             updateThemePreference(mIconPackPref, "android.theme.customization.icon_pack.android");
            return true;
+        } else if (preference == mShadeBlurRadiusPref) {
+            int value = (Integer) newValue;
+            Settings.System.putIntForUser(resolver, PREF_SHADE_BLUR_RADIUS,
+                    value, UserHandle.USER_CURRENT);
+            return true;
         }
         return false;
     }
