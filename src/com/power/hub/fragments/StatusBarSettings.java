@@ -104,12 +104,8 @@ public class StatusBarSettings extends SettingsPreferenceFragment implements
         findPreference("systemui_tuner_statusbar").setEnabled(oldPrefsEnabled);
         findPreference("clock").setEnabled(oldPrefsEnabled);
         // findPreference("battery_bar_category").setEnabled(oldPrefsEnabled);
-        //findPreference("network_traffic_settings").setEnabled(oldPrefsEnabled);
-        //findPreference("ongoing_progress_settings").setEnabled(oldPrefsEnabled);
-        findPreference("show_fourg_icon").setEnabled(oldPrefsEnabled);
-        findPreference("data_disabled_icon").setEnabled(oldPrefsEnabled);
-        findPreference("enable_camera_privacy_indicator").setEnabled(oldPrefsEnabled);
-        findPreference("enable_location_privacy_indicator").setEnabled(oldPrefsEnabled);
+        // findPreference("network_traffic_settings").setEnabled(oldPrefsEnabled);
+        // findPreference("ongoing_progress_settings").setEnabled(oldPrefsEnabled);
     }
 
     @Override
