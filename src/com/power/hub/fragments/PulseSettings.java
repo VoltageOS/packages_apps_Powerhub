@@ -50,6 +50,8 @@ public class PulseSettings extends SettingsPreferenceFragment {
                 Settings.Secure.PULSE_ROUNDED_BARS, 0, UserHandle.USER_CURRENT);
         Settings.Secure.putStringForUser(resolver,
                 Settings.Secure.PULSE_COLOR, "lavalamp", UserHandle.USER_CURRENT);
+        Settings.Secure.putStringForUser(resolver,
+                Settings.Secure.PULSE_RENDERER, "solid", UserHandle.USER_CURRENT);
     }
 
     @Override
