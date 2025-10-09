@@ -30,6 +30,12 @@
         android:summary="@string/dual_tone_shade_summary"
         android:defaultValue="true" />
 
+    <SwitchPreferenceCompat
+        android:key="qs_vibrant_shade_elements"
+        android:title="@string/qs_vibrant_shade_title"
+        android:summary="@string/qs_vibrant_shade_summary"
+        android:defaultValue="false" />
+
     <com.voltage.support.preferences.CustomSeekBarPreference
         android:key="shade_blur_radius"
         android:title="@string/shade_blur_radius_title"

@@ -575,4 +575,8 @@
     <string name="qs_data_usage_cycle_weekly">Weekly</string>
     <string name="qs_show_data_usage_cycle_info_title">Show cycle info</string>
     <string name="qs_show_data_usage_cycle_info_summary">Display additional information about the data usage cycle</string>
+
+    <string name="qs_vibrant_shade_title">Vibrant shade elements</string>
+    <string name="qs_vibrant_shade_summary">Use vibrant accent colors for QS tiles and brightness slider</string>
+
 </resources>
