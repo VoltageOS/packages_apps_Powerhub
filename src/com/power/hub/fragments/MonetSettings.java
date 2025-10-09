@@ -87,6 +87,7 @@ public class MonetSettings extends DashboardFragment implements
     private static final String PREF_FONT = "android.theme.customization.font";
     private static final String PREF_ICON_PACK = "android.theme.customization.icon_pack.android";
     private static final String PREF_SHADE_BLUR_RADIUS = "shade_blur_radius";
+    private static final String PREF_VIBRANT_SHADE = "qs_vibrant_shade_elements";
 
     private ListPreference mColorSourcePref;
     private ColorPickerPreference mAccentColorPref;
@@ -99,6 +100,7 @@ public class MonetSettings extends DashboardFragment implements
     private FontListPreference mFontPref;
     private IconPackListPreference mIconPackPref;
     private ThemeUtils mThemeUtils;
+    private SwitchPreferenceCompat mVibrantShadePref;
     private CustomSeekBarPreference mShadeBlurRadiusPref;
 
     @Override
@@ -122,6 +124,7 @@ public class MonetSettings extends DashboardFragment implements
         mIconPackPref = findPreference(PREF_ICON_PACK);
         mThemeUtils = new ThemeUtils(getActivity());
         mShadeBlurRadiusPref = findPreference(PREF_SHADE_BLUR_RADIUS);
+        mVibrantShadePref = findPreference(PREF_VIBRANT_SHADE);
 
         updatePreferences();
 
@@ -136,6 +139,7 @@ public class MonetSettings extends DashboardFragment implements
         mFontPref.setOnPreferenceChangeListener(this);
         mIconPackPref.setOnPreferenceChangeListener(this);
         mShadeBlurRadiusPref.setOnPreferenceChangeListener(this);
+        mVibrantShadePref.setOnPreferenceChangeListener(this);
     }
 
     @Override
@@ -193,6 +197,10 @@ public class MonetSettings extends DashboardFragment implements
         boolean dualToneEnabled = Settings.System.getIntForUser(resolver,
                 PREF_DUAL_TONE_SHADE, 1, UserHandle.USER_CURRENT) == 1;
         mDualToneShadePref.setChecked(dualToneEnabled);
+
+        boolean vibrantShadeEnabled = Settings.System.getIntForUser(resolver,
+                PREF_VIBRANT_SHADE, 0, UserHandle.USER_CURRENT) == 1;
+        mVibrantShadePref.setChecked(vibrantShadeEnabled);
 
         int shadeBlurRadius = Settings.System.getIntForUser(resolver,
                 PREF_SHADE_BLUR_RADIUS, 20, UserHandle.USER_CURRENT);
@@ -290,6 +298,11 @@ public class MonetSettings extends DashboardFragment implements
             mThemeUtils.setOverlayEnabled("android.theme.customization.icon_pack.android", (String) newValue, "android");
             updateThemePreference(mIconPackPref, "android.theme.customization.icon_pack.android");
            return true;
+        } else if (preference == mVibrantShadePref) {
+            boolean value = (Boolean) newValue;
+            Settings.System.putIntForUser(resolver, PREF_VIBRANT_SHADE,
+                    value ? 1 : 0, UserHandle.USER_CURRENT);
+            return true;
         } else if (preference == mShadeBlurRadiusPref) {
             int value = (Integer) newValue;
             Settings.System.putIntForUser(resolver, PREF_SHADE_BLUR_RADIUS,

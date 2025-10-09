@@ -561,4 +561,8 @@
     <!-- Vbmeta hash attestation -->
     <string name="vbmeta_attestation_title">Autofix VBMeta detection</string>
     <string name="vbmeta_attestation_summary">Perform key attestation to generate verified boot hash on boot. Requires system restart.</string>
+
+    <string name="qs_vibrant_shade_title">Vibrant shade elements</string>
+    <string name="qs_vibrant_shade_summary">Use vibrant accent colors for QS tiles and brightness slider</string>
+
 </resources>
