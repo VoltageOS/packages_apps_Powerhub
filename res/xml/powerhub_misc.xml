@@ -69,6 +69,23 @@
         android:defaultValue="0"
         android:summary="%s" />
 
+    <SwitchPreferenceCompat
+        android:key="homepage_toast_messages"
+        android:title="@string/homepage_toast_title"
+        android:summary="@string/homepage_toast_summary"
+        android:defaultValue="false"
+        settings:controller="com.android.settings.display.HomepageToastPreferenceController"/>
+
+    <EditTextPreference
+        android:key="homepage_toast_custom_text"
+        android:title="@string/homepage_toast_text_title"
+        android:summary="@string/homepage_toast_text_summary"
+        android:dialogTitle="@string/homepage_toast_text_title"
+        android:dependency="homepage_toast_messages"
+        android:maxLength="150"
+        settings:controller="com.android.settings.display.HomepageToastTextPreferenceController"
+        settings:isPreferenceVisible="false"/>
+
     <PreferenceCategory
         android:key="heads_up"
         android:title="@string/notification_heads_up_title">
