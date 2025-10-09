@@ -436,4 +436,9 @@
     <string name="qs_brightness_slider_position_top">Top</string>
     <string name="qs_brightness_slider_position_bottom">Bottom</string>
 
+    <!-- Homepage toasts -->
+    <string name="homepage_toast_title">Homepage toast messages</string>
+    <string name="homepage_toast_summary">Replace suggestion card with random messages</string>
+    <string name="homepage_toast_text_title">Custom message</string>
+    <string name="homepage_toast_text_summary">Set a personal message to display</string>
 </resources>

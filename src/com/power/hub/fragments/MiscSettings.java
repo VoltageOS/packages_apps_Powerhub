@@ -10,11 +10,12 @@ import android.os.UserHandle;
 import android.content.Context;
 import android.content.ContentResolver;
 import android.content.res.Resources;
+import androidx.preference.EditTextPreference;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceScreen;
 import androidx.preference.Preference.OnPreferenceChangeListener;
-import androidx.preference.SwitchPreference;
+import androidx.preference.SwitchPreferenceCompat;
 import com.voltage.support.preferences.CustomSeekBarPreference;
 import android.provider.Settings;
 import com.android.settings.R;
@@ -45,40 +46,81 @@ import java.util.List;
 public class MiscSettings extends SettingsPreferenceFragment implements
         OnPreferenceChangeListener {
 
+    private static final String HOMEPAGE_TOAST_TOGGLE = "homepage_toast_messages";
+    private static final String HOMEPAGE_TOAST_TEXT = "homepage_toast_custom_text";
+    private SwitchPreferenceCompat mToastToggle;
+    private EditTextPreference mToastText;
+
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
-        ContentResolver resolver = getActivity().getContentResolver();
 
         addPreferencesFromResource(R.xml.powerhub_misc);
-		
 		Resources res = null;
         Context ctx = getContext();
         float density = Resources.getSystem().getDisplayMetrics().density;
 
-        try {
-            res = ctx.getPackageManager().getResourcesForApplication("com.android.systemui");
-        } catch (NameNotFoundException e) {
-            e.printStackTrace();
-        }
+        final ContentResolver resolver = getContentResolver();
+        final PreferenceScreen prefSet = getPreferenceScreen();
 
+        mToastToggle = (SwitchPreferenceCompat) findPreference(HOMEPAGE_TOAST_TOGGLE);
+        mToastText = (EditTextPreference) findPreference(HOMEPAGE_TOAST_TEXT);
+
+        boolean isToastEnabled = Settings.System.getInt(resolver, "homepage_toast_messages_enabled", 0) == 1;
+        mToastToggle.setChecked(isToastEnabled);
+
+        mToastToggle.setOnPreferenceChangeListener(this);
+
+        mToastText.setOnPreferenceChangeListener(this);
+
+        updateToastTextPreference(isToastEnabled);
+    }
+
+    private void updateToastTextPreference(boolean enabled) {
+        if (mToastText != null) {
+            mToastText.setVisible(enabled);
+            String currentText = Settings.System.getString(getContentResolver(), "homepage_toast_custom_text");
+            if (!TextUtils.isEmpty(currentText)) {
+                mToastText.setSummary(currentText);
+            } else {
+                mToastText.setSummary(R.string.homepage_toast_text_summary);
+            }
+        }
     }
 
     @Override
-    public boolean onPreferenceChange(Preference preference, Object objValue) {
+    public boolean onPreferenceChange(Preference preference, Object newValue) {
+        final ContentResolver resolver = getContentResolver();
+
+        if (preference == mToastToggle) {
+            boolean isChecked = (Boolean) newValue;
+            Settings.System.putInt(resolver, "homepage_toast_messages_enabled", isChecked ? 1 : 0);
+            updateToastTextPreference(isChecked);
+            return true;
+        }
+
+        if (preference == mToastText) {
+            String text = ((String) newValue).trim();
+            Settings.System.putString(resolver, "homepage_toast_custom_text", text);
+            if (!TextUtils.isEmpty(text)) {
+                mToastText.setSummary(text);
+            } else {
+                mToastText.setSummary(R.string.homepage_toast_text_summary);
+            }
+            return true;
+        }
+
         return false;
     }
-	
 
     @Override
     public int getMetricsCategory() {
         return MetricsProto.MetricsEvent.VOLTAGE;
     }
-	
-	/**
+
+    /**
      * For Search.
      */
-
     public static final SearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
             new BaseSearchIndexProvider() {
 
@@ -98,5 +140,5 @@ public class MiscSettings extends SettingsPreferenceFragment implements
                     List<String> keys = super.getNonIndexableKeys(context);
                     return keys;
                 }
-    };
+            };
 }
