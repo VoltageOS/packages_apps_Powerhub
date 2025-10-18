@@ -24,6 +24,13 @@
         android:key="lockscreen_pulse_enabled"
         android:title="@string/enable" />
 
+    <com.voltage.support.preferences.SecureSettingSwitchPreference
+        android:key="ambient_pulse_enabled"
+        android:title="@string/ambient_pulse_enabled_title"
+        android:summary="@string/ambient_pulse_enabled_summary"
+        android:defaultValue="true"
+        android:dependency="lockscreen_pulse_enabled" />
+
     <com.voltage.support.preferences.SecureSettingListPreference
         android:key="pulse_renderer"
         android:title="@string/pulse_renderer"
