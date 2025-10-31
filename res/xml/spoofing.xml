@@ -56,6 +56,13 @@
             android:key="keybox_data_setting"
             android:title="@string/keybox_data_title" />
 
+    <!-- Vbmeta hash attestation -->
+    <com.voltage.support.preferences.SystemPropertySwitchPreference
+        android:key="persist.sys.vbmeta.update"
+        android:title="@string/vbmeta_attestation_title"
+        android:summary="@string/vbmeta_attestation_summary"
+        android:defaultValue="true" />
+
     </PreferenceCategory>
 
     <PreferenceCategory

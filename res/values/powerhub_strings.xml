@@ -557,4 +557,8 @@
 
     <string name="shade_blur_radius_title">Notification shade blur</string>
     <string name="shade_blur_radius_summary">Adjust the blur intensity behind the notification shade</string>
+
+    <!-- Vbmeta hash attestation -->
+    <string name="vbmeta_attestation_title">Autofix VBMeta detection</string>
+    <string name="vbmeta_attestation_summary">Perform key attestation to generate verified boot hash on boot. Requires system restart.</string>
 </resources>
