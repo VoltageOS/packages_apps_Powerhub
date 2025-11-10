@@ -109,6 +109,7 @@
         <item>@string/pulse_renderer_neon_glow</item>
         <item>@string/pulse_renderer_retro_vu_meter</item>
         <item>@string/pulse_renderer_minimal_wave</item>
+        <item>@string/pulse_renderer_sparkle</item>
     </string-array>
 
     <string-array name="pulse_renderer_values">
@@ -117,5 +118,6 @@
         <item>neon</item>
         <item>retro</item>
         <item>minimal</item>
+        <item>sparkle</item>
     </string-array>
 </resources>
