@@ -26,6 +26,16 @@
 
 </PreferenceCategory>
 
+    <com.power.hub.preferences.FontListPreference
+        android:key="android.theme.customization.font"
+        android:title="@string/theme_customization_font_title"
+        android:summary="%s" />
+
+    <com.power.hub.preferences.IconPackListPreference
+        android:key="android.theme.customization.icon_pack.android"
+        android:title="@string/theme_customization_icon_pack_title"
+        android:summary="%s" />
+
     <ListPreference
         android:key="color_source"
         android:title="@string/color_source_title"
