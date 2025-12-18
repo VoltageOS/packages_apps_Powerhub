@@ -15,11 +15,34 @@
     android:title="@string/statusbar_title"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 	
-       <Preference
+    <Preference
         android:key="systemui_tuner_statusbar"
         android:title="@string/statusbar_items_category" >
         <intent android:action="com.android.settings.action.STATUS_BAR_TUNER" />
         </Preference>
+
+        <com.voltage.support.preferences.SecureSettingListPreference
+            android:key="qs_show_brightness_slider"
+            android:title="@string/qs_brightness_slider_title"
+            android:entries="@array/qs_brightness_slider_show_entries"
+            android:entryValues="@array/qs_brightness_slider_show_values"
+            android:defaultValue="1" />
+
+        <com.voltage.support.preferences.SecureSettingListPreference
+            android:key="qs_brightness_slider_position"
+            android:title="@string/qs_brightness_slider_position_title"
+            android:entries="@array/qs_brightness_slider_position_entries"
+            android:entryValues="@array/qs_brightness_slider_position_values"
+            android:defaultValue="0"
+            android:dependency="qs_show_brightness_slider" />
+
+        <com.voltage.support.preferences.SecureSettingSwitchPreference
+            android:key="qs_show_auto_brightness"
+            android:title="@string/qs_brightness_slider_auto_title"
+            android:summary="@string/qs_brightness_slider_auto_summary"
+            android:dependency="qs_show_brightness_slider"
+            requiresConfig="@*android:bool/config_automatic_brightness_available"
+            android:defaultValue="true" />
 
     <Preference
         android:key="network_traffic_settings"
