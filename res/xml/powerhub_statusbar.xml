@@ -44,6 +44,11 @@
             requiresConfig="@*android:bool/config_automatic_brightness_available"
             android:defaultValue="true" />
 
+        <com.voltage.support.preferences.SystemSettingSwitchPreference
+            android:key="qs_show_data_usage"
+            android:title="@string/qs_footer_datausage_title"
+            android:summary="@string/qs_footer_datausage_summary" />
+
     <Preference
         android:key="network_traffic_settings"
         android:title="@string/network_traffic_settings_title"
