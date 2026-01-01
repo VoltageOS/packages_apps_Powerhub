@@ -16,10 +16,6 @@
 package com.power.hub.fragments;
 
 import android.content.ContentResolver;
-import android.content.Context;
-import android.content.pm.PackageManager;
-import android.content.om.OverlayInfo;
-
 import android.os.Bundle;
 import android.os.UserHandle;
 import android.provider.Settings;
@@ -31,9 +27,6 @@ import androidx.preference.Preference.OnPreferenceChangeListener;
 import androidx.preference.SwitchPreferenceCompat;
 
 import com.android.internal.logging.nano.MetricsProto;
-import com.android.internal.util.voltage.ThemeUtils;
-import com.power.hub.preferences.FontListPreference;
-import com.power.hub.preferences.IconPackListPreference;
 import com.android.settings.dashboard.DashboardFragment;
 import com.android.settings.R;
 import com.android.settings.search.BaseSearchIndexProvider;
@@ -46,10 +39,6 @@ import java.lang.CharSequence;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 @SearchIndexable
 public class MonetSettings extends DashboardFragment implements
@@ -84,8 +73,6 @@ public class MonetSettings extends DashboardFragment implements
     private static final String PREF_CHROMA_FACTOR = "chroma_factor";
     private static final String PREF_TINT_BACKGROUND = "tint_background";
     private static final String PREF_DUAL_TONE_SHADE = "qs_dual_tone";
-    private static final String PREF_FONT = "android.theme.customization.font";
-    private static final String PREF_ICON_PACK = "android.theme.customization.icon_pack.android";
     private static final String PREF_SHADE_BLUR_RADIUS = "shade_blur_radius";
     private static final String PREF_VIBRANT_SHADE = "qs_vibrant_shade_elements";
 
@@ -97,9 +84,6 @@ public class MonetSettings extends DashboardFragment implements
     private CustomSeekBarPreference mChromaPref;
     private SwitchPreferenceCompat mTintBackgroundPref;
     private SwitchPreferenceCompat mDualToneShadePref;
-    private FontListPreference mFontPref;
-    private IconPackListPreference mIconPackPref;
-    private ThemeUtils mThemeUtils;
     private SwitchPreferenceCompat mVibrantShadePref;
     private CustomSeekBarPreference mShadeBlurRadiusPref;
 
@@ -120,9 +104,6 @@ public class MonetSettings extends DashboardFragment implements
         mChromaPref = findPreference(PREF_CHROMA_FACTOR);
         mTintBackgroundPref = findPreference(PREF_TINT_BACKGROUND);
         mDualToneShadePref = findPreference(PREF_DUAL_TONE_SHADE);
-        mFontPref = findPreference(PREF_FONT);
-        mIconPackPref = findPreference(PREF_ICON_PACK);
-        mThemeUtils = new ThemeUtils(getActivity());
         mShadeBlurRadiusPref = findPreference(PREF_SHADE_BLUR_RADIUS);
         mVibrantShadePref = findPreference(PREF_VIBRANT_SHADE);
 
@@ -136,8 +117,6 @@ public class MonetSettings extends DashboardFragment implements
         mChromaPref.setOnPreferenceChangeListener(this);
         mTintBackgroundPref.setOnPreferenceChangeListener(this);
         mDualToneShadePref.setOnPreferenceChangeListener(this);
-        mFontPref.setOnPreferenceChangeListener(this);
-        mIconPackPref.setOnPreferenceChangeListener(this);
         mShadeBlurRadiusPref.setOnPreferenceChangeListener(this);
         mVibrantShadePref.setOnPreferenceChangeListener(this);
     }
@@ -213,42 +192,6 @@ public class MonetSettings extends DashboardFragment implements
         } else {
             mShadeBlurRadiusPref.setSummary(R.string.shade_blur_radius_summary);
         }
-
-        updateThemePreference(mFontPref, ThemeUtils.FONT_KEY);
-        updateThemePreference(mIconPackPref, "android.theme.customization.icon_pack.android");
-    }
-
-    private void updateThemePreference(ListPreference pref, String category) {
-        if (pref == null) return;
-
-        List<String> packages = mThemeUtils.getOverlayPackagesForCategory(category, "android");
-        List<String> labels = new ArrayList<>();
-        PackageManager pm = getActivity().getPackageManager();
-
-        for (String pkg : packages) {
-            if ("android".equals(pkg)) {
-                labels.add("Default");
-            } else {
-                try {
-                    labels.add(pm.getApplicationInfo(pkg, 0).loadLabel(pm).toString());
-                } catch (PackageManager.NameNotFoundException e) {
-                    labels.add(pkg);
-                }
-            }
-        }
-
-        pref.setEntries(labels.toArray(new String[0]));
-        pref.setEntryValues(packages.toArray(new String[0]));
-
-        String currentPackage = "android";
-        for (OverlayInfo info : mThemeUtils.getOverlayInfos(category)) {
-            if (info.isEnabled()) {
-                currentPackage = info.packageName;
-            }
-        }
-        pref.setValue(currentPackage);
-        pref.setSummary(pref.getEntry());
-
     }
 
     @Override
@@ -289,14 +232,6 @@ public class MonetSettings extends DashboardFragment implements
             boolean value = (Boolean) newValue;
             Settings.System.putIntForUser(resolver, PREF_DUAL_TONE_SHADE,
                     value ? 1 : 0, UserHandle.USER_CURRENT);
-            return true;
-        } else if (preference == mFontPref) {
-            mThemeUtils.setOverlayEnabled(ThemeUtils.FONT_KEY, (String) newValue, "android");
-            updateThemePreference(mFontPref, ThemeUtils.FONT_KEY);
-            return true;
-        } else if (preference == mIconPackPref) {
-            mThemeUtils.setOverlayEnabled("android.theme.customization.icon_pack.android", (String) newValue, "android");
-            updateThemePreference(mIconPackPref, "android.theme.customization.icon_pack.android");
            return true;
         } else if (preference == mVibrantShadePref) {
             boolean value = (Boolean) newValue;

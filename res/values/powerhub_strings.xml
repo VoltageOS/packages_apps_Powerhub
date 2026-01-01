@@ -287,12 +287,6 @@
     <string name="dual_tone_shade_title">Use dual-tone shade</string>
     <string name="dual_tone_shade_summary">Use a secondary background for the notification shade</string>
 
-    <!-- Theme customization -->
-    <string name="theme_customization_font_title">Headline / Body font</string>
-    <string name="theme_customization_font_summary">Set system font style</string>
-    <string name="theme_customization_icon_pack_title">Icon pack</string>
-    <string name="theme_customization_icon_pack_summary">Set system icon style</string>
-
     <!-- Fingerprint Ripple Effect -->
     <string name="enable_fingerprint_ripple_effect_title">Ripple effect</string>
     <string name="enable_fingerprint_ripple_effect_summary">Show ripple effect on unlock with fingerprint</string>
