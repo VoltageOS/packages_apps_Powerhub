@@ -60,6 +60,12 @@
             android:title="@string/qs_footer_datausage_title"
             android:summary="@string/qs_footer_datausage_summary" />
 
+        <com.voltage.support.preferences.SystemSettingSwitchPreference
+            android:key="bluetooth_show_battery"
+            android:title="@string/bluetooth_battery_title"
+            android:summary="@string/bluetooth_battery_summary"
+            android:defaultValue="true"/>
+
     <Preference
         android:key="network_traffic_settings"
         android:title="@string/network_traffic_settings_title"

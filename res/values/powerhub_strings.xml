@@ -580,4 +580,7 @@
     <string name="status_bar_battery_percent_text_next_right">Next to the icon (right)</string> 
     <string name="status_bar_battery_percent_text_next_left">Next to the icon (left)</string> 
 
+    <!-- Bluetooth status -->
+    <string name="bluetooth_battery_title">Bluetooth battery status</string>
+    <string name="bluetooth_battery_summary">Display battery status for the connected bluetooth device, if available</string>
 </resources>
