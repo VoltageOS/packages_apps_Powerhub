@@ -311,7 +311,7 @@
     <string name="click_partial_screenshot_title">Click to partial screenshot</string>
     <string name="click_partial_screenshot_summary">Short click Volume Down and Power to take partial screenshot</string>
 
-    <string name="quick_settings_secure_lock_screen_title">Disable QS pull on secure lock screen</string>
+    <string name="quick_settings_secure_lock_screen_title">QS pull on secure lock screen</string>
 
     <!-- Lock screen media art -->
     <string name="ls_media_art_title">Media cover art</string>
