@@ -583,4 +583,28 @@
     <!-- Bluetooth status -->
     <string name="bluetooth_battery_title">Bluetooth battery status</string>
     <string name="bluetooth_battery_summary">Display battery status for the connected bluetooth device, if available</string>
+
+    <!-- Nirvana Mode -->
+    <string name="nirvana_mode_title">Nirvana Mode</string>
+    <string name="nirvana_mode_summary">Create quiet time by pausing distracting apps</string>
+    <string name="nirvana_mode_hero_title">Find your focus</string>
+    <string name="nirvana_mode_description">When you need time to focus, you can pause distracting apps and hide their notifications.</string>
+    <string name="nirvana_mode_set_schedule">Set a schedule</string>
+    <string name="nirvana_mode_turn_on_now">Turn on now</string>
+    <string name="nirvana_mode_turn_off_now">Turn off now</string>
+    <string name="nirvana_mode_select_apps">Select distracting apps</string>
+    <string name="nirvana_mode_dialog_title">Nirvana Mode is active</string>
+    <string name="nirvana_mode_dialog_message">This app is paused while Nirvana Mode is on.</string>
+    
+    <string name="nirvana_mode_schedule_title">Schedule</string>
+    <string name="nirvana_mode_schedule_summary">When you need time to focus, you can pause distracting apps and hide their notifications.</string>
+    <string name="nirvana_mode_apps_header">Distracting apps</string>
+    <string name="nirvana_mode_schedule_start">Start time</string>
+    <string name="nirvana_mode_schedule_end">End time</string>
+    
+    <string name="nirvana_status_active">Active now</string>
+    <string name="nirvana_status_active_until">Active until %1$s</string>
+    <string name="nirvana_status_scheduled">Scheduled: %1$s - %2$s</string>
+    <string name="nirvana_status_active_manual_scheduled">Active now\nScheduled: %1$s - %2$s</string>
+
 </resources>

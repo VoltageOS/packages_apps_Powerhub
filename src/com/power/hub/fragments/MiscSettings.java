@@ -49,6 +49,7 @@ public class MiscSettings extends SettingsPreferenceFragment implements
 
     private static final String SMART_PIXELS = "smart_pixels";
     private Preference mSmartPixels;
+    private static final String NIRVANA_MODE = "nirvana_mode_settings";
 
     private static final String HOMEPAGE_TOAST_TOGGLE = "homepage_toast_messages";
     private static final String HOMEPAGE_TOAST_TEXT = "homepage_toast_custom_text";
@@ -70,6 +71,8 @@ public class MiscSettings extends SettingsPreferenceFragment implements
         if (!mSmartPixelsSupported) {
             prefSet.removePreference(mSmartPixels);
         }
+
+        Preference mNirvanaMode = findPreference(NIRVANA_MODE);
 
         mToastToggle = (SwitchPreferenceCompat) findPreference(HOMEPAGE_TOAST_TOGGLE);
         mToastText = (EditTextPreference) findPreference(HOMEPAGE_TOAST_TEXT);

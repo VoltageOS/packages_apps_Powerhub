@@ -20,4 +20,9 @@
      <dimen name="powerhub_radius_merge">5dp</dimen>
      <dimen name="powerhub_pref_horizontal_padding">16dp</dimen>
      <dimen name="powerhub_pref_horizontal_padding-negative">-16dp</dimen>
+
+     <dimen name="nirvana_hero_top_padding">24dp</dimen>
+     <dimen name="nirvana_icon_size">96dp</dimen>
+     <dimen name="nirvana_icon_padding">20dp</dimen>
+
 </resources>
