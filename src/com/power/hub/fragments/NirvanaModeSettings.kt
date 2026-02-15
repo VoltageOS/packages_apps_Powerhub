@@ -260,7 +260,20 @@ class NirvanaModeSettings : Fragment(R.layout.nirvana_mode_fragment) {
     ) {
         inflater.inflate(R.menu.hide_applist_menu, menu)
 
-        menu.findItem(R.id.show_overlay)?.isVisible = false
+        val statsItem = menu.findItem(R.id.show_overlay)
+        if (statsItem != null) {
+           statsItem.isVisible = true
+            statsItem.title = getString(R.string.nirvana_stats_title)
+            statsItem.setOnMenuItemClickListener {
+                parentFragmentManager.beginTransaction()
+                    .setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out, android.R.anim.fade_in, android.R.anim.fade_out)
+                    .replace(id, NirvanaStatsFragment())
+                    .addToBackStack(null)
+                    .commit()
+                true
+            }
+        }
+        
         menu.findItem(R.id.hide_overlay)?.isVisible = false
 
         val searchItem = menu.findItem(R.id.search)
