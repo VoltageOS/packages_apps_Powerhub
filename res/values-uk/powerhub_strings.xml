@@ -325,8 +325,7 @@
     <string name="wallpaper_dim_level_summary">Configure wallpaper dim level</string>
     <string name="glass_blur">Glass blur</string>
     <string name="frosted_blur">Frosted blur</string>
-    <string name="wallpaper_styles_footer">        For wallpaper styles to work effectively, users must set the wallpapers for the lockscreen and homescreen at different times.\nThe same wallpaper can be used, but it should not be applied to both the lockscreen and homescreen at the same time.\nThis is optional when using the BOTH OPTION for wallpaper blur and dim styles.
-    </string>
+    <string name="wallpaper_styles_footer">Щоб стилі шпалер працювали ефективно, користувачі повинні встановлювати шпалери для екрана блокування та робочого столу в різний час. Можна використовувати одну й ту ж шпалеру, але не слід застосовувати її до обох екранів одночасно. Це необов\'язково, якщо використовується опція \"ОБИДВІ\" для розмиття та затемнення шпалер    </string>
     <!-- Ongoing action chip -->
     <string name="ongoing_progress_settings_title">Statusbar action chip</string>
     <string name="ongoing_progress_settings_summary">Statusbar action chip options</string>
