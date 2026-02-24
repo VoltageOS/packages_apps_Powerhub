@@ -127,19 +127,19 @@
     <string name="spoofing_app_specific_category">App-Specific</string>
     <string name="spoofing_vending_title">Play Store spoof</string>
     <string name="spoofing_vending_summary">Spoof the Play Store to the latest Pixel device</string>
-    <string name="spoofing_photos_title">Google Photos spoof</string>
-    <string name="spoofing_photos_summary">Spoof the Google Photos app as a Pixel XL</string>
-    <string name="spoofing_snap_title">Snapchat spoof</string>
-    <string name="spoofing_snap_summary">Spoof Snapchat as a Pixel XL to fix possible chat issues</string>
+    <string name="spoofing_photos_title">Google Fotos Spoof</string>
+    <string name="spoofing_photos_summary">Spoof der Google Photos App als Pixel XL</string>
+    <string name="spoofing_snap_title">Snapchat Spoof</string>
+    <string name="spoofing_snap_summary">Spoof Snapchat als Pixel XL um mögliche Chat-Probleme zu beheben</string>
     <!-- Miscellaneous/Spoofing/Play Integrity fix JSON update -->
-    <string name="toast_spoofing_success">Successfully downloaded pif.json. Spoofing as %1$s for Play Integrity.</string>
-    <string name="toast_spoofing_failure">Failed to spoof properties.</string>
-    <string name="update_pif_json_title">Update Play Integrity fix</string>
-    <string name="update_pif_json_summary">Update PIF spoofing device, requires internet connection.</string>
-    <string name="show_pif_properties_title">Play Integrity fix properties</string>
-    <string name="show_pif_properties_summary">Show all currently set PIF properties</string>
-    <string name="error_loading_properties">Error loading PIF properties</string>
-    <string name="pif_spoofing_title">Select PIF JSON file</string>
+    <string name="toast_spoofing_success">pif.json erfolgreich heruntergeladen. Als %1$s für Play Integrity-Überprüfung ausgeben.</string>
+    <string name="toast_spoofing_failure">Fehler beim Eigenschaften vortäuschen.</string>
+    <string name="update_pif_json_title">Play Integrity Fix Aktualisieren</string>
+    <string name="update_pif_json_summary">PIF Spoofing-Gerät aktualisieren, erfordert eine Internetverbindung.</string>
+    <string name="show_pif_properties_title">Play Integrity Fix Eigenschaften</string>
+    <string name="show_pif_properties_summary">Alle aktuell gesetzten PIF-Eigenschaften anzeigen</string>
+    <string name="error_loading_properties">Fehler beim Laden der PIF-Eigenschaften</string>
+    <string name="pif_spoofing_title">PIF JSON-Datei auswählen</string>
     <string name="pif_spoofing_summary">Wählen Sie die PIF JSON-Datei, die zum spoof der Play Integrity verwendet werden soll</string>
     <!-- Keybox Data -->
     <string name="keybox_data_title">Keybox-Attestation überschreiben</string>
@@ -153,7 +153,7 @@
     <!-- Miscellaneous/Spoofing/Per-app spoofing -->
     <string name="gameprops_title">Aktiviere pro App Spiele-Spoof</string>
     <string name="gameprops_summary">Aktiviert App-Spoofing-Optionen für Spiele</string>
-    <string name="gameprops_load_json_title">Select per-app game props JSON file</string>
+    <string name="gameprops_load_json_title">JSON-Datei per Spiel auswählen</string>
     <string name="gameprops_load_json_summary">Choose the JSON file to be used to spoof more games</string>
     <!-- Power menu -->
     <string name="power_menu_title">Power-Menü</string>
@@ -190,37 +190,37 @@
     <string name="volume_button_music_control_summary">Lautstärke nach oben gedrückt halten, um zum nächsten Track zu springen und umgekehrt</string>
     <!-- Network traffic -->
     <string name="network_traffic_settings_title">Netzwerkverkehrs-Anzeige</string>
-    <string name="network_traffic_settings_summary">Display and customize current network traffic levels</string>
-    <string name="network_traffic_location_title">Location</string>
+    <string name="network_traffic_settings_summary">Aktuellen Netzwerkverkehr anzeigen und anpassen</string>
+    <string name="network_traffic_location_title">Standort</string>
     <string name="network_traffic_location_disable">Deaktiviert</string>
-    <string name="network_traffic_location_statusbar">Statusbar</string>
-    <string name="network_traffic_location_quick_statusbar">Quick Statusbar</string>
-    <string name="network_traffic_mode_title">Display mode</string>
-    <string name="network_traffic_mode_up">Upload only</string>
-    <string name="network_traffic_mode_down">Download only</string>
-    <string name="network_traffic_mode_all">Upload and download</string>
-    <string name="network_traffic_autohide">Auto hide</string>
-    <string name="network_traffic_autohide_summary">Hide the traffic monitor when inactive</string>
+    <string name="network_traffic_location_statusbar">Statusleiste</string>
+    <string name="network_traffic_location_quick_statusbar">Schnell-Statusleiste</string>
+    <string name="network_traffic_mode_title">Anzeigemodus</string>
+    <string name="network_traffic_mode_up">Nur Hochladen</string>
+    <string name="network_traffic_mode_down">Nur Herunterladen</string>
+    <string name="network_traffic_mode_all">Hochladen und herunterladen</string>
+    <string name="network_traffic_autohide">Automatisch ausblenden</string>
+    <string name="network_traffic_autohide_summary">Netzwerkverkehrsanzeige bei Inaktivität ausblenden</string>
     <string name="network_traffic_autohide_kilobits">Kb/s</string>
     <string name="network_traffic_autohide_kilobytes">KB/s</string>
-    <string name="network_traffic_autohide_threshold">Inactivity threshold</string>
-    <string name="network_traffic_refresh_interval_title">Refresh interval</string>
-    <string name="network_traffic_refresh_interval_summary">Duration after which speed is remeasured</string>
-    <string name="network_traffic_units_title">Traffic measurement units</string>
-    <string name="network_traffic_units_bits">Bits per second (b/s)</string>
+    <string name="network_traffic_autohide_threshold">Inaktivitätsschwelle</string>
+    <string name="network_traffic_refresh_interval_title">Aktualisierungsintervall</string>
+    <string name="network_traffic_refresh_interval_summary">Dauer, nach der die Geschwindigkeit erneut gemessen wird</string>
+    <string name="network_traffic_units_title">Datenübertragungseinheiten</string>
+    <string name="network_traffic_units_bits">Bits pro Sekunde (b/s)</string>
     <string name="network_traffic_units_kilobits">Kilobits per second (kb/s)</string>
-    <string name="network_traffic_units_megabits">Megabits per second (Mb/s)</string>
-    <string name="network_traffic_units_bytes">Bytes per second (B/s)</string>
-    <string name="network_traffic_units_kilobytes">Kilobytes per second (kB/s)</string>
+    <string name="network_traffic_units_megabits">Megabits pro Sekunde (Mb/s)</string>
+    <string name="network_traffic_units_bytes">Bytes pro Sekunde (B/s)</string>
+    <string name="network_traffic_units_kilobytes">Kilobytes pro Sekunde (kB/s)</string>
     <string name="network_traffic_units_megabytes">Megabytes per second (MB/s)</string>
-    <string name="network_traffic_hidearrow">Hide arrows</string>
-    <string name="network_traffic_hidearrow_summary">Hide the network traffic indicator arrows</string>
+    <string name="network_traffic_hidearrow">Pfeile ausblenden</string>
+    <string name="network_traffic_hidearrow_summary">Pfeile des Netzwerkverkehrs in der Statusleiste ausblenden</string>
     <!-- Monet settings -->
-    <string name="monet_settings_title">Theming settings</string>
-    <string name="monet_settings_sammary">A few extra settings to customize monet engine</string>
-    <string name="theme_style_title">Theme style</string>
-    <string name="theme_style_tonal_spot">Tonal Spot (Default)</string>
-    <string name="theme_style_vibrant">Vibrant</string>
+    <string name="monet_settings_title">Designeinstellungen</string>
+    <string name="monet_settings_sammary">Ein paar zusätzliche Einstellungen zur Anpassung der Monet-Engine</string>
+    <string name="theme_style_title">Designstil</string>
+    <string name="theme_style_tonal_spot">Tonal Spot (Standard)</string>
+    <string name="theme_style_vibrant">Lebhaft</string>
     <string name="theme_style_expressive">Exspressive</string>
     <string name="theme_style_spritz">Spritz</string>
     <string name="theme_style_rainbow">Rainbow</string>
@@ -275,14 +275,14 @@
     <!-- Lock screen album art filter -->
     <string name="ls_media_art_filter_title">Media cover art filter</string>
     <string name="ls_media_art_filter_none">None</string>
-    <string name="ls_media_art_filter_blur">Blur</string>
-    <string name="ls_media_art_filter_grayscale">Grayscale</string>
+    <string name="ls_media_art_filter_blur">Unschärfe</string>
+    <string name="ls_media_art_filter_grayscale">Graustufen</string>
     <string name="ls_media_art_filter_sepia">Sepia</string>
     <string name="ls_media_art_filter_tint">Accent tinted</string>
-    <string name="ls_media_art_filter_invert">Invert</string>
-    <string name="ls_media_art_filter_grayblur">Grayscale and blur</string>
+    <string name="ls_media_art_filter_invert">Invertieren</string>
+    <string name="ls_media_art_filter_grayblur">Graustufen und Unschärfe</string>
     <!-- Lock screen media art fade level -->
-    <string name="ls_media_art_fade_level_title">Media cover art fade level</string>
+    <string name="ls_media_art_fade_level_title">Albumcover-Überblendung</string>
     <string name="ls_media_art_fade_level_summary">Set media cover art fade level</string>
     <!-- Lock screen media art blur level -->
     <string name="ls_media_art_blur_level_title">Media art blur level</string>
@@ -454,7 +454,7 @@
     <string name="status_bar_clock_position_right">Right</string>
     <string name="status_bar_clock_position_left">Left</string>
     <string name="status_bar_clock_position_center">Center</string>
-    <string name="status_bar_clock_auto_hide_title">Auto hide</string>
+    <string name="status_bar_clock_auto_hide_title">Automatisch ausblenden</string>
     <string name="status_bar_clock_auto_hide_summary">Hide clock if launcher is visible</string>
     <string name="status_bar_am_pm_title">AM/PM style</string>
     <string name="status_bar_am_pm_info">24-hour clock is enabled</string>
