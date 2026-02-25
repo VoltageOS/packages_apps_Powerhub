@@ -274,7 +274,7 @@
     <string name="ambient_media_art_summary">Display media cover art on Ambient display when available</string>
     <!-- Lock screen album art filter -->
     <string name="ls_media_art_filter_title">Media cover art filter</string>
-    <string name="ls_media_art_filter_none">None</string>
+    <string name="ls_media_art_filter_none">Nichts</string>
     <string name="ls_media_art_filter_blur">Unschärfe</string>
     <string name="ls_media_art_filter_grayscale">Graustufen</string>
     <string name="ls_media_art_filter_sepia">Sepia</string>
