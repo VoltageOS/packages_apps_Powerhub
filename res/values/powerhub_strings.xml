@@ -396,6 +396,8 @@
      <string name="compact_progress_mode_summary">Use a compact circular indicator for ongoing actions</string>
      <string name="show_media_progress_title">Show media progress</string>
      <string name="show_media_progress_summary">"Display media playback progress in the status bar</string>
+     <string name="voltage_logo">Show Voltage Logo</string>
+     <string name="voltage_logo_summary">Display a stylized lightning bolt as a fallback indicator when no actions are active</string>
      <string name="progress_footer_text">
      "The status bar progress bar provides real-time updates for both media playback and active downloads/uploads.
  
