@@ -32,6 +32,12 @@
          android:summary="@string/compact_progress_mode_summary"
          android:defaultValue="false" />
 
+    <com.voltage.support.preferences.SystemSettingSwitchPreference
+        android:key="ongoing_smart_actions"
+        android:title="@string/ongoing_smart_actions_title"
+        android:summary="@string/ongoing_smart_actions_summary"
+        android:defaultValue="true" />
+
      <com.voltage.support.preferences.SystemSettingSwitchPreference
          android:key="show_voltage_logo"
          android:title="@string/voltage_logo"
