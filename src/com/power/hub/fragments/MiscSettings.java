@@ -1,3 +1,18 @@
+/*
+ * Copyright (C) 2026 VoltageOS
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package com.power.hub.fragments;
 
 import com.android.internal.logging.nano.MetricsProto;
@@ -51,15 +66,25 @@ public class MiscSettings extends SettingsPreferenceFragment implements
     private Preference mSmartPixels;
     private static final String NIRVANA_MODE = "nirvana_mode_settings";
 
-    private static final String HOMEPAGE_TOAST_TOGGLE = "homepage_toast_messages";
-    private static final String HOMEPAGE_TOAST_TEXT = "homepage_toast_custom_text";
-    private SwitchPreferenceCompat mToastToggle;
-    private EditTextPreference mToastText;
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        android.view.ViewGroup listCollection = view.findViewById(android.R.id.list_container);
+        if (listCollection != null) {
+            for (int i = 0; i < listCollection.getChildCount(); i++) {
+                android.view.View child = listCollection.getChildAt(i);
+                if (child instanceof androidx.recyclerview.widget.RecyclerView) {
+                    child.setPadding(child.getPaddingLeft(), child.getPaddingTop(), child.getPaddingRight(), 
+                                     (int) android.util.TypedValue.applyDimension(android.util.TypedValue.COMPLEX_UNIT_DIP, 130, getResources().getDisplayMetrics()));
+                    break;
+                }
+            }
+        }
+    }
 
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
-
         addPreferencesFromResource(R.xml.powerhub_misc);
 
         final ContentResolver resolver = getContentResolver();
@@ -68,59 +93,15 @@ public class MiscSettings extends SettingsPreferenceFragment implements
         mSmartPixels = (Preference) findPreference(SMART_PIXELS);
         boolean mSmartPixelsSupported = getResources().getBoolean(
                 com.android.internal.R.bool.config_supportSmartPixels);
-        if (!mSmartPixelsSupported) {
+        if (!mSmartPixelsSupported && mSmartPixels != null) {
             prefSet.removePreference(mSmartPixels);
         }
 
         Preference mNirvanaMode = findPreference(NIRVANA_MODE);
-
-        mToastToggle = (SwitchPreferenceCompat) findPreference(HOMEPAGE_TOAST_TOGGLE);
-        mToastText = (EditTextPreference) findPreference(HOMEPAGE_TOAST_TEXT);
-
-        boolean isToastEnabled = Settings.System.getInt(resolver, "homepage_toast_messages_enabled", 0) == 1;
-        mToastToggle.setChecked(isToastEnabled);
-
-        mToastToggle.setOnPreferenceChangeListener(this);
-
-        mToastText.setOnPreferenceChangeListener(this);
-
-        updateToastTextPreference(isToastEnabled);
-    }
-
-    private void updateToastTextPreference(boolean enabled) {
-        if (mToastText != null) {
-            mToastText.setVisible(enabled);
-            String currentText = Settings.System.getString(getContentResolver(), "homepage_toast_custom_text");
-            if (!TextUtils.isEmpty(currentText)) {
-                mToastText.setSummary(currentText);
-            } else {
-                mToastText.setSummary(R.string.homepage_toast_text_summary);
-            }
-        }
     }
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
-        final ContentResolver resolver = getContentResolver();
-
-        if (preference == mToastToggle) {
-            boolean isChecked = (Boolean) newValue;
-            Settings.System.putInt(resolver, "homepage_toast_messages_enabled", isChecked ? 1 : 0);
-            updateToastTextPreference(isChecked);
-            return true;
-        }
-
-        if (preference == mToastText) {
-            String text = ((String) newValue).trim();
-            Settings.System.putString(resolver, "homepage_toast_custom_text", text);
-            if (!TextUtils.isEmpty(text)) {
-                mToastText.setSummary(text);
-            } else {
-                mToastText.setSummary(R.string.homepage_toast_text_summary);
-            }
-            return true;
-        }
-
         return false;
     }
 

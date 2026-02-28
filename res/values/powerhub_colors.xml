@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright (C) 2021 VoltageOS
+<!--
+     Copyright (C) 2026 VoltageOS
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -23,6 +24,10 @@
      <color name="powerhub_background1">@android:color/system_neutral1_50</color>
      <color name="powerhub_background2">@android:color/system_neutral1_100</color>
      <color name="powerhub_background3">@android:color/system_accent1_400</color>
+
+     <color name="powerhub_blue_tint">#7A96D2</color>
+     <color name="powerhub_purple_tint">#A48AD4</color>
+     <color name="powerhub_gray_tint">#9AA0A6</color>
 
      <string name="nirvana_stats_title">Daily Stats</string>
      <string name="nirvana_stats_total_time">Screen time</string>

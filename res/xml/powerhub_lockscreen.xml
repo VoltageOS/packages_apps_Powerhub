@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright (C) 2016 Nitrogen Project
+<!--
+     Copyright (C) 2026 VoltageOS
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -17,115 +18,46 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:title="@string/lockscreen_title"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
-	
-    	<com.voltage.support.preferences.SystemSettingSwitchPreference
-            android:key="enable_ripple_effect"
-            android:title="@string/enable_fingerprint_ripple_effect_title"
-            android:summary="@string/enable_fingerprint_ripple_effect_summary"
-            android:defaultValue="true" />
+    <Preference
+        android:key="lockscreen_secure_settings"
+        android:title="Secure UI"
+        android:summary="Quick settings and power menu on lock screen"
+        android:icon="@drawable/ic_powerhub_secure_expressive"
+        android:fragment="com.power.hub.fragments.LockScreenSecureSettings" />
 
-        <!-- Hide on secure lock screen -->
-        <com.voltage.support.preferences.SecureSettingListPreference
-            android:key="enable_lockscreen_quick_settings"
-            android:title="@string/quick_settings_secure_lock_screen_title"
-            android:entries="@array/quick_settings_secure_lock_screen_entries"
-            android:entryValues="@array/quick_settings_secure_lock_screen_values"
-            android:defaultValue="1" />
+    <Preference
+        android:key="lockscreen_media_settings"
+        android:title="Media &amp; Visualizer"
+        android:summary="Pulse visualizer and cover art"
+        android:icon="@drawable/ic_powerhub_media_expressive"
+        android:fragment="com.power.hub.fragments.LockScreenMediaSettings" />
 
-        <com.voltage.support.preferences.SecureSettingSwitchPreference
-            android:key="qstile_requires_unlocking"
-            android:title="@string/qstile_requires_unlocking_title"
-            android:summary="@string/qstile_requires_unlocking_summary"
-            android:defaultValue="true" />
+    <Preference
+        android:key="lockscreen_fingerprint_settings"
+        android:title="@string/fingerprint_category"
+        android:summary="Ripple effect and haptics"
+        android:icon="@drawable/ic_powerhub_fingerprint_expressive"
+        android:fragment="com.power.hub.fragments.LockScreenFingerprintSettings" />
 
-        <com.voltage.support.preferences.SystemSettingSwitchPreference
-            android:key="lockscreen_enable_power_menu"
-            android:title="@string/lockscreen_enable_power_menu_title"
-            android:summary="@string/lockscreen_enable_power_menu_summary"
-            android:defaultValue="true" />
+    <Preference
+        android:key="udfps_settings"
+        android:title="@string/udfps_settings_title"
+        android:summary="@string/udfps_settings_summary"
+        android:icon="@drawable/ic_powerhub_udfps_expressive"
+        android:fragment="com.power.hub.fragments.Udfps" />
+        
+    <Preference
+        android:key="lockscreen_weather_settings"
+        android:title="@string/weather_category_title"
+        android:summary="OmniJaws weather integration"
+        android:icon="@drawable/ic_powerhub_weather_expressive"
+        android:fragment="com.power.hub.fragments.LockScreenWeatherSettings" />
 
-        <!-- Pulse music visualizer -->
-        <Preference
-            android:key="pulse_settings"
-            android:title="@string/pulse_settings_title"
-            android:summary="@string/pulse_settings_summary"
-            android:fragment="com.power.hub.fragments.PulseSettings" />
+    <com.voltage.support.preferences.SystemSettingSwitchPreference
+        android:key="lockscreen_battery_info"
+        android:title="@string/lockscreen_battery_info_title"
+        android:summary="@string/lockscreen_battery_info_summary"
+        android:icon="@drawable/ic_powerhub_batteryinfo_expressive"
+        android:defaultValue="true" />
 
-        <!-- Lockscreen Media Art -->
-        <Preference
-            android:key="media_art_settings"
-            android:title="@string/ls_media_art_title"
-            android:summary="@string/ls_media_art_summary"
-            android:fragment="com.power.hub.fragments.MediaArtSettings" />
-
-        <com.voltage.support.preferences.SystemSettingSwitchPreference
-            android:key="lockscreen_battery_info"
-            android:title="@string/lockscreen_battery_info_title"
-            android:summary="@string/lockscreen_battery_info_summary"
-            android:defaultValue="true" />
-
-	<PreferenceCategory
-        android:key="lockscreen_ui_fingerprint_category"
-        android:title="@string/fingerprint_category">
-        <SwitchPreferenceCompat
-            android:key="fingerprint_success_vib"
-            android:title="@string/fprint_success_vib_title"
-            android:summary="@string/fprint_success_vib_summary"
-            android:persistent="true" />
-        <SwitchPreferenceCompat
-            android:key="fingerprint_error_vib"
-            android:title="@string/fprint_error_vib_title"
-            android:summary="@string/fprint_error_vib_summary"
-            android:persistent="true" />
-    </PreferenceCategory>
-
-    <!-- Udfps options -->
-    <PreferenceCategory
-        android:key="udfps_category"
-        android:title="@string/udfps_category">
-
-        <Preference
-            android:key="udfps_settings"
-            android:title="@string/udfps_settings_title"
-            android:summary="@string/udfps_settings_summary"
-            android:fragment="com.power.hub.fragments.Udfps" />
-    </PreferenceCategory>
-	
-        <PreferenceCategory
-        android:title="@string/weather_category_title">
-
-            <com.voltage.support.preferences.SystemSettingSwitchPreference
-                android:key="lockscreen_weather_enabled"
-                android:title="@string/lockscreen_weather_title"
-                android:summary="@string/lockscreen_weather_summary" />
-
-            <com.voltage.support.preferences.SystemSettingSwitchPreference
-                android:key="lockscreen_weather_location"
-                android:title="@string/lockscreen_weather_location_title"
-                android:summary="@string/lockscreen_weather_location_summary"
-                android:dependency="lockscreen_weather_enabled" />
-
-            <com.voltage.support.preferences.SystemSettingSwitchPreference
-                android:key="lockscreen_weather_wind_info"
-                android:title="@string/lockscreen_weather_wind_info_title"
-                android:summary="@string/lockscreen_weather_wind_info_summary"
-                android:defaultValue="true"
-                android:dependency="lockscreen_weather_enabled" />
-
-            <com.voltage.support.preferences.SystemSettingSwitchPreference
-                android:key="lockscreen_weather_humidity_info"
-                android:title="@string/lockscreen_weather_humidity_info_title"
-                android:summary="@string/lockscreen_weather_humidity_info_summary"
-                android:defaultValue="true"
-                android:dependency="lockscreen_weather_enabled" />
-
-            <Preference
-                android:title="@string/weather_settings_title"
-                android:summary="@string/weather_settings_summary">
-                <intent
-                    android:action="android.intent.action.MAIN"
-                    android:targetPackage="org.omnirom.omnijaws"
-                    android:targetClass="org.omnirom.omnijaws.SettingsActivity" />
-            </Preference>
-    </PreferenceCategory>
 </PreferenceScreen>

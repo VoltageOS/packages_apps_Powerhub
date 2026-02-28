@@ -35,8 +35,8 @@ import android.widget.CheckBox
 import android.widget.CompoundButton
 import android.widget.ImageView
 import android.widget.LinearLayout
+import android.widget.SearchView
 import android.widget.TextView
-import androidx.appcompat.widget.SearchView
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
@@ -128,8 +128,13 @@ class NirvanaModeSettings : Fragment(R.layout.nirvana_mode_fragment) {
             val topPadding = insets.top + basePadding
             heroSection.updatePadding(top = topPadding)
 
-            val scrollContent = recyclerView.parent as? View
-            scrollContent?.updatePadding(bottom = insets.bottom + basePadding)
+            val scrollView = recyclerView.parent?.parent as? android.view.View
+            scrollView?.setPadding(
+                scrollView.paddingLeft,
+                scrollView.paddingTop,
+                scrollView.paddingRight,
+                (130 * resources.displayMetrics.density).toInt(),
+            )
 
             WindowInsetsCompat.CONSUMED
         }
@@ -262,7 +267,7 @@ class NirvanaModeSettings : Fragment(R.layout.nirvana_mode_fragment) {
 
         val statsItem = menu.findItem(R.id.show_overlay)
         if (statsItem != null) {
-           statsItem.isVisible = true
+            statsItem.isVisible = true
             statsItem.title = getString(R.string.nirvana_stats_title)
             statsItem.setOnMenuItemClickListener {
                 parentFragmentManager.beginTransaction()
@@ -273,7 +278,7 @@ class NirvanaModeSettings : Fragment(R.layout.nirvana_mode_fragment) {
                 true
             }
         }
-        
+
         menu.findItem(R.id.hide_overlay)?.isVisible = false
 
         val searchItem = menu.findItem(R.id.search)

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-     Copyright (C) 2021 VoltageOS
+     Copyright (C) 2026 VoltageOS
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -14,12 +14,11 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-
 <resources>
 
     <!-- Text Styles -->
     <style name="powerhubTextPrimary">
-        <item name="android:textSize">19sp</item>
+        <item name="android:textSize">22sp</item>
         <item name="android:textColor">?android:attr/textColorPrimary</item>
         <item name="android:fontFamily">@*android:string/config_headlineFontFamily</item>
     </style>
@@ -27,7 +26,7 @@
         <item name="android:fontFamily">@*android:string/config_headlineFontFamilyMedium</item>
     </style>
     <style name="powerhubTextSecondary">
-        <item name="android:textSize">14sp</item>
+        <item name="android:textSize">16sp</item>
         <item name="android:textColor">?android:attr/textColorSecondary</item>
     </style>
     <!-- Dashboard -->
@@ -55,7 +54,7 @@
     </style>
     <style name="powerhubPreferenceTop" parent="powerhubPreferenceBase">
         <item name="android:layout_marginBottom">2dp</item>
-        <item name="android:layout_marginTop">4dp</item>
+        <item name="android:layout_marginTop">12dp</item>
         <item name="android:background">@drawable/powerhub_preference_background_top</item>
     </style>
     <style name="powerhubPreferenceMiddle" parent="powerhubPreferenceBase">
@@ -63,17 +62,17 @@
         <item name="android:background">@drawable/powerhub_preference_background_middle</item>
     </style>
     <style name="powerhubPreferenceBottom" parent="powerhubPreferenceBase">
-        <item name="android:layout_marginBottom">4dp</item>
+        <item name="android:layout_marginBottom">12dp</item>
         <item name="android:background">@drawable/powerhub_preference_background_bottom</item>
     </style>
     <style name="powerhubPreferenceFull" parent="powerhubPreferenceBase">
-        <item name="android:layout_marginTop">4dp</item>
-        <item name="android:layout_marginBottom">4dp</item>
+        <item name="android:layout_marginTop">12dp</item>
+        <item name="android:layout_marginBottom">12dp</item>
         <item name="android:background">@drawable/powerhub_preference_background_full</item>
     </style>
     <style name="powerhubPreferenceFullAccent" parent="powerhubPreferenceBase">
         <item name="android:layout_marginTop">@dimen/powerhub_pref_horizontal_padding</item>
-        <item name="android:layout_marginBottom">4dp</item>
+        <item name="android:layout_marginBottom">12dp</item>
         <item name="android:background">@drawable/powerhub_preference_background_full_accent</item>
     </style>
     <!-- UDFPS settings -->
@@ -83,4 +82,32 @@
         <item name="android:lineHeight">15sp</item>
         <item name="android:textColor">?android:attr/textColorSecondary</item>
     </style>
+
+    <style name="Powerhub.TextAppearance.Title" parent="@android:style/TextAppearance.DeviceDefault">
+        <item name="android:textSize">28sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+        <item name="android:fontFamily">@*android:string/config_headlineFontFamily</item>
+    </style>
+
+    <style name="Powerhub.TextAppearance.Category" parent="@android:style/TextAppearance.DeviceDefault">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+        <item name="android:alpha">0.5</item>
+        <item name="android:fontFamily">@*android:string/config_headlineFontFamilyMedium</item>
+    </style>
+
+    <style name="Powerhub.TextAppearance.ItemTitle" parent="@android:style/TextAppearance.DeviceDefault">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+        <item name="android:fontFamily">@*android:string/config_headlineFontFamilyMedium</item>
+    </style>
+
+    <style name="Powerhub.TextAppearance.ItemSubtitle" parent="@android:style/TextAppearance.DeviceDefault">
+        <item name="android:textSize">13sp</item>
+        <item name="android:textColor">?android:attr/textColorSecondary</item>
+        <item name="android:alpha">0.6</item>
+        <item name="android:fontFamily">@*android:string/config_bodyFontFamily</item>
+    </style>
+
 </resources>

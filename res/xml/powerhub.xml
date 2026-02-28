@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright (C) 2021 VoltageOS
+<!--
+     Copyright (C) 2026 VoltageOS
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -18,36 +19,56 @@
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
     android:title="Powerhub" >
 
-        <!-- Status Bar -->
+    <!-- Display & Interface -->
+    <PreferenceCategory
+        android:key="display_and_interface_category"
+        android:title="Display &amp; Interface"
+        android:layout="@layout/powerhub_preference_category">
+
         <Preference
             android:key="statusbar_category"
             android:title="@string/statusbar_title"
             android:fragment="com.power.hub.fragments.StatusBarSettings"
-            settings:layout="@layout/powerhub_dashboard_preference_top"
-            android:icon="@drawable/ic_powerhub_status_settings"/>
+            settings:layout="@layout/powerhub_list_pref"
+            android:icon="@drawable/ic_powerhub_status_settings_expressive"/>
 
-	<!-- Themes -->
-        <Preference
-            android:key="monet_settings"
-            android:title="@string/theme_title"
-            android:fragment="com.power.hub.fragments.MonetSettings"
-            settings:layout="@layout/powerhub_dashboard_preference_middle"
-            android:icon="@drawable/ic_powerhub_theme_settings"/>
-
-        <!-- Lock Screen -->
         <Preference
             android:key="lockscreen_category"
             android:title="@string/lockscreen_title"
             android:fragment="com.power.hub.fragments.LockScreenSettings"
-            settings:layout="@layout/powerhub_dashboard_preference_middle"
-            android:icon="@drawable/ic_powerhub_lockscreen_settings"/>
+            settings:layout="@layout/powerhub_list_pref"
+            android:icon="@drawable/ic_powerhub_lockscreen_settings_expressive"/>
+            
+    </PreferenceCategory>
 
-        <!-- Misc -->
+	<!-- Appearance -->
+    <PreferenceCategory
+        android:key="appearance_category"
+        android:title="Appearance"
+        android:layout="@layout/powerhub_preference_category">
+        
+        <Preference
+            android:key="monet_settings"
+            android:title="@string/theme_title"
+            android:fragment="com.power.hub.fragments.MonetSettings"
+            settings:layout="@layout/powerhub_list_pref"
+            android:icon="@drawable/ic_powerhub_theme_settings_expressive"/>
+            
+    </PreferenceCategory>
+
+    <!-- Advanced -->
+    <PreferenceCategory
+        android:key="advanced_category"
+        android:title="Advanced"
+        android:layout="@layout/powerhub_preference_category">
+        
         <Preference
             android:key="misc_category"
             android:title="@string/misc_title"
             android:fragment="com.power.hub.fragments.MiscSettings"
-            settings:layout="@layout/powerhub_dashboard_preference_bottom"
-            android:icon="@drawable/ic_powerhub_misc_settings"/>
+            settings:layout="@layout/powerhub_list_pref"
+            android:icon="@drawable/ic_powerhub_misc_settings_expressive"/>
+            
+    </PreferenceCategory>
 
 </PreferenceScreen>

@@ -1,3 +1,18 @@
+/*
+ * Copyright (C) 2026 VoltageOS
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package com.power.hub.fragments;
 
 import com.android.internal.logging.nano.MetricsProto;
@@ -51,13 +66,23 @@ import java.util.Collections;
 public class StatusBarSettings extends SettingsPreferenceFragment implements
         OnPreferenceChangeListener {
 
-    private static final String KEY_QS_SHOW_BRIGHTNESS_SLIDER = "qs_show_brightness_slider";
-    private static final String KEY_QS_BRIGHTNESS_SLIDER_POSITION = "qs_brightness_slider_position";
-    private static final String STATUS_BAR_CLOCK_STYLE = "status_bar_clock";
-
     private SystemSettingListPreference mStatusBarClock;
-    private SecureSettingListPreference mQsShowBrightnessSlider;
-    private SecureSettingListPreference mQsBrightnessSliderPosition;
+
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        android.view.ViewGroup listCollection = view.findViewById(android.R.id.list_container);
+        if (listCollection != null) {
+            for (int i = 0; i < listCollection.getChildCount(); i++) {
+                android.view.View child = listCollection.getChildAt(i);
+                if (child instanceof androidx.recyclerview.widget.RecyclerView) {
+                    child.setPadding(child.getPaddingLeft(), child.getPaddingTop(), child.getPaddingRight(), 
+                                     (int) android.util.TypedValue.applyDimension(android.util.TypedValue.COMPLEX_UNIT_DIP, 130, getResources().getDisplayMetrics()));
+                    break;
+                }
+            }
+        }
+    }
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -69,48 +94,11 @@ public class StatusBarSettings extends SettingsPreferenceFragment implements
 
         PreferenceScreen prefSet = getPreferenceScreen();
 
-        mQsShowBrightnessSlider = (SecureSettingListPreference) findPreference(KEY_QS_SHOW_BRIGHTNESS_SLIDER);
-        mQsBrightnessSliderPosition = (SecureSettingListPreference) findPreference(KEY_QS_BRIGHTNESS_SLIDER_POSITION);
-
-        if (mQsShowBrightnessSlider != null) {
-            int brightnessSliderShow = Settings.Secure.getInt(resolver,
-                    KEY_QS_SHOW_BRIGHTNESS_SLIDER, 1);
-            mQsShowBrightnessSlider.setValue(String.valueOf(brightnessSliderShow));
-            mQsShowBrightnessSlider.setSummary(mQsShowBrightnessSlider.getEntry());
-            mQsShowBrightnessSlider.setOnPreferenceChangeListener(this);
-            updateBrightnessPositionState(brightnessSliderShow);
-        }
-
-        if (mQsBrightnessSliderPosition != null) {
-            int brightnessSliderPosition = Settings.Secure.getInt(resolver,
-                    KEY_QS_BRIGHTNESS_SLIDER_POSITION, 0);
-            mQsBrightnessSliderPosition.setValue(String.valueOf(brightnessSliderPosition));
-            mQsBrightnessSliderPosition.setSummary(mQsBrightnessSliderPosition.getEntry());
-            mQsBrightnessSliderPosition.setOnPreferenceChangeListener(this);
-        }
-
     }
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object objValue) {
         ContentResolver resolver = getActivity().getContentResolver();
-
-        if (preference == mQsShowBrightnessSlider) {
-            int value = Integer.parseInt((String) objValue);
-            int index = mQsShowBrightnessSlider.findIndexOfValue((String) objValue);
-            mQsShowBrightnessSlider.setSummary(mQsShowBrightnessSlider.getEntries()[index]);
-            Settings.Secure.putInt(resolver,
-                    KEY_QS_SHOW_BRIGHTNESS_SLIDER, value);
-            updateBrightnessPositionState(value);
-            return true;
-        } else if (preference == mQsBrightnessSliderPosition) {
-            int value = Integer.parseInt((String) objValue);
-            int index = mQsBrightnessSliderPosition.findIndexOfValue((String) objValue);
-            mQsBrightnessSliderPosition.setSummary(mQsBrightnessSliderPosition.getEntries()[index]);
-            Settings.Secure.putInt(resolver,
-                    KEY_QS_BRIGHTNESS_SLIDER_POSITION, value);
-            return true;
-        }
         return false;
     }
 
@@ -119,15 +107,7 @@ public class StatusBarSettings extends SettingsPreferenceFragment implements
         return MetricsProto.MetricsEvent.VOLTAGE;
     }
 
-    private void updateBrightnessPositionState(int brightnessShowValue) {
-        if (mQsBrightnessSliderPosition != null) {
-            boolean enabled = brightnessShowValue != 0;
-            mQsBrightnessSliderPosition.setEnabled(enabled);
-            if (!enabled) {
-                mQsBrightnessSliderPosition.setSummary(R.string.qs_brightness_slider_show_never);
-            }
-        }
-    }
+
 
      /**
      * For Search.

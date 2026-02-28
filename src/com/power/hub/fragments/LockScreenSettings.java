@@ -1,19 +1,17 @@
 /*
- *  Copyright (C) 2015 The OmniROM Project
+ * Copyright (C) 2026 VoltageOS
  *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 2 of the License, or
- * (at your option) any later version.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
  *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
+ *      http://www.apache.org/licenses/LICENSE-2.0
  *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 package com.power.hub.fragments;
 
@@ -63,19 +61,28 @@ public class LockScreenSettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
 
     private static final String TAG = "LockScreenSettings";
-    private static final String FINGERPRINT_CATEGORY_KEY = "lockscreen_ui_fingerprint_category";
-    private static final String FINGERPRINT_SUCCESS_VIB = "fingerprint_success_vib";
-    private static final String FINGERPRINT_ERROR_VIB = "fingerprint_error_vib";
-    private static final String UDFPS_CATEGORY = "udfps_category";
 
     private FingerprintManager mFingerprintManager;
-    private SwitchPreferenceCompat mFingerprintSuccessVib;
-    private SwitchPreferenceCompat mFingerprintErrorVib;
-    private PreferenceCategory mUdfpsCategory;
 
     private static final String KEY_WEATHER = "lockscreen_weather_enabled";
 
     private Preference mWeather;
+
+    @Override
+    public void onViewCreated(android.view.View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        android.view.ViewGroup listCollection = view.findViewById(android.R.id.list_container);
+        if (listCollection != null) {
+            for (int i = 0; i < listCollection.getChildCount(); i++) {
+                android.view.View child = listCollection.getChildAt(i);
+                if (child instanceof androidx.recyclerview.widget.RecyclerView) {
+                    child.setPadding(child.getPaddingLeft(), child.getPaddingTop(), child.getPaddingRight(), 
+                                     (int) android.util.TypedValue.applyDimension(android.util.TypedValue.COMPLEX_UNIT_DIP, 130, getResources().getDisplayMetrics()));
+                    break;
+                }
+            }
+        }
+    }
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -86,40 +93,26 @@ public class LockScreenSettings extends SettingsPreferenceFragment implements
         final PreferenceScreen prefSet = getPreferenceScreen();
         Resources resources = getResources();
 
-        final boolean hasFingerprintHardware = checkFingerprintHardware();
+    final boolean hasFingerprintHardware = checkFingerprintHardware();
 
-        PreferenceCategory fingerprintCategory = findPreference(FINGERPRINT_CATEGORY_KEY);
-        if (fingerprintCategory != null) {
-            if (!hasFingerprintHardware) {
-                prefSet.removePreference(fingerprintCategory);
-            } else {
-                initFingerprintPreferences(fingerprintCategory);
-            }
+        Preference fingerprintCategory = findPreference("lockscreen_fingerprint_settings");
+        if (fingerprintCategory != null && !hasFingerprintHardware) {
+            prefSet.removePreference(fingerprintCategory);
         }
 
        mWeather = (Preference) findPreference(KEY_WEATHER);
        updateWeatherSettings();
 
-        mUdfpsCategory = findPreference(UDFPS_CATEGORY);
+        Preference mUdfpsSettings = findPreference("udfps_settings");
         if (!UdfpsUtils.hasUdfpsSupport(getContext()) || !hasFingerprintHardware) {
-            prefSet.removePreference(mUdfpsCategory);
+            if (mUdfpsSettings != null) {
+                prefSet.removePreference(mUdfpsSettings);
+            }
         }
     }
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
-        ContentResolver resolver = getActivity().getContentResolver();
-        if (preference == mFingerprintSuccessVib) {
-            boolean value = (Boolean) newValue;
-            Settings.System.putInt(getActivity().getContentResolver(),
-                    Settings.System.FP_SUCCESS_VIBRATE, value ? 1 : 0);
-            return true;
-        } else if (preference == mFingerprintErrorVib) {
-            boolean value = (Boolean) newValue;
-            Settings.System.putInt(getActivity().getContentResolver(),
-                    Settings.System.FP_ERROR_VIBRATE, value ? 1 : 0);
-            return true;
-        }
         return false;
     }
 
@@ -135,24 +128,6 @@ public class LockScreenSettings extends SettingsPreferenceFragment implements
             return false;
         }
     }
-
-    private void initFingerprintPreferences(PreferenceCategory category) {
-        mFingerprintSuccessVib = findPreference(FINGERPRINT_SUCCESS_VIB);
-        mFingerprintErrorVib = findPreference(FINGERPRINT_ERROR_VIB);
-
-        if (mFingerprintSuccessVib != null) {
-            mFingerprintSuccessVib.setChecked(Settings.System.getInt(
-                getContentResolver(), Settings.System.FP_SUCCESS_VIBRATE, 1) == 1);
-            mFingerprintSuccessVib.setOnPreferenceChangeListener(this);
-        }
-
-        if (mFingerprintErrorVib != null) {
-            mFingerprintErrorVib.setChecked(Settings.System.getInt(
-                getContentResolver(), Settings.System.FP_ERROR_VIBRATE, 1) == 1);
-            mFingerprintErrorVib.setOnPreferenceChangeListener(this);
-        }
-    }
-
 
     private void updateWeatherSettings() {
         if (mWeather == null) return;

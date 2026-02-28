@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright (C) 2016 Nitrogen Project
+<!--
+     Copyright (C) 2026 VoltageOS
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -20,61 +21,52 @@
 
     <Preference
         android:key="button_category"
-        android:fragment="com.power.hub.fragments.ButtonSettings"
-        android:title="@string/button_title" />
+        android:title="@string/button_title"
+        android:summary="Hardware keys and gestures"
+        android:icon="@drawable/ic_powerhub_buttons_expressive"
+        android:fragment="com.power.hub.fragments.ButtonSettings" />
 
-    <PreferenceCategory
-         android:key="miscellaneous_spoofing_category"
-         android:title="@string/miscellaneous_spoofing_category">
+    <Preference
+        android:key="spoofing"
+        android:title="@string/spoofing_title"
+        android:summary="@string/spoofing_summary"
+        android:icon="@drawable/ic_powerhub_spoofing_expressive"
+        android:fragment="com.power.hub.fragments.Spoofing" />
+        
+    <Preference
+        android:key="heads_up_settings"
+        android:title="@string/notification_heads_up_title"
+        android:summary="Peek behaviors and screen-on alerts"
+        android:icon="@drawable/ic_powerhub_headsup_expressive"
+        android:fragment="com.power.hub.fragments.HeadsUpSettings" />
 
-         <!-- Component spoofing -->
-         <Preference
-             android:key="spoofing"
-             android:title="@string/spoofing_title"
-             android:summary="@string/spoofing_summary"
-             android:fragment="com.power.hub.fragments.Spoofing" />
-     </PreferenceCategory>
-
-    <PreferenceCategory
-        android:key="heads_up"
-        android:title="@string/notification_heads_up_title">
-
-        <com.voltage.support.preferences.GlobalSettingSwitchPreference
-            android:key="heads_up_notifications_enabled"
-            android:title="@string/notification_heads_up_title"
-            android:summary="@string/notification_heads_up_summary"
-            android:defaultValue="true" />
-
-        <com.voltage.support.preferences.SystemSettingSwitchPreference
-            android:key="less_boring_heads_up"
-            android:title="@string/less_boring_heads_up_title"
-            android:summary="@string/less_boring_heads_up_summary"
-            android:defaultValue="false"
-            android:dependency="heads_up_notifications_enabled" />
-
-        <com.voltage.support.preferences.SystemSettingSwitchPreference
-            android:key="notification_sound_vib_screen_on"
-            android:title="@string/notification_sound_vib_screen_on_title"
-            android:summary="@string/notification_sound_vib_screen_on_summary"
-            android:defaultValue="true" />
-    </PreferenceCategory>
+    <Preference
+        android:key="toast_settings"
+        android:title="@string/homepage_toast_title"
+        android:summary="Custom text popup messages"
+        android:icon="@drawable/ic_powerhub_toast_expressive"
+        android:fragment="com.power.hub.fragments.ToastSettings" />
 
     <!-- click to take partial SS -->		
     <com.voltage.support.preferences.SystemSettingSwitchPreference
         android:key="click_partial_screenshot"
         android:title="@string/click_partial_screenshot_title"
         android:summary="@string/click_partial_screenshot_summary"
+        android:icon="@drawable/ic_powerhub_screenshot_expressive"
         android:defaultValue="false" />
 
     <Preference
         android:key="nirvana_mode_settings"
         android:title="@string/nirvana_mode_title"
         android:summary="@string/nirvana_mode_summary"
+        android:icon="@drawable/ic_powerhub_nirvana_expressive"
         android:fragment="com.power.hub.fragments.NirvanaModeSettings" />
 
     <Preference
         android:key="smart_pixels"
         android:title="@string/smart_pixels_title"
+        android:summary="Save battery using burn-in protection"
+        android:icon="@drawable/ic_powerhub_smartpixels_expressive"
         android:fragment="com.power.hub.fragments.SmartPixels" />
 
     <!-- Rotation button -->
@@ -82,6 +74,7 @@
         android:key="enable_rotation_button"
         android:title="@string/floating_rotation_button_title"
         android:summary="@string/floating_rotation_button_summary"
+        android:icon="@drawable/ic_powerhub_rotation_expressive"
         android:defaultValue="true" />
 
     <!-- Freeform launch mode -->
@@ -91,24 +84,8 @@
         android:dialogTitle="@string/freeform_launch_mode_title"
         android:entries="@array/freeform_launch_mode_entries"
         android:entryValues="@array/freeform_launch_mode_values"
+        android:icon="@drawable/ic_powerhub_freeform_expressive"
         android:defaultValue="0"
         android:summary="%s" />
-
-    <SwitchPreferenceCompat
-        android:key="homepage_toast_messages"
-        android:title="@string/homepage_toast_title"
-        android:summary="@string/homepage_toast_summary"
-        android:defaultValue="false"
-        settings:controller="com.android.settings.display.HomepageToastPreferenceController"/>
-
-    <EditTextPreference
-        android:key="homepage_toast_custom_text"
-        android:title="@string/homepage_toast_text_title"
-        android:summary="@string/homepage_toast_text_summary"
-        android:dialogTitle="@string/homepage_toast_text_title"
-        android:dependency="homepage_toast_messages"
-        android:maxLength="150"
-        settings:controller="com.android.settings.display.HomepageToastTextPreferenceController"
-        settings:isPreferenceVisible="false"/>
 
 </PreferenceScreen>

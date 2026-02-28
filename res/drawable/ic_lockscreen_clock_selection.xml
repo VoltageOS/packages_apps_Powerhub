@@ -1,3 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2026 VoltageOS
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
 <vector android:height="24dp" android:viewportHeight="511.986"
     android:viewportWidth="511.986" android:width="24dp" xmlns:android="http://schemas.android.com/apk/res/android">
     <path android:fillColor="?android:attr/colorControlNormal" android:pathData="M473.299,216.264L268.057,5.152c-6.581,-6.735 -17.367,-6.886 -24.133,-0.338L38.766,204.11c-3.201,3.201 -5,7.542 -5,12.069c0,4.527 1.799,8.868 5,12.069l42.242,42.237c5.708,5.697 14.624,6.625 21.383,2.225v94.142c0.015,14.132 11.468,25.585 25.6,25.6h102.4v23.994c-20.069,11.587 -29.853,35.208 -23.855,57.592c5.998,22.384 26.282,37.948 49.455,37.948s43.458,-15.565 49.455,-37.948c5.998,-22.384 -3.787,-46.005 -23.855,-57.592v-23.994h102.4c14.132,-0.015 25.585,-11.468 25.6,-25.6v-93.617l3.283,3.283c6.668,6.656 17.466,6.656 24.133,0l36.208,-36.204C479.855,233.686 479.893,222.938 473.299,216.264zM290.124,460.718c-0.02,18.843 -15.29,34.113 -34.133,34.133c-18.851,0 -34.133,-15.282 -34.133,-34.133c0,-18.851 15.282,-34.133 34.133,-34.133S290.124,441.867 290.124,460.718zM247.458,410.289v-17.838h17.067v17.838C258.882,409.261 253.1,409.261 247.458,410.289zM392.524,366.852c-0.005,4.711 -3.822,8.529 -8.533,8.533h-256c-4.711,-0.005 -8.529,-3.822 -8.533,-8.533V256.168l136.533,-136.533l136.533,136.533V366.852zM424.941,264.452L268.057,107.568c-6.668,-6.656 -17.465,-6.656 -24.133,0l-150.85,150.85l-42.325,-42.15L255.816,17.056h0.008l205.325,211.192L424.941,264.452z"/>

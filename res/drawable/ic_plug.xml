@@ -1,3 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2026 VoltageOS
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
 <vector android:height="24dp" android:viewportHeight="511.999"
     android:viewportWidth="511.999" android:width="24dp" xmlns:android="http://schemas.android.com/apk/res/android">
     <path android:fillColor="?android:attr/colorControlNormal" android:pathData="M112.012,401.394c-8.003,-8.003 -18.643,-12.41 -29.959,-12.41c-6.685,0 -13.129,1.55 -18.938,4.458C6.032,312.568 5.834,201.743 63.598,120.673c3.204,-4.498 2.156,-10.742 -2.342,-13.947c-4.498,-3.205 -10.742,-2.157 -13.947,2.341C15.446,153.786 -0.9,206.594 0.038,261.781C0.931,314.3 17.421,364.12 47.802,406.413c-12.072,16.56 -10.643,39.962 4.292,54.899c8.26,8.259 19.109,12.389 29.959,12.389c10.85,0 21.699,-4.13 29.959,-12.389C128.531,444.792 128.531,417.914 112.012,401.394zM97.869,447.169c-8.723,8.721 -22.912,8.721 -31.633,0c-8.722,-8.722 -8.722,-22.913 0,-31.634c4.225,-4.225 9.842,-6.552 15.816,-6.552s11.592,2.327 15.816,6.552C106.591,424.257 106.591,438.448 97.869,447.169z"/>

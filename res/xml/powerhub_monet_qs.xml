@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2026 VoltageOS
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:title="@string/qs_blur_category_title"
+    xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
+
+    <SwitchPreferenceCompat
+        android:key="qs_dual_tone"
+        android:title="@string/dual_tone_shade_title"
+        android:summary="@string/dual_tone_shade_summary"
+        android:defaultValue="true" />
+
+    <SwitchPreferenceCompat
+        android:key="qs_vibrant_shade_elements"
+        android:title="@string/qs_vibrant_shade_title"
+        android:summary="@string/qs_vibrant_shade_summary"
+        android:defaultValue="false" />
+
+    <com.voltage.support.preferences.CustomSeekBarPreference
+        android:key="shade_blur_radius"
+        android:title="@string/shade_blur_radius_title"
+        android:summary="@string/shade_blur_radius_summary"
+        android:max="80"
+        android:min="5"
+        android:defaultValue="20"
+        settings:units="dp"
+        settings:interval="1" />
+
+</PreferenceScreen>

@@ -16,13 +16,19 @@
 
 package com.power.hub.fragments
 
+import android.animation.ValueAnimator
 import android.app.usage.UsageEvents
 import android.app.usage.UsageStatsManager
 import android.content.Context
 import android.content.Intent
 import android.content.pm.ApplicationInfo
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
+import android.graphics.Canvas
+import android.graphics.Color
+import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
+import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -260,19 +266,113 @@ class NirvanaStatsFragment : Fragment(R.layout.nirvana_stats_fragment) {
 
             holder.name.text = item.label
             holder.time.text = formatDuration(item.timeMillis, false)
+
+            var dominantColor = Color.parseColor("#888888")
+
             if (item.icon != null) {
                 holder.icon.setImageDrawable(item.icon)
+                try {
+                    val bitmap =
+                        if (item.icon is BitmapDrawable) {
+                            (item.icon as BitmapDrawable).bitmap
+                        } else {
+                            val intrinsicWidth = item.icon!!.intrinsicWidth.coerceAtLeast(1)
+                            val intrinsicHeight = item.icon!!.intrinsicHeight.coerceAtLeast(1)
+                            val targetWidth = if (intrinsicWidth > 64) 64 else intrinsicWidth
+                            val targetHeight = if (intrinsicHeight > 64) 64 else intrinsicHeight
+
+                            val bmp = Bitmap.createBitmap(targetWidth, targetHeight, Bitmap.Config.ARGB_8888)
+                            val canvas = Canvas(bmp)
+                            item.icon!!.setBounds(0, 0, canvas.width, canvas.height)
+                            item.icon!!.draw(canvas)
+                            bmp
+                        }
+
+                    val scaled = Bitmap.createScaledBitmap(bitmap, 8, 8, true)
+                    val hsv = FloatArray(3)
+                    var bestSqr = 0f
+                    var selectedColor = dominantColor
+
+                    for (x in 0 until 8) {
+                        for (y in 0 until 8) {
+                            val pixelColor = scaled.getPixel(x, y)
+                            val alpha = Color.alpha(pixelColor)
+                            if (alpha < 200) continue
+
+                            Color.colorToHSV(pixelColor, hsv)
+                            val saturation = hsv[1]
+                            val value = hsv[2]
+
+                            if (saturation > 0.3f && value > 0.3f) {
+                                val score = saturation * value
+                                if (score > bestSqr) {
+                                    bestSqr = score
+                                    selectedColor = pixelColor
+                                }
+                            }
+                        }
+                    }
+                    if (bestSqr > 0f) {
+                        dominantColor = selectedColor
+                    } else {
+                        dominantColor = Bitmap.createScaledBitmap(bitmap, 1, 1, true).getPixel(0, 0)
+                    }
+                } catch (e: Exception) {
+                }
+            }
+
+            val rowColor = Color.argb(20, Color.red(dominantColor), Color.green(dominantColor), Color.blue(dominantColor))
+            val gd = GradientDrawable()
+            gd.setColor(rowColor)
+            gd.cornerRadius = 32f
+            holder.itemView.background = gd
+
+            val params = holder.itemView.layoutParams as? ViewGroup.MarginLayoutParams
+            if (params != null) {
+                params.bottomMargin = 24
+                holder.itemView.layoutParams = params
             }
 
             if (item.notifCount > 0) {
                 holder.notifContainer.visibility = View.VISIBLE
                 holder.notifCount.text = item.notifCount.toString()
+                holder.notifContainer.backgroundTintList = android.content.res.ColorStateList.valueOf(rowColor)
+                holder.notifCount.setTextColor(dominantColor)
+                holder.itemView.findViewById<ImageView>(R.id.notif_icon).setColorFilter(dominantColor)
             } else {
                 holder.notifContainer.visibility = View.GONE
             }
 
-            val progress = if (maxTime > 0) ((item.timeMillis / maxTime) * 100).toInt() else 0
-            holder.progress.progress = progress.coerceAtLeast(if (item.timeMillis > 0) 1 else 0)
+            val targetProgress = if (maxTime > 0) ((item.timeMillis / maxTime) * 100).toInt() else 0
+            val safeProgress = targetProgress.coerceAtLeast(if (item.timeMillis > 0) 1 else 0)
+
+            holder.progress.progress = 0
+            val animator = ValueAnimator.ofInt(0, safeProgress)
+            animator.duration = 600
+            animator.interpolator = android.view.animation.DecelerateInterpolator(1.5f)
+            animator.addUpdateListener {
+                holder.progress.progress = it.animatedValue as Int
+            }
+            animator.start()
+
+            holder.itemView.setOnClickListener { v ->
+                v.performHapticFeedback(android.view.HapticFeedbackConstants.CONTEXT_CLICK)
+                v.animate()
+                    .scaleX(1.03f)
+                    .scaleY(1.03f)
+                    .setDuration(120)
+                    .setInterpolator(android.view.animation.DecelerateInterpolator())
+                    .withEndAction {
+                        v.animate().scaleX(1f).scaleY(1f).setDuration(180).setInterpolator(android.view.animation.BounceInterpolator()).withEndAction {
+                            val intent =
+                                android.content.Intent(android.provider.Settings.ACTION_APPLICATION_DETAILS_SETTINGS).apply {
+                                    data = android.net.Uri.parse("package:${item.pkg}")
+                                }
+                            v.context.startActivity(intent)
+                        }.start()
+                    }
+                    .start()
+            }
         }
 
         override fun getItemCount() = list.size
