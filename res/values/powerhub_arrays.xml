@@ -396,4 +396,19 @@
          <item>com.android.launcher3</item>
      </string-array>
 
+    <string-array name="haze_effects_style_entries">
+        <item>@string/haze_standard</item>
+        <item>@string/haze_standard_reversed</item>
+        <item>@string/haze_frosted</item>
+        <item>@string/haze_frosted_reversed</item>
+        <item>@string/haze_standard_double</item>
+    </string-array>
+
+    <string-array name="haze_effects_style_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
 </resources>
