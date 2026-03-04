@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright (C) 2021 VoltageOS
+<!--
+     Copyright (C) 2026 VoltageOS
+
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
      You may obtain a copy of the License at
+
           http://www.apache.org/licenses/LICENSE-2.0
+
      Unless required by applicable law or agreed to in writing, software
      distributed under the License is distributed on an "AS IS" BASIS,
      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -20,7 +24,7 @@
     <string name="gestures_summary">Zur Kamera springen, zum Screenshot wischen</string>
     <string name="lockscreen_title">Sperrbildschirm</string>
     <string name="lockscreen_summary">Musikvisualisierer, Ladeanimation, Uhrenstil</string>
-    <string name="misc_title">Sonstiges</string>
+    <string name="misc_title">Advanced</string>
     <string name="misc_summary">Spielmodus, Lautstärkeregelung</string>
     <string name="animations_title">Animationen</string>
     <string name="animations_summary">Systemanimationen</string>
@@ -216,7 +220,7 @@
     <string name="network_traffic_hidearrow">Pfeile ausblenden</string>
     <string name="network_traffic_hidearrow_summary">Pfeile des Netzwerkverkehrs in der Statusleiste ausblenden</string>
     <!-- Monet settings -->
-    <string name="monet_settings_title">Designeinstellungen</string>
+    <string name="monet_settings_title">Erscheinungsbild</string>
     <string name="monet_settings_sammary">Ein paar zusätzliche Einstellungen zur Anpassung der Monet-Engine</string>
     <string name="theme_style_title">Designstil</string>
     <string name="theme_style_tonal_spot">Tonal Spot (Standard)</string>
@@ -336,6 +340,10 @@
     <string name="compact_progress_mode_summary">Use a compact circular indicator for ongoing actions</string>
     <string name="show_media_progress_title">Show media progress</string>
     <string name="show_media_progress_summary">\"Display media playback progress in the status bar</string>
+    <string name="ongoing_smart_actions_title">Smart Actions Indicator</string>
+    <string name="ongoing_smart_actions_summary">Show active status icons for Flashlight, Hotspot, DND, etc. in the indicator</string>
+    <string name="voltage_logo">Show Voltage Logo</string>
+    <string name="voltage_logo_summary">Display a stylized lightning bolt as a fallback indicator when no actions are active</string>
     <string name="progress_footer_text">     \"Die Fortschrittsleiste in der Statusleiste liefert Echtzeit-Updates sowohl für die Medienwiedergabe als auch für aktive Downloads/Uploads.
  
      - 🎵 Medienfortschritt:
