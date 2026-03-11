@@ -158,7 +158,8 @@ public class powerhub extends InstrumentedFragment {
                 } else if (navHeight > 40 * density) {
                     finalMargin = (int) (12 * density);
                 } else {
-                    finalMargin = (int) (24 * density);
+                    int desired = (int) (12 * density);
+                    finalMargin = Math.max(desired - navHeight, 0);
                 }
 
                 FrameLayout.LayoutParams p = (FrameLayout.LayoutParams) bottomNav.getLayoutParams();
