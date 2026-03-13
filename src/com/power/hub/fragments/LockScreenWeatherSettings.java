@@ -18,6 +18,8 @@ package com.power.hub.fragments;
 import com.android.internal.logging.nano.MetricsProto;
 import android.os.Bundle;
 import android.content.Context;
+import androidx.preference.ListPreference;
+import androidx.preference.Preference;
 import androidx.preference.PreferenceScreen;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
@@ -28,12 +30,57 @@ import java.util.List;
 import java.util.ArrayList;
 
 @SearchIndexable(forTarget = SearchIndexable.ALL & ~SearchIndexable.ARC)
-public class LockScreenWeatherSettings extends SettingsPreferenceFragment {
+public class LockScreenWeatherSettings extends SettingsPreferenceFragment
+        implements Preference.OnPreferenceChangeListener {
+
+    private static final String KEY_WEATHER_STYLE    = "lockscreen_weather_style";
+    private static final String KEY_WEATHER_LOCATION = "lockscreen_weather_location";
+    private static final String KEY_WEATHER_WIND     = "lockscreen_weather_wind_info";
+    private static final String KEY_WEATHER_HUMIDITY = "lockscreen_weather_humidity_info";
+
+    private ListPreference mWeatherStyle;
+    private Preference[] mClassicOnlyPrefs;
 
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
         addPreferencesFromResource(R.xml.powerhub_lockscreen_weather);
+
+        mWeatherStyle = (ListPreference) findPreference(KEY_WEATHER_STYLE);
+        if (mWeatherStyle != null) {
+            mWeatherStyle.setOnPreferenceChangeListener(this);
+        }
+
+        mClassicOnlyPrefs = new Preference[] {
+            findPreference(KEY_WEATHER_LOCATION),
+            findPreference(KEY_WEATHER_WIND),
+            findPreference(KEY_WEATHER_HUMIDITY),
+        };
+
+        updateClassicPrefsState(mWeatherStyle != null ? mWeatherStyle.getValue() : "0");
+    }
+
+    @Override
+    public boolean onPreferenceChange(Preference preference, Object newValue) {
+        if (preference == mWeatherStyle) {
+            updateClassicPrefsState((String) newValue);
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        updateClassicPrefsState(mWeatherStyle != null ? mWeatherStyle.getValue() : "0");
+    }
+
+    private void updateClassicPrefsState(String value) {
+        boolean isModern = "1".equals(value);
+        if (mClassicOnlyPrefs == null) return;
+        for (Preference p : mClassicOnlyPrefs) {
+            if (p != null) p.setEnabled(!isModern);
+        }
     }
 
     @Override

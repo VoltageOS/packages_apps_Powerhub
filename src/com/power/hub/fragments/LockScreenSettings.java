@@ -65,8 +65,10 @@ public class LockScreenSettings extends SettingsPreferenceFragment implements
     private FingerprintManager mFingerprintManager;
 
     private static final String KEY_WEATHER = "lockscreen_weather_enabled";
+    private static final String KEY_WEATHER_STYLE = "lockscreen_weather_style";
 
     private Preference mWeather;
+    private ListPreference mWeatherStyle;
 
     @Override
     public void onViewCreated(android.view.View view, Bundle savedInstanceState) {
@@ -103,6 +105,12 @@ public class LockScreenSettings extends SettingsPreferenceFragment implements
        mWeather = (Preference) findPreference(KEY_WEATHER);
        updateWeatherSettings();
 
+       mWeatherStyle = (ListPreference) findPreference(KEY_WEATHER_STYLE);
+       if (mWeatherStyle != null) {
+           mWeatherStyle.setOnPreferenceChangeListener(this);
+           updateWeatherStyleSummary();
+       }
+
         Preference mUdfpsSettings = findPreference("udfps_settings");
         if (!UdfpsUtils.hasUdfpsSupport(getContext()) || !hasFingerprintHardware) {
             if (mUdfpsSettings != null) {
@@ -113,6 +121,10 @@ public class LockScreenSettings extends SettingsPreferenceFragment implements
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
+        if (preference == mWeatherStyle) {
+            updateWeatherStyleSummary();
+            return true;
+        }
         return false;
     }
 
@@ -138,10 +150,19 @@ public class LockScreenSettings extends SettingsPreferenceFragment implements
             R.string.lockscreen_weather_enabled_info);
     }
 
+    private void updateWeatherStyleSummary() {
+        if (mWeatherStyle == null) return;
+        boolean isModern = "1".equals(mWeatherStyle.getValue());
+        mWeatherStyle.setSummary(isModern
+            ? R.string.lockscreen_weather_style_summary_on
+            : R.string.lockscreen_weather_style_summary_off);
+    }
+
     @Override
     public void onResume() {
         super.onResume();
         updateWeatherSettings();
+        updateWeatherStyleSummary();
     }
 
     @Override

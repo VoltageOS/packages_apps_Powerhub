@@ -411,4 +411,14 @@
         <item>3</item>
         <item>4</item>
     </string-array>
+
+    <string-array name="lockscreen_weather_style_entries">
+        <item>Classic</item>
+        <item>Modern</item>
+    </string-array>
+    <string-array name="lockscreen_weather_style_values">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+
 </resources>
