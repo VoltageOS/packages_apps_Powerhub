@@ -123,6 +123,7 @@ public class LockScreenSettings extends SettingsPreferenceFragment implements
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         if (preference == mWeatherStyle) {
             updateWeatherStyleSummary();
+            com.android.internal.util.voltage.VoltageUtils.showSystemUiRestartDialog(getContext());
             return true;
         }
         return false;

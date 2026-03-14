@@ -21,6 +21,7 @@ import android.content.Context;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceScreen;
+import com.android.internal.util.voltage.VoltageUtils;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.search.BaseSearchIndexProvider;
@@ -64,6 +65,7 @@ public class LockScreenWeatherSettings extends SettingsPreferenceFragment
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         if (preference == mWeatherStyle) {
             updateClassicPrefsState((String) newValue);
+            VoltageUtils.showSystemUiRestartDialog(getContext());
             return true;
         }
         return false;
