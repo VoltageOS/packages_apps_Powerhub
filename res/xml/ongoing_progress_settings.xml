@@ -30,30 +30,35 @@
          android:key="compact_progress_mode"
          android:title="@string/compact_progress_mode_title"
          android:summary="@string/compact_progress_mode_summary"
+         android:dependency="ongoing_action_chip"
          android:defaultValue="false" />
 
     <com.voltage.support.preferences.SystemSettingSwitchPreference
         android:key="ongoing_smart_actions"
         android:title="@string/ongoing_smart_actions_title"
         android:summary="@string/ongoing_smart_actions_summary"
-        android:defaultValue="true" />
+        android:dependency="ongoing_action_chip"
+        android:defaultValue="false" />
 
      <com.voltage.support.preferences.SystemSettingSwitchPreference
          android:key="show_voltage_logo"
          android:title="@string/voltage_logo"
          android:summary="@string/voltage_logo_summary"
+         android:dependency="ongoing_action_chip"
          android:defaultValue="false" />
  
      <com.voltage.support.preferences.SystemSettingSwitchPreference
          android:key="show_media_progress"
          android:title="@string/show_media_progress_title"
          android:summary="@string/show_media_progress_summary"
+         android:dependency="ongoing_action_chip"
          android:defaultValue="false" />
  
      <com.voltage.support.preferences.SystemSettingSeekBarPreference
          android:key="progress_bar_opacity"
          android:title="Progress Bar Opacity"
          android:summary="Adjust the opacity of the progress bar chip"
+         android:dependency="ongoing_action_chip"
          android:defaultValue="100"
          settings:units="%"
          settings:interval="1"   
