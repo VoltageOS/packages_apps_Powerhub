@@ -17,6 +17,7 @@ package com.power.hub.fragments;
 
 import android.content.ContentResolver;
 import android.content.Context;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.UserHandle;
 import android.provider.Settings;
@@ -26,6 +27,7 @@ import androidx.preference.Preference.OnPreferenceChangeListener;
 import androidx.preference.SwitchPreferenceCompat;
 
 import com.android.internal.logging.nano.MetricsProto;
+import com.android.internal.util.voltage.VoltageUtils;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.search.BaseSearchIndexProvider;
@@ -41,10 +43,12 @@ import java.util.List;
 public class QuickSettingsStyle extends SettingsPreferenceFragment implements OnPreferenceChangeListener {
 
     private static final String PREF_DUAL_TONE_SHADE = "qs_dual_tone";
+    private static final String PREF_QS_SPLIT_SHADE = Settings.System.QS_SPLIT_SHADE;
     private static final String PREF_SHADE_BLUR_RADIUS = "shade_blur_radius";
     private static final String PREF_VIBRANT_SHADE = "qs_vibrant_shade_elements";
 
     private SwitchPreferenceCompat mDualToneShadePref;
+    private SwitchPreferenceCompat mQsSplitShadePref;
     private SwitchPreferenceCompat mVibrantShadePref;
     private CustomSeekBarPreference mShadeBlurRadiusPref;
 
@@ -56,6 +60,7 @@ public class QuickSettingsStyle extends SettingsPreferenceFragment implements On
         final ContentResolver resolver = getActivity().getContentResolver();
 
         mDualToneShadePref = findPreference(PREF_DUAL_TONE_SHADE);
+        mQsSplitShadePref = findPreference(PREF_QS_SPLIT_SHADE);
         mVibrantShadePref = findPreference(PREF_VIBRANT_SHADE);
         mShadeBlurRadiusPref = findPreference(PREF_SHADE_BLUR_RADIUS);
 
@@ -63,6 +68,33 @@ public class QuickSettingsStyle extends SettingsPreferenceFragment implements On
                 PREF_DUAL_TONE_SHADE, 1, UserHandle.USER_CURRENT) == 1;
         mDualToneShadePref.setChecked(dualToneEnabled);
         mDualToneShadePref.setOnPreferenceChangeListener(this);
+
+        boolean defaultSplitShadePortrait = false;
+        boolean defaultSplitShadeLandscape = false;
+        try {
+            Context sysUiContext = getContext().createPackageContext("com.android.systemui", 0);
+            int resId = sysUiContext.getResources().getIdentifier(
+                    "config_use_split_notification_shade", "bool", "com.android.systemui");
+            if (resId != 0) {
+                Configuration portConfig = new Configuration(sysUiContext.getResources().getConfiguration());
+                portConfig.orientation = Configuration.ORIENTATION_PORTRAIT;
+                Context portContext = sysUiContext.createConfigurationContext(portConfig);
+                defaultSplitShadePortrait = portContext.getResources().getBoolean(resId);
+                Configuration landConfig = new Configuration(sysUiContext.getResources().getConfiguration());
+                landConfig.orientation = Configuration.ORIENTATION_LANDSCAPE;
+                Context landContext = sysUiContext.createConfigurationContext(landConfig);
+                defaultSplitShadeLandscape = landContext.getResources().getBoolean(resId);
+            }
+        } catch (Exception ignored) {
+        }
+        if (defaultSplitShadePortrait) {
+            mQsSplitShadePref.setVisible(false);
+        } else {
+            int userSetting = Settings.System.getIntForUser(resolver, PREF_QS_SPLIT_SHADE, -1, UserHandle.USER_CURRENT);
+            boolean isEnabled = (userSetting == -1) ? defaultSplitShadeLandscape : (userSetting == 1);
+            mQsSplitShadePref.setChecked(isEnabled);
+            mQsSplitShadePref.setOnPreferenceChangeListener(this);
+        }
 
         boolean vibrantShadeEnabled = Settings.System.getIntForUser(resolver,
                 PREF_VIBRANT_SHADE, 0, UserHandle.USER_CURRENT) == 1;
@@ -91,6 +123,12 @@ public class QuickSettingsStyle extends SettingsPreferenceFragment implements On
             boolean value = (Boolean) newValue;
             Settings.System.putIntForUser(resolver, PREF_DUAL_TONE_SHADE,
                     value ? 1 : 0, UserHandle.USER_CURRENT);
+            return true;
+        } else if (preference == mQsSplitShadePref) {
+            boolean value = (Boolean) newValue;
+            Settings.System.putIntForUser(resolver, PREF_QS_SPLIT_SHADE,
+                    value ? 1 : 0, UserHandle.USER_CURRENT);
+            VoltageUtils.showSystemUiRestartDialog(getContext());
             return true;
         } else if (preference == mVibrantShadePref) {
             boolean value = (Boolean) newValue;

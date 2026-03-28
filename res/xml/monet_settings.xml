@@ -43,7 +43,7 @@
     <Preference
         android:key="qs_style_settings"
         android:title="@string/qs_blur_category_title"
-        android:summary="Dual-tone and blur customization"
+        android:summary="Dual-tone, split shade and blur customization"
         android:icon="@drawable/ic_powerhub_qsstyle_expressive"
         android:fragment="com.power.hub.fragments.QuickSettingsStyle" />
 

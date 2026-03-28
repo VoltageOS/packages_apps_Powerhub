@@ -26,6 +26,11 @@
         android:defaultValue="true" />
 
     <SwitchPreferenceCompat
+        android:key="qs_split_shade"
+        android:title="@string/qs_split_shade_title"
+        android:summary="@string/qs_split_shade_summary" />
+
+    <SwitchPreferenceCompat
         android:key="qs_vibrant_shade_elements"
         android:title="@string/qs_vibrant_shade_title"
         android:summary="@string/qs_vibrant_shade_summary"
