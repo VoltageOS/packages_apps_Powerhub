@@ -548,4 +548,7 @@
     <string name="haze_frosted">Simple Frosted</string>
     <string name="haze_frosted_reversed">Reverse Frosted</string>
     <string name="haze_standard_double">Double Haze (Haze-&gt;Sharp Lock, Sharp-&gt;Haze Home)</string>
+    <!-- Split shade QS -->
+    <string name="qs_split_shade_title">Split Quick Settings</string>
+    <string name="qs_split_shade_summary">Use a two-column layout for notifications and Quick Settings in landscape</string>
 </resources>
