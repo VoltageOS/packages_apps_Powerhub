@@ -25,7 +25,7 @@
 
         <!-- GMS spoof -->
         <com.voltage.support.preferences.SystemPropertySwitchPreference
-            android:key="persist.sys.pixelprops.gms"
+            android:key="persist.sys.pp.gms"
             android:title="@string/gms_spoof_title"
             android:summary="@string/gms_spoof_summary"
             android:defaultValue="true" />
@@ -34,23 +34,23 @@
             android:key="show_pif_properties"
             android:title="@string/show_pif_properties_title"
             android:summary="@string/show_pif_properties_summary"
-            android:dependency="persist.sys.pixelprops.gms" />
+            android:dependency="persist.sys.pp.gms" />
 
         <Preference
             android:key="update_pif_json"
             android:title="@string/update_pif_json_title"
             android:summary="@string/update_pif_json_summary"
-            android:dependency="persist.sys.pixelprops.gms" />
+            android:dependency="persist.sys.pp.gms" />
 
         <Preference
             android:key="pif_json_file_preference"
             android:title="@string/pif_spoofing_title"
             android:summary="@string/pif_spoofing_summary"
-            android:dependency="persist.sys.pixelprops.gms" />
+            android:dependency="persist.sys.pp.gms" />
 
         <!-- Pixel props -->
         <com.voltage.support.preferences.SystemPropertySwitchPreference
-            android:key="persist.sys.pphooks.enable"
+            android:key="persist.sys.pp"
             android:title="@string/spoofing_pixel_props_title"
             android:summary="@string/spoofing_pixel_props_summary"
             android:defaultValue="true" />
@@ -82,21 +82,21 @@
 
         <!-- Play Store -->
         <com.voltage.support.preferences.SystemPropertySwitchPreference
-            android:key="persist.sys.vending.enable"
+            android:key="persist.sys.pp.vending"
             android:title="@string/spoofing_vending_title"
             android:summary="@string/spoofing_vending_summary"
             android:defaultValue="false" />
 
         <!-- Google Photos -->
         <com.voltage.support.preferences.SystemPropertySwitchPreference
-            android:key="persist.sys.gphooks.enable"
+            android:key="persist.sys.pp.photos"
             android:title="@string/spoofing_photos_title"
             android:summary="@string/spoofing_photos_summary"
             android:defaultValue="false" />
 
         <!-- Games FPS -->
         <com.voltage.support.preferences.SystemPropertySwitchPreference
-            android:key="persist.sys.gameprops.enabled"
+            android:key="persist.sys.pp.games"
             android:title="@string/gameprops_title"
             android:summary="@string/gameprops_summary"
             android:defaultValue="false" />
@@ -104,12 +104,12 @@
         <Preference
             android:key="game_props_json_file_preference"
             android:title="@string/gameprops_load_json_title"
-            android:dependency="persist.sys.gameprops.enabled"
+            android:dependency="persist.sys.pp.games"
             android:summary="@string/gameprops_load_json_summary" />
 
         <!-- Snapchat -->
         <com.voltage.support.preferences.SystemPropertySwitchPreference
-            android:key="persist.sys.snap.enable"
+            android:key="persist.sys.pp.snap"
             android:title="@string/spoofing_snap_title"
             android:summary="@string/spoofing_snap_summary"
             android:defaultValue="false" />

@@ -86,12 +86,12 @@ package com.power.hub.fragments;
      private static final String KEY_PIF_JSON_FILE_PREFERENCE = "pif_json_file_preference";
      private static final String KEY_GAME_PROPS_JSON_FILE_PREFERENCE = "game_props_json_file_preference";
      private static final String KEY_UPDATE_JSON_BUTTON = "update_pif_json";
-     private static final String SYS_GMS_SPOOF = "persist.sys.pixelprops.gms";
-     private static final String SYS_GOOGLE_SPOOF = "persist.sys.pphooks.enable";
-     private static final String SYS_GAMEPROP_SPOOF = "persist.sys.gameprops.enabled";
-     private static final String SYS_GPHOTOS_SPOOF = "persist.sys.gphooks.enable";
-     private static final String SYS_SNAP_SPOOF = "persist.sys.snap.enable";
-     private static final String SYS_VENDING_SPOOF = "persist.sys.vending.enable";
+     private static final String SYS_GMS_SPOOF = "persist.sys.pp.gms";
+     private static final String SYS_GOOGLE_SPOOF = "persist.sys.pp";
+     private static final String SYS_GAMEPROP_SPOOF = "persist.sys.pp.games";
+     private static final String SYS_GPHOTOS_SPOOF = "persist.sys.pp.photos";
+     private static final String SYS_SNAP_SPOOF = "persist.sys.pp.snap";
+     private static final String SYS_VENDING_SPOOF = "persist.sys.pp.vending";
      private static final String SYS_ENABLE_TENSOR_FEATURES = "persist.sys.features.tensor";
      private static final String KEYBOX_DATA_KEY = "keybox_data_setting";
 
@@ -234,20 +234,20 @@ package com.power.hub.fragments;
          try {
              JSONObject jsonObject = new JSONObject();
              String[] keys = {
-                 "persist.sys.pihooks_ID",
-                 "persist.sys.pihooks_BRAND",
-                 "persist.sys.pihooks_DEVICE",
-                 "persist.sys.pihooks_FINGERPRINT",
-                 "persist.sys.pihooks_MANUFACTURER",
-                 "persist.sys.pihooks_MODEL",
-                 "persist.sys.pihooks_PRODUCT",
-                 "persist.sys.pihooks_SECURITY_PATCH",
-                 "persist.sys.pihooks_DEVICE_INITIAL_SDK_INT"
+                "persist.sys.binfo.ID",
+                "persist.sys.binfo.BRAND",
+                "persist.sys.binfo.DEVICE",
+                "persist.sys.binfo.FINGERPRINT",
+                "persist.sys.binfo.MANUFACTURER",
+                "persist.sys.binfo.MODEL",
+                "persist.sys.binfo.PRODUCT",
+                "persist.sys.binfo.SECURITY_PATCH",
+                "persist.sys.binfo.DEVICE_INITIAL_SDK_INT"
              };
              for (String key : keys) {
                  String value = SystemProperties.get(key, null);
                  if (value != null) {
-                     String buildKey = key.replace("persist.sys.pihooks_", "");
+                     String buildKey = key.replace("persist.sys.binfo.", "");
                      jsonObject.put(buildKey, value);
                  }
              }
@@ -276,8 +276,8 @@ package com.power.hub.fragments;
                      for (Iterator<String> it = jsonObject.keys(); it.hasNext(); ) {
                          String key = it.next();
                          String value = jsonObject.getString(key);
-                         Log.d(TAG, "Setting property: persist.sys.pihooks_" + key + " = " + value);
-                         SystemProperties.set("persist.sys.pihooks_" + key, value);
+                        Log.d(TAG, "Setting property: persist.sys.binfo." + key + " = " + value);
+                        SystemProperties.set("persist.sys.binfo." + key, value);
                      }
                      mHandler.post(() -> {
                          String toastMessage = getString(R.string.toast_spoofing_success, spoofedModel);
@@ -309,8 +309,8 @@ package com.power.hub.fragments;
                  for (Iterator<String> it = jsonObject.keys(); it.hasNext(); ) {
                      String key = it.next();
                      String value = jsonObject.getString(key);
-                     Log.d(TAG, "Setting PIF property: persist.sys.pihooks_" + key + " = " + value);
-                     SystemProperties.set("persist.sys.pihooks_" + key, value);
+                     Log.d(TAG, "Setting PIF property: persist.sys.binfo." + key + " = " + value);
+                     SystemProperties.set("persist.sys.binfo." + key, value);
                  }
              }
          } catch (Exception e) {
@@ -357,7 +357,7 @@ package com.power.hub.fragments;
              for (Iterator<String> it = deviceProps.keys(); it.hasNext(); ) {
                  String key = it.next();
                  String value = deviceProps.getString(key);
-                 String systemPropertyKey = "persist.sys.gameprops." + packageName + "." + key;
+                 String systemPropertyKey = "persist.sys.pp.game." + packageName + "." + key;
                  SystemProperties.set(systemPropertyKey, value);
                  Log.d(TAG, "Set system property: " + systemPropertyKey + " = " + value);
              }
