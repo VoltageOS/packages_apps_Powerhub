@@ -16,109 +16,84 @@
 -->
 <PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
-    android:title="@string/spoofing_title">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:title="@string/spoof_screen_title">
 
     <PreferenceCategory
-        android:key="spoofing_system_wide_category"
-        android:title="@string/spoofing_system_wide_category">
-
-        <!-- GMS spoof -->
-        <com.voltage.support.preferences.SystemPropertySwitchPreference
-            android:key="persist.sys.pp.gms"
-            android:title="@string/gms_spoof_title"
-            android:summary="@string/gms_spoof_summary"
-            android:defaultValue="true" />
+        android:key="pif_category"
+        android:title="@string/pif_category_title">
 
         <Preference
-            android:key="show_pif_properties"
-            android:title="@string/show_pif_properties_title"
-            android:summary="@string/show_pif_properties_summary"
-            android:dependency="persist.sys.pp.gms" />
+            android:key="pif_fetch_beta"
+            android:title="@string/pif_fetch_beta_title"
+            android:summary="@string/pif_no_config_loaded" />
 
         <Preference
-            android:key="update_pif_json"
-            android:title="@string/update_pif_json_title"
-            android:summary="@string/update_pif_json_summary"
-            android:dependency="persist.sys.pp.gms" />
+            android:key="pif_import_file"
+            android:title="@string/pif_import_title"
+            android:summary="@string/pif_import_summary" />
 
         <Preference
-            android:key="pif_json_file_preference"
-            android:title="@string/pif_spoofing_title"
-            android:summary="@string/pif_spoofing_summary"
-            android:dependency="persist.sys.pp.gms" />
-
-        <!-- Pixel props -->
-        <com.voltage.support.preferences.SystemPropertySwitchPreference
-            android:key="persist.sys.pp"
-            android:title="@string/spoofing_pixel_props_title"
-            android:summary="@string/spoofing_pixel_props_summary"
-            android:defaultValue="true" />
-
-        <!-- Tensor features -->
-        <com.voltage.support.preferences.SystemPropertySwitchPreference
-            android:key="persist.sys.features.tensor"
-            android:title="@string/tensor_spoof_title"
-            android:summary="@string/tensor_spoof_summary"
-            android:defaultValue="false" />
-
-        <!-- Keybox Data -->
-        <com.power.hub.fragments.KeyboxDataPreference
-            android:key="keybox_data_setting"
-            android:title="@string/keybox_data_title" />
-
-    <!-- Vbmeta hash attestation -->
-    <com.voltage.support.preferences.SystemPropertySwitchPreference
-        android:key="persist.sys.vbmeta.update"
-        android:title="@string/vbmeta_attestation_title"
-        android:summary="@string/vbmeta_attestation_summary"
-        android:defaultValue="true" />
+            android:key="pif_show_props"
+            android:title="@string/pif_show_props_title"
+            android:summary="@string/pif_no_props" />
 
     </PreferenceCategory>
 
     <PreferenceCategory
-        android:key="spoofing_app_specific_category"
-        android:title="@string/spoofing_app_specific_category">
+        android:key="pif_options_category"
+        android:title="@string/pif_options_category">
 
-        <!-- Play Store -->
-        <com.voltage.support.preferences.SystemPropertySwitchPreference
-            android:key="persist.sys.pp.vending"
-            android:title="@string/spoofing_vending_title"
-            android:summary="@string/spoofing_vending_summary"
+        <SwitchPreferenceCompat
+            android:key="pif_spoof_photos"
+            android:title="@string/pif_spoof_photos_title"
+            android:summary="@string/pif_spoof_photos_summary"
             android:defaultValue="false" />
-
-        <!-- Google Photos -->
-        <com.voltage.support.preferences.SystemPropertySwitchPreference
-            android:key="persist.sys.pp.photos"
-            android:title="@string/spoofing_photos_title"
-            android:summary="@string/spoofing_photos_summary"
-            android:defaultValue="false" />
-
-        <!-- Games FPS -->
-        <com.voltage.support.preferences.SystemPropertySwitchPreference
-            android:key="persist.sys.pp.games"
-            android:title="@string/gameprops_title"
-            android:summary="@string/gameprops_summary"
-            android:defaultValue="false" />
-
-        <Preference
-            android:key="game_props_json_file_preference"
-            android:title="@string/gameprops_load_json_title"
-            android:dependency="persist.sys.pp.games"
-            android:summary="@string/gameprops_load_json_summary" />
-
-        <!-- Snapchat -->
-        <com.voltage.support.preferences.SystemPropertySwitchPreference
-            android:key="persist.sys.pp.snap"
-            android:title="@string/spoofing_snap_title"
-            android:summary="@string/spoofing_snap_summary"
-            android:defaultValue="false" />
-
-        <Preference
-            android:key="hide_applist_setting"
-            android:title="@string/hide_applist_title"
-            android:summary="@string/hide_applist_summary"
-            android:fragment="com.power.hub.fragments.HideAppListSettings" />
 
     </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="cat_keybox"
+        android:title="@string/keybox_category_title">
+
+        <Preference
+            android:key="keybox_import"
+            android:title="@string/keybox_import_title"
+            android:summary="@string/keybox_not_found" />
+
+        <Preference
+            android:key="keybox_delete"
+            android:title="@string/keybox_delete_pref_title"
+            android:summary="@string/keybox_delete_summary"
+            android:enabled="false" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="cat_target"
+        android:title="@string/target_category_title">
+
+        <Preference
+            android:key="target_manage_apps"
+            android:title="@string/target_manage_title"
+            android:summary="@string/target_no_apps" />
+
+        <Preference
+            android:key="target_import_file"
+            android:title="@string/target_import_title"
+            android:summary="@string/target_import_summary" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="cat_app_spoof"
+        android:title="@string/app_spoof_category_title">
+
+        <Preference
+            android:key="app_spoof_manage"
+            android:title="@string/app_spoof_manage_title"
+            android:summary="@string/app_spoof_manage_summary" />
+
+    </PreferenceCategory>
+
 </PreferenceScreen>
