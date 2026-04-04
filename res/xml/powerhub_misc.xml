@@ -28,8 +28,8 @@
 
     <Preference
         android:key="spoofing"
-        android:title="@string/spoofing_title"
-        android:summary="@string/spoofing_summary"
+        android:title="@string/spoof_screen_title"
+        android:summary="@string/spoof_screen_summary"
         android:icon="@drawable/ic_powerhub_spoofing_expressive"
         android:fragment="com.power.hub.fragments.Spoofing" />
         
