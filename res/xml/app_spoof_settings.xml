@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <Preference
+        android:key="app_spoof_status"
+        android:title="@string/game_spoofing_disabled"
+        android:summary="@string/game_spoof_no_games"
+        android:selectable="false" />
+
     <SwitchPreferenceCompat
         android:key="app_spoof_enabled"
         android:title="@string/app_spoof_enabled_title"

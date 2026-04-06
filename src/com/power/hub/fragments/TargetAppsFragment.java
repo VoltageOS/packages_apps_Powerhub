@@ -20,15 +20,16 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
+import android.widget.SearchView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -70,6 +71,8 @@ public class TargetAppsFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
+        requireActivity().setTitle(R.string.target_screen_title);
         mKeyboxManager = new KeyboxManager(requireContext());
     }
 
@@ -90,31 +93,54 @@ public class TargetAppsFragment extends Fragment {
 
         mSelectedCount = view.findViewById(R.id.tv_selected_count);
 
-        EditText searchApps = view.findViewById(R.id.et_search_apps);
-        searchApps.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                mSearchQuery = s != null ? s.toString().trim() : "";
-                filterApps();
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-            }
-        });
-
-        CheckBox showSystemApps = view.findViewById(R.id.cb_show_system_apps);
-        showSystemApps.setChecked(mShowSystem);
-        showSystemApps.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            mShowSystem = isChecked;
-            filterApps();
-        });
-
         loadApps();
+    }
+
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        inflater.inflate(R.menu.menu_target_apps, menu);
+
+        MenuItem searchItem = menu.findItem(R.id.action_search);
+        SearchView searchView = (SearchView) searchItem.getActionView();
+        searchView.setQueryHint(getString(R.string.target_search_hint));
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                mSearchQuery = newText != null ? newText.trim() : "";
+                filterApps();
+                return true;
+            }
+        });
+
+        if (!mSearchQuery.isEmpty()) {
+            searchItem.expandActionView();
+            searchView.setQuery(mSearchQuery, false);
+            searchView.clearFocus();
+        }
+
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public void onPrepareOptionsMenu(@NonNull Menu menu) {
+        menu.findItem(R.id.action_show_system).setChecked(mShowSystem);
+        super.onPrepareOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == R.id.action_show_system) {
+            mShowSystem = !mShowSystem;
+            item.setChecked(mShowSystem);
+            filterApps();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override

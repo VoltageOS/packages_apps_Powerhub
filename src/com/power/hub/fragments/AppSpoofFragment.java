@@ -24,25 +24,22 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.text.InputType;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
-import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
+import androidx.preference.Preference;
+import androidx.preference.PreferenceCategory;
+import androidx.preference.SwitchPreferenceCompat;
 
 import com.android.internal.logging.nano.MetricsProto;
 import com.android.settings.R;
-import com.android.settings.core.InstrumentedFragment;
+import com.android.settings.SettingsPreferenceFragment;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -58,25 +55,28 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-public class AppSpoofFragment extends InstrumentedFragment {
+public class AppSpoofFragment extends SettingsPreferenceFragment {
 
     private static final String TAG = "GameSpoofing";
 
     private static final String CONFIG_DIR = "/data/adb/gameprops";
     private static final String CONFIG_FILE = "gameprops.json";
     private static final String PRESETS_KEY = "game_spoofing_user_presets";
+    private static final String KEY_STATUS = "app_spoof_status";
+    private static final String KEY_ENABLED = "app_spoof_enabled";
+    private static final String KEY_ADD_APP = "app_spoof_add_app";
+    private static final String KEY_MANAGE_PROFILES = "app_spoof_manage_profiles";
+    private static final String KEY_APP_CATEGORY = "app_spoof_app_list_category";
 
     private final List<AppConfig> mConfigs = new ArrayList<>();
     private final List<DeviceProfile> mProfiles = new ArrayList<>();
 
     private boolean mEnabled;
-    private Switch mEnabledSwitch;
-    private TextView mStatusView;
-    private TextView mCountView;
-    private TextView mEmptyView;
-    private LinearLayout mAppContainer;
-    private Button mAddGameButton;
-    private Button mManagePresetsButton;
+    private Preference mStatusPreference;
+    private SwitchPreferenceCompat mEnabledSwitch;
+    private Preference mAddGamePreference;
+    private Preference mManagePresetsPreference;
+    private PreferenceCategory mAppCategory;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -84,34 +84,28 @@ public class AppSpoofFragment extends InstrumentedFragment {
         requireActivity().setTitle(R.string.game_spoofing_title);
         loadProfiles();
         loadConfig();
-    }
+        addPreferencesFromResource(R.xml.app_spoof_settings);
 
-    @Nullable
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
-            @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_app_spoof, container, false);
-    }
+        mStatusPreference = findPreference(KEY_STATUS);
+        mEnabledSwitch = findPreference(KEY_ENABLED);
+        mAddGamePreference = findPreference(KEY_ADD_APP);
+        mManagePresetsPreference = findPreference(KEY_MANAGE_PROFILES);
+        mAppCategory = findPreference(KEY_APP_CATEGORY);
 
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        mEnabledSwitch = view.findViewById(R.id.switch_app_spoof_enabled);
-        mStatusView = view.findViewById(R.id.tv_app_spoof_status);
-        mCountView = view.findViewById(R.id.tv_app_spoof_count);
-        mEmptyView = view.findViewById(R.id.tv_app_spoof_empty);
-        mAppContainer = view.findViewById(R.id.container_app_spoof_apps);
-        mAddGameButton = view.findViewById(R.id.btn_app_spoof_add_app);
-        mManagePresetsButton = view.findViewById(R.id.btn_app_spoof_manage_profiles);
-
-        mEnabledSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            mEnabled = isChecked;
+        mEnabledSwitch.setOnPreferenceChangeListener((preference, newValue) -> {
+            mEnabled = (Boolean) newValue;
             saveConfig();
             refreshUi();
+            return true;
         });
-
-        mAddGameButton.setOnClickListener(v -> showAddAppDialog());
-        mManagePresetsButton.setOnClickListener(v -> showManageProfilesDialog());
+        mAddGamePreference.setOnPreferenceClickListener(preference -> {
+            showAddAppDialog();
+            return true;
+        });
+        mManagePresetsPreference.setOnPreferenceClickListener(preference -> {
+            showManageProfilesDialog();
+            return true;
+        });
     }
 
     @Override
@@ -155,57 +149,64 @@ public class AppSpoofFragment extends InstrumentedFragment {
             return;
         }
 
-        mEnabledSwitch.setOnCheckedChangeListener(null);
-        mEnabledSwitch.setChecked(mEnabled);
-        mEnabledSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            mEnabled = isChecked;
-            saveConfig();
-            refreshUi();
-        });
-
-        mStatusView.setText(mEnabled
+        mStatusPreference.setTitle(mEnabled
                 ? getString(R.string.game_spoofing_enabled)
                 : getString(R.string.game_spoofing_disabled));
-        mCountView.setText(getString(R.string.game_spoofing_configured_count, mConfigs.size()));
-        mAddGameButton.setEnabled(mEnabled);
-        mManagePresetsButton.setEnabled(mEnabled);
+        mStatusPreference.setSummary(mConfigs.isEmpty()
+                ? getString(R.string.game_spoof_no_games)
+                : getString(R.string.game_spoofing_configured_count, mConfigs.size()));
 
-        mAppContainer.removeAllViews();
+        mEnabledSwitch.setOnPreferenceChangeListener(null);
+        mEnabledSwitch.setChecked(mEnabled);
+        mEnabledSwitch.setOnPreferenceChangeListener((preference, newValue) -> {
+            mEnabled = (Boolean) newValue;
+            saveConfig();
+            refreshUi();
+            return true;
+        });
+
+        mAddGamePreference.setEnabled(mEnabled);
+        mManagePresetsPreference.setEnabled(mEnabled);
+        bindConfiguredApps();
+    }
+
+    private void bindConfiguredApps() {
+        mAppCategory.removeAll();
+        mAppCategory.setTitle(getString(R.string.app_spoof_configured_apps));
+
         if (mConfigs.isEmpty()) {
-            mEmptyView.setVisibility(View.VISIBLE);
+            Preference emptyPreference = new Preference(requireContext());
+            emptyPreference.setTitle(R.string.game_spoof_no_games);
+            emptyPreference.setSelectable(false);
+            mAppCategory.addPreference(emptyPreference);
             return;
         }
-        mEmptyView.setVisibility(View.GONE);
 
-        LayoutInflater inflater = LayoutInflater.from(requireContext());
         List<AppConfig> sorted = new ArrayList<>(mConfigs);
         Collections.sort(sorted, (left, right) -> left.appName.compareToIgnoreCase(right.appName));
         PackageManager packageManager = requireContext().getPackageManager();
 
         for (AppConfig config : sorted) {
-            View itemView = inflater.inflate(R.layout.item_app_spoof_entry, mAppContainer, false);
-            ImageView iconView = itemView.findViewById(R.id.iv_app_icon);
-            TextView labelView = itemView.findViewById(R.id.tv_app_label);
-            TextView packageView = itemView.findViewById(R.id.tv_app_package);
-            TextView profileView = itemView.findViewById(R.id.tv_app_profile);
+            Preference preference = new Preference(requireContext());
+            preference.setTitle(config.appName);
+            preference.setSummary(config.packageName + "\n"
+                    + getString(R.string.game_spoof_preset_summary, config.profileName));
+            preference.setEnabled(mEnabled);
+            preference.setIcon(resolveAppIcon(packageManager, config.packageName));
+            preference.setOnPreferenceClickListener(clicked -> {
+                showEditAppDialog(config);
+                return true;
+            });
+            mAppCategory.addPreference(preference);
+        }
+    }
 
-            labelView.setText(config.appName);
-            packageView.setText(config.packageName);
-            profileView.setText(getString(R.string.game_spoof_preset_summary, config.profileName));
-
-            Drawable icon = null;
-            try {
-                ApplicationInfo appInfo = packageManager.getApplicationInfo(config.packageName, 0);
-                icon = appInfo.loadIcon(packageManager);
-            } catch (Exception ignored) {
-            }
-            iconView.setImageDrawable(icon != null ? icon : requireContext().getDrawable(
-                    android.R.drawable.sym_def_app_icon));
-
-            itemView.setEnabled(mEnabled);
-            itemView.setAlpha(mEnabled ? 1f : 0.6f);
-            itemView.setOnClickListener(mEnabled ? v -> showEditAppDialog(config) : null);
-            mAppContainer.addView(itemView);
+    private Drawable resolveAppIcon(PackageManager packageManager, String packageName) {
+        try {
+            ApplicationInfo appInfo = packageManager.getApplicationInfo(packageName, 0);
+            return appInfo.loadIcon(packageManager);
+        } catch (Exception ignored) {
+            return requireContext().getDrawable(android.R.drawable.sym_def_app_icon);
         }
     }
 
@@ -297,6 +298,9 @@ public class AppSpoofFragment extends InstrumentedFragment {
                 delete.setOnClickListener(v -> {
                     mProfiles.remove(profile);
                     saveProfiles();
+                    loadProfiles();
+                    loadConfig();
+                    refreshUi();
                     dialog.dismiss();
                     showPresetPickerDialog(appInfo, packageManager, replacing);
                 });
@@ -437,6 +441,9 @@ public class AppSpoofFragment extends InstrumentedFragment {
 
                     mProfiles.add(new DeviceProfile(name, collectProps(propRows), true));
                     saveProfiles();
+                    loadProfiles();
+                    loadConfig();
+                    refreshUi();
                     Toast.makeText(requireContext(), R.string.game_spoof_preset_saved,
                             Toast.LENGTH_SHORT).show();
                     dialog.dismiss();
@@ -507,6 +514,9 @@ public class AppSpoofFragment extends InstrumentedFragment {
                             .setPositiveButton(R.string.action_delete, (confirmDialog, ignored) -> {
                                 mProfiles.remove(profile);
                                 saveProfiles();
+                                loadProfiles();
+                                loadConfig();
+                                refreshUi();
                                 Toast.makeText(requireContext(),
                                         R.string.game_spoof_preset_deleted,
                                         Toast.LENGTH_SHORT).show();
@@ -591,6 +601,9 @@ public class AppSpoofFragment extends InstrumentedFragment {
                     DeviceProfile created = new DeviceProfile(name, props, true);
                     mProfiles.add(created);
                     saveProfiles();
+                    loadProfiles();
+                    loadConfig();
+                    refreshUi();
                     Toast.makeText(requireContext(),
                             editing == null
                                     ? getString(R.string.game_spoof_preset_saved_named, name)

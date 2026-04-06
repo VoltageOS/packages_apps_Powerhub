@@ -40,7 +40,7 @@ public class PifManager {
     private static final String PIF_DIR = "/data/adb/playintegrityfix";
     private static final String VENDING_PKG = "com.android.vending";
     private static final String PHOTOS_PKG = "com.google.android.apps.photos";
-    private static final String KEY_SPOOF_PHOTOS = "spoofPhotos";
+    private static final String PHOTOS_SPOOF_KEY = "spoofPhotos";
 
     private static final List<String> CONFIG_FILES = Arrays.asList(
             "custom.pif.prop",
@@ -170,16 +170,16 @@ public class PifManager {
     }
 
     public boolean isSpoofPhotosEnabled() {
-        String value = getCurrentProperties().get(KEY_SPOOF_PHOTOS);
-        return "true".equalsIgnoreCase(value) || "1".equals(value);
+        return isTruthy(getCurrentProperties().get(PHOTOS_SPOOF_KEY));
     }
 
     public void setSpoofPhotos(boolean enabled) {
-        File editable = ensureEditableConfig();
-        if (editable == null) {
-            return;
+        File active = findActiveFile();
+        if (active == null) {
+            active = new File(PIF_DIR, "pif.json");
+            ensureDir();
         }
-        updateConfigKey(editable, KEY_SPOOF_PHOTOS, String.valueOf(enabled));
+        updateConfigKey(active, PHOTOS_SPOOF_KEY, String.valueOf(enabled));
         killPackage(PHOTOS_PKG);
     }
 
@@ -272,7 +272,7 @@ public class PifManager {
     private File ensureEditableConfig() {
         ensureDir();
         File active = findActiveFile();
-        if (active != null && active.getName().startsWith("custom.")) {
+        if (active != null && "custom.pif.json".equals(active.getName())) {
             return active;
         }
 
@@ -302,7 +302,7 @@ public class PifManager {
     private void updateConfigKey(File file, String key, String value) {
         try {
             String updated;
-            String content = readFileToString(file);
+            String content = file.exists() ? readFileToString(file) : "";
             if (looksLikeJson(file.getName(), content)) {
                 JSONObject json = content.trim().isEmpty() ? new JSONObject() : new JSONObject(content);
                 json.put(key, value);
@@ -385,6 +385,10 @@ public class PifManager {
             return value.substring(1, value.length() - 1);
         }
         return value;
+    }
+
+    private boolean isTruthy(String value) {
+        return "1".equals(value) || "true".equalsIgnoreCase(value);
     }
 
     private void killPackage(String packageName) {

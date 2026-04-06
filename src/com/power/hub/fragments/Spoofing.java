@@ -18,65 +18,56 @@ package com.power.hub.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.preference.Preference;
 
 import com.android.internal.logging.nano.MetricsProto;
 import com.android.settings.R;
+import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.SubSettings;
-import com.android.settings.core.InstrumentedFragment;
 
 import java.util.Map;
 
-public class Spoofing extends InstrumentedFragment {
+public class Spoofing extends SettingsPreferenceFragment {
+
+    private static final String KEY_PIF = "spoofing_pif";
+    private static final String KEY_TRICKYSTORE = "spoofing_trickystore";
+    private static final String KEY_APP_SPOOF = "spoofing_app_spoof";
 
     private PifManager mPifManager;
     private KeyboxManager mKeyboxManager;
 
-    private TextView mPifStatus;
-    private TextView mPifDetail;
-    private TextView mTrickyStoreStatus;
-    private TextView mTrickyStoreDetail;
-    private TextView mAppSpoofStatus;
-    private TextView mAppSpoofDetail;
+    private Preference mPifPreference;
+    private Preference mTrickyStorePreference;
+    private Preference mAppSpoofPreference;
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public void onCreate(Bundle icicle) {
+        super.onCreate(icicle);
         requireActivity().setTitle(R.string.spoof_screen_title);
         mPifManager = new PifManager(requireContext());
         mKeyboxManager = new KeyboxManager(requireContext());
-    }
 
-    @Nullable
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
-            @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_spoofing_dashboard, container, false);
-    }
+        addPreferencesFromResource(R.xml.spoofing);
 
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        mPifStatus = view.findViewById(R.id.tv_pif_status);
-        mPifDetail = view.findViewById(R.id.tv_pif_detail);
-        mTrickyStoreStatus = view.findViewById(R.id.tv_trickystore_status);
-        mTrickyStoreDetail = view.findViewById(R.id.tv_trickystore_detail);
-        mAppSpoofStatus = view.findViewById(R.id.tv_app_spoof_status);
-        mAppSpoofDetail = view.findViewById(R.id.tv_app_spoof_detail);
+        mPifPreference = findPreference(KEY_PIF);
+        mTrickyStorePreference = findPreference(KEY_TRICKYSTORE);
+        mAppSpoofPreference = findPreference(KEY_APP_SPOOF);
 
-        view.findViewById(R.id.card_pif).setOnClickListener(v ->
-                openFragment(PifFragment.class, getString(R.string.pif_category_title)));
-        view.findViewById(R.id.card_trickystore).setOnClickListener(v ->
-                openFragment(TrickyStoreFragment.class, getString(R.string.trickystore_screen_title)));
-        view.findViewById(R.id.card_app_spoof).setOnClickListener(v ->
-                openFragment(AppSpoofFragment.class, getString(R.string.game_spoofing_title)));
+        mPifPreference.setOnPreferenceClickListener(preference -> {
+            openFragment(PifFragment.class, getString(R.string.pif_category_title));
+            return true;
+        });
+        mTrickyStorePreference.setOnPreferenceClickListener(preference -> {
+            openFragment(TrickyStoreFragment.class, getString(R.string.trickystore_screen_title));
+            return true;
+        });
+        mAppSpoofPreference.setOnPreferenceClickListener(preference -> {
+            openFragment(AppSpoofFragment.class, getString(R.string.game_spoofing_title));
+            return true;
+        });
     }
 
     @Override
@@ -98,19 +89,20 @@ public class Spoofing extends InstrumentedFragment {
         String patch = props.get("SECURITY_PATCH");
 
         if (activeConfig.isEmpty()) {
-            mPifStatus.setText(R.string.pif_no_config_loaded);
-            mPifDetail.setText(R.string.spoof_dashboard_pif_empty_detail);
+            mPifPreference.setSummary(getString(R.string.pif_no_config_loaded) + "\n"
+                    + getString(R.string.spoof_dashboard_pif_empty_detail));
             return;
         }
 
-        mPifStatus.setText(getString(R.string.pif_active_config, activeConfig));
         if (model == null || model.isEmpty()) {
             model = getString(R.string.pif_no_props);
         }
         if (patch == null || patch.isEmpty()) {
-            mPifDetail.setText(model);
+            mPifPreference.setSummary(getString(R.string.pif_active_config, activeConfig) + "\n"
+                    + model);
         } else {
-            mPifDetail.setText(getString(R.string.spoof_dashboard_pif_detail, model, patch));
+            mPifPreference.setSummary(getString(R.string.pif_active_config, activeConfig) + "\n"
+                    + getString(R.string.spoof_dashboard_pif_detail, model, patch));
         }
     }
 
@@ -118,24 +110,26 @@ public class Spoofing extends InstrumentedFragment {
         boolean keyboxExists = mKeyboxManager.keyboxExists();
         int targetCount = mKeyboxManager.getTargetAppCount();
 
-        mTrickyStoreStatus.setText(keyboxExists
+        String status = keyboxExists
                 ? getString(R.string.keybox_installed)
-                : getString(R.string.keybox_not_found));
-        mTrickyStoreDetail.setText(targetCount > 0
+                : getString(R.string.keybox_not_found);
+        String detail = targetCount > 0
                 ? getString(R.string.target_apps_count, targetCount)
-                : getString(R.string.spoof_dashboard_target_empty_detail));
+                : getString(R.string.spoof_dashboard_target_empty_detail);
+        mTrickyStorePreference.setSummary(status + "\n" + detail);
     }
 
     private void bindAppSpoofSummary() {
         boolean enabled = AppSpoofFragment.isConfigEnabled(requireContext());
         int appCount = AppSpoofFragment.getConfiguredAppCount(requireContext());
 
-        mAppSpoofStatus.setText(enabled
+        String status = enabled
                 ? getString(R.string.game_spoofing_enabled)
-                : getString(R.string.game_spoofing_disabled));
-        mAppSpoofDetail.setText(appCount > 0
+                : getString(R.string.game_spoofing_disabled);
+        String detail = appCount > 0
                 ? getString(R.string.game_spoofing_configured_count, appCount)
-                : getString(R.string.game_spoof_no_games));
+                : getString(R.string.game_spoof_no_games);
+        mAppSpoofPreference.setSummary(status + "\n" + detail);
     }
 
     private void openFragment(@NonNull Class<? extends Fragment> fragmentClass,

@@ -20,17 +20,8 @@ import android.app.Activity;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 import android.provider.OpenableColumns;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.Switch;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultLauncher;
@@ -38,10 +29,13 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
+import androidx.preference.Preference;
+import androidx.preference.PreferenceCategory;
+import androidx.preference.SwitchPreferenceCompat;
 
 import com.android.internal.logging.nano.MetricsProto;
 import com.android.settings.R;
-import com.android.settings.core.InstrumentedFragment;
+import com.android.settings.SettingsPreferenceFragment;
 
 import org.json.JSONObject;
 
@@ -50,25 +44,30 @@ import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Map;
 
-public class PifFragment extends InstrumentedFragment {
+public class PifFragment extends SettingsPreferenceFragment {
 
     private static final String TAG = "PifFragment";
 
-    private final Handler mHandler = new Handler(Looper.getMainLooper());
+    private static final String KEY_ACTIVE_CONFIG = "pif_active_config";
+    private static final String KEY_FETCH_BETA = "pif_fetch_beta";
+    private static final String KEY_FETCH_VOLTAGE = "pif_fetch_voltage";
+    private static final String KEY_IMPORT_FILE = "pif_import_file";
+    private static final String KEY_SHOW_PROPS = "pif_show_props";
+    private static final String KEY_SPOOF_PHOTOS = "pif_spoof_photos";
+    private static final String KEY_OPTIONS_CATEGORY = "pif_options_category";
+    private static final String KEY_FILES_CATEGORY = "pif_files_category";
 
     private PifManager mPifManager;
     private PifRepository mPifRepository;
 
-    private TextView mActiveConfig;
-    private TextView mModel;
-    private TextView mFingerprint;
-    private TextView mSecurityPatch;
-    private Button mFetchBeta;
-    private Button mFetchVoltage;
-    private Button mImportButton;
-    private Button mShowPropsButton;
-    private Switch mSpoofPhotosSwitch;
-    private LinearLayout mConfigContainer;
+    private Preference mStatusPreference;
+    private Preference mFetchBetaPreference;
+    private Preference mFetchVoltagePreference;
+    private Preference mImportPreference;
+    private Preference mShowPropsPreference;
+    private SwitchPreferenceCompat mSpoofPhotosPreference;
+    private PreferenceCategory mOptionsCategory;
+    private PreferenceCategory mConfigCategory;
     private String mImportTargetFileName;
 
     private final ActivityResultLauncher<android.content.Intent> mPifFileLauncher =
@@ -91,38 +90,35 @@ public class PifFragment extends InstrumentedFragment {
         requireActivity().setTitle(R.string.pif_category_title);
         mPifManager = new PifManager(requireContext());
         mPifRepository = new PifRepository();
-    }
 
-    @Nullable
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
-            @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_pif, container, false);
-    }
+        addPreferencesFromResource(R.xml.pif_settings);
 
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        mActiveConfig = view.findViewById(R.id.tv_pif_active_config);
-        mModel = view.findViewById(R.id.tv_pif_model);
-        mFingerprint = view.findViewById(R.id.tv_pif_fingerprint);
-        mSecurityPatch = view.findViewById(R.id.tv_pif_security_patch);
-        mFetchBeta = view.findViewById(R.id.btn_pif_fetch_beta);
-        mFetchVoltage = view.findViewById(R.id.btn_pif_fetch_voltage);
-        mImportButton = view.findViewById(R.id.btn_pif_import);
-        mShowPropsButton = view.findViewById(R.id.btn_pif_show_props);
-        mSpoofPhotosSwitch = view.findViewById(R.id.switch_pif_spoof_photos);
-        mConfigContainer = view.findViewById(R.id.container_pif_configs);
+        mStatusPreference = findPreference(KEY_ACTIVE_CONFIG);
+        mFetchBetaPreference = findPreference(KEY_FETCH_BETA);
+        mFetchVoltagePreference = findPreference(KEY_FETCH_VOLTAGE);
+        mImportPreference = findPreference(KEY_IMPORT_FILE);
+        mShowPropsPreference = findPreference(KEY_SHOW_PROPS);
+        mSpoofPhotosPreference = findPreference(KEY_SPOOF_PHOTOS);
+        mOptionsCategory = findPreference(KEY_OPTIONS_CATEGORY);
+        mConfigCategory = findPreference(KEY_FILES_CATEGORY);
 
-        mFetchBeta.setOnClickListener(v -> fetchBetaPif());
-        mFetchVoltage.setOnClickListener(v -> fetchVoltagePif());
-        mImportButton.setOnClickListener(v -> {
+        mFetchBetaPreference.setOnPreferenceClickListener(preference -> {
+            fetchBetaPif();
+            return true;
+        });
+        mFetchVoltagePreference.setOnPreferenceClickListener(preference -> {
+            fetchVoltagePif();
+            return true;
+        });
+        mImportPreference.setOnPreferenceClickListener(preference -> {
             mImportTargetFileName = null;
             openPifFilePicker();
+            return true;
         });
-        mShowPropsButton.setOnClickListener(v -> showCurrentProps());
-        mSpoofPhotosSwitch.setOnCheckedChangeListener((buttonView, isChecked) ->
-                mPifManager.setSpoofPhotos(isChecked));
+        mShowPropsPreference.setOnPreferenceClickListener(preference -> {
+            showCurrentProps();
+            return true;
+        });
     }
 
     @Override
@@ -135,32 +131,60 @@ public class PifFragment extends InstrumentedFragment {
         String activeConfig = mPifManager.getActiveConfigName();
         Map<String, String> props = mPifManager.getCurrentProperties();
 
-        mActiveConfig.setText(activeConfig.isEmpty()
+        mStatusPreference.setTitle(activeConfig.isEmpty()
                 ? getString(R.string.pif_no_config_loaded)
                 : getString(R.string.pif_active_config, activeConfig));
-        mModel.setText(formatKeyValue(R.string.pif_model_label,
-                props.getOrDefault("MODEL", getString(R.string.pif_no_props))));
-        mFingerprint.setText(formatKeyValue(R.string.pif_fingerprint_label,
-                props.getOrDefault("FINGERPRINT", getString(R.string.pif_not_available))));
-        mSecurityPatch.setText(formatKeyValue(R.string.pif_security_patch_label,
-                props.getOrDefault("SECURITY_PATCH", getString(R.string.pif_not_available))));
+        mStatusPreference.setSummary(buildActiveConfigSummary(props));
+        mShowPropsPreference.setSummary(props.isEmpty()
+                ? getString(R.string.pif_no_props)
+                : buildPropsPreview(props));
 
-        mSpoofPhotosSwitch.setOnCheckedChangeListener(null);
-        mSpoofPhotosSwitch.setChecked(mPifManager.isSpoofPhotosEnabled());
-        mSpoofPhotosSwitch.setOnCheckedChangeListener((buttonView, isChecked) ->
-                mPifManager.setSpoofPhotos(isChecked));
+        boolean hasActiveConfig = !activeConfig.isEmpty();
+        if (mOptionsCategory != null) {
+            mOptionsCategory.setVisible(true);
+        }
+        if (mSpoofPhotosPreference != null) {
+            mSpoofPhotosPreference.setOnPreferenceChangeListener(null);
+            mSpoofPhotosPreference.setChecked(mPifManager.isSpoofPhotosEnabled());
+            mSpoofPhotosPreference.setOnPreferenceChangeListener((preference, newValue) -> {
+                mPifManager.setSpoofPhotos((Boolean) newValue);
+                refreshUi();
+                return true;
+            });
+        }
 
-        bindConfigCards();
+        bindConfigPreferences();
+    }
+
+    private String buildActiveConfigSummary(@NonNull Map<String, String> props) {
+        String model = props.getOrDefault("MODEL", getString(R.string.pif_no_props));
+        String fingerprint = props.getOrDefault("FINGERPRINT", getString(R.string.pif_not_available));
+        String patch = props.getOrDefault("SECURITY_PATCH", getString(R.string.pif_not_available));
+        return getString(R.string.pif_model_label, model) + "\n"
+                + getString(R.string.pif_fingerprint_label, fingerprint) + "\n"
+                + getString(R.string.pif_security_patch_label, patch);
+    }
+
+    private String buildPropsPreview(@NonNull Map<String, String> props) {
+        String model = props.get("MODEL");
+        String patch = props.get("SECURITY_PATCH");
+        if (model != null && patch != null && !patch.isEmpty()) {
+            return getString(R.string.spoof_dashboard_pif_detail, model, patch);
+        }
+        if (model != null && !model.isEmpty()) {
+            return model;
+        }
+        return getString(R.string.pif_current_props_title);
     }
 
     private void fetchBetaPif() {
         Toast.makeText(requireContext(), R.string.pif_fetching, Toast.LENGTH_SHORT).show();
-        mFetchBeta.setEnabled(false);
+        mFetchBetaPreference.setEnabled(false);
 
         new Thread(() -> {
             PifRepository.PifResult result = mPifRepository.fetchBetaPif();
-            mHandler.post(() -> {
-                mFetchBeta.setEnabled(true);
+            requireActivity().runOnUiThread(() -> {
+                mFetchBetaPreference.setEnabled(true);
                 if (result instanceof PifRepository.PifResult.Success) {
                     PifRepository.PifResult.Success success =
                             (PifRepository.PifResult.Success) result;
@@ -188,12 +212,12 @@ public class PifFragment extends InstrumentedFragment {
 
     private void fetchVoltagePif() {
         Toast.makeText(requireContext(), R.string.pif_fetching_voltage, Toast.LENGTH_SHORT).show();
-        mFetchVoltage.setEnabled(false);
+        mFetchVoltagePreference.setEnabled(false);
 
         new Thread(() -> {
             PifRepository.PifResult result = mPifRepository.fetchVoltagePif();
-            mHandler.post(() -> {
-                mFetchVoltage.setEnabled(true);
+            requireActivity().runOnUiThread(() -> {
+                mFetchVoltagePreference.setEnabled(true);
                 if (result instanceof PifRepository.PifResult.Success) {
                     PifRepository.PifResult.Success success =
                             (PifRepository.PifResult.Success) result;
@@ -295,49 +319,62 @@ public class PifFragment extends InstrumentedFragment {
         return lastSegment != null ? lastSegment : "config";
     }
 
-    private String formatKeyValue(int labelResId, @NonNull String value) {
-        return getString(labelResId, value);
-    }
-
-    private void bindConfigCards() {
-        if (mConfigContainer == null) {
+    private void bindConfigPreferences() {
+        if (mConfigCategory == null) {
             return;
         }
 
-        mConfigContainer.removeAllViews();
-        LayoutInflater inflater = LayoutInflater.from(requireContext());
+        mConfigCategory.removeAll();
         List<PifManager.ConfigState> states = mPifManager.getConfigStates();
         for (PifManager.ConfigState state : states) {
-            View card = inflater.inflate(R.layout.item_pif_config, mConfigContainer, false);
-            TextView fileName = card.findViewById(R.id.tv_pif_file_name);
-            TextView status = card.findViewById(R.id.tv_pif_file_status);
-            TextView summary = card.findViewById(R.id.tv_pif_file_summary);
-            Button replace = card.findViewById(R.id.btn_pif_replace);
-            Button delete = card.findViewById(R.id.btn_pif_delete);
-
-            fileName.setText(state.fileName);
-            status.setText(state.isActive
-                    ? getString(R.string.pif_file_status_active)
-                    : state.exists
-                            ? getString(R.string.pif_file_status_available)
-                            : getString(R.string.pif_file_status_empty));
-            summary.setText(buildConfigSummary(state));
-            delete.setEnabled(state.exists);
-
-            replace.setOnClickListener(v -> {
-                mImportTargetFileName = state.fileName;
-                openPifFilePicker();
+            Preference preference = new Preference(requireContext());
+            preference.setTitle(state.fileName);
+            preference.setSummary(buildConfigPreferenceSummary(state));
+            preference.setOnPreferenceClickListener(clicked -> {
+                handleConfigPreferenceClick(state);
+                return true;
             });
-            delete.setOnClickListener(v -> {
-                mPifManager.deleteConfig(state.fileName);
-                refreshUi();
-                Toast.makeText(requireContext(),
-                        getString(R.string.pif_deleted_named, state.fileName),
-                        Toast.LENGTH_SHORT).show();
-            });
-
-            mConfigContainer.addView(card);
+            mConfigCategory.addPreference(preference);
         }
+    }
+
+    private String buildConfigPreferenceSummary(PifManager.ConfigState state) {
+        String status = state.isActive
+                ? getString(R.string.pif_file_status_active)
+                : state.exists
+                        ? getString(R.string.pif_file_status_available)
+                        : getString(R.string.pif_file_status_empty);
+        return status + "\n" + buildConfigSummary(state);
+    }
+
+    private void handleConfigPreferenceClick(@NonNull PifManager.ConfigState state) {
+        if (!state.exists) {
+            mImportTargetFileName = state.fileName;
+            openPifFilePicker();
+            return;
+        }
+
+        String[] options = {
+                getString(R.string.pif_replace_title),
+                getString(R.string.action_delete)
+        };
+
+        new AlertDialog.Builder(requireContext())
+                .setTitle(state.fileName)
+                .setItems(options, (dialog, which) -> {
+                    if (which == 0) {
+                        mImportTargetFileName = state.fileName;
+                        openPifFilePicker();
+                    } else {
+                        mPifManager.deleteConfig(state.fileName);
+                        refreshUi();
+                        Toast.makeText(requireContext(),
+                                getString(R.string.pif_deleted_named, state.fileName),
+                                Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .setNegativeButton(android.R.string.cancel, null)
+                .show();
     }
 
     private String buildConfigSummary(PifManager.ConfigState state) {

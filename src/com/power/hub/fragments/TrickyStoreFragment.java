@@ -21,11 +21,6 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultLauncher;
@@ -33,23 +28,29 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
+import androidx.fragment.app.Fragment;
+import androidx.preference.Preference;
 
 import com.android.internal.logging.nano.MetricsProto;
 import com.android.settings.R;
+import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.SubSettings;
-import com.android.settings.core.InstrumentedFragment;
 
-public class TrickyStoreFragment extends InstrumentedFragment {
+public class TrickyStoreFragment extends SettingsPreferenceFragment {
 
     private static final String TAG = "TrickyStoreFragment";
 
+    private static final String KEY_KEYBOX_IMPORT = "keybox_import";
+    private static final String KEY_KEYBOX_DELETE = "keybox_delete";
+    private static final String KEY_TARGET_MANAGE = "target_manage_apps";
+    private static final String KEY_TARGET_IMPORT = "target_import_file";
+
     private KeyboxManager mKeyboxManager;
 
-    private TextView mKeyboxStatus;
-    private TextView mKeyboxDetail;
-    private TextView mTargetStatus;
-    private TextView mTargetDetail;
-    private Button mDeleteKeyboxButton;
+    private Preference mKeyboxImportPreference;
+    private Preference mDeleteKeyboxPreference;
+    private Preference mTargetManagePreference;
+    private Preference mTargetImportPreference;
 
     private final ActivityResultLauncher<Intent> mKeyboxFileLauncher =
             registerForActivityResult(
@@ -80,29 +81,30 @@ public class TrickyStoreFragment extends InstrumentedFragment {
         super.onCreate(savedInstanceState);
         requireActivity().setTitle(R.string.trickystore_screen_title);
         mKeyboxManager = new KeyboxManager(requireContext());
-    }
 
-    @Nullable
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
-            @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_trickystore, container, false);
-    }
+        addPreferencesFromResource(R.xml.trickystore_settings);
 
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        mKeyboxStatus = view.findViewById(R.id.tv_keybox_status);
-        mKeyboxDetail = view.findViewById(R.id.tv_keybox_detail);
-        mTargetStatus = view.findViewById(R.id.tv_target_status);
-        mTargetDetail = view.findViewById(R.id.tv_target_detail);
-        mDeleteKeyboxButton = view.findViewById(R.id.btn_keybox_delete);
+        mKeyboxImportPreference = findPreference(KEY_KEYBOX_IMPORT);
+        mDeleteKeyboxPreference = findPreference(KEY_KEYBOX_DELETE);
+        mTargetManagePreference = findPreference(KEY_TARGET_MANAGE);
+        mTargetImportPreference = findPreference(KEY_TARGET_IMPORT);
 
-        view.findViewById(R.id.btn_keybox_import).setOnClickListener(v -> openKeyboxFilePicker());
-        mDeleteKeyboxButton.setOnClickListener(v -> confirmDeleteKeybox());
-        view.findViewById(R.id.btn_target_manage).setOnClickListener(v ->
-                openFragment(TargetAppsFragment.class, getString(R.string.target_screen_title)));
-        view.findViewById(R.id.btn_target_import).setOnClickListener(v -> openTargetFilePicker());
+        mKeyboxImportPreference.setOnPreferenceClickListener(preference -> {
+            openKeyboxFilePicker();
+            return true;
+        });
+        mDeleteKeyboxPreference.setOnPreferenceClickListener(preference -> {
+            confirmDeleteKeybox();
+            return true;
+        });
+        mTargetManagePreference.setOnPreferenceClickListener(preference -> {
+            openFragment(TargetAppsFragment.class, getString(R.string.target_screen_title));
+            return true;
+        });
+        mTargetImportPreference.setOnPreferenceClickListener(preference -> {
+            openTargetFilePicker();
+            return true;
+        });
     }
 
     @Override
@@ -115,20 +117,23 @@ public class TrickyStoreFragment extends InstrumentedFragment {
         boolean keyboxExists = mKeyboxManager.keyboxExists();
         int targetCount = mKeyboxManager.getTargetAppCount();
 
-        mKeyboxStatus.setText(keyboxExists
+        String keyboxStatus = keyboxExists
                 ? getString(R.string.keybox_installed)
-                : getString(R.string.keybox_not_found));
-        mKeyboxDetail.setText(keyboxExists
+                : getString(R.string.keybox_not_found);
+        String keyboxDetail = keyboxExists
                 ? getString(R.string.spoof_dashboard_keybox_present_detail)
-                : getString(R.string.keybox_delete_summary));
-        mDeleteKeyboxButton.setEnabled(keyboxExists);
+                : getString(R.string.keybox_delete_summary);
+        mKeyboxImportPreference.setSummary(keyboxStatus + "\n" + keyboxDetail);
+        mDeleteKeyboxPreference.setEnabled(keyboxExists);
 
-        mTargetStatus.setText(targetCount > 0
+        String targetStatus = targetCount > 0
                 ? getString(R.string.target_apps_count, targetCount)
-                : getString(R.string.target_no_apps));
-        mTargetDetail.setText(targetCount > 0
+                : getString(R.string.target_no_apps);
+        String targetDetail = targetCount > 0
                 ? getString(R.string.spoof_dashboard_target_present_detail)
-                : getString(R.string.target_import_summary));
+                : getString(R.string.target_import_summary);
+        mTargetManagePreference.setSummary(targetStatus + "\n" + targetDetail);
+        mTargetImportPreference.setSummary(getString(R.string.target_import_summary));
     }
 
     private void openKeyboxFilePicker() {
@@ -185,7 +190,7 @@ public class TrickyStoreFragment extends InstrumentedFragment {
         }
     }
 
-    private void openFragment(@NonNull Class<? extends androidx.fragment.app.Fragment> fragmentClass,
+    private void openFragment(@NonNull Class<? extends Fragment> fragmentClass,
             @NonNull String title) {
         Intent intent = new Intent(requireActivity(), SubSettings.class);
         intent.putExtra(":settings:show_fragment", fragmentClass.getName());

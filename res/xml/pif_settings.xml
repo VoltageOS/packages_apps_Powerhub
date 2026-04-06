@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <Preference
+        android:key="pif_active_config"
+        android:title="@string/pif_no_config_loaded"
+        android:summary="@string/pif_no_props"
+        android:selectable="false" />
+
+    <Preference
+        android:key="pif_fetch_beta"
+        android:title="@string/pif_fetch_beta_title" />
+
+    <Preference
+        android:key="pif_fetch_voltage"
+        android:title="@string/pif_fetch_voltage_title" />
+
+    <Preference
+        android:key="pif_import_file"
+        android:title="@string/pif_import_title"
+        android:summary="@string/pif_import_summary" />
+
+    <Preference
+        android:key="pif_show_props"
+        android:title="@string/pif_show_props_title"
+        android:summary="@string/pif_no_props" />
+
+    <PreferenceCategory
+        android:key="pif_options_category"
+        android:title="@string/pif_options_category">
+
+        <SwitchPreferenceCompat
+            android:key="pif_spoof_photos"
+            android:title="@string/pif_spoof_photos_title"
+            android:summary="@string/pif_spoof_photos_summary"
+            android:defaultValue="false" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="pif_files_category"
+        android:title="@string/pif_files_title" />
+
+</PreferenceScreen>
