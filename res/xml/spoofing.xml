@@ -32,4 +32,9 @@
         android:title="@string/game_spoofing_title"
         android:summary="@string/spoof_dashboard_app_spoof_summary" />
 
+    <Preference
+        android:key="spoofing_hide_applist"
+        android:title="@string/hide_applist_title"
+        android:summary="@string/hide_applist_summary" />
+
 </PreferenceScreen>
