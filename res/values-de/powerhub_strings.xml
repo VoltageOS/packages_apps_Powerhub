@@ -122,7 +122,7 @@
     <string name="spoofing_title">Komponenten Spoofing</string>
     <string name="spoofing_summary">App Einschränkungen durch Spoofing von Komponenten umgehen</string>
     <string name="spoof_screen_title">Signatur vortäuschen (Spoofing)</string>
-    <string name="spoof_screen_summary">Manage Play Integrity Fix, TrickyStore, and game spoofing</string>
+    <string name="spoof_screen_summary">Manage Play Integrity Fix, TrickyStore, game spoofing, and app list hiding</string>
     <string name="spoof_dashboard_pif_summary">Manage the active Play Integrity Fix configuration.</string>
     <string name="spoof_dashboard_trickystore_summary">Manage the TrickyStore keybox and target apps.</string>
     <string name="spoof_dashboard_app_spoof_summary">Manage spoofed device profiles for selected games.</string>
@@ -460,8 +460,11 @@
     <string name="pulse_renderer_sparkle">Sparkle</string>
     <string name="pulse_renderer_matrix">Matrix</string>
     <!-- Hide applist -->
-    <string name="hide_applist_title">Hide applist</string>
-    <string name="hide_applist_summary">Prevent apps from checking selected apps from appslist</string>
+    <string name="hide_applist_title">Hide App List</string>
+    <string name="hide_applist_summary">Hide selected apps from app list checks</string>
+    <string name="hide_applist_none_selected">No apps selected</string>
+    <string name="hide_applist_selected_count">%1$d apps selected</string>
+    <string name="spoof_dashboard_hide_applist_empty_detail">Choose which apps should be hidden from app list checks.</string>
     <string name="menu_show_overlay">Show overlay</string>
     <string name="menu_hide_overlay">Hide overlay</string>
     <!-- Wallpaper Styles -->
