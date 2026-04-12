@@ -190,6 +190,14 @@
     <string name="pif_options_category">PIF Options</string>
     <string name="pif_spoof_photos_title">Spoof Google Photos</string>
     <string name="pif_spoof_photos_summary">Appear as Pixel XL for unlimited original quality backup</string>
+    <string name="pif_spoof_props_title">Spoof properties</string>
+    <string name="pif_spoof_props_summary">Spoof device properties based on PIF config</string>
+    <string name="pif_spoof_provider_title">Spoof provider</string>
+    <string name="pif_spoof_provider_summary">Spoof GMS provider context</string>
+    <string name="pif_spoof_signature_title">Spoof signature</string>
+    <string name="pif_spoof_signature_summary">Spoof framework signature to pass Play Integrity</string>
+    <string name="pif_spoof_vending_build_title">Spoof Play Store build</string>
+    <string name="pif_spoof_vending_build_summary">Spoof build properties for Google Play Store</string>
     <string name="keybox_category_title">Keybox (TrickyStore)</string>
     <string name="trickystore_screen_title">TrickyStore</string>
     <string name="keybox_import_title">Import Keybox</string>
