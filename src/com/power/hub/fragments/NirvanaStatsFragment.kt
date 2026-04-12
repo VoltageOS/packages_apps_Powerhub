@@ -17,7 +17,6 @@
 package com.power.hub.fragments
 
 import android.animation.ValueAnimator
-import android.app.usage.UsageEvents
 import android.app.usage.UsageStatsManager
 import android.content.Context
 import android.content.Intent
@@ -43,7 +42,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.android.settings.R
 import java.util.ArrayList
-import java.util.Calendar
 import java.util.HashMap
 
 class NirvanaStatsFragment : Fragment(R.layout.nirvana_stats_fragment) {
@@ -81,44 +79,14 @@ class NirvanaStatsFragment : Fragment(R.layout.nirvana_stats_fragment) {
 
     private fun loadStats() {
         Thread {
-            val cal = Calendar.getInstance()
-            cal.set(Calendar.HOUR_OF_DAY, 0)
-            cal.set(Calendar.MINUTE, 0)
-            cal.set(Calendar.SECOND, 0)
-            cal.set(Calendar.MILLISECOND, 0)
-            val start = cal.timeInMillis
-            val end = System.currentTimeMillis()
-
             val intent = Intent(Intent.ACTION_MAIN).addCategory(Intent.CATEGORY_HOME)
             val resolveInfo = packageManager.resolveActivity(intent, PackageManager.MATCH_DEFAULT_ONLY)
             val launcherPkg = resolveInfo?.activityInfo?.packageName
 
-            val usageMap = HashMap<String, Long>()
-            val notifMap = HashMap<String, Int>()
-            var unlockCount = 0
-
-            val aggStats = usageManager.queryAndAggregateUsageStats(start, end)
-            aggStats.forEach { (pkg, stats) ->
-                if (stats.totalTimeInForeground > 0) {
-                    usageMap[pkg] = stats.totalTimeInForeground
-                }
-            }
-
-            val events = usageManager.queryEvents(start, end)
-            val event = UsageEvents.Event()
-
-            while (events.hasNextEvent()) {
-                events.getNextEvent(event)
-                when (event.eventType) {
-                    UsageEvents.Event.KEYGUARD_HIDDEN -> {
-                        unlockCount++
-                    }
-                    12 -> {
-                        val pkg = event.packageName
-                        notifMap[pkg] = (notifMap[pkg] ?: 0) + 1
-                    }
-                }
-            }
+            val dailySummary = NirvanaUsageStatsHelper.queryTodaySummary(usageManager)
+            val usageMap = HashMap(dailySummary.usageByPackage)
+            val notifMap = HashMap(dailySummary.notificationCountByPackage)
+            val unlockCount = dailySummary.unlockCount
 
             val mergedList = ArrayList<AppStat>()
 

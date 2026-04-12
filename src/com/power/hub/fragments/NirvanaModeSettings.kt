@@ -24,6 +24,8 @@ import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
 import android.graphics.drawable.Drawable
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuInflater
@@ -46,7 +48,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.android.settings.R
-import java.util.Calendar
 import java.util.Locale
 
 /**
@@ -247,16 +248,14 @@ class NirvanaModeSettings : Fragment(R.layout.nirvana_mode_fragment) {
     }
 
     private fun loadUsageStats() {
-        val cal = Calendar.getInstance()
-        cal.set(Calendar.HOUR_OF_DAY, 0)
-        cal.set(Calendar.MINUTE, 0)
-        cal.set(Calendar.SECOND, 0)
-        cal.set(Calendar.MILLISECOND, 0)
-        val startOfDay = cal.timeInMillis
-        val now = System.currentTimeMillis()
-
-        val stats = usageStatsManager.queryAndAggregateUsageStats(startOfDay, now)
-        usageMap = stats.mapValues { it.value.totalTimeInForeground }
+        Thread {
+            val dailyUsageMap = NirvanaUsageStatsHelper.queryTodaySummary(usageStatsManager).usageByPackage
+            Handler(Looper.getMainLooper()).post {
+                if (!isAdded) return@post
+                usageMap = dailyUsageMap
+                refreshAppList()
+            }
+        }.start()
     }
 
     override fun onCreateOptionsMenu(
