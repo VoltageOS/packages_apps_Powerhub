@@ -41,6 +41,10 @@ public class PifManager {
     private static final String VENDING_PKG = "com.android.vending";
     private static final String PHOTOS_PKG = "com.google.android.apps.photos";
     private static final String PHOTOS_SPOOF_KEY = "spoofPhotos";
+    private static final String PROPS_SPOOF_KEY = "spoofProps";
+    private static final String PROVIDER_SPOOF_KEY = "spoofProvider";
+    private static final String SIGNATURE_SPOOF_KEY = "spoofSignature";
+    private static final String VENDING_BUILD_SPOOF_KEY = "spoofVendingBuild";
 
     private static final List<String> CONFIG_FILES = Arrays.asList(
             "custom.pif.prop",
@@ -174,13 +178,55 @@ public class PifManager {
     }
 
     public void setSpoofPhotos(boolean enabled) {
+        updateToggle(PHOTOS_SPOOF_KEY, enabled, PHOTOS_PKG);
+    }
+
+    public boolean isSpoofPropsEnabled() {
+        String val = getCurrentProperties().get(PROPS_SPOOF_KEY);
+        return val != null ? isTruthy(val) : true;
+    }
+
+    public void setSpoofProps(boolean enabled) {
+        updateToggle(PROPS_SPOOF_KEY, enabled, null);
+    }
+
+    public boolean isSpoofProviderEnabled() {
+        String val = getCurrentProperties().get(PROVIDER_SPOOF_KEY);
+        return val != null ? isTruthy(val) : true;
+    }
+
+    public void setSpoofProvider(boolean enabled) {
+        updateToggle(PROVIDER_SPOOF_KEY, enabled, VENDING_PKG);
+    }
+
+    public boolean isSpoofSignatureEnabled() {
+        String val = getCurrentProperties().get(SIGNATURE_SPOOF_KEY);
+        return val != null ? isTruthy(val) : false;
+    }
+
+    public void setSpoofSignature(boolean enabled) {
+        updateToggle(SIGNATURE_SPOOF_KEY, enabled, VENDING_PKG);
+    }
+
+    public boolean isSpoofVendingBuildEnabled() {
+        String val = getCurrentProperties().get(VENDING_BUILD_SPOOF_KEY);
+        return val != null ? isTruthy(val) : true;
+    }
+
+    public void setSpoofVendingBuild(boolean enabled) {
+        updateToggle(VENDING_BUILD_SPOOF_KEY, enabled, VENDING_PKG);
+    }
+
+    private void updateToggle(String key, boolean enabled, String packageToKill) {
         File active = findActiveFile();
         if (active == null) {
             active = new File(PIF_DIR, "pif.json");
             ensureDir();
         }
-        updateConfigKey(active, PHOTOS_SPOOF_KEY, String.valueOf(enabled));
-        killPackage(PHOTOS_PKG);
+        updateConfigKey(active, key, String.valueOf(enabled));
+        if (packageToKill != null && !packageToKill.isEmpty()) {
+            killPackage(packageToKill);
+        }
     }
 
     public static boolean looksLikeJson(String fileName, String content) {
