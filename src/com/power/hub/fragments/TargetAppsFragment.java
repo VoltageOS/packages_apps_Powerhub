@@ -101,26 +101,30 @@ public class TargetAppsFragment extends Fragment {
         inflater.inflate(R.menu.menu_target_apps, menu);
 
         MenuItem searchItem = menu.findItem(R.id.action_search);
-        SearchView searchView = (SearchView) searchItem.getActionView();
-        searchView.setQueryHint(getString(R.string.target_search_hint));
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                return false;
-            }
+        if (searchItem != null) {
+            SearchView searchView = (SearchView) searchItem.getActionView();
+            if (searchView != null) {
+                searchView.setQueryHint(getString(R.string.target_search_hint));
+                searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+                    @Override
+                    public boolean onQueryTextSubmit(String query) {
+                        return false;
+                    }
 
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                mSearchQuery = newText != null ? newText.trim() : "";
-                filterApps();
-                return true;
-            }
-        });
+                    @Override
+                    public boolean onQueryTextChange(String newText) {
+                        mSearchQuery = newText != null ? newText.trim() : "";
+                        filterApps();
+                        return true;
+                    }
+                });
 
-        if (!mSearchQuery.isEmpty()) {
-            searchItem.expandActionView();
-            searchView.setQuery(mSearchQuery, false);
-            searchView.clearFocus();
+                if (!mSearchQuery.isEmpty()) {
+                    searchItem.expandActionView();
+                    searchView.setQuery(mSearchQuery, false);
+                    searchView.clearFocus();
+                }
+            }
         }
 
         super.onCreateOptionsMenu(menu, inflater);

@@ -7,13 +7,13 @@
         android:actionViewClass="android.widget.SearchView"
         android:icon="@*android:drawable/ic_search_api_material"
         android:title="@string/search"
-        app:showAsAction="ifRoom|collapseActionView" />
+        android:showAsAction="ifRoom|collapseActionView" />
 
     <item
         android:id="@+id/action_show_system"
         android:title="@string/show_system_apps"
         android:checkable="true"
         android:checked="false"
-        app:showAsAction="never" />
+        android:showAsAction="never" />
 
 </menu>

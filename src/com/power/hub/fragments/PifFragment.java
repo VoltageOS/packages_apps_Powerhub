@@ -77,6 +77,8 @@ public class PifFragment extends SettingsPreferenceFragment {
     private PreferenceCategory mOptionsCategory;
     private PreferenceCategory mConfigCategory;
     private String mImportTargetFileName;
+    private Preference mConfigExpandPreference;
+    private boolean mConfigsExpanded = false;
 
     private final ActivityResultLauncher<android.content.Intent> mPifFileLauncher =
             registerForActivityResult(
@@ -374,15 +376,37 @@ public class PifFragment extends SettingsPreferenceFragment {
 
         mConfigCategory.removeAll();
         List<PifManager.ConfigState> states = mPifManager.getConfigStates();
-        for (PifManager.ConfigState state : states) {
-            Preference preference = new Preference(requireContext());
-            preference.setTitle(state.fileName);
-            preference.setSummary(buildConfigPreferenceSummary(state));
-            preference.setOnPreferenceClickListener(clicked -> {
-                handleConfigPreferenceClick(state);
+        
+        long configuredCount = states.stream().filter(s -> !s.isActive && s.exists).count();
+        long totalCount = states.stream().filter(s -> !s.isActive).count();
+
+        if (mConfigExpandPreference == null) {
+            mConfigExpandPreference = new Preference(requireContext());
+            mConfigExpandPreference.setTitle(R.string.pif_other_files_title);
+            mConfigExpandPreference.setOnPreferenceClickListener(clicked -> {
+                mConfigsExpanded = !mConfigsExpanded;
+                refreshUi();
                 return true;
             });
-            mConfigCategory.addPreference(preference);
+        }
+        
+        mConfigExpandPreference.setSummary(getString(R.string.pif_other_files_summary, configuredCount, totalCount));
+        mConfigCategory.addPreference(mConfigExpandPreference);
+
+        if (mConfigsExpanded) {
+            for (PifManager.ConfigState state : states) {
+                if (state.isActive) {
+                    continue;
+                }
+                Preference preference = new Preference(requireContext());
+                preference.setTitle(state.fileName);
+                preference.setSummary(buildConfigPreferenceSummary(state));
+                preference.setOnPreferenceClickListener(clicked -> {
+                    handleConfigPreferenceClick(state);
+                    return true;
+                });
+                mConfigCategory.addPreference(preference);
+            }
         }
     }
 
