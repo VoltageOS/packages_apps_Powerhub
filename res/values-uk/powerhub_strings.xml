@@ -180,6 +180,8 @@
     <string name="pif_fetch_success_named">Updated %2$s with %1$s</string>
     <string name="pif_fetch_failed">Fetch failed: %1$s</string>
     <string name="pif_files_title">Config Files</string>
+    <string name="pif_other_files_title">Other Config Files</string>
+    <string name="pif_other_files_summary">%1$d of %2$d configured</string>
     <string name="pif_replace_title">Replace</string>
     <string name="pif_deleted_named">Deleted %1$s</string>
     <string name="pif_file_status_active">Active</string>
