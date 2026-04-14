@@ -59,7 +59,7 @@ public class AppSpoofFragment extends SettingsPreferenceFragment {
 
     private static final String TAG = "GameSpoofing";
 
-    private static final String CONFIG_DIR = "/data/adb/gameprops";
+    private static final String CONFIG_DIR = "/data/system/gameprops";
     private static final String CONFIG_FILE = "gameprops.json";
     private static final String PRESETS_KEY = "game_spoofing_user_presets";
     private static final String KEY_STATUS = "app_spoof_status";

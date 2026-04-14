@@ -33,7 +33,7 @@ import java.util.List;
 public class KeyboxManager {
 
     private static final String TAG = "KeyboxManager";
-    private static final String TRICKY_DIR = "/data/adb/tricky_store";
+    private static final String TRICKY_DIR = "/data/system/tricky_store";
     private static final String KEYBOX_FILE = "keybox.xml";
     private static final String TARGET_FILE = "target.txt";
     private static final String VENDING_PKG = "com.android.vending";

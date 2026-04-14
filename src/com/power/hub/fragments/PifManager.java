@@ -37,7 +37,7 @@ import java.util.Map;
 public class PifManager {
 
     private static final String TAG = "PifManager";
-    private static final String PIF_DIR = "/data/adb/playintegrityfix";
+    private static final String PIF_DIR = "/data/system/playintegrityfix";
     private static final String VENDING_PKG = "com.android.vending";
     private static final String PHOTOS_PKG = "com.google.android.apps.photos";
     private static final String PHOTOS_SPOOF_KEY = "spoofPhotos";
