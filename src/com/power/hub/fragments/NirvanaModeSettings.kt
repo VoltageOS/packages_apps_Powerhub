@@ -105,8 +105,6 @@ class NirvanaModeSettings : Fragment(R.layout.nirvana_mode_fragment) {
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.adapter = adapter
 
-        recyclerView.isNestedScrollingEnabled = false
-
         initScheduleUI()
         initManualToggleUI()
         loadUsageStats()
@@ -301,12 +299,10 @@ class NirvanaModeSettings : Fragment(R.layout.nirvana_mode_fragment) {
         searchItem?.setOnActionExpandListener(
             object : MenuItem.OnActionExpandListener {
                 override fun onMenuItemActionExpand(item: MenuItem): Boolean {
-                    ViewCompat.setNestedScrollingEnabled(recyclerView, false)
                     return true
                 }
 
                 override fun onMenuItemActionCollapse(item: MenuItem): Boolean {
-                    ViewCompat.setNestedScrollingEnabled(recyclerView, false)
                     return true
                 }
             },
