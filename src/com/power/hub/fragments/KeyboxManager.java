@@ -19,47 +19,55 @@ package com.power.hub.fragments;
 import android.app.ActivityManager;
 import android.content.Context;
 import android.net.Uri;
+import android.provider.Settings;
+import android.util.Base64;
 import android.util.Log;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
 
 public class KeyboxManager {
 
     private static final String TAG = "KeyboxManager";
-    private static final String TRICKY_DIR = "/data/system/tricky_store";
+    private static final String LEGACY_TRICKY_DIR = "/data/system/tricky_store";
     private static final String KEYBOX_FILE = "keybox.xml";
     private static final String TARGET_FILE = "target.txt";
+    private static final String KEYBOX_KEY = "spoof_trickystore_keybox";
+    private static final String TARGET_KEY = "spoof_trickystore_target";
     private static final String VENDING_PKG = "com.android.vending";
 
     private final Context mContext;
 
     public KeyboxManager(Context context) {
         mContext = context.getApplicationContext();
-        ensureDir();
+        migrateLegacyDataIfNeeded();
     }
 
     public boolean keyboxExists() {
-        File file = new File(TRICKY_DIR, KEYBOX_FILE);
-        return file.exists() && file.canRead();
+        String stored = Settings.Secure.getString(mContext.getContentResolver(), KEYBOX_KEY);
+        return stored != null && !stored.isEmpty();
     }
 
     public void importKeybox(Uri uri) throws Exception {
-        copyUriToFile(uri, new File(TRICKY_DIR, KEYBOX_FILE));
+        try (InputStream inputStream = mContext.getContentResolver().openInputStream(uri)) {
+            if (inputStream == null) {
+                throw new IllegalStateException("Unable to open file");
+            }
+            byte[] bytes = inputStream.readAllBytes();
+            Settings.Secure.putString(
+                    mContext.getContentResolver(),
+                    KEYBOX_KEY,
+                    Base64.encodeToString(bytes, Base64.NO_WRAP));
+        }
         killVending();
     }
 
     public void deleteKeybox() {
-        File file = new File(TRICKY_DIR, KEYBOX_FILE);
-        if (file.exists() && !file.delete()) {
-            Log.w(TAG, "Failed to delete keybox");
-        }
+        Settings.Secure.putString(mContext.getContentResolver(), KEYBOX_KEY, null);
         killVending();
     }
 
@@ -68,19 +76,22 @@ public class KeyboxManager {
     }
 
     public void importTargetFile(Uri uri) throws Exception {
-        copyUriToFile(uri, new File(TRICKY_DIR, TARGET_FILE));
+        try (InputStream inputStream = mContext.getContentResolver().openInputStream(uri)) {
+            if (inputStream == null) {
+                throw new IllegalStateException("Unable to open file");
+            }
+            String content = new String(inputStream.readAllBytes(), StandardCharsets.UTF_8);
+            Settings.Secure.putString(mContext.getContentResolver(), TARGET_KEY, content);
+        }
         killVending();
     }
 
     public void saveTargetLines(List<String> lines) {
-        ensureDir();
-        File file = new File(TRICKY_DIR, TARGET_FILE);
-        try (FileWriter writer = new FileWriter(file)) {
-            for (String line : lines) {
-                writer.write(line);
-                writer.write("\n");
-            }
-            file.setReadable(true, false);
+        try {
+            Settings.Secure.putString(
+                    mContext.getContentResolver(),
+                    TARGET_KEY,
+                    String.join("\n", lines));
             killVending();
         } catch (Exception e) {
             Log.e(TAG, "Failed to save target lines", e);
@@ -89,44 +100,53 @@ public class KeyboxManager {
 
     public List<String> readTargetLines() {
         List<String> result = new ArrayList<>();
-        File file = new File(TRICKY_DIR, TARGET_FILE);
-        if (!file.exists()) {
+        String content = Settings.Secure.getString(mContext.getContentResolver(), TARGET_KEY);
+        if (content == null || content.isEmpty()) {
             return result;
         }
 
-        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                String trimmed = line.trim();
-                if (!trimmed.isEmpty() && !trimmed.startsWith("#")) {
-                    result.add(trimmed);
-                }
+        for (String line : content.split("\n")) {
+            String trimmed = line.trim();
+            if (!trimmed.isEmpty() && !trimmed.startsWith("#")) {
+                result.add(trimmed);
             }
-        } catch (Exception e) {
-            Log.e(TAG, "Failed to read target lines", e);
         }
         return result;
     }
 
-    private void ensureDir() {
-        File dir = new File(TRICKY_DIR);
-        if (!dir.exists()) {
-            dir.mkdirs();
+    private void migrateLegacyDataIfNeeded() {
+        if (!keyboxExists()) {
+            File keyboxFile = new File(LEGACY_TRICKY_DIR, KEYBOX_FILE);
+            if (keyboxFile.exists() && keyboxFile.canRead()) {
+                try {
+                    byte[] bytes = Files.readAllBytes(keyboxFile.toPath());
+                    Settings.Secure.putString(
+                            mContext.getContentResolver(),
+                            KEYBOX_KEY,
+                            Base64.encodeToString(bytes, Base64.NO_WRAP));
+                    Log.i(TAG, "Migrated legacy keybox.xml");
+                } catch (Exception e) {
+                    Log.e(TAG, "Failed to migrate legacy keybox", e);
+                }
+            }
         }
-    }
 
-    private void copyUriToFile(Uri uri, File destination) throws Exception {
-        ensureDir();
-        try (InputStream inputStream = mContext.getContentResolver().openInputStream(uri)) {
-            if (inputStream == null) {
-                throw new IllegalStateException("Unable to open file");
+        String targetContent = Settings.Secure.getString(mContext.getContentResolver(), TARGET_KEY);
+        if (targetContent == null || targetContent.isEmpty()) {
+            File targetFile = new File(LEGACY_TRICKY_DIR, TARGET_FILE);
+            if (targetFile.exists() && targetFile.canRead()) {
+                try {
+                    String content = new String(Files.readAllBytes(targetFile.toPath()),
+                            StandardCharsets.UTF_8);
+                    Settings.Secure.putString(
+                            mContext.getContentResolver(),
+                            TARGET_KEY,
+                            content);
+                    Log.i(TAG, "Migrated legacy target.txt");
+                } catch (Exception e) {
+                    Log.e(TAG, "Failed to migrate legacy target list", e);
+                }
             }
-
-            byte[] bytes = inputStream.readAllBytes();
-            try (FileOutputStream outputStream = new FileOutputStream(destination)) {
-                outputStream.write(bytes);
-            }
-            destination.setReadable(true, false);
         }
     }
 

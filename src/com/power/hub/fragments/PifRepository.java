@@ -18,14 +18,15 @@ package com.power.hub.fragments;
 
 import android.util.Log;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.InputStream;
+import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Locale;
 import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -34,6 +35,10 @@ public class PifRepository {
 
     private static final String TAG = "PifRepository";
     private static final String GOOGLE_URL = "https://developer.android.com";
+    private static final String FLASH_URL = "https://flash.android.com";
+    private static final String FLASH_API = "https://content-flashstation-pa.googleapis.com/v1/builds";
+    private static final String PIXEL_BULLETIN_URL =
+            "https://source.android.com/docs/security/bulletin/pixel";
     private static final String VOLTAGE_PIF_URL =
             "https://github.com/VoltageOS/.github/raw/refs/heads/main/profile/pif.json";
 
@@ -69,69 +74,103 @@ public class PifRepository {
     public PifResult fetchBetaPif() {
         try {
             String versionsHtml = fetchUrl(GOOGLE_URL + "/about/versions");
-            List<Integer> versions = extractVersionNumbers(versionsHtml);
-            if (versions.isEmpty()) {
-                return new PifResult.Error("Could not find Android version pages");
+            Integer latestVersion = extractLatestVersion(versionsHtml);
+            if (latestVersion == null) {
+                return new PifResult.Error("No Android version pages found");
             }
 
-            for (int version : versions) {
-                String versionUrl = GOOGLE_URL + "/about/versions/" + version;
-                try {
-                    String versionHtml = fetchUrl(versionUrl);
-                    List<String> qprPaths = extractQprPaths(versionHtml, version);
-                    if (qprPaths.isEmpty()) {
-                        continue;
-                    }
+            String latestHtml = fetchUrl(GOOGLE_URL + "/about/versions/" + latestVersion);
+            String qprPath = extractLatestQprPath(latestHtml, latestVersion);
+            if (qprPath == null) {
+                return new PifResult.Error("No QPR download page found");
+            }
 
-                    for (String qprPath : qprPaths) {
-                        try {
-                            String otaHtml = fetchUrl(GOOGLE_URL + qprPath);
-                            List<String[]> otaEntries = extractOtaUrls(otaHtml);
-                            if (otaEntries.isEmpty()) {
-                                continue;
-                            }
+            String otaHtml = fetchUrl(GOOGLE_URL + qprPath);
+            String[][] devices = extractBetaDevices(otaHtml);
+            if (devices.length == 0) {
+                return new PifResult.Error("No beta devices found");
+            }
 
-                            List<String[]> devices = matchDevicesToOta(otaHtml, otaEntries);
-                            if (devices.isEmpty()) {
-                                continue;
-                            }
+            String[] selected = devices[new Random().nextInt(devices.length)];
+            String model = selected[0];
+            String product = selected[1];
+            String device = selected[2];
 
-                            String[] selected = devices.get(new Random().nextInt(devices.size()));
-                            String model = selected[0];
-                            String product = selected[1];
-                            String otaUrl = selected[2];
-                            String device = product.replace("_beta", "");
+            Log.d(TAG, "Selected device: " + model + " (" + product + ")");
 
-                            String partial = fetchPartialUrl(otaUrl, 4096);
-                            String fingerprint = extractRegex(partial, "post-build=(.*)");
-                            String securityPatch = extractRegex(partial, "security-patch-level=(.*)");
+            String flashHtml = fetchUrl(FLASH_URL);
+            String apiKey = extractRegex(flashHtml, "(AIza[0-9A-Za-z_-]{35})");
+            if (apiKey == null || apiKey.isEmpty()) {
+                return new PifResult.Error("Failed to extract Flash Tool API key");
+            }
 
-                            if (fingerprint == null || securityPatch == null) {
-                                continue;
-                            }
+            String buildsJson = fetchFlashBuilds(product, apiKey);
+            JSONObject root = new JSONObject(buildsJson);
+            JSONArray buildsArray = root.optJSONArray("flashstationBuild");
+            if (buildsArray == null) {
+                return new PifResult.Error("No flashstationBuild array in Flash Tool response");
+            }
 
-                            JSONObject pifJson = new JSONObject();
-                            pifJson.put("MANUFACTURER", "Google");
-                            pifJson.put("MODEL", model);
-                            pifJson.put("PRODUCT", product);
-                            pifJson.put("DEVICE", device);
-                            pifJson.put("FINGERPRINT", fingerprint.trim());
-                            pifJson.put("SECURITY_PATCH", securityPatch.trim());
-                            pifJson.put("DEVICE_INITIAL_SDK_INT", "32");
-                            return new PifResult.Success(model, pifJson);
-                        } catch (Exception e) {
-                            Log.d(TAG, "Failed OTA page: " + qprPath, e);
-                        }
-                    }
-                } catch (Exception e) {
-                    Log.d(TAG, "Failed version page: " + versionUrl, e);
+            String releaseCandidate = null;
+            String incremental = null;
+            String androidVersion = "";
+            String canaryId = null;
+
+            for (int i = buildsArray.length() - 1; i >= 0; i--) {
+                JSONObject build = buildsArray.optJSONObject(i);
+                if (build == null) {
+                    continue;
                 }
+
+                JSONObject preview = build.optJSONObject("previewMetadata");
+                if (preview == null || !preview.optBoolean("canary")) {
+                    continue;
+                }
+
+                String rc = build.optString("releaseCandidateName");
+                String buildId = build.optString("buildId");
+                if (rc.isEmpty() || buildId.isEmpty()) {
+                    continue;
+                }
+
+                releaseCandidate = rc;
+                incremental = buildId;
+                androidVersion = preview.optString("releaseTrackVersionName");
+                String previewId = preview.optString("id");
+                if (previewId.contains("canary-")) {
+                    canaryId = previewId;
+                }
+                break;
             }
 
-            return new PifResult.Error("No valid beta OTA pages found");
+            if (releaseCandidate == null || incremental == null) {
+                return new PifResult.Error("No canary build found for " + product);
+            }
+
+            String fingerprint = "google/" + product + "/" + device + ":CANARY/"
+                    + releaseCandidate + "/" + incremental + ":user/release-keys";
+            Log.d(TAG, "Fingerprint: " + fingerprint + " (Android " + androidVersion + ")");
+
+            String canaryMonth = extractCanaryMonth(canaryId);
+            if (canaryMonth == null) {
+                return new PifResult.Error("Failed to derive canary month id");
+            }
+
+            String securityPatch = resolveSecurityPatch(canaryMonth);
+            Log.d(TAG, "Security Patch: " + securityPatch);
+
+            JSONObject pifJson = new JSONObject();
+            pifJson.put("MANUFACTURER", "Google");
+            pifJson.put("MODEL", model);
+            pifJson.put("PRODUCT", product);
+            pifJson.put("DEVICE", device);
+            pifJson.put("FINGERPRINT", fingerprint);
+            pifJson.put("SECURITY_PATCH", securityPatch);
+            pifJson.put("DEVICE_INITIAL_SDK_INT", "32");
+            return new PifResult.Success(model, pifJson);
         } catch (Exception e) {
-            Log.e(TAG, "Failed fetching beta PIF", e);
-            return new PifResult.Error("Failed to fetch from Google: " + e.getMessage(), e);
+            Log.e(TAG, "Failed fetching canary PIF", e);
+            return new PifResult.Error("Failed to fetch canary PIF: " + e.getMessage(), e);
         }
     }
 
@@ -157,73 +196,89 @@ public class PifRepository {
         }
     }
 
-    private List<Integer> extractVersionNumbers(String html) {
-        List<Integer> versions = new ArrayList<>();
+    private Integer extractLatestVersion(String html) {
+        Integer latest = null;
         Matcher matcher = Pattern.compile(
                 "https://developer\\.android\\.com/about/versions/(\\d+)")
                 .matcher(html);
         while (matcher.find()) {
             int version = Integer.parseInt(matcher.group(1));
-            if (!versions.contains(version)) {
-                versions.add(version);
+            if (latest == null || version > latest) {
+                latest = version;
             }
         }
-        versions.sort((a, b) -> b - a);
-        return versions;
+        return latest;
     }
 
-    private List<String> extractQprPaths(String html, int version) {
-        List<String[]> entries = new ArrayList<>();
+    private String extractLatestQprPath(String html, int version) {
+        int highestQpr = -1;
+        String latestPath = null;
         Matcher matcher = Pattern.compile(
                 "href=\"(/about/versions/" + version + "/qpr(\\d+)/download-ota)\"")
                 .matcher(html);
         while (matcher.find()) {
-            entries.add(new String[] {matcher.group(1), matcher.group(2)});
+            int qpr = Integer.parseInt(matcher.group(2));
+            if (qpr > highestQpr) {
+                highestQpr = qpr;
+                latestPath = matcher.group(1);
+            }
         }
-
-        entries.sort((a, b) -> Integer.parseInt(b[1]) - Integer.parseInt(a[1]));
-        List<String> paths = new ArrayList<>();
-        for (String[] entry : entries) {
-            paths.add(entry[0]);
-        }
-        return paths;
+        return latestPath;
     }
 
-    private List<String[]> extractOtaUrls(String html) {
-        List<String[]> result = new ArrayList<>();
-        Matcher matcher = Pattern.compile(
-                "href=\"(https://dl\\.google\\.com/[^\"]*ota/([^/\"]+_beta)[^\"]*?)\"")
-                .matcher(html);
+    private String[][] extractBetaDevices(String html) {
+        Pattern rowPattern = Pattern.compile(
+                "<tr id=\"([^\"]+)\">\\s*<td[^>]*>([^<]+)</td>",
+                Pattern.DOTALL);
+        Matcher matcher = rowPattern.matcher(html);
+        java.util.ArrayList<String[]> devices = new java.util.ArrayList<>();
         while (matcher.find()) {
-            result.add(new String[] {matcher.group(1), matcher.group(2)});
+            String device = matcher.group(1);
+            String model = matcher.group(2).trim();
+            devices.add(new String[] {model, device + "_beta", device});
         }
-        return result;
+        return devices.toArray(new String[0][]);
     }
 
-    private List<String[]> matchDevicesToOta(String html, List<String[]> otaUrls) {
-        List<String[]> devices = new ArrayList<>();
-        Pattern tableCellPattern = Pattern.compile("<td[^>]*>([^<]+)</td>");
-
-        for (String[] entry : otaUrls) {
-            String otaUrl = entry[0];
-            String product = entry[1];
-            int urlIndex = html.indexOf(otaUrl);
-            if (urlIndex < 0) {
-                continue;
-            }
-
-            String priorHtml = html.substring(0, urlIndex);
-            Matcher matcher = tableCellPattern.matcher(priorHtml);
-            String lastCell = null;
-            while (matcher.find()) {
-                lastCell = matcher.group(1).trim();
-            }
-
-            if (lastCell != null && !lastCell.isEmpty()) {
-                devices.add(new String[] {lastCell, product, otaUrl});
-            }
+    private String fetchFlashBuilds(String product, String apiKey) throws Exception {
+        String url = FLASH_API + "?product=" + product + "&key=" + apiKey;
+        HttpURLConnection connection = (HttpURLConnection) new URL(url).openConnection();
+        connection.setConnectTimeout(15000);
+        connection.setReadTimeout(15000);
+        connection.setRequestProperty("User-Agent",
+                "Mozilla/5.0 (Linux; Android 15) AppleWebKit/537.36");
+        connection.setRequestProperty("Referer", FLASH_URL);
+        connection.setRequestProperty("X-Goog-Api-Key", apiKey);
+        try (InputStream inputStream = connection.getInputStream()) {
+            return new String(inputStream.readAllBytes(), StandardCharsets.UTF_8);
         }
-        return devices;
+    }
+
+    private String extractCanaryMonth(String canaryId) {
+        if (canaryId == null || canaryId.isEmpty()) {
+            return null;
+        }
+        Matcher matcher = Pattern.compile(
+                "canary-(\\d{4})(\\d{2})",
+                Pattern.CASE_INSENSITIVE).matcher(canaryId);
+        if (!matcher.find()) {
+            return null;
+        }
+        return String.format(Locale.US, "%s-%s", matcher.group(1), matcher.group(2));
+    }
+
+    private String resolveSecurityPatch(String canaryMonth) {
+        try {
+            String bulletinHtml = fetchUrl(PIXEL_BULLETIN_URL);
+            Matcher matcher = Pattern.compile("<td>(" + Pattern.quote(canaryMonth) + "-\\d{2})</td>")
+                    .matcher(bulletinHtml);
+            if (matcher.find()) {
+                return matcher.group(1);
+            }
+        } catch (Exception e) {
+            Log.d(TAG, "Bulletin fetch failed, using estimated patch", e);
+        }
+        return canaryMonth + "-05";
     }
 
     private String fetchUrl(String urlString) throws Exception {
@@ -235,28 +290,6 @@ public class PifRepository {
         try (InputStream inputStream = connection.getInputStream()) {
             return new String(inputStream.readAllBytes(), StandardCharsets.UTF_8);
         }
-    }
-
-    private String fetchPartialUrl(String urlString, int maxBytes) throws Exception {
-        URLConnection connection = new URL(urlString).openConnection();
-        connection.setConnectTimeout(15000);
-        connection.setReadTimeout(15000);
-
-        byte[] buffer = new byte[512];
-        StringBuilder builder = new StringBuilder();
-        int totalRead = 0;
-
-        try (InputStream inputStream = connection.getInputStream()) {
-            while (totalRead < maxBytes) {
-                int read = inputStream.read(buffer);
-                if (read < 0) {
-                    break;
-                }
-                builder.append(new String(buffer, 0, read, StandardCharsets.ISO_8859_1));
-                totalRead += read;
-            }
-        }
-        return builder.toString();
     }
 
     private String extractRegex(String text, String regex) {

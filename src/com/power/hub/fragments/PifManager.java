@@ -18,14 +18,14 @@ package com.power.hub.fragments;
 
 import android.app.ActivityManager;
 import android.content.Context;
+import android.provider.Settings;
 import android.util.Log;
 
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -37,7 +37,9 @@ import java.util.Map;
 public class PifManager {
 
     private static final String TAG = "PifManager";
-    private static final String PIF_DIR = "/data/system/playintegrityfix";
+    private static final String LEGACY_PIF_DIR = "/data/system/playintegrityfix";
+    private static final String PIF_CONFIG_KEY = "spoof_pif_config";
+    private static final String PIF_CONFIG_NAME = "pif.json";
     private static final String VENDING_PKG = "com.android.vending";
     private static final String PHOTOS_PKG = "com.google.android.apps.photos";
     private static final String PHOTOS_SPOOF_KEY = "spoofPhotos";
@@ -46,7 +48,7 @@ public class PifManager {
     private static final String SIGNATURE_SPOOF_KEY = "spoofSignature";
     private static final String VENDING_BUILD_SPOOF_KEY = "spoofVendingBuild";
 
-    private static final List<String> CONFIG_FILES = Arrays.asList(
+    private static final List<String> LEGACY_CONFIG_FILES = Arrays.asList(
             "custom.pif.prop",
             "custom.pif.json",
             "pif.prop",
@@ -56,12 +58,11 @@ public class PifManager {
 
     public PifManager(Context context) {
         mContext = context.getApplicationContext();
-        ensureDir();
+        migrateLegacyConfigIfNeeded();
     }
 
     public String getActiveConfigName() {
-        File active = findActiveFile();
-        return active != null ? active.getName() : "";
+        return hasStoredConfig() ? PIF_CONFIG_NAME : "";
     }
 
     public String getCurrentModel() {
@@ -69,28 +70,20 @@ public class PifManager {
     }
 
     public List<ConfigState> getConfigStates() {
-        List<ConfigState> states = new ArrayList<>();
-        File dir = new File(PIF_DIR);
-        boolean foundActive = false;
-        for (String name : CONFIG_FILES) {
-            File file = new File(dir, name);
-            boolean exists = file.exists() && file.canRead();
-            boolean active = exists && !foundActive;
-            if (active) {
-                foundActive = true;
-            }
-            states.add(new ConfigState(name, exists, active,
-                    exists ? readConfig(file) : Collections.emptyMap()));
-        }
+        Map<String, String> data = getCurrentProperties();
+        boolean exists = !data.isEmpty();
+        List<ConfigState> states = new ArrayList<>(1);
+        states.add(new ConfigState(PIF_CONFIG_NAME, exists, exists, data));
         return states;
     }
 
     public Map<String, String> getCurrentProperties() {
-        File active = findActiveFile();
-        if (active == null) {
+        String content = Settings.Secure.getString(
+                mContext.getContentResolver(), PIF_CONFIG_KEY);
+        if (content == null || content.trim().isEmpty()) {
             return Collections.emptyMap();
         }
-        return readConfig(active);
+        return parseStoredConfig(content);
     }
 
     public void applyPif(JSONObject pifData) throws Exception {
@@ -101,75 +94,36 @@ public class PifManager {
         return importPifConfig(null, sourceName, content);
     }
 
-    public String importPifConfig(String targetFileName, String sourceName, String content) throws Exception {
-        ensureDir();
-
-        boolean isJson = looksLikeJson(sourceName, content);
+    public String importPifConfig(String targetFileName, String sourceName, String content)
+            throws Exception {
         Map<String, String> props = parseConfigContent(sourceName, content);
         if (props.isEmpty()) {
             throw new IllegalArgumentException("Config contains no readable properties");
         }
 
-        String destinationName = targetFileName;
-        if (destinationName == null || destinationName.trim().isEmpty()) {
-            destinationName = resolveAutoTargetFile(isJson);
-        }
-        boolean destinationIsJson = destinationName.toLowerCase().endsWith(".json");
-
-        File target = new File(PIF_DIR, destinationName);
-        try (FileWriter writer = new FileWriter(target)) {
-            writer.write(destinationIsJson
-                    ? serializeJsonConfig(props)
-                    : serializePropConfig(props));
-        }
-        target.setReadable(true, false);
+        writeStoredConfig(props);
         killPackage(VENDING_PKG);
-        Log.i(TAG, "Imported PIF config: " + target.getAbsolutePath());
-        return target.getName();
+        Log.i(TAG, "Imported PIF config into Settings.Secure");
+        return PIF_CONFIG_NAME;
     }
 
     public void writeJsonConfig(String fileName, JSONObject pifData) throws Exception {
-        Map<String, String> props = new LinkedHashMap<>();
-        Iterator<String> keys = pifData.keys();
-        while (keys.hasNext()) {
-            String key = keys.next();
-            Object value = pifData.opt(key);
-            props.put(key, value == null ? "" : String.valueOf(value));
-        }
-        writeConfig(fileName, props);
+        writeStoredConfig(jsonToMap(pifData));
+        killPackage(VENDING_PKG);
     }
 
     public String writeAutoSelectedJsonConfig(JSONObject pifData) throws Exception {
-        Map<String, String> props = new LinkedHashMap<>();
-        Iterator<String> keys = pifData.keys();
-        while (keys.hasNext()) {
-            String key = keys.next();
-            Object value = pifData.opt(key);
-            props.put(key, value == null ? "" : String.valueOf(value));
-        }
-        String targetFileName = resolveAutoTargetFile(true);
-        writeConfig(targetFileName, props);
-        return targetFileName;
-    }
-
-    private void writeConfig(String fileName, Map<String, String> props) throws Exception {
-        ensureDir();
-        File target = new File(PIF_DIR, fileName);
-        try (FileWriter writer = new FileWriter(target)) {
-            writer.write(fileName.toLowerCase().endsWith(".json")
-                    ? serializeJsonConfig(props)
-                    : serializePropConfig(props));
-        }
-        target.setReadable(true, false);
+        writeStoredConfig(jsonToMap(pifData));
         killPackage(VENDING_PKG);
-        Log.i(TAG, "Applied PIF config: " + target.getAbsolutePath());
+        Log.i(TAG, "Applied generated PIF config into Settings.Secure");
+        return PIF_CONFIG_NAME;
     }
 
     public void deleteConfig(String fileName) {
-        File target = new File(PIF_DIR, fileName);
-        if (target.exists() && !target.delete()) {
-            Log.w(TAG, "Failed to delete config: " + target.getAbsolutePath());
+        if (!PIF_CONFIG_NAME.equals(fileName)) {
+            return;
         }
+        Settings.Secure.putString(mContext.getContentResolver(), PIF_CONFIG_KEY, null);
         killPackage(VENDING_PKG);
     }
 
@@ -218,12 +172,9 @@ public class PifManager {
     }
 
     private void updateToggle(String key, boolean enabled, String packageToKill) {
-        File active = findActiveFile();
-        if (active == null) {
-            active = new File(PIF_DIR, "pif.json");
-            ensureDir();
-        }
-        updateConfigKey(active, key, String.valueOf(enabled));
+        Map<String, String> props = new LinkedHashMap<>(getCurrentProperties());
+        props.put(key, String.valueOf(enabled));
+        writeStoredConfig(props);
         if (packageToKill != null && !packageToKill.isEmpty()) {
             killPackage(packageToKill);
         }
@@ -280,16 +231,72 @@ public class PifManager {
         return result;
     }
 
-    private void ensureDir() {
-        File dir = new File(PIF_DIR);
-        if (!dir.exists()) {
-            dir.mkdirs();
+    private Map<String, String> jsonToMap(JSONObject pifData) {
+        Map<String, String> props = new LinkedHashMap<>();
+        Iterator<String> keys = pifData.keys();
+        while (keys.hasNext()) {
+            String key = keys.next();
+            Object value = pifData.opt(key);
+            props.put(key, value == null ? "" : String.valueOf(value));
+        }
+        return props;
+    }
+
+    private Map<String, String> parseStoredConfig(String content) {
+        try {
+            String trimmed = content != null ? content.trim() : "";
+            if (trimmed.isEmpty()) {
+                return Collections.emptyMap();
+            }
+            return parseConfigContent(trimmed.startsWith("{") ? PIF_CONFIG_NAME : null, trimmed);
+        } catch (Exception e) {
+            Log.e(TAG, "Failed to parse stored PIF config", e);
+            return Collections.emptyMap();
         }
     }
 
-    private File findActiveFile() {
-        File dir = new File(PIF_DIR);
-        for (String name : CONFIG_FILES) {
+    private void writeStoredConfig(Map<String, String> props) {
+        try {
+            Settings.Secure.putString(
+                    mContext.getContentResolver(),
+                    PIF_CONFIG_KEY,
+                    serializeJsonConfig(props));
+        } catch (Exception e) {
+            Log.e(TAG, "Failed to store PIF config", e);
+        }
+    }
+
+    private boolean hasStoredConfig() {
+        String content = Settings.Secure.getString(
+                mContext.getContentResolver(), PIF_CONFIG_KEY);
+        return content != null && !content.trim().isEmpty();
+    }
+
+    private void migrateLegacyConfigIfNeeded() {
+        if (hasStoredConfig()) {
+            return;
+        }
+
+        File legacyFile = findLegacyActiveFile();
+        if (legacyFile == null) {
+            return;
+        }
+
+        try {
+            Map<String, String> props = parseConfigContent(
+                    legacyFile.getName(), readFileToString(legacyFile));
+            if (!props.isEmpty()) {
+                writeStoredConfig(props);
+                Log.i(TAG, "Migrated legacy PIF config from " + legacyFile.getAbsolutePath());
+            }
+        } catch (Exception e) {
+            Log.e(TAG, "Failed to migrate legacy PIF config", e);
+        }
+    }
+
+    private File findLegacyActiveFile() {
+        File dir = new File(LEGACY_PIF_DIR);
+        for (String name : LEGACY_CONFIG_FILES) {
             File file = new File(dir, name);
             if (file.exists() && file.canRead()) {
                 return file;
@@ -298,109 +305,8 @@ public class PifManager {
         return null;
     }
 
-    private String resolveAutoTargetFile(boolean preferJson) {
-        File active = findActiveFile();
-        if (active != null) {
-            return active.getName();
-        }
-        return preferJson ? "custom.pif.json" : "custom.pif.prop";
-    }
-
-    private Map<String, String> readConfig(File file) {
-        try {
-            return parseConfigContent(file.getName(), readFileToString(file));
-        } catch (Exception e) {
-            Log.e(TAG, "Failed to read config: " + file.getAbsolutePath(), e);
-            return Collections.emptyMap();
-        }
-    }
-
-    private File ensureEditableConfig() {
-        ensureDir();
-        File active = findActiveFile();
-        if (active != null && "custom.pif.json".equals(active.getName())) {
-            return active;
-        }
-
-        try {
-            Map<String, String> currentProps = active != null
-                    ? readConfig(active)
-                    : Collections.emptyMap();
-            deleteCustomOverrides();
-
-            File editable = new File(PIF_DIR, "custom.pif.json");
-            JSONObject json = new JSONObject();
-            for (Map.Entry<String, String> entry : currentProps.entrySet()) {
-                json.put(entry.getKey(), entry.getValue());
-            }
-
-            try (FileWriter writer = new FileWriter(editable)) {
-                writer.write(json.toString(2));
-            }
-            editable.setReadable(true, false);
-            return editable;
-        } catch (Exception e) {
-            Log.e(TAG, "Failed to create editable config", e);
-            return null;
-        }
-    }
-
-    private void updateConfigKey(File file, String key, String value) {
-        try {
-            String updated;
-            String content = file.exists() ? readFileToString(file) : "";
-            if (looksLikeJson(file.getName(), content)) {
-                JSONObject json = content.trim().isEmpty() ? new JSONObject() : new JSONObject(content);
-                json.put(key, value);
-                updated = json.toString(2);
-            } else {
-                StringBuilder builder = new StringBuilder();
-                boolean found = false;
-                for (String line : content.split("\n")) {
-                    String trimmed = line.trim();
-                    if (!trimmed.startsWith("#") && trimmed.startsWith(key + "=")) {
-                        builder.append(key).append("=").append(value).append("\n");
-                        found = true;
-                    } else if (!line.isEmpty()) {
-                        builder.append(line).append("\n");
-                    }
-                }
-                if (!found) {
-                    builder.append(key).append("=").append(value).append("\n");
-                }
-                updated = builder.toString();
-            }
-
-            try (FileWriter writer = new FileWriter(file)) {
-                writer.write(updated);
-            }
-            file.setReadable(true, false);
-        } catch (Exception e) {
-            Log.e(TAG, "Failed to update config key: " + key, e);
-        }
-    }
-
     private String readFileToString(File file) throws Exception {
-        StringBuilder builder = new StringBuilder();
-        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                builder.append(line).append("\n");
-            }
-        }
-        return builder.toString();
-    }
-
-    private void deleteCustomOverrides() {
-        File customProp = new File(PIF_DIR, "custom.pif.prop");
-        if (customProp.exists()) {
-            customProp.delete();
-        }
-
-        File customJson = new File(PIF_DIR, "custom.pif.json");
-        if (customJson.exists()) {
-            customJson.delete();
-        }
+        return new String(Files.readAllBytes(file.toPath()), StandardCharsets.UTF_8);
     }
 
     private String serializeJsonConfig(Map<String, String> props) throws Exception {
@@ -409,17 +315,6 @@ public class PifManager {
             json.put(entry.getKey(), entry.getValue());
         }
         return json.toString(2);
-    }
-
-    private String serializePropConfig(Map<String, String> props) {
-        StringBuilder builder = new StringBuilder();
-        for (Map.Entry<String, String> entry : props.entrySet()) {
-            builder.append(entry.getKey())
-                    .append("=")
-                    .append(entry.getValue())
-                    .append("\n");
-        }
-        return builder.toString();
     }
 
     private static String stripWrappingQuotes(String value) {

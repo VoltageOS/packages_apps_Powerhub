@@ -59,7 +59,6 @@ public class PifFragment extends SettingsPreferenceFragment {
     private static final String KEY_SPOOF_SIGNATURE = "pif_spoof_signature";
     private static final String KEY_SPOOF_VENDING_BUILD = "pif_spoof_vending_build";
     private static final String KEY_OPTIONS_CATEGORY = "pif_options_category";
-    private static final String KEY_FILES_CATEGORY = "pif_files_category";
 
     private PifManager mPifManager;
     private PifRepository mPifRepository;
@@ -75,10 +74,7 @@ public class PifFragment extends SettingsPreferenceFragment {
     private SwitchPreferenceCompat mSpoofSignaturePreference;
     private SwitchPreferenceCompat mSpoofVendingBuildPreference;
     private PreferenceCategory mOptionsCategory;
-    private PreferenceCategory mConfigCategory;
     private String mImportTargetFileName;
-    private Preference mConfigExpandPreference;
-    private boolean mConfigsExpanded = false;
 
     private final ActivityResultLauncher<android.content.Intent> mPifFileLauncher =
             registerForActivityResult(
@@ -114,8 +110,11 @@ public class PifFragment extends SettingsPreferenceFragment {
         mSpoofSignaturePreference = findPreference(KEY_SPOOF_SIGNATURE);
         mSpoofVendingBuildPreference = findPreference(KEY_SPOOF_VENDING_BUILD);
         mOptionsCategory = findPreference(KEY_OPTIONS_CATEGORY);
-        mConfigCategory = findPreference(KEY_FILES_CATEGORY);
 
+        mStatusPreference.setOnPreferenceClickListener(preference -> {
+            handleActiveConfigClick();
+            return true;
+        });
         mFetchBetaPreference.setOnPreferenceClickListener(preference -> {
             fetchBetaPif();
             return true;
@@ -153,7 +152,6 @@ public class PifFragment extends SettingsPreferenceFragment {
                 ? getString(R.string.pif_no_props)
                 : buildPropsPreview(props));
 
-        boolean hasActiveConfig = !activeConfig.isEmpty();
         if (mOptionsCategory != null) {
             mOptionsCategory.setVisible(true);
         }
@@ -202,8 +200,6 @@ public class PifFragment extends SettingsPreferenceFragment {
                 return true;
             });
         }
-
-        bindConfigPreferences();
     }
 
     private String buildActiveConfigSummary(@NonNull Map<String, String> props) {
@@ -369,54 +365,9 @@ public class PifFragment extends SettingsPreferenceFragment {
         return lastSegment != null ? lastSegment : "config";
     }
 
-    private void bindConfigPreferences() {
-        if (mConfigCategory == null) {
-            return;
-        }
-
-        mConfigCategory.removeAll();
+    private void handleActiveConfigClick() {
         List<PifManager.ConfigState> states = mPifManager.getConfigStates();
-        
-        long configuredCount = states.stream().filter(s -> !s.isActive && s.exists).count();
-        long totalCount = states.stream().filter(s -> !s.isActive).count();
-
-        if (mConfigExpandPreference == null) {
-            mConfigExpandPreference = new Preference(requireContext());
-            mConfigExpandPreference.setTitle(R.string.pif_other_files_title);
-            mConfigExpandPreference.setOnPreferenceClickListener(clicked -> {
-                mConfigsExpanded = !mConfigsExpanded;
-                refreshUi();
-                return true;
-            });
-        }
-        
-        mConfigExpandPreference.setSummary(getString(R.string.pif_other_files_summary, configuredCount, totalCount));
-        mConfigCategory.addPreference(mConfigExpandPreference);
-
-        if (mConfigsExpanded) {
-            for (PifManager.ConfigState state : states) {
-                if (state.isActive) {
-                    continue;
-                }
-                Preference preference = new Preference(requireContext());
-                preference.setTitle(state.fileName);
-                preference.setSummary(buildConfigPreferenceSummary(state));
-                preference.setOnPreferenceClickListener(clicked -> {
-                    handleConfigPreferenceClick(state);
-                    return true;
-                });
-                mConfigCategory.addPreference(preference);
-            }
-        }
-    }
-
-    private String buildConfigPreferenceSummary(PifManager.ConfigState state) {
-        String status = state.isActive
-                ? getString(R.string.pif_file_status_active)
-                : state.exists
-                        ? getString(R.string.pif_file_status_available)
-                        : getString(R.string.pif_file_status_empty);
-        return status + "\n" + buildConfigSummary(state);
+        handleConfigPreferenceClick(states.get(0));
     }
 
     private void handleConfigPreferenceClick(@NonNull PifManager.ConfigState state) {
@@ -447,22 +398,6 @@ public class PifFragment extends SettingsPreferenceFragment {
                 })
                 .setNegativeButton(android.R.string.cancel, null)
                 .show();
-    }
-
-    private String buildConfigSummary(PifManager.ConfigState state) {
-        if (!state.exists) {
-            return getString(R.string.pif_file_empty_summary);
-        }
-
-        String model = state.data.get("MODEL");
-        String patch = state.data.get("SECURITY_PATCH");
-        if (model != null && patch != null && !patch.isEmpty()) {
-            return getString(R.string.spoof_dashboard_pif_detail, model, patch);
-        }
-        if (model != null && !model.isEmpty()) {
-            return model;
-        }
-        return getString(R.string.pif_file_present_summary);
     }
 
     @Override

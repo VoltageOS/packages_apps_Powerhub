@@ -44,10 +44,9 @@ import com.android.settings.SettingsPreferenceFragment;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
@@ -59,8 +58,9 @@ public class AppSpoofFragment extends SettingsPreferenceFragment {
 
     private static final String TAG = "GameSpoofing";
 
-    private static final String CONFIG_DIR = "/data/system/gameprops";
-    private static final String CONFIG_FILE = "gameprops.json";
+    private static final String LEGACY_CONFIG_DIR = "/data/system/gameprops";
+    private static final String LEGACY_CONFIG_FILE = "gameprops.json";
+    private static final String CONFIG_KEY = "spoof_gameprops_config";
     private static final String PRESETS_KEY = "game_spoofing_user_presets";
     private static final String KEY_STATUS = "app_spoof_status";
     private static final String KEY_ENABLED = "app_spoof_enabled";
@@ -83,6 +83,7 @@ public class AppSpoofFragment extends SettingsPreferenceFragment {
         super.onCreate(savedInstanceState);
         requireActivity().setTitle(R.string.game_spoofing_title);
         loadProfiles();
+        migrateLegacyConfigIfNeeded(requireContext());
         loadConfig();
         addPreferencesFromResource(R.xml.app_spoof_settings);
 
@@ -117,12 +118,14 @@ public class AppSpoofFragment extends SettingsPreferenceFragment {
     }
 
     public static boolean isConfigEnabled(@NonNull Context context) {
-        File file = new File(CONFIG_DIR, CONFIG_FILE);
-        if (!file.exists()) {
-            return false;
-        }
         try {
-            return new JSONObject(readFileStatic(file)).optBoolean("enabled", false);
+            migrateLegacyConfigIfNeeded(context);
+            String content = Settings.Secure.getString(
+                    context.getContentResolver(), CONFIG_KEY);
+            if (content == null || content.isEmpty()) {
+                return false;
+            }
+            return new JSONObject(content).optBoolean("enabled", false);
         } catch (Exception e) {
             Log.e(TAG, "Failed to read enabled state", e);
             return false;
@@ -130,12 +133,14 @@ public class AppSpoofFragment extends SettingsPreferenceFragment {
     }
 
     public static int getConfiguredAppCount(@NonNull Context context) {
-        File file = new File(CONFIG_DIR, CONFIG_FILE);
-        if (!file.exists()) {
-            return 0;
-        }
         try {
-            JSONObject root = new JSONObject(readFileStatic(file));
+            migrateLegacyConfigIfNeeded(context);
+            String content = Settings.Secure.getString(
+                    context.getContentResolver(), CONFIG_KEY);
+            if (content == null || content.isEmpty()) {
+                return 0;
+            }
+            JSONObject root = new JSONObject(content);
             JSONObject apps = root.optJSONObject("games");
             return apps != null ? apps.length() : 0;
         } catch (Exception e) {
@@ -697,13 +702,14 @@ public class AppSpoofFragment extends SettingsPreferenceFragment {
         mConfigs.clear();
         mEnabled = false;
 
-        File file = new File(CONFIG_DIR, CONFIG_FILE);
-        if (!file.exists()) {
+        String content = Settings.Secure.getString(
+                requireContext().getContentResolver(), CONFIG_KEY);
+        if (content == null || content.isEmpty()) {
             return;
         }
 
         try {
-            JSONObject json = new JSONObject(readFile(file));
+            JSONObject json = new JSONObject(content);
             mEnabled = json.optBoolean("enabled", false);
             JSONObject apps = json.optJSONObject("games");
             if (apps == null) {
@@ -739,7 +745,6 @@ public class AppSpoofFragment extends SettingsPreferenceFragment {
 
     private void saveConfig() {
         try {
-            ensureConfigDir();
             JSONObject root = new JSONObject();
             JSONObject apps = new JSONObject();
             root.put("enabled", mEnabled);
@@ -753,7 +758,10 @@ public class AppSpoofFragment extends SettingsPreferenceFragment {
             }
 
             root.put("games", apps);
-            writeFile(new File(CONFIG_DIR, CONFIG_FILE), root.toString(2));
+            Settings.Secure.putString(
+                    requireContext().getContentResolver(),
+                    CONFIG_KEY,
+                    root.toString(2));
         } catch (Exception e) {
             Log.e(TAG, "Failed to save game spoof config", e);
         }
@@ -829,33 +837,29 @@ public class AppSpoofFragment extends SettingsPreferenceFragment {
         return getString(R.string.game_spoof_custom);
     }
 
-    private void ensureConfigDir() {
-        File dir = new File(CONFIG_DIR);
-        if (!dir.exists()) {
-            dir.mkdirs();
-        }
-    }
-
-    private String readFile(File file) throws Exception {
-        return readFileStatic(file);
-    }
-
-    private void writeFile(File file, String content) throws Exception {
-        try (FileWriter writer = new FileWriter(file)) {
-            writer.write(content);
-        }
-        file.setReadable(true, false);
-    }
-
     private static String readFileStatic(File file) throws Exception {
-        StringBuilder builder = new StringBuilder();
-        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                builder.append(line).append("\n");
-            }
+        return new String(Files.readAllBytes(file.toPath()), StandardCharsets.UTF_8);
+    }
+
+    private static void migrateLegacyConfigIfNeeded(@NonNull Context context) {
+        String current = Settings.Secure.getString(context.getContentResolver(), CONFIG_KEY);
+        if (current != null && !current.isEmpty()) {
+            return;
         }
-        return builder.toString();
+
+        File file = new File(LEGACY_CONFIG_DIR, LEGACY_CONFIG_FILE);
+        if (!file.exists() || !file.canRead()) {
+            return;
+        }
+
+        try {
+            Settings.Secure.putString(
+                    context.getContentResolver(),
+                    CONFIG_KEY,
+                    readFileStatic(file));
+        } catch (Exception e) {
+            Log.e(TAG, "Failed to migrate legacy game spoof config", e);
+        }
     }
 
     private static List<DeviceProfile> defaultProfiles() {
