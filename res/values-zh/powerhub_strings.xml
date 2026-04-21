@@ -697,16 +697,16 @@
     <string name="nirvana_status_active_until">将在 %1$s 结束</string>
     <string name="nirvana_status_scheduled">专注模式将会在 %1$s - %2$s 开启</string>
     <string name="nirvana_status_active_manual_scheduled">Active now\nScheduled: %1$s - %2$s</string>
-    <string name="haze_effects">雾化效果</string>
-    <string name="haze_effects_summary">Atmosphere-like wallpaper effects</string>
-    <string name="haze_effects_style">Effect styles</string>
-    <string name="haze_effects_style_summary">Choose how the effect behaves between the Lockscreen and Homescreen</string>
-    <string name="haze_effects_intensity">Effect intensity</string>
-    <string name="haze_standard">Standard Atmosphere</string>
-    <string name="haze_standard_reversed">Reverse Atmosphere</string>
-    <string name="haze_frosted">Simple Frosted</string>
-    <string name="haze_frosted_reversed">Reverse Frosted</string>
-    <string name="haze_standard_double">Double Haze (Haze-&gt;Sharp Lock, Sharp-&gt;Haze Home)</string>
+    <string name="haze_effects">壁纸雾化</string>
+    <string name="haze_effects_summary">使壁纸看起来有空间感和氛围感</string>
+    <string name="haze_effects_style">效果样式</string>
+    <string name="haze_effects_style_summary">选择锁屏界面到主屏幕时的效果样式</string>
+    <string name="haze_effects_intensity">效果强度</string>
+    <string name="haze_standard">正向雾化</string>
+    <string name="haze_standard_reversed">反向雾化</string>
+    <string name="haze_frosted">正向毛玻璃</string>
+    <string name="haze_frosted_reversed">反向毛玻璃</string>
+    <string name="haze_standard_double">同时启用（锁屏界面 雾化-&gt;清晰，主屏幕 清晰-&gt;雾化）</string>
     <!-- Split shade QS -->
     <string name="qs_split_shade_title">横屏时通知与快捷设置显示方式</string>
     <string name="qs_split_shade_summary">横屏模式下，应用通知和快捷设置在左右分开显示</string>
