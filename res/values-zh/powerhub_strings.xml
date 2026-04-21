@@ -35,7 +35,7 @@
     <string name="quicksettings_title">快速设置</string>
     <string name="quicksettings_summary">磁贴布局，模糊效果</string>
     <string name="recents_title">最近任务</string>
-    <string name="recents_summary">Slim recents</string>
+    <string name="recents_summary">Slim 最近任务</string>
     <string name="statusbar_title">状态栏</string>
     <string name="statusbar_summary">时钟，运营商，状态图标</string>
     <string name="volume_title">音量键</string>
@@ -69,59 +69,59 @@
     <string name="press_color_to_apply">点选以下颜色以应用</string>
     <string name="arrow_right">→</string>
     <string name="arrow_down">↓</string>
-    <string name="hex">Hex:</string>
+    <string name="hex">颜色对应的十六进制代码：</string>
     <string name="hex_hint">#ff000000</string>
     <string name="set">设置</string>
     <string name="color_default">默认</string>
     <string name="led_color_green">绿</string>
-    <string name="led_color_red">Red</string>
+    <string name="led_color_red">红</string>
     <!-- QS settings -->
-    <string name="qs_title">Quick settings</string>
+    <string name="qs_title">快速设置</string>
     <!-- Lockscreen shortcuts -->
-    <string name="ls_category">Lockscreen Items</string>
-    <string name="ls_tuner">Enable Lockscreen tuner</string>
-    <string name="lockscreen_shortcuts">Lockscreen shortcuts</string>
-    <string name="ls_shortcut_summary">Customize Lockscreen shortcuts</string>
+    <string name="ls_category">锁屏项目</string>
+    <string name="ls_tuner">启用锁屏界面调整</string>
+    <string name="lockscreen_shortcuts">锁屏快捷方式</string>
+    <string name="ls_shortcut_summary">自定义锁屏快捷方式</string>
     <!-- Lockscreen icons -->
-    <string name="lockscreen_tuner_title">Lockscreen tuner</string>
+    <string name="lockscreen_tuner_title">锁屏调整</string>
     <!-- Statusbar Items -->
-    <string name="sb_icons">Statusbar Icons</string>
-    <string name="statusbar_items_category">Statusbar items</string>
+    <string name="sb_icons">状态栏图标</string>
+    <string name="statusbar_items_category">状态栏项目</string>
     <!-- Status bar - icons -->
-    <string name="status_bar_icons_title">Status bar icons</string>
+    <string name="status_bar_icons_title">状态栏图标</string>
     <!-- Lock screen visualizer -->
-    <string name="visualizer_title">Display music visualizer</string>
+    <string name="visualizer_title">显示音乐可视化</string>
     <!-- Power menu and dialogs opacity -->
     <!-- AOKP custom system animations -->
     <!-- Power menu Animations  -->
     <string name="power_menu_animation">电源菜单</string>
     <!-- QS header image -->
     <!-- Lockscreen -->
-    <string name="lockscreen_category">Lockscreen</string>
+    <string name="lockscreen_category">锁屏</string>
     <!-- Themes -->
-    <string name="theme_type_title">System theme</string>
-    <string name="theme_type_summary">Select theme</string>
+    <string name="theme_type_title">系统主题</string>
+    <string name="theme_type_summary">选择主题</string>
     <!--Accenter -->
     <string name="themes_hub_title">主题</string>
-    <string name="themes_hub_summary">Accents-Gradients-Themes</string>
-    <string name="rgb_accent_picker_title_dark">Accent Picker</string>
-    <string name="rgb_accent_picker_summary">Choose the accent color yourself</string>
-    <string name="theme_option_reset_title">Reset Theme Options</string>
-    <string name="theme_option_reset_message">Are you sure you want to reset themes-accent to default?</string>
+    <string name="themes_hub_summary">强调色-渐变色-主题</string>
+    <string name="rgb_accent_picker_title_dark">选择强调色</string>
+    <string name="rgb_accent_picker_summary">选择你喜欢的强调色</string>
+    <string name="theme_option_reset_title">重置主题选项</string>
+    <string name="theme_option_reset_message">你确定要重置强调色为默认值吗？</string>
     <!--ThemePicker-->
-    <string name="theme_select_title">Styles and Wallpapers</string>
-    <string name="theme_select_summary">Browse and select installed themes</string>
+    <string name="theme_select_title">样式和壁纸</string>
+    <string name="theme_select_summary">浏览并选择已安装的主题</string>
     <!-- Battery light -->
-    <string name="battery_light_settings">Battery charging light</string>
-    <string name="notification_light_settings">Notifications light</string>
+    <string name="battery_light_settings">充电指示灯</string>
+    <string name="notification_light_settings">通知灯效</string>
     <!-- Volume rocker wake -->
-    <string name="volume_rocker_wake_title">Volume rocker wake</string>
+    <string name="volume_rocker_wake_title">音量键唤醒</string>
     <!-- Miscellaneous -->
-    <string name="miscellaneous_spoofing_category">Spoofing</string>
+    <string name="miscellaneous_spoofing_category">伪装</string>
     <!-- Miscellaneous/Spoofing -->
-    <string name="spoofing_title">Component spoofing</string>
-    <string name="spoofing_summary">Bypass app restrictions by spoofing components</string>
-    <string name="spoof_screen_title">Spoofing</string>
+    <string name="spoofing_title">组件伪装</string>
+    <string name="spoofing_summary">通过伪装组件来绕过应用限制</string>
+    <string name="spoof_screen_title">伪装</string>
     <string name="spoof_screen_summary">Manage Play Integrity Fix, TrickyStore, game spoofing, and app list hiding</string>
     <string name="spoof_dashboard_pif_summary">Manage the active Play Integrity Fix configuration.</string>
     <string name="spoof_dashboard_trickystore_summary">Manage the TrickyStore keybox and target apps.</string>
@@ -138,7 +138,7 @@
     <string name="spoofing_pixel_props_summary">Spoof a select group of Google apps to the latest Pixel device</string>
     <string name="tensor_spoof_title">Spoof tensor features</string>
     <string name="tensor_spoof_summary">Unlock tensor/pixel features</string>
-    <string name="gms_spoof_title">Play Integrity fix</string>
+    <string name="gms_spoof_title">Play Integrity 修复</string>
     <string name="gms_spoof_summary">Spoof your device to pass Google Play Attestation (not applicable to sandboxed gapps)</string>
     <string name="spoofing_app_specific_category">App-Specific</string>
     <string name="spoofing_vending_title">Play Store spoof</string>
@@ -680,24 +680,24 @@
     <!-- Nirvana Mode -->
     <string name="nirvana_mode_title">Nirvana Mode</string>
     <string name="nirvana_mode_summary">Create quiet time by pausing distracting apps</string>
-    <string name="nirvana_mode_hero_title">Find your focus</string>
-    <string name="nirvana_mode_description">When you need time to focus, you can pause distracting apps and hide their notifications.</string>
-    <string name="nirvana_mode_set_schedule">Set a schedule</string>
-    <string name="nirvana_mode_turn_on_now">Turn on now</string>
-    <string name="nirvana_mode_turn_off_now">Turn off now</string>
-    <string name="nirvana_mode_select_apps">Select distracting apps</string>
-    <string name="nirvana_mode_dialog_title">Nirvana Mode is active</string>
-    <string name="nirvana_mode_dialog_message">This app is paused while Nirvana Mode is on.</string>
-    <string name="nirvana_mode_schedule_title">Schedule</string>
-    <string name="nirvana_mode_schedule_summary">When you need time to focus, you can pause distracting apps and hide their notifications.</string>
-    <string name="nirvana_mode_apps_header">Distracting apps</string>
-    <string name="nirvana_mode_schedule_start">Start time</string>
-    <string name="nirvana_mode_schedule_end">End time</string>
-    <string name="nirvana_status_active">Active now</string>
-    <string name="nirvana_status_active_until">Active until %1$s</string>
-    <string name="nirvana_status_scheduled">Scheduled: %1$s - %2$s</string>
+    <string name="nirvana_mode_hero_title">保持专注</string>
+    <string name="nirvana_mode_description">当您需要专注时，可限制使用部分应用并隐藏其通知。</string>
+    <string name="nirvana_mode_set_schedule">设置时间段</string>
+    <string name="nirvana_mode_turn_on_now">开启专注模式</string>
+    <string name="nirvana_mode_turn_off_now">关闭专注模式</string>
+    <string name="nirvana_mode_select_apps">选择限制使用的应用</string>
+    <string name="nirvana_mode_dialog_title">专注模式已开启</string>
+    <string name="nirvana_mode_dialog_message">专注模式已限制使用此应用。</string>
+    <string name="nirvana_mode_schedule_title">按时开启</string>
+    <string name="nirvana_mode_schedule_summary">当您需要专注时，可限制使用部分应用并隐藏其通知。</string>
+    <string name="nirvana_mode_apps_header">限制使用应用列表</string>
+    <string name="nirvana_mode_schedule_start">开始时间</string>
+    <string name="nirvana_mode_schedule_end">结束时间</string>
+    <string name="nirvana_status_active">专注模式已开启</string>
+    <string name="nirvana_status_active_until">将在 %1$s 结束</string>
+    <string name="nirvana_status_scheduled">专注模式将会在 %1$s - %2$s 开启</string>
     <string name="nirvana_status_active_manual_scheduled">Active now\nScheduled: %1$s - %2$s</string>
-    <string name="haze_effects">Haze effects</string>
+    <string name="haze_effects">雾化效果</string>
     <string name="haze_effects_summary">Atmosphere-like wallpaper effects</string>
     <string name="haze_effects_style">Effect styles</string>
     <string name="haze_effects_style_summary">Choose how the effect behaves between the Lockscreen and Homescreen</string>
@@ -708,6 +708,6 @@
     <string name="haze_frosted_reversed">Reverse Frosted</string>
     <string name="haze_standard_double">Double Haze (Haze-&gt;Sharp Lock, Sharp-&gt;Haze Home)</string>
     <!-- Split shade QS -->
-    <string name="qs_split_shade_title">Split Quick Settings</string>
-    <string name="qs_split_shade_summary">Use a two-column layout for notifications and Quick Settings in landscape</string>
+    <string name="qs_split_shade_title">横屏时通知与快捷设置显示方式</string>
+    <string name="qs_split_shade_summary">横屏模式下，应用通知和快捷设置在左右分开显示</string>
 </resources>
