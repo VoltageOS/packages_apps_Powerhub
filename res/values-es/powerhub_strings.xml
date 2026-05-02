@@ -159,7 +159,7 @@
     <string name="pif_spoofing_summary">Choose the PIF JSON file to be used to spoof Play Integrity</string>
     <string name="pif_category_title">Play Integrity Fix</string>
     <string name="pif_screen_intro">View the active config, fetch a new profile, or import your own pif.json or pif.prop file.</string>
-    <string name="pif_fetch_beta_title">Fetch Pixel Beta</string>
+    <string name="pif_fetch_beta_title">Fetch Pixel Canary</string>
     <string name="pif_fetch_voltage_title">Fetch from Voltage</string>
     <string name="pif_no_config_loaded">No config loaded</string>
     <string name="pif_active_config">Active: %1$s</string>
@@ -174,12 +174,14 @@
     <string name="pif_fingerprint_label">Fingerprint: %1$s</string>
     <string name="pif_security_patch_label">Security patch: %1$s</string>
     <string name="pif_not_available">Not available</string>
-    <string name="pif_fetching">Fetching Pixel beta profile...</string>
+    <string name="pif_fetching">Fetching Pixel canary profile...</string>
     <string name="pif_fetching_voltage">Fetching Voltage profile...</string>
     <string name="pif_fetch_success">Updated to %1$s</string>
     <string name="pif_fetch_success_named">Updated %2$s with %1$s</string>
     <string name="pif_fetch_failed">Fetch failed: %1$s</string>
     <string name="pif_files_title">Config Files</string>
+    <string name="pif_other_files_title">Other Config Files</string>
+    <string name="pif_other_files_summary">%1$d of %2$d configured</string>
     <string name="pif_replace_title">Replace</string>
     <string name="pif_deleted_named">Deleted %1$s</string>
     <string name="pif_file_status_active">Active</string>
