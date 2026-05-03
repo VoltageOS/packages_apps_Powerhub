@@ -154,8 +154,11 @@ public class TargetAppsFragment extends Fragment {
     }
 
     private void loadApps() {
+        final android.content.Context context = getContext();
+        if (context == null) return;
+
         new Thread(() -> {
-            PackageManager packageManager = requireContext().getPackageManager();
+            PackageManager packageManager = context.getPackageManager();
             Map<String, TargetMode> currentTargets = loadCurrentTargets();
             List<ApplicationInfo> installedApps =
                     packageManager.getInstalledApplications(PackageManager.GET_META_DATA);
@@ -174,7 +177,9 @@ public class TargetAppsFragment extends Fragment {
 
             mAllApps = entries;
             sortApps();
-            requireActivity().runOnUiThread(this::filterApps);
+            if (getActivity() != null) {
+                getActivity().runOnUiThread(this::filterApps);
+            }
         }).start();
     }
 
@@ -188,6 +193,10 @@ public class TargetAppsFragment extends Fragment {
     }
 
     private void filterApps() {
+        if (!isAdded() || getContext() == null) {
+            return;
+        }
+
         List<AppEntry> filtered = new ArrayList<>();
         String query = mSearchQuery.toLowerCase();
         for (AppEntry entry : mAllApps) {
