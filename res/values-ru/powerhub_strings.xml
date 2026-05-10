@@ -18,17 +18,17 @@
     <!-- App Title -->
     <string name="powerhub_title">Power Hub</string>
     <!-- Categories -->
-    <string name="button_title">Buttons</string>
-    <string name="button_summary">Hardware keys, Navigation bar</string>
-    <string name="gestures_title">Gestures</string>
-    <string name="gestures_summary">Jump to camera, swipe to screenshot</string>
-    <string name="lockscreen_title">Lock screen</string>
-    <string name="lockscreen_summary">Music visualizer, charging animation, clock style</string>
-    <string name="misc_title">Advanced</string>
-    <string name="misc_summary">Gaming mode, volume controls</string>
-    <string name="animations_title">Animations</string>
-    <string name="animations_summary">System animations</string>
-    <string name="powermenu_title">Power menu</string>
+    <string name="button_title">Кнопки</string>
+    <string name="button_summary">Аппаратные кнопки, панель навигации</string>
+    <string name="gestures_title">Жесты</string>
+    <string name="gestures_summary">Быстрый запуск камеры, скриншот жестом</string>
+    <string name="lockscreen_title">Экран блокировки</string>
+    <string name="lockscreen_summary">Визуализация музыки, анимация зарядки, стиль часов</string>
+    <string name="misc_title">Дополнительно</string>
+    <string name="misc_summary">Игровой режим, управление громкостью</string>
+    <string name="animations_title">Анимации</string>
+    <string name="animations_summary">Системные анимации</string>
+    <string name="powermenu_title">Меню питания</string>
     <string name="powermenu_summary">Advanced restart, power menu opacity</string>
     <string name="theme_title">Themes</string>
     <string name="theme_summary">System theme, rounded, switch theme</string>
@@ -94,7 +94,7 @@
     <!-- Power menu and dialogs opacity -->
     <!-- AOKP custom system animations -->
     <!-- Power menu Animations  -->
-    <string name="power_menu_animation">Power menu</string>
+    <string name="power_menu_animation">Меню питания</string>
     <!-- QS header image -->
     <!-- Lockscreen -->
     <string name="lockscreen_category">Lockscreen</string>
@@ -316,7 +316,7 @@
     <string name="gameprops_load_json_title">Select per-app game props JSON file</string>
     <string name="gameprops_load_json_summary">Choose the JSON file to be used to spoof more games</string>
     <!-- Power menu -->
-    <string name="power_menu_title">Power menu</string>
+    <string name="power_menu_title">Меню питания</string>
     <string name="power_menu_summary">Customize power menu options</string>
     <string name="power_menu_actions_title">Actions</string>
     <string name="power_menu_screenshot_title">Screenshot</string>
@@ -417,7 +417,7 @@
     <string name="disable_qs_title">Hide QS in secure lockscreen</string>
     <string name="disable_qs_summary">Hides QS if device is locked. Does not disable notification shade</string>
     <!-- Power menu on secure lockscreen -->
-    <string name="lockscreen_enable_power_menu_title">Power menu</string>
+    <string name="lockscreen_enable_power_menu_title">Меню питания</string>
     <string name="lockscreen_enable_power_menu_summary">Allow accessing power menu on secure lockscreen</string>
     <!-- QSTile requires unlocking before being accessible -->
     <string name="qstile_requires_unlocking_title">Secure QS tiles require unlocking</string>
