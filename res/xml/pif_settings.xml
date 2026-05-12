@@ -28,11 +28,11 @@
         android:key="pif_options_category"
         android:title="@string/pif_options_category">
 
-        <SwitchPreferenceCompat
-            android:key="pif_spoof_photos"
+        <com.voltage.support.preferences.SecureSettingSwitchPreference
+            android:key="spoof_pif_photos"
             android:title="@string/pif_spoof_photos_title"
             android:summary="@string/pif_spoof_photos_summary"
-            android:defaultValue="false" />
+            android:defaultValue="true" />
 
         <SwitchPreferenceCompat
             android:key="pif_spoof_props"

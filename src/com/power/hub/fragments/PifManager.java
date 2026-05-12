@@ -42,7 +42,7 @@ public class PifManager {
     private static final String PIF_CONFIG_NAME = "pif.json";
     private static final String VENDING_PKG = "com.android.vending";
     private static final String PHOTOS_PKG = "com.google.android.apps.photos";
-    private static final String PHOTOS_SPOOF_KEY = "spoofPhotos";
+    private static final String PHOTOS_SPOOF_SECURE_KEY = "spoof_pif_photos";
     private static final String PROPS_SPOOF_KEY = "spoofProps";
     private static final String PROVIDER_SPOOF_KEY = "spoofProvider";
     private static final String SIGNATURE_SPOOF_KEY = "spoofSignature";
@@ -128,11 +128,14 @@ public class PifManager {
     }
 
     public boolean isSpoofPhotosEnabled() {
-        return isTruthy(getCurrentProperties().get(PHOTOS_SPOOF_KEY));
+        String val = Settings.Secure.getString(
+                mContext.getContentResolver(), PHOTOS_SPOOF_SECURE_KEY);
+        return isTruthy(val);
     }
 
     public void setSpoofPhotos(boolean enabled) {
-        updateToggle(PHOTOS_SPOOF_KEY, enabled, PHOTOS_PKG);
+        killPackage(PHOTOS_PKG);
+        killPackage(VENDING_PKG);
     }
 
     public boolean isSpoofPropsEnabled() {

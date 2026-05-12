@@ -53,7 +53,7 @@ public class PifFragment extends SettingsPreferenceFragment {
     private static final String KEY_FETCH_VOLTAGE = "pif_fetch_voltage";
     private static final String KEY_IMPORT_FILE = "pif_import_file";
     private static final String KEY_SHOW_PROPS = "pif_show_props";
-    private static final String KEY_SPOOF_PHOTOS = "pif_spoof_photos";
+    private static final String KEY_SPOOF_PHOTOS = "spoof_pif_photos";
     private static final String KEY_SPOOF_PROPS = "pif_spoof_props";
     private static final String KEY_SPOOF_PROVIDER = "pif_spoof_provider";
     private static final String KEY_SPOOF_SIGNATURE = "pif_spoof_signature";
@@ -156,11 +156,8 @@ public class PifFragment extends SettingsPreferenceFragment {
             mOptionsCategory.setVisible(true);
         }
         if (mSpoofPhotosPreference != null) {
-            mSpoofPhotosPreference.setOnPreferenceChangeListener(null);
-            mSpoofPhotosPreference.setChecked(mPifManager.isSpoofPhotosEnabled());
             mSpoofPhotosPreference.setOnPreferenceChangeListener((preference, newValue) -> {
                 mPifManager.setSpoofPhotos((Boolean) newValue);
-                refreshUi();
                 return true;
             });
         }
