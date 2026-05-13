@@ -218,12 +218,12 @@
     <string name="target_manage_title">Gerenciar apps alvo</string>
     <string name="target_no_apps">Sem apps configurados</string>
     <string name="target_apps_count">%1$d apps configurados</string>
-    <string name="target_selected_count">%1$d selecionado</string>
+    <string name="target_selected_count">%1$d selecionado(s)</string>
     <string name="target_import_title">Importar target.txt</string>
     <string name="target_import_summary">Importar uma lista de alvos a partir de um arquivo</string>
     <string name="target_import_success">Lista de alvos importada</string>
     <string name="target_import_failed">Importação falhou: %1$s</string>
-    <string name="target_search_hint">Buscar apps</string>
+    <string name="target_search_hint">Pesquisar apps</string>
     <string name="target_mode_auto">Auto</string>
     <string name="target_mode_leaf_hack">Leaf Hack</string>
     <string name="target_mode_cert_gen">Cert Gen</string>
@@ -231,7 +231,7 @@
     <string name="app_spoof_screen_title">Spoofing de App</string>
     <string name="app_spoof_category_title">Spoofing de App</string>
     <string name="app_spoof_manage_title">Gerenciar Spoofing de App</string>
-    <string name="app_spoof_manage_summary">Spoof propriedades do aparelho por app</string>
+    <string name="app_spoof_manage_summary">Simular propriedades do aparelho por app</string>
     <string name="app_spoof_enabled_title">Habilitar Spoofing de App</string>
     <string name="app_spoof_enabled_summary">Sobrescrever propriedades do aparelho para apps configurados</string>
     <string name="app_spoof_screen_intro">Adicione um app, atribua um perfil, então volte aqui a qualquer momento para atualizar ou remover.</string>
@@ -269,7 +269,7 @@
     <string name="game_spoofing_intro">Adicione jogos, escolha um perfil, e edite as propriedades quando necessário.</string>
     <string name="game_spoofing_enabled">Spoofing de jogos está ativado</string>
     <string name="game_spoofing_disabled">Spoofing de jogos está desativado</string>
-    <string name="game_spoofing_configured_count">%1$d jogos configurados</string>
+    <string name="game_spoofing_configured_count">%1$d jogo(s) configurado(s)</string>
     <string name="game_spoof_add_game">Adicionar Jogo</string>
     <string name="game_spoof_no_games">Sem jogos configurados</string>
     <string name="game_spoof_select_game">Selecione um jogo</string>
@@ -285,10 +285,10 @@
     <string name="game_spoof_preset_edit">Editar Perfil</string>
     <string name="game_spoof_preset_delete">Remover Perfil</string>
     <string name="game_spoof_preset_name">Nome do perfil</string>
-    <string name="game_spoof_preset_name_empty">Nome do perfil não pode ser vazio</string>
+    <string name="game_spoof_preset_name_empty">Nome do perfil não pode ficar vazio</string>
     <string name="game_spoof_preset_saved">Perfil salvo</string>
     <string name="game_spoof_preset_saved_named">Perfil &quot;%1$s&quot; salvo</string>
-    <string name="game_spoof_preset_updated_named">Perfil &quot;%1$s&quot; salvo</string>
+    <string name="game_spoof_preset_updated_named">Perfil &quot;%1$s&quot; atualizado</string>
     <string name="game_spoof_preset_deleted">Perfil excluído</string>
     <string name="game_spoof_preset_delete_confirm">Excluir perfil &quot;%1$s&quot;?</string>
     <string name="game_spoof_builtin_preset">Perfis integrados não podem ser deletados</string>
@@ -305,15 +305,15 @@
     <string name="keybox_data_title">Substituição do certificado de Keybox</string>
     <string name="keybox_data_summary">Carregar keybox XML customizado para substituir certificação do dispositivo</string>
     <string name="keybox_data_loaded_summary">Keybox XML customizado carregado. Exclua para limpar.</string>
-    <string name="keybox_delete_content_description">Limpar dados da keybox</string>
+    <string name="keybox_delete_content_description">Apagar dados da keybox</string>
     <string name="keybox_toast_invalid_file_selected">Não é um arquivo XML. Escolha um arquivo XML de keybox válido.</string>
     <string name="keybox_toast_missing_data">Keybox XML inválido: campos obrigatórios faltando</string>
     <string name="keybox_toast_file_loaded">Keybox carregada</string>
-    <string name="keybox_toast_file_cleared">Keybox limpada</string>
+    <string name="keybox_toast_file_cleared">Keybox apagada</string>
     <!-- Miscellaneous/Spoofing/Per-app spoofing -->
     <string name="gameprops_title">Ativar spoofing de jogos por app</string>
-    <string name="gameprops_summary">Ativa spoofing de jogos por app</string>
-    <string name="gameprops_load_json_title">Selecionar arquivo JSON para prop. de jogos por app</string>
+    <string name="gameprops_summary">Ativa o spoofing de jogos por app</string>
+    <string name="gameprops_load_json_title">Selecionar arquivo JSON para propriedades de jogos por app</string>
     <string name="gameprops_load_json_summary">Choose the JSON file to be used to spoof more games</string>
     <!-- Power menu -->
     <string name="power_menu_title">Menu de energia</string>
