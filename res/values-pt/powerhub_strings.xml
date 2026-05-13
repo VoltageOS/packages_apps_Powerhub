@@ -18,12 +18,12 @@
     <!-- App Title -->
     <string name="powerhub_title">Power Hub</string>
     <!-- Categories -->
-    <string name="button_title">Buttons</string>
-    <string name="button_summary">Hardware keys, Navigation bar</string>
-    <string name="gestures_title">Gestures</string>
+    <string name="button_title">Botões</string>
+    <string name="button_summary">Botões físicos, barra de navegação</string>
+    <string name="gestures_title">Gestos</string>
     <string name="gestures_summary">Jump to camera, swipe to screenshot</string>
-    <string name="lockscreen_title">Lock screen</string>
-    <string name="lockscreen_summary">Music visualizer, charging animation, clock style</string>
+    <string name="lockscreen_title">Tela de bloqueio</string>
+    <string name="lockscreen_summary">Visualizador de música, animação de carregamento e estilo do relógio</string>
     <string name="misc_title">Advanced</string>
     <string name="misc_summary">Gaming mode, volume controls</string>
     <string name="animations_title">Animations</string>
