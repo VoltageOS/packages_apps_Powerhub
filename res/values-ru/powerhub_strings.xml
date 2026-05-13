@@ -37,48 +37,48 @@
     <string name="recents_title">Недавние приложения</string>
     <string name="recents_summary">Slim recents</string>
     <string name="statusbar_title">Строка состояния</string>
-    <string name="statusbar_summary">Clock, carrier, status icons</string>
-    <string name="volume_title">Volume rockers</string>
-    <string name="volume_summary">Volume rockers</string>
-    <string name="notifications_title">Notifications</string>
-    <string name="notifications_summary">Battery light, notifications header</string>
+    <string name="statusbar_summary">Время, оператор, значки в строке состояния</string>
+    <string name="volume_title">Панель громкости</string>
+    <string name="volume_summary">Панель громкости</string>
+    <string name="notifications_title">Уведомления</string>
+    <string name="notifications_summary">Индикатор заряда, строка уведомлений</string>
     <string name="device_part_title">Device features</string>
     <string name="qs_category">QS category</string>
-    <string name="navbar_title">Navigation bar</string>
+    <string name="navbar_title">Навигация</string>
     <string name="volume_keys_title">Volume keys</string>
     <!-- General strings -->
     <string name="ok">OK</string>
     <string name="reset">Reset</string>
-    <string name="cancel">Cancel</string>
-    <string name="save">Save</string>
-    <string name="default_string">Default</string>
-    <string name="disabled">Disabled</string>
-    <string name="enable">Enable</string>
-    <string name="disable">Disable</string>
+    <string name="cancel">Отмена</string>
+    <string name="save">Сохранить</string>
+    <string name="default_string">По умолчанию</string>
+    <string name="disabled">Отключено</string>
+    <string name="enable">Включить</string>
+    <string name="disable">Выключить</string>
     <!-- Units -->
-    <string name="unit_seconds">seconds</string>
-    <string name="unit_milliseconds">milliseconds</string>
-    <string name="unit_pixels">dp</string>
+    <string name="unit_seconds">секунды</string>
+    <string name="unit_milliseconds">миллисекунды</string>
+    <string name="unit_pixels">пиксели</string>
     <!-- Custom seekbar -->
-    <string name="custom_seekbar_value">Value: <xliff:g id="v">%s</xliff:g></string>
-    <string name="custom_seekbar_default_value">Default</string>
-    <string name="custom_seekbar_default_value_to_set">Default value: <xliff:g id="v">%s</xliff:g>\nLong press to set</string>
-    <string name="custom_seekbar_default_value_is_set">Default value is set</string>
+    <string name="custom_seekbar_value">Значение: <xliff:g id="v">%s</xliff:g></string>
+    <string name="custom_seekbar_default_value">По умолчанию</string>
+    <string name="custom_seekbar_default_value_to_set">Значение по умолчанию: <xliff:g id="v">%s</xliff:g>\nУдерживайте, чтобы применить</string>
+    <string name="custom_seekbar_default_value_is_set">Установлено значение по умолчанию</string>
     <!-- Color Picker -->
-    <string name="dialog_color_picker">Color Picker</string>
-    <string name="press_color_to_apply">Press on color below to apply</string>
+    <string name="dialog_color_picker">Выбор цвета</string>
+    <string name="press_color_to_apply">Нажмите на цвет ниже, чтобы его применить</string>
     <string name="arrow_right">→</string>
     <string name="arrow_down">↓</string>
     <string name="hex">Hex:</string>
     <string name="hex_hint">#ff000000</string>
-    <string name="set">Set</string>
-    <string name="color_default">Default</string>
-    <string name="led_color_green">Green</string>
-    <string name="led_color_red">Red</string>
+    <string name="set">Задать</string>
+    <string name="color_default">По умолчанию</string>
+    <string name="led_color_green">Зеленый</string>
+    <string name="led_color_red">Красный</string>
     <!-- QS settings -->
-    <string name="qs_title">Quick settings</string>
+    <string name="qs_title">Панель быстрого доступа</string>
     <!-- Lockscreen shortcuts -->
-    <string name="ls_category">Lockscreen Items</string>
+    <string name="ls_category">Элементы экрана блокировки</string>
     <string name="ls_tuner">Enable Lockscreen tuner</string>
     <string name="lockscreen_shortcuts">Lockscreen shortcuts</string>
     <string name="ls_shortcut_summary">Customize Lockscreen shortcuts</string>
@@ -352,7 +352,7 @@
     <string name="network_traffic_settings_title">Network traffic monitor</string>
     <string name="network_traffic_settings_summary">Display and customize current network traffic levels</string>
     <string name="network_traffic_location_title">Location</string>
-    <string name="network_traffic_location_disable">Disabled</string>
+    <string name="network_traffic_location_disable">Отключено</string>
     <string name="network_traffic_location_statusbar">Statusbar</string>
     <string name="network_traffic_location_quick_statusbar">Quick Statusbar</string>
     <string name="network_traffic_mode_title">Display mode</string>
