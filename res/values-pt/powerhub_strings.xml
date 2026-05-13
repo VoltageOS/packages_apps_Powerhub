@@ -21,136 +21,136 @@
     <string name="button_title">Botões</string>
     <string name="button_summary">Botões físicos, Barra de navegação</string>
     <string name="gestures_title">Gestos</string>
-    <string name="gestures_summary">Ir para a câmara, deslize para captura de ecrã</string>
-    <string name="lockscreen_title">Ecrã de bloqueio</string>
-    <string name="lockscreen_summary">Visualizador de música, animação de carregamento, estilo do relógio</string>
+    <string name="gestures_summary">Pular para câmera, deslizar para captura de tela</string>
+    <string name="lockscreen_title">Tela de bloqueio</string>
+    <string name="lockscreen_summary">Visualizador de música, animação de carregamento e estilo do relógio</string>
     <string name="misc_title">Avançado</string>
-    <string name="misc_summary">Modo de jogo, controles de volume</string>
+    <string name="misc_summary">Modo de jogo, controle de volumes</string>
     <string name="animations_title">Animações</string>
     <string name="animations_summary">Animações do sistema</string>
     <string name="powermenu_title">Menu de energia</string>
     <string name="powermenu_summary">Reinicialização avançada, opacidade do menu de energia</string>
     <string name="theme_title">Temas</string>
     <string name="theme_summary">Tema do sistema, arredondado, trocar de tema</string>
-    <string name="quicksettings_title">Definições rápidas</string>
-    <string name="quicksettings_summary">Tile layout, blur</string>
-    <string name="recents_title">Recents apps</string>
+    <string name="quicksettings_title">Configurações rápidas</string>
+    <string name="quicksettings_summary">Layout dos blocos, desfoque</string>
+    <string name="recents_title">Aplicativos recentes</string>
     <string name="recents_summary">Slim recents</string>
-    <string name="statusbar_title">Status bar</string>
-    <string name="statusbar_summary">Clock, carrier, status icons</string>
-    <string name="volume_title">Volume rockers</string>
-    <string name="volume_summary">Volume rockers</string>
-    <string name="notifications_title">Notifications</string>
-    <string name="notifications_summary">Battery light, notifications header</string>
-    <string name="device_part_title">Device features</string>
-    <string name="qs_category">QS category</string>
-    <string name="navbar_title">Navigation bar</string>
-    <string name="volume_keys_title">Volume keys</string>
+    <string name="statusbar_title">Barra de status</string>
+    <string name="statusbar_summary">Relógio, operadora e ícones de status</string>
+    <string name="volume_title">Botões de volume</string>
+    <string name="volume_summary">Botões de volume</string>
+    <string name="notifications_title">Notificações</string>
+    <string name="notifications_summary">Luz da bateria, cabeçalho das notificações</string>
+    <string name="device_part_title">Recursos do dispositivo</string>
+    <string name="qs_category">Categoria das config. rápidas</string>
+    <string name="navbar_title">Barra de navegação</string>
+    <string name="volume_keys_title">Botões de volume</string>
     <!-- General strings -->
     <string name="ok">OK</string>
-    <string name="reset">Reset</string>
-    <string name="cancel">Cancel</string>
-    <string name="save">Save</string>
-    <string name="default_string">Default</string>
-    <string name="disabled">Disabled</string>
-    <string name="enable">Enable</string>
-    <string name="disable">Disable</string>
+    <string name="reset">Redefinir</string>
+    <string name="cancel">Cancelar</string>
+    <string name="save">Salvar</string>
+    <string name="default_string">Padrão</string>
+    <string name="disabled">Desabilitado</string>
+    <string name="enable">Habilitar</string>
+    <string name="disable">Desabilitar</string>
     <!-- Units -->
-    <string name="unit_seconds">seconds</string>
-    <string name="unit_milliseconds">milliseconds</string>
+    <string name="unit_seconds">segundos</string>
+    <string name="unit_milliseconds">milissegundos</string>
     <string name="unit_pixels">dp</string>
     <!-- Custom seekbar -->
-    <string name="custom_seekbar_value">Value: <xliff:g id="v">%s</xliff:g></string>
-    <string name="custom_seekbar_default_value">Default</string>
-    <string name="custom_seekbar_default_value_to_set">Default value: <xliff:g id="v">%s</xliff:g>\nLong press to set</string>
-    <string name="custom_seekbar_default_value_is_set">Default value is set</string>
+    <string name="custom_seekbar_value">Valor: <xliff:g id="v">%s</xliff:g></string>
+    <string name="custom_seekbar_default_value">Padrão</string>
+    <string name="custom_seekbar_default_value_to_set">Valor padrão: <xliff:g id="v">%s</xliff:g>\nToque e segure para definir</string>
+    <string name="custom_seekbar_default_value_is_set">Valor padrão definido</string>
     <!-- Color Picker -->
-    <string name="dialog_color_picker">Color Picker</string>
-    <string name="press_color_to_apply">Press on color below to apply</string>
+    <string name="dialog_color_picker">Seletor de Cores</string>
+    <string name="press_color_to_apply">Toque na cor abaixo para aplicar</string>
     <string name="arrow_right">→</string>
     <string name="arrow_down">↓</string>
     <string name="hex">Hex:</string>
     <string name="hex_hint">#ff000000</string>
-    <string name="set">Set</string>
-    <string name="color_default">Default</string>
-    <string name="led_color_green">Green</string>
-    <string name="led_color_red">Red</string>
+    <string name="set">Definir</string>
+    <string name="color_default">Padrão</string>
+    <string name="led_color_green">Verde</string>
+    <string name="led_color_red">Vermelho</string>
     <!-- QS settings -->
-    <string name="qs_title">Quick settings</string>
+    <string name="qs_title">Configurações rápidas</string>
     <!-- Lockscreen shortcuts -->
-    <string name="ls_category">Lockscreen Items</string>
-    <string name="ls_tuner">Enable Lockscreen tuner</string>
-    <string name="lockscreen_shortcuts">Lockscreen shortcuts</string>
-    <string name="ls_shortcut_summary">Customize Lockscreen shortcuts</string>
+    <string name="ls_category">Itens da Tela de bloqueio</string>
+    <string name="ls_tuner">Habilitar Tuner da Tela de bloqueio</string>
+    <string name="lockscreen_shortcuts">Atalhos da tela de bloqueio</string>
+    <string name="ls_shortcut_summary">Personalizar atalhos da Tela de bloqueio</string>
     <!-- Lockscreen icons -->
-    <string name="lockscreen_tuner_title">Lockscreen tuner</string>
+    <string name="lockscreen_tuner_title">Tuner da Tela de bloqueio</string>
     <!-- Statusbar Items -->
-    <string name="sb_icons">Statusbar Icons</string>
-    <string name="statusbar_items_category">Statusbar items</string>
+    <string name="sb_icons">Ícones da barra de status</string>
+    <string name="statusbar_items_category">Itens da barra de status</string>
     <!-- Status bar - icons -->
-    <string name="status_bar_icons_title">Status bar icons</string>
+    <string name="status_bar_icons_title">Ícones da barra de status</string>
     <!-- Lock screen visualizer -->
-    <string name="visualizer_title">Display music visualizer</string>
+    <string name="visualizer_title">Exibir visualizador de música</string>
     <!-- Power menu and dialogs opacity -->
     <!-- AOKP custom system animations -->
     <!-- Power menu Animations  -->
     <string name="power_menu_animation">Menu de energia</string>
     <!-- QS header image -->
     <!-- Lockscreen -->
-    <string name="lockscreen_category">Lockscreen</string>
+    <string name="lockscreen_category">Tela de bloqueio</string>
     <!-- Themes -->
-    <string name="theme_type_title">System theme</string>
-    <string name="theme_type_summary">Select theme</string>
+    <string name="theme_type_title">Tema de sistema</string>
+    <string name="theme_type_summary">Selecionar tema</string>
     <!--Accenter -->
     <string name="themes_hub_title">Temas</string>
-    <string name="themes_hub_summary">Accents-Gradients-Themes</string>
-    <string name="rgb_accent_picker_title_dark">Accent Picker</string>
-    <string name="rgb_accent_picker_summary">Choose the accent color yourself</string>
-    <string name="theme_option_reset_title">Reset Theme Options</string>
-    <string name="theme_option_reset_message">Are you sure you want to reset themes-accent to default?</string>
+    <string name="themes_hub_summary">Realce-Gradientes-Temas</string>
+    <string name="rgb_accent_picker_title_dark">Seletor de cor de destaque</string>
+    <string name="rgb_accent_picker_summary">Escolha a cor de destaque</string>
+    <string name="theme_option_reset_title">Redefinir opções de tema</string>
+    <string name="theme_option_reset_message">Tem certeza que deseja redefinir o tema e cor de destaque para o padrão?</string>
     <!--ThemePicker-->
-    <string name="theme_select_title">Styles and Wallpapers</string>
-    <string name="theme_select_summary">Browse and select installed themes</string>
+    <string name="theme_select_title">Estilos e Planos de fundo</string>
+    <string name="theme_select_summary">Procure e selecione temas instalados</string>
     <!-- Battery light -->
-    <string name="battery_light_settings">Battery charging light</string>
-    <string name="notification_light_settings">Notifications light</string>
+    <string name="battery_light_settings">Luz de carregamento da bateria</string>
+    <string name="notification_light_settings">Luz de notificações</string>
     <!-- Volume rocker wake -->
-    <string name="volume_rocker_wake_title">Volume rocker wake</string>
+    <string name="volume_rocker_wake_title">Acordar com botões de volume</string>
     <!-- Miscellaneous -->
     <string name="miscellaneous_spoofing_category">Spoofing</string>
     <!-- Miscellaneous/Spoofing -->
-    <string name="spoofing_title">Component spoofing</string>
-    <string name="spoofing_summary">Bypass app restrictions by spoofing components</string>
+    <string name="spoofing_title">Spoofing de componente</string>
+    <string name="spoofing_summary">Ignorar restrições de apps com spoofing de componentes</string>
     <string name="spoof_screen_title">Spoofing</string>
-    <string name="spoof_screen_summary">Manage Play Integrity Fix, TrickyStore, game spoofing, and app list hiding</string>
-    <string name="spoof_dashboard_pif_summary">Manage the active Play Integrity Fix configuration.</string>
-    <string name="spoof_dashboard_trickystore_summary">Manage the TrickyStore keybox and target apps.</string>
-    <string name="spoof_dashboard_app_spoof_summary">Manage spoofed device profiles for selected games.</string>
-    <string name="spoof_dashboard_pif_empty_detail">Import a config or fetch a new profile.</string>
-    <string name="spoof_dashboard_pif_detail">%1$s\nSecurity patch: %2$s</string>
-    <string name="spoof_dashboard_target_empty_detail">No TrickyStore targets selected yet.</string>
-    <string name="spoof_dashboard_keybox_present_detail">Custom keybox installed.</string>
-    <string name="spoof_dashboard_target_present_detail">Review target apps or import a target list.</string>
-    <string name="spoof_dashboard_app_spoof_enabled">Per-app spoofing is enabled</string>
-    <string name="spoof_dashboard_app_spoof_disabled">Per-app spoofing is disabled</string>
-    <string name="spoofing_system_wide_category">System-Wide</string>
-    <string name="spoofing_pixel_props_title">Pixel props</string>
-    <string name="spoofing_pixel_props_summary">Spoof a select group of Google apps to the latest Pixel device</string>
-    <string name="tensor_spoof_title">Spoof tensor features</string>
-    <string name="tensor_spoof_summary">Unlock tensor/pixel features</string>
-    <string name="gms_spoof_title">Play Integrity fix</string>
-    <string name="gms_spoof_summary">Spoof your device to pass Google Play Attestation (not applicable to sandboxed gapps)</string>
-    <string name="spoofing_app_specific_category">App-Specific</string>
-    <string name="spoofing_vending_title">Play Store spoof</string>
-    <string name="spoofing_vending_summary">Spoof the Play Store to the latest Pixel device</string>
-    <string name="spoofing_photos_title">Google Photos spoof</string>
-    <string name="spoofing_photos_summary">Spoof the Google Photos app as a Pixel XL</string>
-    <string name="spoofing_snap_title">Snapchat spoof</string>
-    <string name="spoofing_snap_summary">Spoof Snapchat as a Pixel XL to fix possible chat issues</string>
+    <string name="spoof_screen_summary">Gerenciar correção da Play Integrity, TrickyStore, Spoofing de games, e lista de apps ocultos</string>
+    <string name="spoof_dashboard_pif_summary">Gerenciar a configuração atual da Play Integrity.</string>
+    <string name="spoof_dashboard_trickystore_summary">Gerenciar TrickyStore keybox e aplicativos selecionados.</string>
+    <string name="spoof_dashboard_app_spoof_summary">Gerenciar perfis falsos de dispositivo para jogos selecionados</string>
+    <string name="spoof_dashboard_pif_empty_detail">Importar configuração ou buscar um novo perfil.</string>
+    <string name="spoof_dashboard_pif_detail">%1$s\Atualização de segurança: %2$s</string>
+    <string name="spoof_dashboard_target_empty_detail">Nenhum alvo da TrickyStore selecionado ainda.</string>
+    <string name="spoof_dashboard_keybox_present_detail">Keybox customizada instalada.</string>
+    <string name="spoof_dashboard_target_present_detail">Revisar apps selecionados ou importar lista de apps.</string>
+    <string name="spoof_dashboard_app_spoof_enabled">Spoofing por app está habilitado</string>
+    <string name="spoof_dashboard_app_spoof_disabled">Spoofing por app está desabilitado</string>
+    <string name="spoofing_system_wide_category">Em todo o sistema</string>
+    <string name="spoofing_pixel_props_title">Propriedades do Pixel</string>
+    <string name="spoofing_pixel_props_summary">Simular certos apps da Google para o aparelho Pixel mais recente</string>
+    <string name="tensor_spoof_title">Simular funcionalidades do tensor</string>
+    <string name="tensor_spoof_summary">Desbloquear funções de tensor/Pixel</string>
+    <string name="gms_spoof_title">Correção da Play Integrity</string>
+    <string name="gms_spoof_summary">Disfarçar o aparelho para passar na autenticação da Google Play (não aplicável para apps de sandbox)</string>
+    <string name="spoofing_app_specific_category">Específico do Aplicativo</string>
+    <string name="spoofing_vending_title">Spoof da Play Store</string>
+    <string name="spoofing_vending_summary">Spoof Play Store para o aparelho Pixel mais recente</string>
+    <string name="spoofing_photos_title">Spoof de Google Fotos</string>
+    <string name="spoofing_photos_summary">Simular o app Google Fotos como um Pixel XL</string>
+    <string name="spoofing_snap_title">Spoof para Snapchat</string>
+    <string name="spoofing_snap_summary">Spoof Snapchat como um Pixel XL para corrigir possíveis problemas no chat</string>
     <!-- Miscellaneous/Spoofing/Play Integrity fix JSON update -->
-    <string name="toast_spoofing_success">Successfully downloaded pif.json. Spoofing as %1$s for Play Integrity.</string>
-    <string name="toast_spoofing_failure">Failed to spoof properties.</string>
-    <string name="update_pif_json_title">Update Play Integrity fix</string>
+    <string name="toast_spoofing_success">Sucesso ao baixar o pif.json. Spoofing como %1$s para Play Integrity.</string>
+    <string name="toast_spoofing_failure">Falha ao simular propriedades.</string>
+    <string name="update_pif_json_title">Atualizar correção da Play Integrity</string>
     <string name="update_pif_json_summary">Update PIF spoofing device, requires internet connection.</string>
     <string name="show_pif_properties_title">Play Integrity fix properties</string>
     <string name="show_pif_properties_summary">Show all currently set PIF properties</string>
@@ -352,7 +352,7 @@
     <string name="network_traffic_settings_title">Network traffic monitor</string>
     <string name="network_traffic_settings_summary">Display and customize current network traffic levels</string>
     <string name="network_traffic_location_title">Location</string>
-    <string name="network_traffic_location_disable">Disabled</string>
+    <string name="network_traffic_location_disable">Desabilitado</string>
     <string name="network_traffic_location_statusbar">Statusbar</string>
     <string name="network_traffic_location_quick_statusbar">Quick Statusbar</string>
     <string name="network_traffic_mode_title">Display mode</string>
