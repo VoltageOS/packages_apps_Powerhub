@@ -411,42 +411,42 @@
     <string name="enable_fingerprint_ripple_effect_title">Efeito de ondulação</string>
     <string name="enable_fingerprint_ripple_effect_summary">Mostra o efeito de ondulação ao desbloquear com a impressão digital</string>
     <!-- Lockscreen battery info indicator  -->
-    <string name="lockscreen_battery_info_title">Lockscreen charging info</string>
-    <string name="lockscreen_battery_info_summary">Show charging current, voltage, wattage and battery temperature on lockscreen while charging</string>
+    <string name="lockscreen_battery_info_title">Info. de carregamento na tela de bloqueio</string>
+    <string name="lockscreen_battery_info_summary">Mostra a corrente de carregamento, voltagem, potência e temperatura da bateria na tela de bloqueio ao carregar</string>
     <!-- Disable QS -->
-    <string name="disable_qs_title">Hide QS in secure lockscreen</string>
-    <string name="disable_qs_summary">Hides QS if device is locked. Does not disable notification shade</string>
+    <string name="disable_qs_title">Esconde os QS na tela de bloqueio segura</string>
+    <string name="disable_qs_summary">Esconder os QS se o dispositivo está bloqueado. Não desativa a aba de notificações</string>
     <!-- Power menu on secure lockscreen -->
     <string name="lockscreen_enable_power_menu_title">Menu de energia</string>
-    <string name="lockscreen_enable_power_menu_summary">Allow accessing power menu on secure lockscreen</string>
+    <string name="lockscreen_enable_power_menu_summary">Permite acessar o menu de energia na tela de bloqueio segura</string>
     <!-- QSTile requires unlocking before being accessible -->
-    <string name="qstile_requires_unlocking_title">Secure QS tiles require unlocking</string>
-    <string name="qstile_requires_unlocking_summary">The following QS tiles require unlocking before you can access them from the lock screen:\nAirplane, Cellular, NFC, Hotspot, USB tethering and Location</string>
+    <string name="qstile_requires_unlocking_title">Blocos de QS seguros requerem desbloqueio</string>
+    <string name="qstile_requires_unlocking_summary">Os seguintes blocos de QS requerem desbloqueio antes de serem acessados pela tela de bloqueio:\n Modo avião, Dados Móveis, NFC, Ponto de WiFi, USB tethering e Localização</string>
     <!-- click to take partial SS -->
-    <string name="click_partial_screenshot_title">Click to partial screenshot</string>
-    <string name="click_partial_screenshot_summary">Short click Volume Down and Power to take partial screenshot</string>
-    <string name="quick_settings_secure_lock_screen_title">QS pull on secure lock screen</string>
+    <string name="click_partial_screenshot_title">Pressione para captura de tela parcial</string>
+    <string name="click_partial_screenshot_summary">Pressione rapidamente volume para baixo e botão liga/desliga para captura de tela parcial</string>
+    <string name="quick_settings_secure_lock_screen_title">Abrir configurações rápidas na tela de bloqueio segura</string>
     <!-- Lock screen media art -->
-    <string name="ls_media_art_title">Media cover art</string>
-    <string name="ls_media_art_summary">Display media cover art when available</string>
+    <string name="ls_media_art_title">Arte da capa de mídia</string>
+    <string name="ls_media_art_summary">Mostra a arte da mídia quando disponível</string>
     <!-- Lock screen media art on Ambient Display -->
-    <string name="ambient_media_art_title">Ambient media cover art</string>
-    <string name="ambient_media_art_summary">Display media cover art on Ambient display when available</string>
+    <string name="ambient_media_art_title">Arte da mídia na tela de ambiente</string>
+    <string name="ambient_media_art_summary">Mostra a arte de mídia na Tela ambiente quando disponível</string>
     <!-- Lock screen album art filter -->
-    <string name="ls_media_art_filter_title">Media cover art filter</string>
-    <string name="ls_media_art_filter_none">None</string>
-    <string name="ls_media_art_filter_blur">Blur</string>
-    <string name="ls_media_art_filter_grayscale">Grayscale</string>
-    <string name="ls_media_art_filter_sepia">Sepia</string>
-    <string name="ls_media_art_filter_tint">Accent tinted</string>
-    <string name="ls_media_art_filter_invert">Invert</string>
-    <string name="ls_media_art_filter_grayblur">Grayscale and blur</string>
+    <string name="ls_media_art_filter_title">Filtro da arte de mídia</string>
+    <string name="ls_media_art_filter_none">Nenhum</string>
+    <string name="ls_media_art_filter_blur">Desfoque</string>
+    <string name="ls_media_art_filter_grayscale">Escala de cinza</string>
+    <string name="ls_media_art_filter_sepia">Sépia</string>
+    <string name="ls_media_art_filter_tint">Cor de destaque</string>
+    <string name="ls_media_art_filter_invert">Invertido</string>
+    <string name="ls_media_art_filter_grayblur">Escala de cinza e desfoque</string>
     <!-- Lock screen media art fade level -->
-    <string name="ls_media_art_fade_level_title">Media cover art fade level</string>
-    <string name="ls_media_art_fade_level_summary">Set media cover art fade level</string>
+    <string name="ls_media_art_fade_level_title">Nível de fade da arte de mídia</string>
+    <string name="ls_media_art_fade_level_summary">Altera o nível de desvanecimento da arte de mídia</string>
     <!-- Lock screen media art blur level -->
-    <string name="ls_media_art_blur_level_title">Media art blur level</string>
-    <string name="ls_media_art_blur_level_summary">Blur intensity when blur filter is applied</string>
+    <string name="ls_media_art_blur_level_title">Nível de desfoque da arte</string>
+    <string name="ls_media_art_blur_level_summary">Altera a intensidade de desfoque quando o filtro é aplicado</string>
     <!-- Pulse music visualizer -->
     <string name="pulse_settings_title">Pulse Visualizer</string>
     <string name="pulse_settings_summary">Show a bar visualizer on the lock screen while music is playing</string>
