@@ -522,104 +522,104 @@ Para que os planos de fundo funcionem corretamente, usuários devem altera-lo na
     A barra de altera dinamicamente entre estado de mídia e download, assegurando que você tenha a informação mais relevante primeiro.\"
      </string>
     <!-- Freeform launch mode -->
-    <string name="freeform_launch_mode_title">Freeform launch mode</string>
-    <string name="freeform_launch_mode_1">Native AOSP</string>
+    <string name="freeform_launch_mode_title">Modo de lançamento freeform</string>
+    <string name="freeform_launch_mode_1">AOSP nativo</string>
     <string name="freeform_launch_mode_2">LMOFreeForm</string>
     <!-- QS Brightness Slider -->
-    <string name="qs_brightness_slider_category">Brightness slider</string>
-    <string name="qs_brightness_slider_title">Show brightness slider</string>
-    <string name="qs_brightness_slider_auto_title">Auto brightness</string>
-    <string name="qs_brightness_slider_auto_summary">Show toggle for adaptive brightness near the slider</string>
-    <string name="qs_brightness_slider_show_never">Never show</string>
-    <string name="qs_brightness_slider_show_expanded">Show when expanded</string>
-    <string name="qs_brightness_slider_show_always">Show always</string>
+    <string name="qs_brightness_slider_category">Barra de brilho</string>
+    <string name="qs_brightness_slider_title">Exibir barra de brilho</string>
+    <string name="qs_brightness_slider_auto_title">Brilho automático</string>
+    <string name="qs_brightness_slider_auto_summary">Mostrar botão de brilho adaptativo ao lado da barra</string>
+    <string name="qs_brightness_slider_show_never">Nunca mostrar</string>
+    <string name="qs_brightness_slider_show_expanded">Mostrar quando expandido</string>
+    <string name="qs_brightness_slider_show_always">Mostrar sempre</string>
     <!-- QS Brightness Slider Position -->
-    <string name="qs_brightness_slider_position_title">Slider position</string>
-    <string name="qs_brightness_slider_position_top">Top</string>
-    <string name="qs_brightness_slider_position_bottom">Bottom</string>
+    <string name="qs_brightness_slider_position_title">Posição da barra</string>
+    <string name="qs_brightness_slider_position_top">Superior</string>
+    <string name="qs_brightness_slider_position_bottom">Inferior</string>
     <!-- Homepage toasts -->
-    <string name="homepage_toast_title">Homepage toast messages</string>
-    <string name="homepage_toast_summary">Replace suggestion card with random messages</string>
-    <string name="homepage_toast_text_title">Custom message</string>
-    <string name="homepage_toast_text_summary">Set a personal message to display</string>
+    <string name="homepage_toast_title">Mensagens de aviso na página inicial</string>
+    <string name="homepage_toast_summary">Substituir cartão de sugestões com mensagens aleatórias</string>
+    <string name="homepage_toast_text_title">Mensagem personalizada</string>
+    <string name="homepage_toast_text_summary">Defina uma mensagem pessoal para exibir</string>
     <!-- Annoying Notifications -->
-    <string name="notification_sound_vib_screen_on_title">Annoying Notifications</string>
-    <string name="notification_sound_vib_screen_on_summary">Play sound and vibration for notifications when screen is on</string>
+    <string name="notification_sound_vib_screen_on_title">Notificações irritantes</string>
+    <string name="notification_sound_vib_screen_on_summary">Tocar som e vibrar para notificações quando a tela está ligada</string>
     <!-- Weather -->
-    <string name="weather_category_title">Weather</string>
-    <string name="weather_settings_title">Weather settings</string>
-    <string name="weather_settings_summary">Setup icon pack and weather service</string>
-    <string name="lockscreen_weather_title">Weather condition</string>
-    <string name="lockscreen_weather_summary">Display current weather condition and temperature</string>
-    <string name="lockscreen_weather_enabled_info">Requires weather service to be enabled</string>
-    <string name="lockscreen_weather_location_title">Weather location</string>
-    <string name="lockscreen_weather_location_summary">Display current weather location</string>
-    <string name="lockscreen_weather_wind_info_title">Wind info</string>
-    <string name="lockscreen_weather_wind_info_summary">Display current wind speed and direction</string>
-    <string name="lockscreen_weather_humidity_info_title">Humidity info</string>
-    <string name="lockscreen_weather_humidity_info_summary">Display current humidity in percentage</string>
+    <string name="weather_category_title">Clima</string>
+    <string name="weather_settings_title">Configurações do clima</string>
+    <string name="weather_settings_summary">Configurar pacote de ícone e serviço de clima</string>
+    <string name="lockscreen_weather_title">Condição climática</string>
+    <string name="lockscreen_weather_summary">Mostrar condição do clima atual e temperatura</string>
+    <string name="lockscreen_weather_enabled_info">Requer que o serviço de clima esteja ativado</string>
+    <string name="lockscreen_weather_location_title">Localização do clima</string>
+    <string name="lockscreen_weather_location_summary">Mostrar localização do clima</string>
+    <string name="lockscreen_weather_wind_info_title">Info. do vento</string>
+    <string name="lockscreen_weather_wind_info_summary">Mostrar velocidade atual e direção do vento</string>
+    <string name="lockscreen_weather_humidity_info_title">Info. da umidade</string>
+    <string name="lockscreen_weather_humidity_info_summary">Mostrar umidade atual em porcentagem</string>
     <!-- Weather layout style -->
-    <string name="lockscreen_weather_style_title">Modern layout</string>
-    <string name="lockscreen_weather_style_summary_off">Classic stacked layout below the clock</string>
-    <string name="lockscreen_weather_style_summary_on">Date and weather beside / below the clock face</string>
+    <string name="lockscreen_weather_style_title">Estilo moderno</string>
+    <string name="lockscreen_weather_style_summary_off">Estilo clássico empilhado abaixo do relógio</string>
+    <string name="lockscreen_weather_style_summary_on">Data e clima ao lado / abaixo da face do relógio</string>
     <!-- Heads up timeout -->
-    <string name="notification_heads_up_title">Heads up</string>
-    <string name="notification_heads_up_summary">Allow pop up notifications</string>
+    <string name="notification_heads_up_title">Notificações flutuantes</string>
+    <string name="notification_heads_up_summary">Permitir notificações flutuantes</string>
     <!-- Less boring heads up -->
-    <string name="less_boring_heads_up_title">Less boring</string>
-    <string name="less_boring_heads_up_summary">Display popup notifications only for alarm, dialer and messaging app</string>
+    <string name="less_boring_heads_up_title">Menos irritante</string>
+    <string name="less_boring_heads_up_summary">Mostrar notificações flutuantes apenas para apps de alarme, ligações e mensagens</string>
     <!-- Fingerprint authentication vibration -->
-    <string name="fingerprint_category">Fingerprint</string>
-    <string name="fprint_error_vib_title">Fingerprint error vibration</string>
-    <string name="fprint_error_vib_summary">Vibrate on error fingerprint authentication</string>
-    <string name="fprint_success_vib_title">Fingerprint authentication vibration</string>
-    <string name="fprint_success_vib_summary">Vibrate on successful fingerprint authentication</string>
+    <string name="fingerprint_category">Impressão digital</string>
+    <string name="fprint_error_vib_title">Vibração ao falhar a impressão digital</string>
+    <string name="fprint_error_vib_summary">Vibrar ao falhar o desbloqueio com impressão digital</string>
+    <string name="fprint_success_vib_title">Vibração ao suceder com impressão digital</string>
+    <string name="fprint_success_vib_summary">Vibrar ao suceder o desbloqueio com impressão digital</string>
     <!-- Smart Pixels -->
-    <string name="smart_pixels_warning_text">Smart pixels is a power saving feature. Depending on how many pixels you decide to turn off, you could see improvement in battery life. Note that in some cases it can result in unresponsive areas on touch screen</string>
+    <string name="smart_pixels_warning_text">Smart pixels é um recurso de economia de bateria. Dependendo de quantos pixeis você decide desligar, você pode ver uma melhora na vida da bateria. Note que, em alguns casos, pode resultar em áreas sem resposta ao toque.</string>
     <string name="smart_pixels_title">Smart Pixels</string>
-    <string name="smart_pixels_summary">Save battery by shutting off extra pixels</string>
-    <string name="smart_pixels_enable_title">Enable Smart Pixels</string>
-    <string name="smart_pixels_enable_summary">Shut off pixels to reduce power consumption</string>
-    <string name="smart_pixels_on_power_save_title">Auto-enable on battery saver</string>
-    <string name="smart_pixels_on_power_save_summary">Enable Smart Pixels when battery saver is enabled</string>
-    <string name="smart_pixels_percent">Percent of pixels to disable</string>
-    <string name="smart_pixels_shift_title">Burn-in protection</string>
-    <string name="smart_pixels_shift_summary">Prevents burn-in on OLED devices by shifting pixels every so often</string>
+    <string name="smart_pixels_summary">Economize bateria ao desativar alguns pixeis extras</string>
+    <string name="smart_pixels_enable_title">Ativar Smart Pixels</string>
+    <string name="smart_pixels_enable_summary">Desative pixeis para reduzir o consumo de bateria</string>
+    <string name="smart_pixels_on_power_save_title">Ativação em modo de economia de bateria</string>
+    <string name="smart_pixels_on_power_save_summary">Ativar Smart Pixels quando modo economia de bateria está ativado</string>
+    <string name="smart_pixels_percent">Porcentagem de pixeis para desativar</string>
+    <string name="smart_pixels_shift_title">Proteção contra burn-in</string>
+    <string name="smart_pixels_shift_summary">Prevenir burn-in em aparelhos OLED ao deslocar pixeis em intervalos</string>
     <!--  screen, setting option summary to change custom timeout -->
-    <string name="custom_timeout_summary_never">Never</string>
-    <string name="custom_timeout_summary_5secs">5 seconds</string>
-    <string name="custom_timeout_summary_10secs">10 seconds</string>
-    <string name="custom_timeout_summary_15secs">15 seconds</string>
-    <string name="custom_timeout_summary_30secs">30 seconds</string>
-    <string name="custom_timeout_summary_1min">1 minute</string>
-    <string name="custom_timeout_summary_2mins">2 minutes</string>
-    <string name="custom_timeout_summary_5mins">5 minutes</string>
-    <string name="custom_timeout_summary_10mins">10 minutes</string>
-    <string name="custom_timeout_summary_20mins">20 minutes</string>
-    <string name="custom_timeout_summary_30mins">30 minutes</string>
-    <string name="custom_timeout_summary_1hour">1 hour</string>
-    <string name="custom_timeout_summary_2hours">2 hours</string>
-    <string name="custom_timeout_summary_4hours">4 hours</string>
-    <string name="custom_timeout_summary_8hours">8 hours</string>
+    <string name="custom_timeout_summary_never">Nunca</string>
+    <string name="custom_timeout_summary_5secs">5 segundos</string>
+    <string name="custom_timeout_summary_10secs">10 segundos</string>
+    <string name="custom_timeout_summary_15secs">15 segundos</string>
+    <string name="custom_timeout_summary_30secs">30 segundos</string>
+    <string name="custom_timeout_summary_1min">1 minuto</string>
+    <string name="custom_timeout_summary_2mins">2 minutos</string>
+    <string name="custom_timeout_summary_5mins">5 minutos</string>
+    <string name="custom_timeout_summary_10mins">10 minutos</string>
+    <string name="custom_timeout_summary_20mins">20 minutos</string>
+    <string name="custom_timeout_summary_30mins">30 minutos</string>
+    <string name="custom_timeout_summary_1hour">1 hora</string>
+    <string name="custom_timeout_summary_2hours">2 horas</string>
+    <string name="custom_timeout_summary_4hours">4 horas</string>
+    <string name="custom_timeout_summary_8hours">8 horas</string>
     <!-- Floating rotation button -->
-    <string name="floating_rotation_button_title">Floating rotate button</string>
-    <string name="floating_rotation_button_summary">Show a floating rotate button when device is rotated</string>
+    <string name="floating_rotation_button_title">Botão de rotação flutuante</string>
+    <string name="floating_rotation_button_summary">Exibir um botão de rotação quando o dispositivo for rotacionado</string>
     <!-- UDFPS settings -->
     <string name="udfps_category">UDFPS</string>
-    <string name="udfps_settings_title">UDFPS Customization</string>
-    <string name="udfps_settings_summary">Customize under-display fingerprint scanner</string>
+    <string name="udfps_settings_title">Personalização de UDFPS</string>
+    <string name="udfps_settings_summary">Personalize a impressão digital sob a tela</string>
     <!-- UDFPS Icons -->
-    <string name="udfps_icon_picker_title">UDFPS icon picker</string>
-    <string name="udfps_icon_picker_summary">Choose your favorite fingerprint icon</string>
+    <string name="udfps_icon_picker_title">Escolher icone do UDFPS</string>
+    <string name="udfps_icon_picker_summary">Escolhe seu ícone favorito de impressão digital</string>
     <!-- UDFPS Animations -->
-    <string name="udfps_recog_animation_effect_title">UDFPS custom animation</string>
-    <string name="udfps_recog_animation_effect_summary">Choose animation effect</string>
+    <string name="udfps_recog_animation_effect_title">Animação personalizada de UDFPS</string>
+    <string name="udfps_recog_animation_effect_summary">Escolher efeito de animação</string>
     <!-- Data usage info in QS footer -->
-    <string name="qs_footer_datausage_title">Data usage</string>
-    <string name="qs_footer_datausage_summary">Display data usage summary in quick settings footer</string>
+    <string name="qs_footer_datausage_title">Uso de dados</string>
+    <string name="qs_footer_datausage_summary">Exibir resumo do uso de dados no rodapé das config. rápidas</string>
     <!-- Status bar - Clock -->
-    <string name="status_bar_clock_title">Clock &amp; date</string>
-    <string name="status_bar_clock_summary">Customize clock &amp; date</string>
+    <string name="status_bar_clock_title">Relógio &amp; data</string>
+    <string name="status_bar_clock_summary">Personalizar relógio &amp; data</string>
     <string name="status_bar_clock_seconds_title">Clock seconds</string>
     <string name="status_bar_clock_seconds_summary">Display seconds next to clock in status bar</string>
     <string name="status_bar_clock_position_title">Clock style</string>
