@@ -35,20 +35,20 @@
     <string name="quicksettings_title">Панель быстрого доступа</string>
     <string name="quicksettings_summary">Расположение плиток, размытие</string>
     <string name="recents_title">Недавние приложения</string>
-    <string name="recents_summary">Slim recents</string>
+    <string name="recents_summary">Панель недавних приложений Slim</string>
     <string name="statusbar_title">Строка состояния</string>
     <string name="statusbar_summary">Время, оператор, значки в строке состояния</string>
     <string name="volume_title">Панель громкости</string>
     <string name="volume_summary">Панель громкости</string>
     <string name="notifications_title">Уведомления</string>
     <string name="notifications_summary">Индикатор заряда, строка уведомлений</string>
-    <string name="device_part_title">Device features</string>
-    <string name="qs_category">QS category</string>
+    <string name="device_part_title">Возможности устройства</string>
+    <string name="qs_category">Категория быстрых настроек</string>
     <string name="navbar_title">Навигация</string>
-    <string name="volume_keys_title">Volume keys</string>
+    <string name="volume_keys_title">Клавиши Громкости</string>
     <!-- General strings -->
-    <string name="ok">OK</string>
-    <string name="reset">Reset</string>
+    <string name="ok">ОК</string>
+    <string name="reset">Сброс</string>
     <string name="cancel">Отмена</string>
     <string name="save">Сохранить</string>
     <string name="default_string">По умолчанию</string>
@@ -79,52 +79,52 @@
     <string name="qs_title">Панель быстрого доступа</string>
     <!-- Lockscreen shortcuts -->
     <string name="ls_category">Элементы экрана блокировки</string>
-    <string name="ls_tuner">Enable Lockscreen tuner</string>
-    <string name="lockscreen_shortcuts">Lockscreen shortcuts</string>
-    <string name="ls_shortcut_summary">Customize Lockscreen shortcuts</string>
+    <string name="ls_tuner">Включить тюнер экрана блокировки</string>
+    <string name="lockscreen_shortcuts">Ярлыки на экране блокировки</string>
+    <string name="ls_shortcut_summary">Настройка ярлыков экрана блокировки</string>
     <!-- Lockscreen icons -->
-    <string name="lockscreen_tuner_title">Lockscreen tuner</string>
+    <string name="lockscreen_tuner_title">Настроить экран блокировки</string>
     <!-- Statusbar Items -->
-    <string name="sb_icons">Statusbar Icons</string>
-    <string name="statusbar_items_category">Statusbar items</string>
+    <string name="sb_icons">Значки строки состояния</string>
+    <string name="statusbar_items_category">Элементы строки состояния</string>
     <!-- Status bar - icons -->
-    <string name="status_bar_icons_title">Status bar icons</string>
+    <string name="status_bar_icons_title">Значки в строке состояния</string>
     <!-- Lock screen visualizer -->
-    <string name="visualizer_title">Display music visualizer</string>
+    <string name="visualizer_title">Показать визуализацию музыки</string>
     <!-- Power menu and dialogs opacity -->
     <!-- AOKP custom system animations -->
     <!-- Power menu Animations  -->
     <string name="power_menu_animation">Меню питания</string>
     <!-- QS header image -->
     <!-- Lockscreen -->
-    <string name="lockscreen_category">Lockscreen</string>
+    <string name="lockscreen_category">Экран блокировки</string>
     <!-- Themes -->
-    <string name="theme_type_title">System theme</string>
-    <string name="theme_type_summary">Select theme</string>
+    <string name="theme_type_title">Системная тема</string>
+    <string name="theme_type_summary">Выберите тему</string>
     <!--Accenter -->
     <string name="themes_hub_title">Темы и оформление</string>
-    <string name="themes_hub_summary">Accents-Gradients-Themes</string>
-    <string name="rgb_accent_picker_title_dark">Accent Picker</string>
-    <string name="rgb_accent_picker_summary">Choose the accent color yourself</string>
-    <string name="theme_option_reset_title">Reset Theme Options</string>
-    <string name="theme_option_reset_message">Are you sure you want to reset themes-accent to default?</string>
+    <string name="themes_hub_summary">Акценты-Градиенты-Темы</string>
+    <string name="rgb_accent_picker_title_dark">Выбор акцента</string>
+    <string name="rgb_accent_picker_summary">Выберите цвет акцента самостоятельно</string>
+    <string name="theme_option_reset_title">Сбросить настройки темы</string>
+    <string name="theme_option_reset_message">Вы уверены, что хотите вернуть цвета по умолчанию?</string>
     <!--ThemePicker-->
-    <string name="theme_select_title">Styles and Wallpapers</string>
-    <string name="theme_select_summary">Browse and select installed themes</string>
+    <string name="theme_select_title">Стили и обои</string>
+    <string name="theme_select_summary">Посмотреть и выбрать установленные темы</string>
     <!-- Battery light -->
-    <string name="battery_light_settings">Battery charging light</string>
-    <string name="notification_light_settings">Notifications light</string>
+    <string name="battery_light_settings">Индикатор зарядки батареи</string>
+    <string name="notification_light_settings">Индикатор уведомлений</string>
     <!-- Volume rocker wake -->
-    <string name="volume_rocker_wake_title">Volume rocker wake</string>
+    <string name="volume_rocker_wake_title">Пробуждение кнопками громкости</string>
     <!-- Miscellaneous -->
-    <string name="miscellaneous_spoofing_category">Spoofing</string>
+    <string name="miscellaneous_spoofing_category">Подмена</string>
     <!-- Miscellaneous/Spoofing -->
-    <string name="spoofing_title">Component spoofing</string>
-    <string name="spoofing_summary">Bypass app restrictions by spoofing components</string>
-    <string name="spoof_screen_title">Spoofing</string>
-    <string name="spoof_screen_summary">Manage Play Integrity Fix, TrickyStore, game spoofing, and app list hiding</string>
-    <string name="spoof_dashboard_pif_summary">Manage the active Play Integrity Fix configuration.</string>
-    <string name="spoof_dashboard_trickystore_summary">Manage the TrickyStore keybox and target apps.</string>
+    <string name="spoofing_title">Подмена компонентов</string>
+    <string name="spoofing_summary">Обходит ограничения приложений с помощью подмены компонентов</string>
+    <string name="spoof_screen_title">Подмена</string>
+    <string name="spoof_screen_summary">Управление Play Integrity Fix, TrickyStore, подменой в играх и скрытием списка приложений</string>
+    <string name="spoof_dashboard_pif_summary">Управление активной конфигурацией Play Integrity Fix.</string>
+    <string name="spoof_dashboard_trickystore_summary">Управление контейнером ключей TrickyStore и целевыми приложениями.</string>
     <string name="spoof_dashboard_app_spoof_summary">Manage spoofed device profiles for selected games.</string>
     <string name="spoof_dashboard_pif_empty_detail">Import a config or fetch a new profile.</string>
     <string name="spoof_dashboard_pif_detail">%1$s\nSecurity patch: %2$s</string>
