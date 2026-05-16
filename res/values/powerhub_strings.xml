@@ -381,7 +381,7 @@
     <string name="theme_style_title">Theme style</string>
     <string name="theme_style_tonal_spot">Tonal Spot (Default)</string>
     <string name="theme_style_vibrant">Vibrant</string>
-    <string name="theme_style_expressive">Expressive</string>
+    <string name="theme_style_expressive">Exspressive</string>
     <string name="theme_style_spritz">Spritz</string>
     <string name="theme_style_rainbow">Rainbow</string>
     <string name="theme_style_fruit_salad">Fruit Salad</string>
@@ -503,7 +503,7 @@
     <string name="ongoing_smart_actions_summary">Show active status icons for Flashlight, Hotspot, DND, etc. in the indicator</string>
     <string name="voltage_logo">Show Voltage Logo</string>
     <string name="voltage_logo_summary">Display a stylized lightning bolt as a fallback indicator when no actions are active</string>
-    <string name="progress_footer_text">     "The status bar progress bar provides real-time updates for both media playback and active downloads/uploads.
+    <string name="progress_footer_text">     The status bar progress bar provides real-time updates for both media playback and active downloads/uploads.
  
      - 🎵 Media Progress:
      • Displays playback progress for music and video when media is playing.
@@ -518,7 +518,7 @@
      • Automatically hides when no active transfers are detected.
      • Single tap opens the app responsible for the download.
  
-     The progress bar dynamically switches between media and download states, ensuring you always have the most relevant information at a glance."
+     The progress bar dynamically switches between media and download states, ensuring you always have the most relevant information at a glance.
      </string>
     <!-- Freeform launch mode -->
     <string name="freeform_launch_mode_title">Freeform launch mode</string>
