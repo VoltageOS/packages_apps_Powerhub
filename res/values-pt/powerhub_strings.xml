@@ -482,43 +482,44 @@
     <string name="wallpaper_settings_summary">Configure estilos de plano de fundo e ajustes</string>
     <string name="wallpaper_blur_title">Desfoque do plano de fundo</string>
     <string name="wallpaper_blur_summary">Ative ou desative efeito de desfoque do plano de fundo</string>
-    <string name="wallpaper_blur_filter">Wallpaper blur style</string>
-    <string name="wallpaper_dim_title">Wallpaper dim</string>
-    <string name="wallpaper_dim_level_title">Wallpaper dim level</string>
-    <string name="wallpaper_dim_level_summary">Configure wallpaper dim level</string>
-    <string name="glass_blur">Glass blur</string>
-    <string name="frosted_blur">Frosted blur</string>
-    <string name="wallpaper_styles_footer">        For wallpaper styles to work effectively, users must set the wallpapers for the lockscreen and homescreen at different times.\nThe same wallpaper can be used, but it should not be applied to both the lockscreen and homescreen at the same time.\nThis is optional when using the BOTH OPTION for wallpaper blur and dim styles.
+    <string name="wallpaper_blur_filter">Estilo de desfoque do plano de fundo</string>
+    <string name="wallpaper_dim_title">Plano de fundo escuro</string>
+    <string name="wallpaper_dim_level_title">Nível do plano de fundo escuro</string>
+    <string name="wallpaper_dim_level_summary">Altere o nível de escurecimento do plano de fundo</string>
+    <string name="glass_blur">Desfoque de vidro</string>
+    <string name="frosted_blur">Desfoque congelado</string>
+    <string name="wallpaper_styles_footer">        
+Para que os planos de fundo funcionem corretamente, usuários devem altera-lo na tela de bloqueio e na tela inicial em momentos diferentes.\nO mesmo plano de fundo pode ser usado, mas não deve ser aplicado ao mesmo tempo para a tela de bloqueio e tela inicial.\nIsso é opcional ao usar a opção \"AMBOS\" para estilos de desfoque e escurecimento do plano de fundo.
     </string>
     <!-- Ongoing action chip -->
-    <string name="ongoing_progress_settings_title">Statusbar action chip</string>
-    <string name="ongoing_progress_settings_summary">Statusbar action chip options</string>
-    <string name="ongoing_action_chip_title">Ongoing action chip</string>
-    <string name="ongoing_action_chip_summary">Show progress indicator in status bar for ongoing actions like downloads</string>
-    <string name="compact_progress_mode_title">Compact Progress Indicator</string>
-    <string name="compact_progress_mode_summary">Use a compact circular indicator for ongoing actions</string>
-    <string name="show_media_progress_title">Show media progress</string>
-    <string name="show_media_progress_summary">\"Display media playback progress in the status bar</string>
-    <string name="ongoing_smart_actions_title">Smart Actions Indicator</string>
-    <string name="ongoing_smart_actions_summary">Show active status icons for Flashlight, Hotspot, DND, etc. in the indicator</string>
-    <string name="voltage_logo">Show Voltage Logo</string>
-    <string name="voltage_logo_summary">Display a stylized lightning bolt as a fallback indicator when no actions are active</string>
-    <string name="progress_footer_text">     \"The status bar progress bar provides real-time updates for both media playback and active downloads/uploads.
+    <string name="ongoing_progress_settings_title">Chip de ação na barra de status</string>
+    <string name="ongoing_progress_settings_summary">Opções do chip de ação da barra de status</string>
+    <string name="ongoing_action_chip_title">Chip de ação em andamento</string>
+    <string name="ongoing_action_chip_summary">Mostra um indicador de progresso na barra de status para ações em andamento como downloads</string>
+    <string name="compact_progress_mode_title">Indicador de progresso compacto</string>
+    <string name="compact_progress_mode_summary">Use um indicador circular compacto para ações em andamento</string>
+    <string name="show_media_progress_title">Mostrar progresso de mídia</string>
+    <string name="show_media_progress_summary">Mostra o progresso da reprodução de mídia na barra de status</string>
+    <string name="ongoing_smart_actions_title">Indicador de Ações Inteligente</string>
+    <string name="ongoing_smart_actions_summary">Mostra um ícone ativo de status para Lanterna, Hotspot, DND, etc. no indicador</string>
+    <string name="voltage_logo">Mostrar logo da Voltage</string>
+    <string name="voltage_logo_summary">Mostra um raio estilizado como indicador quando nenhuma ação está ativa</string>
+    <string name="progress_footer_text">    \"A barra de progresso da barra de status oferece atualizações em tempo real para ambos: reprodução de mídia e downloads/uploads ativos.
  
-     - 🎵 Media Progress:
-     • Displays playback progress for music and video when media is playing.
-     • Single tap opens playback controls (Previous, Next track).
-     • Double tap toggles play/pause.
-     • Swipe left skips to the previous track.
-     • Swipe right skips to the next track.
-     • Long press opens the media app. 
+    - 🎵 Progresso de Mídia:
+    • Exibe progresso de repdoução para música e vídeo quando a mídia está sendo reproduzida.
+    • Toque único abre os controles de reprodução (Anterior, Próxima faixa).
+    • Toque duplo altera entre tocar/pausar.
+    • Deslizar para esquerda pula para a faixa anterior.
+    • Deslizar para direita pula para a próxima faixa.
+    • Toque longo abre o app de mídia.
  
-     - 📥Download/Upload Progress:
-     • Shows progress for ongoing downloads and uploads.
-     • Automatically hides when no active transfers are detected.
-     • Single tap opens the app responsible for the download.
+    - 📥 Progresso de Download/Upload:
+    • Mostra progresso para downloads e uploads em progresso.
+    • Automaticamente esconde quando não há transferências ativas.
+    • Toque único abre o app responsável pelo download.
  
-     The progress bar dynamically switches between media and download states, ensuring you always have the most relevant information at a glance.\"
+    A barra de altera dinamicamente entre estado de mídia e download, assegurando que você tenha a informação mais relevante primeiro.\"
      </string>
     <!-- Freeform launch mode -->
     <string name="freeform_launch_mode_title">Freeform launch mode</string>
