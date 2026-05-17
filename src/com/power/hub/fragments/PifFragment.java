@@ -54,10 +54,6 @@ public class PifFragment extends SettingsPreferenceFragment {
     private static final String KEY_IMPORT_FILE = "pif_import_file";
     private static final String KEY_SHOW_PROPS = "pif_show_props";
     private static final String KEY_SPOOF_PHOTOS = "spoof_pif_photos";
-    private static final String KEY_SPOOF_PROPS = "pif_spoof_props";
-    private static final String KEY_SPOOF_PROVIDER = "pif_spoof_provider";
-    private static final String KEY_SPOOF_SIGNATURE = "pif_spoof_signature";
-    private static final String KEY_SPOOF_VENDING_BUILD = "pif_spoof_vending_build";
     private static final String KEY_OPTIONS_CATEGORY = "pif_options_category";
 
     private PifManager mPifManager;
@@ -69,10 +65,6 @@ public class PifFragment extends SettingsPreferenceFragment {
     private Preference mImportPreference;
     private Preference mShowPropsPreference;
     private SwitchPreferenceCompat mSpoofPhotosPreference;
-    private SwitchPreferenceCompat mSpoofPropsPreference;
-    private SwitchPreferenceCompat mSpoofProviderPreference;
-    private SwitchPreferenceCompat mSpoofSignaturePreference;
-    private SwitchPreferenceCompat mSpoofVendingBuildPreference;
     private PreferenceCategory mOptionsCategory;
     private String mImportTargetFileName;
 
@@ -105,10 +97,6 @@ public class PifFragment extends SettingsPreferenceFragment {
         mImportPreference = findPreference(KEY_IMPORT_FILE);
         mShowPropsPreference = findPreference(KEY_SHOW_PROPS);
         mSpoofPhotosPreference = findPreference(KEY_SPOOF_PHOTOS);
-        mSpoofPropsPreference = findPreference(KEY_SPOOF_PROPS);
-        mSpoofProviderPreference = findPreference(KEY_SPOOF_PROVIDER);
-        mSpoofSignaturePreference = findPreference(KEY_SPOOF_SIGNATURE);
-        mSpoofVendingBuildPreference = findPreference(KEY_SPOOF_VENDING_BUILD);
         mOptionsCategory = findPreference(KEY_OPTIONS_CATEGORY);
 
         mStatusPreference.setOnPreferenceClickListener(preference -> {
@@ -158,42 +146,6 @@ public class PifFragment extends SettingsPreferenceFragment {
         if (mSpoofPhotosPreference != null) {
             mSpoofPhotosPreference.setOnPreferenceChangeListener((preference, newValue) -> {
                 mPifManager.setSpoofPhotos((Boolean) newValue);
-                return true;
-            });
-        }
-        if (mSpoofPropsPreference != null) {
-            mSpoofPropsPreference.setOnPreferenceChangeListener(null);
-            mSpoofPropsPreference.setChecked(mPifManager.isSpoofPropsEnabled());
-            mSpoofPropsPreference.setOnPreferenceChangeListener((preference, newValue) -> {
-                mPifManager.setSpoofProps((Boolean) newValue);
-                refreshUi();
-                return true;
-            });
-        }
-        if (mSpoofProviderPreference != null) {
-            mSpoofProviderPreference.setOnPreferenceChangeListener(null);
-            mSpoofProviderPreference.setChecked(mPifManager.isSpoofProviderEnabled());
-            mSpoofProviderPreference.setOnPreferenceChangeListener((preference, newValue) -> {
-                mPifManager.setSpoofProvider((Boolean) newValue);
-                refreshUi();
-                return true;
-            });
-        }
-        if (mSpoofSignaturePreference != null) {
-            mSpoofSignaturePreference.setOnPreferenceChangeListener(null);
-            mSpoofSignaturePreference.setChecked(mPifManager.isSpoofSignatureEnabled());
-            mSpoofSignaturePreference.setOnPreferenceChangeListener((preference, newValue) -> {
-                mPifManager.setSpoofSignature((Boolean) newValue);
-                refreshUi();
-                return true;
-            });
-        }
-        if (mSpoofVendingBuildPreference != null) {
-            mSpoofVendingBuildPreference.setOnPreferenceChangeListener(null);
-            mSpoofVendingBuildPreference.setChecked(mPifManager.isSpoofVendingBuildEnabled());
-            mSpoofVendingBuildPreference.setOnPreferenceChangeListener((preference, newValue) -> {
-                mPifManager.setSpoofVendingBuild((Boolean) newValue);
-                refreshUi();
                 return true;
             });
         }

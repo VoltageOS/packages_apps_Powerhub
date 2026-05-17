@@ -43,10 +43,13 @@ public class PifManager {
     private static final String VENDING_PKG = "com.android.vending";
     private static final String PHOTOS_PKG = "com.google.android.apps.photos";
     private static final String PHOTOS_SPOOF_SECURE_KEY = "spoof_pif_photos";
-    private static final String PROPS_SPOOF_KEY = "spoofProps";
-    private static final String PROVIDER_SPOOF_KEY = "spoofProvider";
-    private static final String SIGNATURE_SPOOF_KEY = "spoofSignature";
-    private static final String VENDING_BUILD_SPOOF_KEY = "spoofVendingBuild";
+    private static final String PROPS_SPOOF_SECURE_KEY = "pif_spoof_props";
+    private static final String PROVIDER_SPOOF_SECURE_KEY = "pif_spoof_provider";
+    private static final String SIGNATURE_SPOOF_SECURE_KEY = "pif_spoof_signature";
+    private static final String VENDING_BUILD_SPOOF_SECURE_KEY = "pif_spoof_vending_build";
+
+    private static final java.util.Set<String> BOOLEAN_FLAG_KEYS = new java.util.HashSet<>(
+            Arrays.asList("spoofProps", "spoofProvider", "spoofSignature", "spoofVendingBuild"));
 
     private static final List<String> LEGACY_CONFIG_FILES = Arrays.asList(
             "custom.pif.prop",
@@ -139,48 +142,47 @@ public class PifManager {
     }
 
     public boolean isSpoofPropsEnabled() {
-        String val = getCurrentProperties().get(PROPS_SPOOF_KEY);
-        return val != null ? isTruthy(val) : true;
+        String val = Settings.Secure.getString(mContext.getContentResolver(), PROPS_SPOOF_SECURE_KEY);
+        return val == null || isTruthy(val);
     }
 
     public void setSpoofProps(boolean enabled) {
-        updateToggle(PROPS_SPOOF_KEY, enabled, null);
+        Settings.Secure.putString(mContext.getContentResolver(), PROPS_SPOOF_SECURE_KEY,
+                String.valueOf(enabled));
+        killPackage(VENDING_PKG);
     }
 
     public boolean isSpoofProviderEnabled() {
-        String val = getCurrentProperties().get(PROVIDER_SPOOF_KEY);
-        return val != null ? isTruthy(val) : true;
+        String val = Settings.Secure.getString(mContext.getContentResolver(), PROVIDER_SPOOF_SECURE_KEY);
+        return val == null || isTruthy(val);
     }
 
     public void setSpoofProvider(boolean enabled) {
-        updateToggle(PROVIDER_SPOOF_KEY, enabled, VENDING_PKG);
+        Settings.Secure.putString(mContext.getContentResolver(), PROVIDER_SPOOF_SECURE_KEY,
+                String.valueOf(enabled));
+        killPackage(VENDING_PKG);
     }
 
     public boolean isSpoofSignatureEnabled() {
-        String val = getCurrentProperties().get(SIGNATURE_SPOOF_KEY);
-        return val != null ? isTruthy(val) : false;
+        String val = Settings.Secure.getString(mContext.getContentResolver(), SIGNATURE_SPOOF_SECURE_KEY);
+        return val != null && isTruthy(val);
     }
 
     public void setSpoofSignature(boolean enabled) {
-        updateToggle(SIGNATURE_SPOOF_KEY, enabled, VENDING_PKG);
+        Settings.Secure.putString(mContext.getContentResolver(), SIGNATURE_SPOOF_SECURE_KEY,
+                String.valueOf(enabled));
+        killPackage(VENDING_PKG);
     }
 
     public boolean isSpoofVendingBuildEnabled() {
-        String val = getCurrentProperties().get(VENDING_BUILD_SPOOF_KEY);
-        return val != null ? isTruthy(val) : true;
+        String val = Settings.Secure.getString(mContext.getContentResolver(), VENDING_BUILD_SPOOF_SECURE_KEY);
+        return val == null || isTruthy(val);
     }
 
     public void setSpoofVendingBuild(boolean enabled) {
-        updateToggle(VENDING_BUILD_SPOOF_KEY, enabled, VENDING_PKG);
-    }
-
-    private void updateToggle(String key, boolean enabled, String packageToKill) {
-        Map<String, String> props = new LinkedHashMap<>(getCurrentProperties());
-        props.put(key, String.valueOf(enabled));
-        writeStoredConfig(props);
-        if (packageToKill != null && !packageToKill.isEmpty()) {
-            killPackage(packageToKill);
-        }
+        Settings.Secure.putString(mContext.getContentResolver(), VENDING_BUILD_SPOOF_SECURE_KEY,
+                String.valueOf(enabled));
+        killPackage(VENDING_PKG);
     }
 
     public static boolean looksLikeJson(String fileName, String content) {
@@ -260,10 +262,12 @@ public class PifManager {
 
     private void writeStoredConfig(Map<String, String> props) {
         try {
+            Map<String, String> filtered = new LinkedHashMap<>(props);
+            filtered.keySet().removeAll(BOOLEAN_FLAG_KEYS);
             Settings.Secure.putString(
                     mContext.getContentResolver(),
                     PIF_CONFIG_KEY,
-                    serializeJsonConfig(props));
+                    serializeJsonConfig(filtered));
         } catch (Exception e) {
             Log.e(TAG, "Failed to store PIF config", e);
         }

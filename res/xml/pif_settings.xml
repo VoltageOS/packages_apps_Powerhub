@@ -34,25 +34,25 @@
             android:summary="@string/pif_spoof_photos_summary"
             android:defaultValue="true" />
 
-        <SwitchPreferenceCompat
+        <com.voltage.support.preferences.SecureSettingSwitchPreference
             android:key="pif_spoof_props"
             android:title="@string/pif_spoof_props_title"
             android:summary="@string/pif_spoof_props_summary"
             android:defaultValue="true" />
 
-        <SwitchPreferenceCompat
+        <com.voltage.support.preferences.SecureSettingSwitchPreference
             android:key="pif_spoof_provider"
             android:title="@string/pif_spoof_provider_title"
             android:summary="@string/pif_spoof_provider_summary"
             android:defaultValue="true" />
 
-        <SwitchPreferenceCompat
+        <com.voltage.support.preferences.SecureSettingSwitchPreference
             android:key="pif_spoof_signature"
             android:title="@string/pif_spoof_signature_title"
             android:summary="@string/pif_spoof_signature_summary"
             android:defaultValue="false" />
 
-        <SwitchPreferenceCompat
+        <com.voltage.support.preferences.SecureSettingSwitchPreference
             android:key="pif_spoof_vending_build"
             android:title="@string/pif_spoof_vending_build_title"
             android:summary="@string/pif_spoof_vending_build_summary"
