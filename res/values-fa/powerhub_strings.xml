@@ -16,32 +16,32 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- App Title -->
-    <string name="powerhub_title">Power Hub</string>
+    <string name="powerhub_title">هاب قدرت</string>
     <!-- Categories -->
-    <string name="button_title">Buttons</string>
-    <string name="button_summary">Hardware keys, Navigation bar</string>
-    <string name="gestures_title">Gestures</string>
-    <string name="gestures_summary">Jump to camera, swipe to screenshot</string>
-    <string name="lockscreen_title">Lock screen</string>
-    <string name="lockscreen_summary">Music visualizer, charging animation, clock style</string>
-    <string name="misc_title">Advanced</string>
-    <string name="misc_summary">Gaming mode, volume controls</string>
-    <string name="animations_title">Animations</string>
-    <string name="animations_summary">System animations</string>
-    <string name="powermenu_title">Power menu</string>
-    <string name="powermenu_summary">Advanced restart, power menu opacity</string>
-    <string name="theme_title">Themes</string>
-    <string name="theme_summary">System theme, rounded, switch theme</string>
-    <string name="quicksettings_title">Quick Settings</string>
-    <string name="quicksettings_summary">Tile layout, blur</string>
-    <string name="recents_title">Recents apps</string>
-    <string name="recents_summary">Slim recents</string>
-    <string name="statusbar_title">Status bar</string>
-    <string name="statusbar_summary">Clock, carrier, status icons</string>
-    <string name="volume_title">Volume rockers</string>
-    <string name="volume_summary">Volume rockers</string>
-    <string name="notifications_title">Notifications</string>
-    <string name="notifications_summary">Battery light, notifications header</string>
+    <string name="button_title">دکمه‌‌ها</string>
+    <string name="button_summary">کلیدهای سخت‌افزاری، نوار جهت‌ها</string>
+    <string name="gestures_title">حرکات انگشت</string>
+    <string name="gestures_summary">پرش به دوربین، کشیدن دست برای عکس گرفتن از صفحه</string>
+    <string name="lockscreen_title">قفل صفحه</string>
+    <string name="lockscreen_summary">تجسم موسقی، انیمیشن شارژ، سبک ساعت</string>
+    <string name="misc_title">پیشرفته</string>
+    <string name="misc_summary">حالت بازی، کنترل صدا</string>
+    <string name="animations_title">انیمیشن‌ها</string>
+    <string name="animations_summary">انیمیشن‌های سیستم</string>
+    <string name="powermenu_title">منوی قدرت</string>
+    <string name="powermenu_summary">راه‌اندازی مجدد پیشرفته، تاری منوی قدرت</string>
+    <string name="theme_title">پوسته‌ها</string>
+    <string name="theme_summary">پوسته سیستم، گرد شده، تعویض پوسته</string>
+    <string name="quicksettings_title">تنظیمات سریع</string>
+    <string name="quicksettings_summary">طرح کاشی، محو شدگی</string>
+    <string name="recents_title">برنامه‌های اخیر</string>
+    <string name="recents_summary">باریک های اخیر</string>
+    <string name="statusbar_title">نوار وضعیت</string>
+    <string name="statusbar_summary">ساعت، حامل، آیکون های وضعیت</string>
+    <string name="volume_title">دکمه های صدا</string>
+    <string name="volume_summary">دکمه های صدا</string>
+    <string name="notifications_title">اعلانات</string>
+    <string name="notifications_summary">چراغ باتری، سربرگ اعلان ها</string>
     <string name="device_part_title">Device features</string>
     <string name="qs_category">QS category</string>
     <string name="navbar_title">Navigation bar</string>
@@ -94,7 +94,7 @@
     <!-- Power menu and dialogs opacity -->
     <!-- AOKP custom system animations -->
     <!-- Power menu Animations  -->
-    <string name="power_menu_animation">Power menu</string>
+    <string name="power_menu_animation">منوی قدرت</string>
     <!-- QS header image -->
     <!-- Lockscreen -->
     <string name="lockscreen_category">Lockscreen</string>
@@ -102,7 +102,7 @@
     <string name="theme_type_title">System theme</string>
     <string name="theme_type_summary">Select theme</string>
     <!--Accenter -->
-    <string name="themes_hub_title">Themes</string>
+    <string name="themes_hub_title">پوسته‌ها</string>
     <string name="themes_hub_summary">Accents-Gradients-Themes</string>
     <string name="rgb_accent_picker_title_dark">Accent Picker</string>
     <string name="rgb_accent_picker_summary">Choose the accent color yourself</string>
@@ -316,7 +316,7 @@
     <string name="gameprops_load_json_title">Select per-app game props JSON file</string>
     <string name="gameprops_load_json_summary">Choose the JSON file to be used to spoof more games</string>
     <!-- Power menu -->
-    <string name="power_menu_title">Power menu</string>
+    <string name="power_menu_title">منوی قدرت</string>
     <string name="power_menu_summary">Customize power menu options</string>
     <string name="power_menu_actions_title">Actions</string>
     <string name="power_menu_screenshot_title">Screenshot</string>
@@ -376,7 +376,7 @@
     <string name="network_traffic_hidearrow">Hide arrows</string>
     <string name="network_traffic_hidearrow_summary">Hide the network traffic indicator arrows</string>
     <!-- Monet settings -->
-    <string name="monet_settings_title">Themes</string>
+    <string name="monet_settings_title">پوسته‌ها</string>
     <string name="monet_settings_sammary">A few extra settings to customize monet engine</string>
     <string name="theme_style_title">Theme style</string>
     <string name="theme_style_tonal_spot">Tonal Spot (Default)</string>
@@ -417,7 +417,7 @@
     <string name="disable_qs_title">Hide QS in secure lockscreen</string>
     <string name="disable_qs_summary">Hides QS if device is locked. Does not disable notification shade</string>
     <!-- Power menu on secure lockscreen -->
-    <string name="lockscreen_enable_power_menu_title">Power menu</string>
+    <string name="lockscreen_enable_power_menu_title">منوی قدرت</string>
     <string name="lockscreen_enable_power_menu_summary">Allow accessing power menu on secure lockscreen</string>
     <!-- QSTile requires unlocking before being accessible -->
     <string name="qstile_requires_unlocking_title">Secure QS tiles require unlocking</string>
