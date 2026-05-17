@@ -139,14 +139,14 @@
     <string name="tensor_spoof_title">Подмена функций процессора Tensor</string>
     <string name="tensor_spoof_summary">Разблокировка функций Tensor/Pixel</string>
     <string name="gms_spoof_title">Play Integrity Fix</string>
-    <string name="gms_spoof_summary">Spoof your device to pass Google Play Attestation (not applicable to sandboxed gapps)</string>
-    <string name="spoofing_app_specific_category">App-Specific</string>
-    <string name="spoofing_vending_title">Play Store spoof</string>
-    <string name="spoofing_vending_summary">Spoof the Play Store to the latest Pixel device</string>
-    <string name="spoofing_photos_title">Google Photos spoof</string>
-    <string name="spoofing_photos_summary">Spoof the Google Photos app as a Pixel XL</string>
-    <string name="spoofing_snap_title">Snapchat spoof</string>
-    <string name="spoofing_snap_summary">Spoof Snapchat as a Pixel XL to fix possible chat issues</string>
+    <string name="gms_spoof_summary">Подмена данных устройства для прохождения проверки Google Play Attestation (не применимо для изолированных gapps)</string>
+    <string name="spoofing_app_specific_category">Для отдельных приложений</string>
+    <string name="spoofing_vending_title">Подмена для Play Маркета</string>
+    <string name="spoofing_vending_summary">Подмена данных Play Маркета под последнее устройство Pixel</string>
+    <string name="spoofing_photos_title">Подмена для Google Photo</string>
+    <string name="spoofing_photos_summary">Маскировать устройство под Pixel XL для приложения Google Фото, для разблокировки безлимитного хранилища фотографий</string>
+    <string name="spoofing_snap_title">Подмена Snapchat</string>
+    <string name="spoofing_snap_summary">Имитировать устройство Pixel XL в Snapchat для исправления возможных проблем с чатом</string>
     <!-- Miscellaneous/Spoofing/Play Integrity fix JSON update -->
     <string name="toast_spoofing_success">Файл pif.json успешно загружен. Устройство подменяется на %1$s для Play Integrity.</string>
     <string name="toast_spoofing_failure">Не удалось подменить системные свойства.</string>
@@ -158,9 +158,9 @@
     <string name="pif_spoofing_title">Выбрать файл PIF JSON</string>
     <string name="pif_spoofing_summary">Выберите файл PIF JSON для подмены данных в Play Integrity</string>
     <string name="pif_category_title">Play Integrity Fix</string>
-    <string name="pif_screen_intro">View the active config, fetch a new profile, or import your own pif.json or pif.prop file.</string>
-    <string name="pif_fetch_beta_title">Fetch Pixel Canary</string>
-    <string name="pif_fetch_voltage_title">Fetch from Voltage</string>
+    <string name="pif_screen_intro">Просмотр текущей конфигурации, получение нового профиля или импорт собственного файла pif.json или pif.prop.</string>
+    <string name="pif_fetch_beta_title">Получить канал тестовой сборки Pixel Canary</string>
+    <string name="pif_fetch_voltage_title">Загрузить из профиля Voltage</string>
     <string name="pif_no_config_loaded">No config loaded</string>
     <string name="pif_active_config">Active: %1$s</string>
     <string name="pif_import_title">Import Config File</string>
