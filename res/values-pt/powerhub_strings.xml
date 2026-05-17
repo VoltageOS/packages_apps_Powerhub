@@ -381,7 +381,7 @@
     <string name="theme_style_title">Estilo de tema</string>
     <string name="theme_style_tonal_spot">Ponto tonal (Padrão)</string>
     <string name="theme_style_vibrant">Vibrante</string>
-    <string name="theme_style_expressive">Expressive</string>
+    <string name="theme_style_expressive">Expressivo</string>
     <string name="theme_style_spritz">Spritz</string>
     <string name="theme_style_rainbow">Arco-íris</string>
     <string name="theme_style_fruit_salad">Salada de Frutas</string>
@@ -498,7 +498,7 @@
     <string name="compact_progress_mode_title">Indicador de progresso compacto</string>
     <string name="compact_progress_mode_summary">Use um indicador circular compacto para ações em andamento</string>
     <string name="show_media_progress_title">Exibir progresso de mídia</string>
-    <string name="show_media_progress_summary">Display media playback progress in the status bar</string>
+    <string name="show_media_progress_summary">Mostrar progresso de reprodução de mídia na barra de status</string>
     <string name="ongoing_smart_actions_title">Indicador de Ações Inteligente</string>
     <string name="ongoing_smart_actions_summary">Mostra um ícone ativo de status para Lanterna, Hotspot, DND, etc. no indicador</string>
     <string name="voltage_logo">Exibir logo da Voltage</string>
