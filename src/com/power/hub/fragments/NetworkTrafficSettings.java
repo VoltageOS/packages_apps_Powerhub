@@ -41,6 +41,7 @@ public class NetworkTrafficSettings extends SettingsPreferenceFragment
     private CustomSeekBarPreference mNetTrafficAutohideThreshold;
     private CustomSeekBarPreference mNetTrafficRefreshInterval;
     private ListPreference mNetTrafficLocation;
+    private ListPreference mNetTrafficStatusbarLocation;
     private ListPreference mNetTrafficMode;
     private ListPreference mNetTrafficUnits;
     private SwitchPreferenceCompat mNetTrafficAutohide;
@@ -59,6 +60,8 @@ public class NetworkTrafficSettings extends SettingsPreferenceFragment
         mNetTrafficLocation = (ListPreference)
                 findPreference(Settings.System.NETWORK_TRAFFIC_LOCATION);
         mNetTrafficLocation.setOnPreferenceChangeListener(this);
+        mNetTrafficStatusbarLocation = (ListPreference)
+                findPreference(Settings.System.NETWORK_TRAFFIC_STATUSBAR_LOCATION);
         mNetTrafficMode = (ListPreference)
                 findPreference(Settings.System.NETWORK_TRAFFIC_MODE);
         mNetTrafficAutohide = (SwitchPreferenceCompat)
@@ -91,12 +94,15 @@ public class NetworkTrafficSettings extends SettingsPreferenceFragment
         mNetTrafficHideArrow.setEnabled(enabled);
         mNetTrafficRefreshInterval.setEnabled(enabled);
         mNetTrafficUnits.setEnabled(enabled);
+        mNetTrafficStatusbarLocation.setEnabled(location == 1);
     }
 
     public static void reset(Context mContext) {
         ContentResolver resolver = mContext.getContentResolver();
         Settings.System.putIntForUser(resolver,
                 Settings.System.NETWORK_TRAFFIC_LOCATION, 0, UserHandle.USER_CURRENT);
+        Settings.System.putIntForUser(resolver,
+                Settings.System.NETWORK_TRAFFIC_STATUSBAR_LOCATION, 0, UserHandle.USER_CURRENT);
         Settings.System.putIntForUser(resolver,
                 Settings.System.NETWORK_TRAFFIC_MODE, 0, UserHandle.USER_CURRENT);
         Settings.System.putIntForUser(resolver,

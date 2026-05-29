@@ -27,6 +27,14 @@
         android:defaultValue="0" />
 
     <com.voltage.support.preferences.SystemSettingListPreference
+        android:key="network_traffic_statusbar_location"
+        android:title="@string/network_traffic_statusbar_location_title"
+        android:entries="@array/network_traffic_statusbar_location_entries"
+        android:entryValues="@array/network_traffic_statusbar_location_values"
+        android:summary="%s"
+        android:defaultValue="0" />
+
+    <com.voltage.support.preferences.SystemSettingListPreference
         android:key="network_traffic_mode"
         android:title="@string/network_traffic_mode_title"
         android:entries="@array/network_traffic_mode_entries"
