@@ -351,9 +351,9 @@
     <!-- Network traffic -->
     <string name="network_traffic_settings_title">Network traffic monitor</string>
     <string name="network_traffic_settings_summary">Display and customize current network traffic levels</string>
-    <string name="network_traffic_location_title">Location</string>
+    <string name="network_traffic_location_title">Network traffic monitor status</string>
     <string name="network_traffic_location_disable">Вимкнено</string>
-    <string name="network_traffic_location_statusbar">Statusbar</string>
+    <string name="network_traffic_location_statusbar">Enabled</string>
     <string name="network_traffic_location_quick_statusbar">Quick Statusbar</string>
     <string name="network_traffic_mode_title">Display mode</string>
     <string name="network_traffic_mode_up">Upload only</string>
@@ -710,4 +710,10 @@
     <!-- Split shade QS -->
     <string name="qs_split_shade_title">Split Quick Settings</string>
     <string name="qs_split_shade_summary">Use a two-column layout for notifications and Quick Settings in landscape</string>
+    <!-- Network traffic statusbar sub-location -->
+    <string name="network_traffic_statusbar_location_title">Network traffic  location</string>
+    <string name="network_traffic_full">Statusbar and QS header</string>
+    <string name="network_traffic_location_full">Statusbar and QS header</string>
+    <string name="network_traffic_location_sb">Statusbar only</string>
+    <string name="network_traffic_location_qs">QS header only</string>
 </resources>
