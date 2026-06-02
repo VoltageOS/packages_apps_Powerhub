@@ -231,6 +231,39 @@ class NirvanaModeUtils(private val context: Context) {
         saveTrackedState(current)
     }
 
+    fun forceUnsuspendAll(): Int {
+        val profiles = userManager.userProfiles
+        val allPackages = packageManager.getInstalledPackages(android.content.pm.PackageManager.MATCH_ANY_USER)
+        var count = 0
+
+        for (userHandle in profiles) {
+            val userId = userHandle.identifier
+            val suspended = allPackages
+                .map { it.packageName }
+                .filter { isPackageSuspendedForUser(it, userId) }
+
+            if (suspended.isNotEmpty()) {
+                try {
+                    AppGlobals.getPackageManager().setPackagesSuspendedAsUser(
+                        suspended.toTypedArray(),
+                        false,
+                        null, null, null, 0,
+                        context.opPackageName,
+                        userId,
+                        userId,
+                    )
+                    count += suspended.size
+                    Log.i(TAG, "Force-unsuspended ${suspended.size} package(s) for user $userId: $suspended")
+                } catch (e: Exception) {
+                    Log.e(TAG, "Force-unsuspend failed for user $userId", e)
+                }
+            }
+        }
+
+        saveTrackedState(emptySet())
+        return count
+    }
+
     private fun applyBatchSuspension(
         pkgs: Array<String>,
         suspend: Boolean,

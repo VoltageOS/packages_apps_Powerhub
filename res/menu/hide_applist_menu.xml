@@ -41,4 +41,8 @@
         android:id="@+id/hide_overlay"
         android:title="@string/menu_hide_overlay"
         android:showAsAction="never" />
+    <item
+        android:id="@+id/force_unsuspend_all"
+        android:title="@string/nirvana_force_unsuspend_all"
+        android:showAsAction="never" />
 </menu>

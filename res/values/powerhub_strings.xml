@@ -778,6 +778,10 @@
     <string name="nirvana_status_active_until">Active until %1$s</string>
     <string name="nirvana_status_scheduled">Scheduled: %1$s - %2$s</string>
     <string name="nirvana_status_active_manual_scheduled">Active now\nScheduled: %1$s - %2$s</string>
+    <string name="nirvana_force_unsuspend_all">Force enable all suspended apps</string>
+    <string name="nirvana_force_unsuspend_dialog_title">Force enable all suspended apps?</string>
+    <string name="nirvana_force_unsuspend_dialog_message">This will attempt to unsuspend every currently suspended app across all profiles. Use this if apps are stuck in suspended state due to a conflict with Digital Wellbeing or another app manager.</string>
+    <string name="nirvana_force_unsuspend_done">Done — attempted to unsuspend %1$d app(s)</string>
 
     <string name="haze_effects">Haze effects</string>
     <string name="haze_effects_summary">Atmosphere-like wallpaper effects</string>

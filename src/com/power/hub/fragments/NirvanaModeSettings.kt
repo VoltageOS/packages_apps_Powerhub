@@ -16,6 +16,7 @@
 
 package com.power.hub.fragments
 
+import android.app.AlertDialog
 import android.app.TimePickerDialog
 import android.app.usage.UsageStatsManager
 import android.content.Context
@@ -39,6 +40,7 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.SearchView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
@@ -277,6 +279,7 @@ class NirvanaModeSettings : Fragment(R.layout.nirvana_mode_fragment) {
         }
 
         menu.findItem(R.id.hide_overlay)?.isVisible = false
+        menu.findItem(R.id.force_unsuspend_all)?.isVisible = true
 
         val searchItem = menu.findItem(R.id.search)
         val searchView = searchItem?.actionView as? SearchView
@@ -319,8 +322,37 @@ class NirvanaModeSettings : Fragment(R.layout.nirvana_mode_fragment) {
                 activity?.invalidateOptionsMenu()
                 return true
             }
+            R.id.force_unsuspend_all -> {
+                showForceUnsuspendDialog()
+                return true
+            }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    private fun showForceUnsuspendDialog() {
+        AlertDialog.Builder(requireContext())
+            .setTitle(getString(R.string.nirvana_force_unsuspend_dialog_title))
+            .setMessage(getString(R.string.nirvana_force_unsuspend_dialog_message))
+            .setPositiveButton(android.R.string.ok) { _, _ ->
+                runForceUnsuspend()
+            }
+            .setNegativeButton(android.R.string.cancel, null)
+            .show()
+    }
+
+    private fun runForceUnsuspend() {
+        Thread {
+            val count = nirvanaUtils.forceUnsuspendAll()
+            Handler(Looper.getMainLooper()).post {
+                if (!isAdded) return@post
+                val msg = getString(R.string.nirvana_force_unsuspend_done, count)
+                Toast.makeText(requireContext(), msg, Toast.LENGTH_LONG).show()
+                packageList = requireContext().packageManager
+                    .getInstalledPackages(PackageManager.MATCH_ANY_USER)
+                refreshAppList()
+            }
+        }.start()
     }
 
     override fun onPrepareOptionsMenu(menu: Menu) {
