@@ -29,12 +29,4 @@
      <color name="powerhub_purple_tint">#A48AD4</color>
      <color name="powerhub_gray_tint">#9AA0A6</color>
 
-     <string name="nirvana_stats_title">Daily Stats</string>
-     <string name="nirvana_stats_total_time">Screen time</string>
-     <string name="nirvana_stats_unlocks">Unlocks</string>
-     <string name="nirvana_stats_app_breakdown">Usage details</string>
-     <string name="nirvana_time_fmt_hm">%1$dh %2$dm</string>
-     <string name="nirvana_time_fmt_m">%1$dm</string>
-     <string name="nirvana_time_fmt_less_min">&lt; 1m</string>
-
 </resources>

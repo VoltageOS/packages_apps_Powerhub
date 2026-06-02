@@ -88,6 +88,10 @@ object NirvanaUsageStatsHelper {
                 UsageEvents.Event.ACTIVITY_RESUMED,
                 -> {
                     event.packageName?.let { packageName ->
+                        activePackages.keys
+                            .filter { it != packageName }
+                            .toList()
+                            .forEach { addUsage(it, timestamp) }
                         activePackages.putIfAbsent(packageName, timestamp.coerceAtLeast(start))
                     }
                 }

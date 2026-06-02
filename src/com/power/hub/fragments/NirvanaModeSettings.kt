@@ -18,11 +18,10 @@ package com.power.hub.fragments
 
 import android.app.AlertDialog
 import android.app.TimePickerDialog
-import android.app.usage.UsageStatsManager
-import android.content.Context
 import android.content.pm.ApplicationInfo
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
+import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.os.Handler
@@ -58,18 +57,18 @@ import java.util.Locale
  */
 class NirvanaModeSettings : Fragment(R.layout.nirvana_mode_fragment) {
     private lateinit var packageManager: PackageManager
-    private lateinit var usageStatsManager: UsageStatsManager
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: AppListAdapter
     private lateinit var packageList: List<PackageInfo>
     private lateinit var nirvanaUtils: NirvanaModeUtils
-    private var usageMap: Map<String, Long> = emptyMap()
 
     private lateinit var scheduleSwitch: CompoundButton
     private lateinit var scheduleCard: LinearLayout
     private lateinit var toggleButton: Button
     private lateinit var heroSection: LinearLayout
     private lateinit var heroDescription: TextView
+    private var defaultDescriptionColor: Int = 0
+    private val statusActiveColor: Int = Color.parseColor("#34A853")
 
     private var searchText = ""
     private var showSystem = false
@@ -79,7 +78,6 @@ class NirvanaModeSettings : Fragment(R.layout.nirvana_mode_fragment) {
         setHasOptionsMenu(true)
         packageManager = requireContext().packageManager
         packageList = packageManager.getInstalledPackages(PackageManager.MATCH_ANY_USER)
-        usageStatsManager = requireContext().getSystemService(Context.USAGE_STATS_SERVICE) as UsageStatsManager
         nirvanaUtils = NirvanaModeUtils(requireContext())
     }
 
@@ -100,6 +98,7 @@ class NirvanaModeSettings : Fragment(R.layout.nirvana_mode_fragment) {
         recyclerView = view.findViewById(R.id.rv_apps)
         heroSection = view.findViewById(R.id.hero_section)
         heroDescription = view.findViewById(R.id.tv_hero_description)
+        defaultDescriptionColor = heroDescription.currentTextColor
 
         setupEdgeToEdge(view)
 
@@ -109,7 +108,6 @@ class NirvanaModeSettings : Fragment(R.layout.nirvana_mode_fragment) {
 
         initScheduleUI()
         initManualToggleUI()
-        loadUsageStats()
         refreshAppList()
         updateHeroStatus()
     }
@@ -120,25 +118,22 @@ class NirvanaModeSettings : Fragment(R.layout.nirvana_mode_fragment) {
     private fun setupEdgeToEdge(view: View) {
         val basePadding = (16 * resources.displayMetrics.density).toInt()
 
-        ViewCompat.setOnApplyWindowInsetsListener(view) { v, windowInsets ->
-            val insets =
-                windowInsets.getInsets(
-                    WindowInsetsCompat.Type.systemBars() or WindowInsetsCompat.Type.displayCutout(),
-                )
+        ViewCompat.setOnApplyWindowInsetsListener(view) { _, windowInsets ->
+            val typeMask =
+                WindowInsetsCompat.Type.systemBars() or WindowInsetsCompat.Type.displayCutout()
+            val insets = windowInsets.getInsets(typeMask)
 
-            val topPadding = insets.top + basePadding
-            heroSection.updatePadding(top = topPadding)
+            val rootBottom =
+                ViewCompat.getRootWindowInsets(view)?.getInsets(typeMask)?.bottom ?: 0
+            val bottomInset = maxOf(insets.bottom, rootBottom)
 
-            val scrollView = recyclerView.parent?.parent as? android.view.View
-            scrollView?.setPadding(
-                scrollView.paddingLeft,
-                scrollView.paddingTop,
-                scrollView.paddingRight,
-                (130 * resources.displayMetrics.density).toInt(),
-            )
+            heroSection.updatePadding(top = insets.top + basePadding)
+            recyclerView.updatePadding(bottom = bottomInset + basePadding)
 
             WindowInsetsCompat.CONSUMED
         }
+
+        ViewCompat.requestApplyInsets(view)
     }
 
     private fun initScheduleUI() {
@@ -189,7 +184,7 @@ class NirvanaModeSettings : Fragment(R.layout.nirvana_mode_fragment) {
         val endStr = formatTime(nirvanaUtils.getEndTime())
 
         if (isActive) {
-            heroDescription.setTextColor(resources.getColor(android.R.color.holo_green_dark, null))
+            heroDescription.setTextColor(statusActiveColor)
 
             if (isScheduleActive) {
                 heroDescription.text = getString(R.string.nirvana_status_active_until, endStr)
@@ -201,7 +196,7 @@ class NirvanaModeSettings : Fragment(R.layout.nirvana_mode_fragment) {
                 }
             }
         } else {
-            heroDescription.setTextColor(resources.getColor(android.R.color.secondary_text_dark, null))
+            heroDescription.setTextColor(defaultDescriptionColor)
 
             if (isScheduleEnabled) {
                 heroDescription.text = getString(R.string.nirvana_status_scheduled, startStr, endStr)
@@ -245,17 +240,6 @@ class NirvanaModeSettings : Fragment(R.layout.nirvana_mode_fragment) {
             setTitle(getString(R.string.nirvana_mode_schedule_start))
             show()
         }
-    }
-
-    private fun loadUsageStats() {
-        Thread {
-            val dailyUsageMap = NirvanaUsageStatsHelper.queryTodaySummary(usageStatsManager).usageByPackage
-            Handler(Looper.getMainLooper()).post {
-                if (!isAdded) return@post
-                usageMap = dailyUsageMap
-                refreshAppList()
-            }
-        }.start()
     }
 
     override fun onCreateOptionsMenu(
@@ -379,14 +363,7 @@ class NirvanaModeSettings : Fragment(R.layout.nirvana_mode_fragment) {
                 isVisibleType && searchFilter && pkg != "com.android.settings"
             }.sortedWith { a, b -> getLabel(a).compareTo(getLabel(b), true) }
 
-        val sortedList =
-            if (searchText.isEmpty()) {
-                filtered.sortedByDescending { usageMap[it.packageName] ?: 0L }
-            } else {
-                filtered
-            }
-
-        adapter.submitList(sortedList.map { appInfoFromPackageInfo(it) })
+        adapter.submitList(filtered.map { appInfoFromPackageInfo(it) })
     }
 
     private fun getLabel(packageInfo: PackageInfo): String {
@@ -395,21 +372,6 @@ class NirvanaModeSettings : Fragment(R.layout.nirvana_mode_fragment) {
             "$label (Suspended)"
         } else {
             label
-        }
-    }
-
-    private fun getUsageString(packageName: String): String {
-        val millis = usageMap[packageName] ?: 0L
-        if (millis < 60000) return ""
-
-        val totalSeconds = millis / 1000
-        val hours = totalSeconds / 3600
-        val minutes = (totalSeconds % 3600) / 60
-
-        return if (hours > 0) {
-            String.format("%dh %02dm today", hours, minutes)
-        } else {
-            String.format("%dm today", minutes)
         }
     }
 
@@ -426,7 +388,6 @@ class NirvanaModeSettings : Fragment(R.layout.nirvana_mode_fragment) {
             packageInfo.packageName,
             getLabel(packageInfo),
             packageInfo.applicationInfo!!.loadIcon(packageManager),
-            getUsageString(packageInfo.packageName),
         )
 
     private fun onListUpdate(
@@ -493,11 +454,11 @@ class NirvanaModeSettings : Fragment(R.layout.nirvana_mode_fragment) {
             icon.setImageDrawable(info.icon)
             checkBox.isChecked = isChecked
 
-            pkg.text = if (info.usageText.isNotEmpty()) "${info.packageName} • ${info.usageText}" else info.packageName
+            pkg.text = info.packageName
         }
     }
 
-    data class AppInfo(val packageName: String, val label: String, val icon: Drawable, val usageText: String)
+    data class AppInfo(val packageName: String, val label: String, val icon: Drawable)
 
     object DiffCallback : DiffUtil.ItemCallback<AppInfo>() {
         override fun areItemsTheSame(
