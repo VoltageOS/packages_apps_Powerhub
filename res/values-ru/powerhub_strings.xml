@@ -202,7 +202,7 @@
     <string name="pif_spoof_vending_build_summary">Spoof build properties for Google Play Store</string>
     <string name="keybox_category_title">Keybox (TrickyStore)</string>
     <string name="trickystore_screen_title">TrickyStore</string>
-    <string name="keybox_import_title">Import Keybox</string>
+    <string name="keybox_import_title">Импортировать Keybox</string>
     <string name="keybox_installed">Keybox installed</string>
     <string name="keybox_not_found">No keybox found</string>
     <string name="keybox_import_success">Keybox imported</string>
@@ -219,7 +219,7 @@
     <string name="target_no_apps">No apps configured</string>
     <string name="target_apps_count">%1$d apps configured</string>
     <string name="target_selected_count">%1$d selected</string>
-    <string name="target_import_title">Import target.txt</string>
+    <string name="target_import_title">Импортировать файл target.txt</string>
     <string name="target_import_summary">Import a target list from file</string>
     <string name="target_import_success">Target list imported</string>
     <string name="target_import_failed">Import failed: %1$s</string>
@@ -274,7 +274,7 @@
     <string name="game_spoof_no_games">No games configured</string>
     <string name="game_spoof_select_game">Select a game</string>
     <string name="game_spoof_select_preset">Select preset</string>
-    <string name="game_spoof_no_presets">No presets available</string>
+    <string name="game_spoof_no_presets">Шаблоны отсутствуют</string>
     <string name="game_spoof_game_added">%1$s added</string>
     <string name="game_spoof_game_updated">%1$s updated</string>
     <string name="game_spoof_game_removed">Game removed</string>
@@ -334,7 +334,7 @@
     <string name="power_menu_devicecontrols_title">Device controls</string>
     <!-- Advanced restart options -->
     <string name="advanced_reboot_title">Advanced restart</string>
-    <string name="advanced_reboot_summary">When unlocked, include options in the power menu for restarting into recovery or bootloader</string>
+    <string name="advanced_reboot_summary">При разблокированном устройстве добавлять в меню питания пункты перезагрузки в recovery или bootloader</string>
     <string name="advanced_reboot_secured_title">Secured lockscreen</string>
     <string name="advanced_reboot_secured_summary">Display advanced restart options on secured lockscreen</string>
     <!-- Text shown for the title of the restart systemui option -->
@@ -393,7 +393,7 @@
     <string name="color_source_lock">Lock wallpaper</string>
     <string name="color_source_preset">Preset</string>
     <string name="accent_color_title">Accent Color</string>
-    <string name="accent_color_summary">Override default accent color</string>
+    <string name="accent_color_summary">Переопределить основной цвет по умолчанию</string>
     <string name="accent_background_title">Accent background</string>
     <string name="accent_background_summary">Choose a different accent color for background</string>
     <string name="bg_color_title">Background Color</string>
