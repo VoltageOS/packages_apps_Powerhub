@@ -172,8 +172,8 @@
     <string name="pif_current_props_title">Active PIF Properties</string>
     <string name="pif_model_label">Model: %1$s</string>
     <string name="pif_fingerprint_label">Fingerprint: %1$s</string>
-    <string name="pif_security_patch_label">Security patch: %1$s</string>
-    <string name="pif_not_available">Not available</string>
+    <string name="pif_security_patch_label">Патч безопасности: %1$s</string>
+    <string name="pif_not_available">Недоступно</string>
     <string name="pif_fetching">Fetching Pixel canary profile...</string>
     <string name="pif_fetching_voltage">Fetching Voltage profile...</string>
     <string name="pif_fetch_success">Updated to %1$s</string>
@@ -182,7 +182,7 @@
     <string name="pif_files_title">Config Files</string>
     <string name="pif_other_files_title">Other Config Files</string>
     <string name="pif_other_files_summary">%1$d of %2$d configured</string>
-    <string name="pif_replace_title">Replace</string>
+    <string name="pif_replace_title">Заменить на</string>
     <string name="pif_deleted_named">Deleted %1$s</string>
     <string name="pif_file_status_active">Active</string>
     <string name="pif_file_status_available">Available</string>
@@ -190,8 +190,8 @@
     <string name="pif_file_empty_summary">Import a file to use this slot.</string>
     <string name="pif_file_present_summary">Config file installed.</string>
     <string name="pif_options_category">PIF Options</string>
-    <string name="pif_spoof_photos_title">Spoof Google Photos</string>
-    <string name="pif_spoof_photos_summary">Appear as Pixel XL for unlimited original quality backup</string>
+    <string name="pif_spoof_photos_title">Подмена для Google Фото</string>
+    <string name="pif_spoof_photos_summary">Подмена для Google Фото</string>
     <string name="pif_spoof_props_title">Spoof properties</string>
     <string name="pif_spoof_props_summary">Spoof device properties based on PIF config</string>
     <string name="pif_spoof_provider_title">Spoof provider</string>
