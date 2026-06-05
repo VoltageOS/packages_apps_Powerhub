@@ -53,8 +53,8 @@
     <string name="save">Сохранить</string>
     <string name="default_string">По умолчанию</string>
     <string name="disabled">Отключено</string>
-    <string name="enable">Включить</string>
-    <string name="disable">Выключить</string>
+    <string name="enable">Включено</string>
+    <string name="disable">Отключено</string>
     <!-- Units -->
     <string name="unit_seconds">секунды</string>
     <string name="unit_milliseconds">миллисекунды</string>
@@ -458,7 +458,7 @@
     <string name="pulse_color_lavalamp">Lavalamp</string>
     <string name="pulse_color_album">Album art</string>
     <string name="pulse_color_accent">Accent color</string>
-    <string name="pulse_bar_count_title">Number of bars</string>
+    <string name="pulse_bar_count_title"></string>
     <string name="pulse_bar_count_summary">Set how many bars are shown in the visualizer</string>
     <string name="pulse_bar_count_units">bars</string>
     <string name="pulse_renderer">Visualizer style</string>
@@ -531,7 +531,7 @@
     <string name="qs_brightness_slider_auto_summary">Show toggle for adaptive brightness near the slider</string>
     <string name="qs_brightness_slider_show_never">Never show</string>
     <string name="qs_brightness_slider_show_expanded">Show when expanded</string>
-    <string name="qs_brightness_slider_show_always">Show always</string>
+    <string name="qs_brightness_slider_show_always">Всегда отображать</string>
     <!-- QS Brightness Slider Position -->
     <string name="qs_brightness_slider_position_title">Slider position</string>
     <string name="qs_brightness_slider_position_top">Top</string>
@@ -656,7 +656,7 @@
     <string name="qs_vibrant_shade_summary">Use vibrant accent colors for QS tiles and brightness slider</string>
     <!-- Battery customizations -->
     <string name="battery_settings_title">Battery Settings</string>
-    <string name="battery_options">Battery</string>
+    <string name="battery_options">Батарея</string>
     <string name="battery_style_title">Battery Style</string>
     <!-- Status bar - Battery -->
     <string name="status_bar_battery_style_title">Battery style</string>
@@ -715,11 +715,11 @@
     <string name="qs_split_shade_title">Split Quick Settings</string>
     <string name="qs_split_shade_summary">Use a two-column layout for notifications and Quick Settings in landscape</string>
     <!-- Network traffic statusbar sub-location -->
-    <string name="network_traffic_statusbar_location_title">Network traffic  location</string>
+    <string name="network_traffic_statusbar_location_title">Расположение индикатора сетевого трафика</string>
     <string name="network_traffic_full">Statusbar and QS header</string>
     <string name="network_traffic_location_full">Statusbar and QS header</string>
     <string name="network_traffic_location_sb">Statusbar only</string>
-    <string name="network_traffic_location_qs">QS header only</string>
+    <string name="network_traffic_location_qs">Только заголовок быстрых настроек</string>
     <string name="nirvana_stats_title">Daily Stats</string>
     <string name="nirvana_stats_total_time">Screen time</string>
     <string name="nirvana_stats_unlocks">Unlocks</string>
