@@ -138,7 +138,7 @@
     <string name="spoofing_pixel_props_summary">Подменять устройство на актуальный Pixel для выбранных приложений Google</string>
     <string name="tensor_spoof_title">Подмена функций процессора Tensor</string>
     <string name="tensor_spoof_summary">Разблокировка функций Tensor/Pixel</string>
-    <string name="gms_spoof_title">Play Integrity Fix</string>
+    <string name="gms_spoof_title">Исправление Play integrity</string>
     <string name="gms_spoof_summary">Подмена данных устройства для прохождения проверки Google Play Attestation (не применимо для изолированных gapps)</string>
     <string name="spoofing_app_specific_category">Для отдельных приложений</string>
     <string name="spoofing_vending_title">Подмена для Play Маркета</string>
