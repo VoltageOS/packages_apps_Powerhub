@@ -242,8 +242,8 @@
     <string name="app_spoof_no_apps">Приложения не настроены</string>
     <string name="app_spoof_select_app">Выберите приложение</string>
     <string name="app_spoof_select_profile">Выберите профиль устройства</string>
-    <string name="app_spoof_app_added">Добавлено: %1$</string>
-    <string name="app_spoof_app_updated">Обновлено: %1$</string>
+    <string name="app_spoof_app_added">Добавлено %1$</string>
+    <string name="app_spoof_app_updated">Обновлено %1$</string>
     <string name="app_spoof_change_profile">Изменить Профиль</string>
     <string name="app_spoof_remove">Удалить приложение</string>
     <string name="app_spoof_removed">Приложение удалено</string>
@@ -258,7 +258,7 @@
     <string name="app_spoof_profile_name_empty">Название профиля не может быть пустым</string>
     <string name="app_spoof_profile_delete_confirm_title">Удалить профиль</string>
     <string name="app_spoof_profile_delete_confirm_msg">Удалить профиль &quot;%1$s&quot;?</string>
-    <string name="app_spoof_profile_deleted">Профиль удалён.</string>
+    <string name="app_spoof_profile_deleted">Профиль удалён</string>
     <string name="app_spoof_profile_saved">Профиль &quot;%1$s&quot; сохранён</string>
     <string name="app_spoof_profile_updated">Профиль &quot;%1$s&quot; обновлён</string>
     <string name="app_spoof_profile_summary">Профиль: %1$s</string>
@@ -275,8 +275,8 @@
     <string name="game_spoof_select_game">Выбрать игру</string>
     <string name="game_spoof_select_preset">Выберите шаблон</string>
     <string name="game_spoof_no_presets">Шаблоны отсутствуют</string>
-    <string name="game_spoof_game_added">Добавлено: %1$</string>
-    <string name="game_spoof_game_updated">Обновлено: %1$</string>
+    <string name="game_spoof_game_added">Добавлено %1$</string>
+    <string name="game_spoof_game_updated">Обновлено %1$</string>
     <string name="game_spoof_game_removed">Игра удалена</string>
     <string name="game_spoof_change_preset">Изменить шаблон</string>
     <string name="game_spoof_remove_game">Удалить игру</string>
@@ -314,7 +314,7 @@
     <string name="gameprops_title">Включить подмену для отдельных игр</string>
     <string name="gameprops_summary">Включает параметры подмены свойств индивидуально для каждой игры</string>
     <string name="gameprops_load_json_title">Выбрать JSON-файл со свойствами игр</string>
-    <string name="gameprops_load_json_summary">Выберите JSON-файл,для подмены свойств в других играх</string>
+    <string name="gameprops_load_json_summary">Выберите JSON файл для подмены свойств в других играх</string>
     <!-- Power menu -->
     <string name="power_menu_title">Меню питания</string>
     <string name="power_menu_summary">Настройка параметров меню питания</string>
@@ -371,7 +371,7 @@
     <string name="network_traffic_units_kilobits">Килобит в секунду (кбит/с)</string>
     <string name="network_traffic_units_megabits">Мегабит в секунду (Мб/с)</string>
     <string name="network_traffic_units_bytes">Байт в секунду (Б/с)</string>
-    <string name="network_traffic_units_kilobytes">Килобайт в секунду (КБ/с)</string>
+    <string name="network_traffic_units_kilobytes">Килобайт в секунду (кБ/с)</string>
     <string name="network_traffic_units_megabytes">Мегабайт в секунду (МБ/с)</string>
     <string name="network_traffic_hidearrow">Скрыть стрелки</string>
     <string name="network_traffic_hidearrow_summary">Скрывать стрелки активности сетевого трафика</string>
@@ -475,7 +475,7 @@
     <string name="hide_applist_none_selected">Приложения не выбраны</string>
     <string name="hide_applist_selected_count">Выбрано %1$d приложений</string>
     <string name="spoof_dashboard_hide_applist_empty_detail">Выберите приложения, которые должны быть скрыты при проверке списка приложений.</string>
-    <string name="menu_show_overlay">Show overlay</string>
+    <string name="menu_show_overlay">Показывать слои</string>
     <string name="menu_hide_overlay">Скрыть наложение</string>
     <!-- Wallpaper Styles -->
     <string name="wallpaper_settings_title">Стили обоев</string>
@@ -488,7 +488,7 @@
     <string name="wallpaper_dim_level_summary">Настроить уровень затемнения обоев</string>
     <string name="glass_blur">Стеклянное размытие</string>
     <string name="frosted_blur">Морозное размытие</string>
-    <string name="wallpaper_styles_footer">       Для корректной работы стилей обоев необходимо устанавливать обои для экрана блокировки и домашнего экрана раздельно в разное время.\nМожно использовать одни и те же обои, но их не следует применять к обоим экранам одновременно.\nЭто требование необязательно, если для стилей размытия и затемнения обоев выбран вариант \"Оба экрана\".
+    <string name="wallpaper_styles_footer">        Чтобы стили обоев работали эффективно, пользователи должны устанавливать разные обои для экрана блокировки и домашнего экрана.\nМожно использовать одни и те же обои, но их не следует применять одновременно к экрану блокировки и домашнему экрану.\nЭто необязательно при использовании ОБОИХ ВАРИАНТОВ для стилей размытия обоев и стилей затемнения.
     </string>
     <!-- Ongoing action chip -->
     <string name="ongoing_progress_settings_title">Индикатор действий в строке состояния</string>
@@ -500,22 +500,26 @@
     <string name="show_media_progress_title">Показать прогресс медиа</string>
     <string name="show_media_progress_summary">Отображение прогресса воспроизведения медиа в строке состояния</string>
     <string name="ongoing_smart_actions_title">Умный индикатор действий</string>
-    <string name="ongoing_smart_actions_summary">Показывать в индикаторе значки активного состояния для фонарика, точки доступа, режима «Не беспокоить» и т. д.</string>
+    <string name="ongoing_smart_actions_summary">Показывать в индикаторе значки активного состояния для фонарика, точки доступа, режима «Не беспокоить» и т. д. в индикаторе</string>
     <string name="voltage_logo">Показывать логотип Voltage</string>
     <string name="voltage_logo_summary">Отображать стилизованную молнию в качестве резервного индикатора, когда нет активных действий</string>
-    <string name="progress_footer_text">     - 🎵 Прогресс медиавещания:
- • Отображает шкалу прогресса для музыки и видео во время воспроизведения.
- • Одиночное нажатие открывает элементы управления (предыдущий/следующий трек).
- • Двойное нажатие приостанавливает или возобновляет воспроизведение (пауза/плей).
- • Смахните влево, чтобы вернуться к предыдущему треку.
- • Смахните вправо, чтобы перейти к следующему треку.
- • Долгое нажатие открывает используемое медиаприложение. 
-
- - 📥 Прогресс загрузки и выгрузки:
- • Показывает статус текущих скачиваний и отправки файлов.
- • Автоматически скрывается при отсутствии активной передачи данных.
- • Одиночное нажатие открывает приложение, выполняющее загрузку.
-     Индикатор динамически переключается между режимами медиа и загрузки, благодаря чему самая важная информация всегда остается под рукой.</string>
+    <string name="progress_footer_text">Индикатор строки состояния в реальном времени показывает, сколько осталось до конца трека или завершения скачивания файлов.
+ 
+ - 🎵 Прогресс мультимедиа:
+ • Отображает прогресс воспроизведения музыки и видео.
+ • Одинарное нажатие— открывает элементы управления (Предыдущий, Следующий трек).
+ • Двойное нажатие — воспроизведение/пауза.
+ • Жест управления влево — предыдущий трек.
+ • Жест управления вправо — следующий трек.
+ • Долгое нажатие — открывает медиаплеер.
+ 
+ - 📥 Прогресс загрузки/выгрузки:
+ • Показывает прогресс активных загрузок и скачиваний.
+ • Автоматически скрывается, если нет активных передач.
+ • Одинарное нажатие — открывает приложение, отвечающее за загрузку.
+ 
+ Индикатор автоматически переключается между режимами мультимедиа и загрузки, всегда отображая самую актуальную информацию.
+     </string>
     <!-- Freeform launch mode -->
     <string name="freeform_launch_mode_title">Запуск режима «В окне»</string>
     <string name="freeform_launch_mode_1">Стандартный AOSP</string>
@@ -660,7 +664,7 @@
     <string name="status_bar_battery_style_icon_rlandscape">Горизонтальная иконка (справа)</string>
     <string name="status_bar_battery_style_icon_landscape">Горизонтальный значок (слева)</string>
     <string name="status_bar_battery_style_circle">Круг</string>
-    <string name="status_bar_battery_style_dotted_circle">Круг (Точечный)</string>
+    <string name="status_bar_battery_style_dotted_circle">Пунктирный круг</string>
     <string name="status_bar_battery_style_filled_circle">Заполненный круг</string>
     <string name="status_bar_battery_style_text">Строка текста</string>
     <string name="status_bar_battery_style_hidden">Скрытый</string>
@@ -683,7 +687,7 @@
     <string name="nirvana_mode_turn_off_now">Отключить сейчас</string>
     <string name="nirvana_mode_select_apps">Выберите отвлекающие приложения</string>
     <string name="nirvana_mode_dialog_title">Режим Nirvana активен</string>
-    <string name="nirvana_mode_dialog_message">Это приложение приостановлено во время включения режима Nirvana</string>
+    <string name="nirvana_mode_dialog_message">Это приложение приостановлено во время включения режима Nirvana.</string>
     <string name="nirvana_mode_schedule_title">Расписание</string>
     <string name="nirvana_mode_schedule_summary">Когда вам нужно время, вы можете приостановить отключение приложений и скрыть их уведомления.</string>
     <string name="nirvana_mode_apps_header">Отвлекающие приложения</string>
@@ -721,7 +725,7 @@
     <string name="nirvana_stats_unlocks">Разблокировано</string>
     <string name="nirvana_stats_notifications">Режимы оповещения</string>
     <string name="nirvana_stats_app_breakdown">Сведения об использовании</string>
-    <string name="nirvana_time_fmt_hm">%1$dч %2$dмин.</string>
-    <string name="nirvana_time_fmt_m">%1$d  Минут</string>
+    <string name="nirvana_time_fmt_hm">%1$dч %2$dмин</string>
+    <string name="nirvana_time_fmt_m">%1$dмин</string>
     <string name="nirvana_time_fmt_less_min">&lt; 1 минута</string>
 </resources>
