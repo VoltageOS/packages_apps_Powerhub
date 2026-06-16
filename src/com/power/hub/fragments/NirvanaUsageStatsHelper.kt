@@ -57,26 +57,61 @@ object NirvanaUsageStatsHelper {
 
         val usageByPackage = HashMap<String, Long>()
         val notificationCountByPackage = HashMap<String, Int>()
-        val activePackages = HashMap<String, Long>()
+        val activeTokens = HashSet<String>()
+        val activeTokenCount = HashMap<String, Int>()
+        val sessionStartByPackage = HashMap<String, Long>()
+        val everResumed = HashSet<String>()
+        var keyguardShowing = true
         var unlockCount = 0
 
         val queryStart = (start - LOOKBACK_WINDOW_MILLIS).coerceAtLeast(0L)
         val events = usageStatsManager.queryEvents(queryStart, end)
         val event = UsageEvents.Event()
 
-        fun addUsage(packageName: String, sessionEnd: Long) {
-            val sessionStart = activePackages.remove(packageName) ?: return
+        fun accrue(packageName: String, sessionBegin: Long, sessionEnd: Long) {
+            val boundedStart = sessionBegin.coerceAtLeast(start)
             val boundedEnd = sessionEnd.coerceAtMost(end)
-            if (boundedEnd <= sessionStart) return
+            if (boundedEnd <= boundedStart) return
 
-            usageByPackage[packageName] = (usageByPackage[packageName] ?: 0L) + (boundedEnd - sessionStart)
+            usageByPackage[packageName] = (usageByPackage[packageName] ?: 0L) + (boundedEnd - boundedStart)
         }
 
-        fun closeAllActiveSessions(sessionEnd: Long) {
-            if (activePackages.isEmpty()) return
-            activePackages.keys.toList().forEach { packageName ->
-                addUsage(packageName, sessionEnd)
+        fun openToken(packageName: String, token: String, timestamp: Long) {
+            everResumed.add(packageName)
+            if (!activeTokens.add(token)) return
+            val count = (activeTokenCount[packageName] ?: 0) + 1
+            activeTokenCount[packageName] = count
+            if (count == 1) {
+                sessionStartByPackage[packageName] = timestamp
             }
+        }
+
+        fun closeToken(packageName: String, token: String, timestamp: Long) {
+            if (!activeTokens.remove(token)) {
+                if (!activeTokenCount.containsKey(packageName) && everResumed.add(packageName)) {
+                    accrue(packageName, start, timestamp)
+                }
+                return
+            }
+            val count = (activeTokenCount[packageName] ?: 1) - 1
+            if (count <= 0) {
+                activeTokenCount.remove(packageName)
+                sessionStartByPackage.remove(packageName)?.let { begin ->
+                    accrue(packageName, begin, timestamp)
+                }
+            } else {
+                activeTokenCount[packageName] = count
+            }
+        }
+
+        fun closeAllSessions(timestamp: Long) {
+            if (sessionStartByPackage.isEmpty() && activeTokens.isEmpty()) return
+            for ((packageName, begin) in sessionStartByPackage) {
+                accrue(packageName, begin, timestamp)
+            }
+            sessionStartByPackage.clear()
+            activeTokenCount.clear()
+            activeTokens.clear()
         }
 
         while (events.hasNextEvent()) {
@@ -84,34 +119,36 @@ object NirvanaUsageStatsHelper {
             val timestamp = event.timeStamp
 
             when (event.eventType) {
-                UsageEvents.Event.MOVE_TO_FOREGROUND,
-                UsageEvents.Event.ACTIVITY_RESUMED,
-                -> {
+                UsageEvents.Event.ACTIVITY_RESUMED -> {
                     event.packageName?.let { packageName ->
-                        activePackages.keys
-                            .filter { it != packageName }
-                            .toList()
-                            .forEach { addUsage(it, timestamp) }
-                        activePackages.putIfAbsent(packageName, timestamp.coerceAtLeast(start))
+                        openToken(packageName, "$packageName|${event.className}|${event.instanceId}", timestamp)
                     }
                 }
 
-                UsageEvents.Event.MOVE_TO_BACKGROUND,
                 UsageEvents.Event.ACTIVITY_PAUSED,
                 UsageEvents.Event.ACTIVITY_STOPPED,
                 -> {
                     event.packageName?.let { packageName ->
-                        addUsage(packageName, timestamp)
+                        closeToken(packageName, "$packageName|${event.className}|${event.instanceId}", timestamp)
                     }
                 }
 
-                UsageEvents.Event.SCREEN_NON_INTERACTIVE -> {
-                    closeAllActiveSessions(timestamp)
+                UsageEvents.Event.SCREEN_NON_INTERACTIVE,
+                UsageEvents.Event.DEVICE_SHUTDOWN,
+                -> {
+                    closeAllSessions(timestamp)
+                }
+
+                UsageEvents.Event.KEYGUARD_SHOWN -> {
+                    keyguardShowing = true
                 }
 
                 UsageEvents.Event.KEYGUARD_HIDDEN -> {
-                    if (timestamp >= start) {
-                        unlockCount++
+                    if (keyguardShowing) {
+                        keyguardShowing = false
+                        if (timestamp >= start) {
+                            unlockCount++
+                        }
                     }
                 }
 
@@ -126,7 +163,7 @@ object NirvanaUsageStatsHelper {
             }
         }
 
-        closeAllActiveSessions(end)
+        closeAllSessions(end)
 
         return DailySummary(usageByPackage, notificationCountByPackage, unlockCount)
     }

@@ -145,7 +145,7 @@ class NirvanaStatsFragment : Fragment(R.layout.nirvana_stats_fragment) {
                 mergedList.filter { stat ->
                     try {
                         if (stat.packageName == launcherPackage) return@filter false
-                        if (stat.packageName == "com.android.settings" || stat.packageName == "com.android.systemui") return@filter false
+                        if (stat.packageName == "com.android.systemui") return@filter false
 
                         packageManager.getLaunchIntentForPackage(stat.packageName) != null
                     } catch (e: Exception) {
@@ -154,7 +154,7 @@ class NirvanaStatsFragment : Fragment(R.layout.nirvana_stats_fragment) {
                 }
 
             val totalTime = userAppsList.sumOf { it.timeMillis }
-            val totalNotifications = userAppsList.sumOf { it.notificationCount }
+            val totalNotifications = mergedList.sumOf { it.notificationCount }
 
             val timeSorted = userAppsList.filter { it.timeMillis > 0 }.sortedByDescending { it.timeMillis }
             val topCount = 4

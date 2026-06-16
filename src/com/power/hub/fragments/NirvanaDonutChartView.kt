@@ -245,13 +245,17 @@ class NirvanaDonutChartView
                     centerTitle
                 }
             val valueText = if (showSelection) segments[selectedIndex].displayValue else centerValue
-            canvas.drawText(
-                titleText,
-                centerX,
-                centerY - 6f * density,
-                if (showSelection) centerSelectedTitlePaint else centerTitlePaint,
-            )
-            canvas.drawText(valueText, centerX, centerY + centerValuePaint.textSize * 0.55f, centerValuePaint)
+            val titlePaint = if (showSelection) centerSelectedTitlePaint else centerTitlePaint
+            val titleMetrics = titlePaint.fontMetrics
+            val valueMetrics = centerValuePaint.fontMetrics
+            val titleHeight = titleMetrics.descent - titleMetrics.ascent
+            val valueHeight = valueMetrics.descent - valueMetrics.ascent
+            val centerGap = 6f * density
+            val blockTop = centerY - (titleHeight + centerGap + valueHeight) / 2f
+            val titleBaseline = blockTop - titleMetrics.ascent
+            val valueBaseline = blockTop + titleHeight + centerGap - valueMetrics.ascent
+            canvas.drawText(titleText, centerX, titleBaseline, titlePaint)
+            canvas.drawText(valueText, centerX, valueBaseline, centerValuePaint)
 
             val total = segments.sumOf { it.value.toDouble() }.toFloat()
             if (total <= 0f || segments.isEmpty() || segmentBounds.size != segments.size) return
