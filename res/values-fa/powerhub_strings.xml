@@ -159,6 +159,7 @@
     <string name="pif_spoofing_summary">Choose the PIF JSON file to be used to spoof Play Integrity</string>
     <string name="pif_category_title">Play Integrity Fix</string>
     <string name="pif_screen_intro">View the active config, fetch a new profile, or import your own pif.json or pif.prop file.</string>
+    <string name="pif_fetch_normal_title">Fetch normal (stable) profile</string>
     <string name="pif_fetch_beta_title">Fetch Pixel Canary</string>
     <string name="pif_fetch_voltage_title">Fetch from Voltage</string>
     <string name="pif_no_config_loaded">No config loaded</string>
