@@ -159,6 +159,7 @@
     <string name="pif_spoofing_summary">Выберите файл PIF JSON для подмены данных в Play Integrity</string>
     <string name="pif_category_title">Play Integrity Fix</string>
     <string name="pif_screen_intro">Просмотр текущей конфигурации, получение нового профиля или импорт собственного файла pif.json или pif.prop.</string>
+    <string name="pif_fetch_normal_title">Fetch normal (stable) profile</string>
     <string name="pif_fetch_beta_title">Получить канал тестовой сборки Pixel Canary</string>
     <string name="pif_fetch_voltage_title">Загрузить из профиля Voltage</string>
     <string name="pif_no_config_loaded">Конфигурация не загружена</string>
