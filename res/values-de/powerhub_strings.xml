@@ -158,14 +158,13 @@
     <string name="pif_spoofing_title">PIF JSON-Datei auswählen</string>
     <string name="pif_spoofing_summary">Wählen Sie die PIF JSON-Datei, die zum spoof der Play Integrity verwendet werden soll</string>
     <string name="pif_category_title">Play Integrity Fix</string>
-    <string name="pif_screen_intro">View the active config, fetch a new profile, or import your own pif.json or pif.prop file.</string>
-    <string name="pif_fetch_normal_title">Fetch normal (stable) profile</string>
+    <string name="pif_screen_intro">View the active config, fetch a new profile, or import your own pif.json file.</string>
     <string name="pif_fetch_beta_title">Fetch Pixel Canary</string>
     <string name="pif_fetch_voltage_title">Fetch from Voltage</string>
     <string name="pif_no_config_loaded">No config loaded</string>
     <string name="pif_active_config">Active: %1$s</string>
     <string name="pif_import_title">Import Config File</string>
-    <string name="pif_import_summary">Load a custom pif.json or pif.prop</string>
+    <string name="pif_import_summary">Load a custom pif.json</string>
     <string name="pif_import_success_named">Imported %1$s</string>
     <string name="pif_import_error">Import error: %1$s</string>
     <string name="pif_show_props_title">Current Properties</string>
