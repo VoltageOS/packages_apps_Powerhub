@@ -158,14 +158,13 @@
     <string name="pif_spoofing_title">Выбрать файл PIF JSON</string>
     <string name="pif_spoofing_summary">Выберите файл PIF JSON для подмены данных в Play Integrity</string>
     <string name="pif_category_title">Play Integrity Fix</string>
-    <string name="pif_screen_intro">Просмотр текущей конфигурации, получение нового профиля или импорт собственного файла pif.json или pif.prop.</string>
-    <string name="pif_fetch_normal_title">Получить обычный (стабильный) профиль</string>
+    <string name="pif_screen_intro">Просмотр текущей конфигурации, получение нового профиля или импорт собственного файла pif.json.</string>
     <string name="pif_fetch_beta_title">Получить канал тестовой сборки Pixel Canary</string>
     <string name="pif_fetch_voltage_title">Загрузить из профиля Voltage</string>
     <string name="pif_no_config_loaded">Конфигурация не загружена</string>
     <string name="pif_active_config">Активно: %1$s</string>
     <string name="pif_import_title">Импорт файла конфигурации</string>
-    <string name="pif_import_summary">Загрузить пользовательский pif.json или pif.prop</string>
+    <string name="pif_import_summary">Загрузить пользовательский pif.json</string>
     <string name="pif_import_success_named">Импортирован %1$s</string>
     <string name="pif_import_error">Ошибка импорта: %1$s</string>
     <string name="pif_show_props_title">Текущие свойства</string>
