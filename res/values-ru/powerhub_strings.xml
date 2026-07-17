@@ -242,8 +242,8 @@
     <string name="app_spoof_no_apps">Приложения не настроены</string>
     <string name="app_spoof_select_app">Выберите приложение</string>
     <string name="app_spoof_select_profile">Выберите профиль устройства</string>
-    <string name="app_spoof_app_added">Добавлено %1$</string>
-    <string name="app_spoof_app_updated">Обновлено %1$</string>
+    <string name="app_spoof_app_added">Добавлено %1$s</string>
+    <string name="app_spoof_app_updated">Обновлено %1$s</string>
     <string name="app_spoof_change_profile">Изменить Профиль</string>
     <string name="app_spoof_remove">Удалить приложение</string>
     <string name="app_spoof_removed">Приложение удалено</string>
@@ -275,8 +275,8 @@
     <string name="game_spoof_select_game">Выбрать игру</string>
     <string name="game_spoof_select_preset">Выберите шаблон</string>
     <string name="game_spoof_no_presets">Шаблоны отсутствуют</string>
-    <string name="game_spoof_game_added">Добавлено %1$</string>
-    <string name="game_spoof_game_updated">Обновлено %1$</string>
+    <string name="game_spoof_game_added">Добавлено %1$s</string>
+    <string name="game_spoof_game_updated">Обновлено %1$s</string>
     <string name="game_spoof_game_removed">Игра удалена</string>
     <string name="game_spoof_change_preset">Изменить шаблон</string>
     <string name="game_spoof_remove_game">Удалить игру</string>
@@ -488,7 +488,8 @@
     <string name="wallpaper_dim_level_summary">Настроить уровень затемнения обоев</string>
     <string name="glass_blur">Стеклянное размытие</string>
     <string name="frosted_blur">Морозное размытие</string>
-    <string name="wallpaper_styles_footer">        Чтобы стили обоев работали эффективно, пользователи должны устанавливать разные обои для экрана блокировки и домашнего экрана.\nМожно использовать одни и те же обои, но их не следует применять одновременно к экрану блокировки и домашнему экрану.\nЭто необязательно при использовании ОБОИХ ВАРИАНТОВ для стилей размытия обоев и стилей затемнения.
+    <string name="wallpaper_styles_footer">
+Чтобы стили обоев работали эффективно, пользователи должны устанавливать разные обои для экрана блокировки и домашнего экрана.\nМожно использовать одни и те же обои, но их не следует применять одновременно к экрану блокировки и домашнему экрану.\nЭто необязательно при использовании ОБОИХ ВАРИАНТОВ для стилей размытия обоев и стилей затемнения.
     </string>
     <!-- Ongoing action chip -->
     <string name="ongoing_progress_settings_title">Индикатор действий в строке состояния</string>
@@ -503,7 +504,8 @@
     <string name="ongoing_smart_actions_summary">Показывать в индикаторе значки активного состояния для фонарика, точки доступа, режима «Не беспокоить» и т. д. в индикаторе</string>
     <string name="voltage_logo">Показывать логотип Voltage</string>
     <string name="voltage_logo_summary">Отображать стилизованную молнию в качестве резервного индикатора, когда нет активных действий</string>
-    <string name="progress_footer_text">Индикатор строки состояния в реальном времени показывает, сколько осталось до конца трека или завершения скачивания файлов.
+    <string name="progress_footer_text">
+     Индикатор строки состояния в реальном времени показывает, сколько осталось до конца трека или завершения скачивания файлов.
  
  - 🎵 Прогресс мультимедиа:
  • Отображает прогресс воспроизведения музыки и видео.
