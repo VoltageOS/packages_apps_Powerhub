@@ -122,8 +122,8 @@
     <string name="spoofing_title">组件伪装</string>
     <string name="spoofing_summary">通过伪装组件来绕过应用限制</string>
     <string name="spoof_screen_title">伪装</string>
-    <string name="spoof_screen_summary">Manage Play Integrity Fix, TrickyStore, game spoofing, and app list hiding</string>
-    <string name="spoof_dashboard_pif_summary">Manage the active Play Integrity Fix configuration.</string>
+    <string name="spoof_screen_summary">管理 Play Integrity Fix，TrickyStore，游戏伪装和应用列表隐藏</string>
+    <string name="spoof_dashboard_pif_summary">管理当前的 Play Integrity Fix 配置。</string>
     <string name="spoof_dashboard_trickystore_summary">Manage the TrickyStore keybox and target apps.</string>
     <string name="spoof_dashboard_app_spoof_summary">Manage spoofed device profiles for selected games.</string>
     <string name="spoof_dashboard_pif_empty_detail">Import a config or fetch a new profile.</string>
@@ -488,7 +488,8 @@
     <string name="wallpaper_dim_level_summary">Configure wallpaper dim level</string>
     <string name="glass_blur">Glass blur</string>
     <string name="frosted_blur">Frosted blur</string>
-    <string name="wallpaper_styles_footer">        For wallpaper styles to work effectively, users must set the wallpapers for the lockscreen and homescreen at different times.\nThe same wallpaper can be used, but it should not be applied to both the lockscreen and homescreen at the same time.\nThis is optional when using the BOTH OPTION for wallpaper blur and dim styles.
+    <string name="wallpaper_styles_footer">
+        For wallpaper styles to work effectively, users must set the wallpapers for the lockscreen and homescreen at different times.\nThe same wallpaper can be used, but it should not be applied to both the lockscreen and homescreen at the same time.\nThis is optional when using the BOTH OPTION for wallpaper blur and dim styles.
     </string>
     <!-- Ongoing action chip -->
     <string name="ongoing_progress_settings_title">Statusbar action chip</string>
@@ -503,7 +504,8 @@
     <string name="ongoing_smart_actions_summary">Show active status icons for Flashlight, Hotspot, DND, etc. in the indicator</string>
     <string name="voltage_logo">Show Voltage Logo</string>
     <string name="voltage_logo_summary">Display a stylized lightning bolt as a fallback indicator when no actions are active</string>
-    <string name="progress_footer_text">     The status bar progress bar provides real-time updates for both media playback and active downloads/uploads.
+    <string name="progress_footer_text">
+     The status bar progress bar provides real-time updates for both media playback and active downloads/uploads.
  
      - 🎵 Media Progress:
      • Displays playback progress for music and video when media is playing.
