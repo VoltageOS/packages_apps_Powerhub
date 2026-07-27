@@ -350,7 +350,7 @@
     <string name="volume_button_music_control_summary">长按音量加键切到下一首，长按音量减键切到上一首</string>
     <!-- Network traffic -->
     <string name="network_traffic_settings_title">网络流量监控</string>
-    <string name="network_traffic_settings_summary">Display and customize current network traffic levels</string>
+    <string name="network_traffic_settings_summary">显示并自定义当前网速</string>
     <string name="network_traffic_location_title">Network traffic monitor status</string>
     <string name="network_traffic_location_disable">禁用</string>
     <string name="network_traffic_location_statusbar">Enabled</string>
@@ -400,9 +400,9 @@
     <string name="bg_color_summary">Override default background accent color</string>
     <string name="luminance_factor_title">Luminance</string>
     <string name="luminance_factor_summary">Higher values produce brighter colors</string>
-    <string name="chroma_factor_title">Chroma</string>
+    <string name="chroma_factor_title">色度</string>
     <string name="chroma_factor_summary">Higher values produce stronger colors</string>
-    <string name="tint_background_title">Tint Background</string>
+    <string name="tint_background_title">背景着色</string>
     <string name="tint_background_summary">Make Luminance and Chroma selection affect background colors as well</string>
     <string name="qs_blur_category_title">Shade Appearance</string>
     <string name="dual_tone_shade_title">Use dual-tone shade</string>
