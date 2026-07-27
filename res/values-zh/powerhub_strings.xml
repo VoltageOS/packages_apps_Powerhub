@@ -150,7 +150,7 @@
     <!-- Miscellaneous/Spoofing/Play Integrity fix JSON update -->
     <string name="toast_spoofing_success">成功下载 pif.json。将 Play Integrity 伪装为 %1$s。</string>
     <string name="toast_spoofing_failure">伪装属性失败。</string>
-    <string name="update_pif_json_title">更新 Play Integrity fix</string>
+    <string name="update_pif_json_title">更新 Play Integrity Fix</string>
     <string name="update_pif_json_summary">更新 PIF 伪装设备配置，需要网络连接。</string>
     <string name="show_pif_properties_title">Play Integrity Fix 属性</string>
     <string name="show_pif_properties_summary">显示当前已设置的所有 PIF 属性</string>
@@ -712,7 +712,7 @@
     <string name="haze_standard_reversed">反向雾化</string>
     <string name="haze_frosted">正向毛玻璃</string>
     <string name="haze_frosted_reversed">反向毛玻璃</string>
-    <string name="haze_standard_double">同时启用（锁屏界面 雾化-&gt;清晰，主屏幕 清晰-&gt;雾化）</string>
+    <string name="haze_standard_double">双重模糊（模糊-&gt;正常锁屏，正常-&gt;模糊桌面）</string>
     <!-- Split shade QS -->
     <string name="qs_split_shade_title">拆分快速设置</string>
     <string name="qs_split_shade_summary">横屏时通知和快速设置采用双列布局</string>
