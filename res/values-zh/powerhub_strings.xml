@@ -307,49 +307,49 @@
     <string name="keybox_data_loaded_summary">已加载自定义 Keybox XML。删除即可恢复默认。</string>
     <string name="keybox_delete_content_description">清除 Keybox 数据</string>
     <string name="keybox_toast_invalid_file_selected">非 XML 文件。请选择有效 Keybox XML。</string>
-    <string name="keybox_toast_missing_data">Invalid keybox XML: required fields missing</string>
-    <string name="keybox_toast_file_loaded">Keybox loaded</string>
-    <string name="keybox_toast_file_cleared">Keybox cleared</string>
+    <string name="keybox_toast_missing_data">Keybox XML 无效：缺少必要字段</string>
+    <string name="keybox_toast_file_loaded">Keybox 已加载</string>
+    <string name="keybox_toast_file_cleared">Keybox 已清除</string>
     <!-- Miscellaneous/Spoofing/Per-app spoofing -->
-    <string name="gameprops_title">Enable per-app game spoof</string>
-    <string name="gameprops_summary">Enables per-app game spoofing options</string>
+    <string name="gameprops_title">为相应游戏启用伪装</string>
+    <string name="gameprops_summary">开启后可为每个游戏单独配置伪装信息</string>
     <string name="gameprops_load_json_title">Select per-app game props JSON file</string>
     <string name="gameprops_load_json_summary">Choose the JSON file to be used to spoof more games</string>
     <!-- Power menu -->
     <string name="power_menu_title">电源菜单</string>
-    <string name="power_menu_summary">Customize power menu options</string>
-    <string name="power_menu_actions_title">Actions</string>
-    <string name="power_menu_screenshot_title">Screenshot</string>
-    <string name="power_menu_screenshot_summary">Long-press for partial screenshot</string>
-    <string name="power_menu_advanced_title">Advanced reboot options</string>
-    <string name="power_menu_airplane_title">Airplane</string>
-    <string name="power_menu_torch_title">Flashlight</string>
-    <string name="power_menu_settings_title">Settings</string>
-    <string name="power_menu_lockdown_title">Lockdown</string>
-    <string name="power_menu_lockdown_unavailable">Lockdown is disabled as keyguard isn\'t secure</string>
-    <string name="power_menu_soundpanel_title">Sound panel</string>
-    <string name="power_menu_users_title">Users</string>
-    <string name="power_menu_logout_title">Logout</string>
-    <string name="power_menu_emergency_title">Emergency</string>
-    <string name="power_menu_devicecontrols_title">Device controls</string>
+    <string name="power_menu_summary">自定义电源菜单选项</string>
+    <string name="power_menu_actions_title">操作</string>
+    <string name="power_menu_screenshot_title">截屏</string>
+    <string name="power_menu_screenshot_summary">长按进行局部截屏</string>
+    <string name="power_menu_advanced_title">高级重启选项</string>
+    <string name="power_menu_airplane_title">飞行模式</string>
+    <string name="power_menu_torch_title">手电筒</string>
+    <string name="power_menu_settings_title">电源菜单</string>
+    <string name="power_menu_lockdown_title">手机锁定</string>
+    <string name="power_menu_lockdown_unavailable">锁屏方式不安全，锁定功能不可用</string>
+    <string name="power_menu_soundpanel_title">声音面板</string>
+    <string name="power_menu_users_title">用户</string>
+    <string name="power_menu_logout_title">注销</string>
+    <string name="power_menu_emergency_title">紧急呼叫</string>
+    <string name="power_menu_devicecontrols_title">设备控件</string>
     <!-- Advanced restart options -->
-    <string name="advanced_reboot_title">Advanced restart</string>
-    <string name="advanced_reboot_summary">When unlocked, include options in the power menu for restarting into recovery or bootloader</string>
-    <string name="advanced_reboot_secured_title">Secured lockscreen</string>
-    <string name="advanced_reboot_secured_summary">Display advanced restart options on secured lockscreen</string>
+    <string name="advanced_reboot_title">高级重启</string>
+    <string name="advanced_reboot_summary">开启后，电源菜单将显示重启到 Recovery 或 Bootloader 的选项</string>
+    <string name="advanced_reboot_secured_title">锁屏安全验证</string>
+    <string name="advanced_reboot_secured_summary">安全锁屏时仍显示高级重启选项</string>
     <!-- Text shown for the title of the restart systemui option -->
-    <string name="power_menu_restart_systemui_title">Restart SystemUI</string>
+    <string name="power_menu_restart_systemui_title">重启系统界面</string>
     <!--Volume keys -->
-    <string name="volume_rocker_wake_summary">Pressing the volume keys will wake your device</string>
+    <string name="volume_rocker_wake_summary">按下音量键唤醒设备</string>
     <!-- Buttons title -->
-    <string name="volume_category">Volume Rocker</string>
-    <string name="volume_panel_on_left_title">Show volume panel on left</string>
-    <string name="volume_panel_on_left_summary">Display volume panel on the left side of the screen</string>
+    <string name="volume_category">音量键</string>
+    <string name="volume_panel_on_left_title">音量面板显示在左侧</string>
+    <string name="volume_panel_on_left_summary">音量面板显示在屏幕左侧</string>
     <!-- Volume key music control -->
-    <string name="volume_button_music_control_title">Skip tracks with volume buttons</string>
-    <string name="volume_button_music_control_summary">Long press volume up for skipping to the next track and vice-versa</string>
+    <string name="volume_button_music_control_title">使用音量键切换曲目</string>
+    <string name="volume_button_music_control_summary">长按音量加键切到下一首，长按音量减键切到上一首</string>
     <!-- Network traffic -->
-    <string name="network_traffic_settings_title">Network traffic monitor</string>
+    <string name="network_traffic_settings_title">网络流量监控</string>
     <string name="network_traffic_settings_summary">Display and customize current network traffic levels</string>
     <string name="network_traffic_location_title">Network traffic monitor status</string>
     <string name="network_traffic_location_disable">禁用</string>
@@ -658,7 +658,7 @@
     <string name="qs_vibrant_shade_summary">Use vibrant accent colors for QS tiles and brightness slider</string>
     <!-- Battery customizations -->
     <string name="battery_settings_title">Battery Settings</string>
-    <string name="battery_options">Battery</string>
+    <string name="battery_options">电池</string>
     <string name="battery_style_title">Battery Style</string>
     <!-- Status bar - Battery -->
     <string name="status_bar_battery_style_title">Battery style</string>
