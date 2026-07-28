@@ -365,7 +365,7 @@
     <string name="network_traffic_autohide_kilobytes">KB/s</string>
     <string name="network_traffic_autohide_threshold">不活跃阈值</string>
     <string name="network_traffic_refresh_interval_title">刷新间隔</string>
-    <string name="network_traffic_refresh_interval_summary">刷新网速的时间间隔</string>
+    <string name="network_traffic_refresh_interval_summary">刷新网速时间间隔</string>
     <string name="network_traffic_units_title">流量单位</string>
     <string name="network_traffic_units_bits">比特每秒 (b/s)</string>
     <string name="network_traffic_units_kilobits">千比特每秒 (kb/s)</string>
@@ -492,18 +492,18 @@
         For wallpaper styles to work effectively, users must set the wallpapers for the lockscreen and homescreen at different times.\nThe same wallpaper can be used, but it should not be applied to both the lockscreen and homescreen at the same time.\nThis is optional when using the BOTH OPTION for wallpaper blur and dim styles.
     </string>
     <!-- Ongoing action chip -->
-    <string name="ongoing_progress_settings_title">Statusbar action chip</string>
-    <string name="ongoing_progress_settings_summary">Statusbar action chip options</string>
-    <string name="ongoing_action_chip_title">Ongoing action chip</string>
-    <string name="ongoing_action_chip_summary">Show progress indicator in status bar for ongoing actions like downloads</string>
-    <string name="compact_progress_mode_title">Compact Progress Indicator</string>
-    <string name="compact_progress_mode_summary">Use a compact circular indicator for ongoing actions</string>
-    <string name="show_media_progress_title">Show media progress</string>
-    <string name="show_media_progress_summary">Display media playback progress in the status bar</string>
-    <string name="ongoing_smart_actions_title">Smart Actions Indicator</string>
-    <string name="ongoing_smart_actions_summary">在状态栏左侧显示手电筒、热点、勿扰等运行的图标</string>
-    <string name="voltage_logo">Show Voltage Logo</string>
-    <string name="voltage_logo_summary">Display a stylized lightning bolt as a fallback indicator when no actions are active</string>
+    <string name="ongoing_progress_settings_title">状态栏焦点通知</string>
+    <string name="ongoing_progress_settings_summary">状态栏焦点通知选项</string>
+    <string name="ongoing_action_chip_title">启用状态栏焦点通知</string>
+    <string name="ongoing_action_chip_summary">在状态栏显示下载等活动的焦点通知</string>
+    <string name="compact_progress_mode_title">紧凑型进度指示器</string>
+    <string name="compact_progress_mode_summary">针对正在进行的活动使用紧凑的圆形指示器</string>
+    <string name="show_media_progress_title">显示媒体进度</string>
+    <string name="show_media_progress_summary">在状态栏显示媒体播放进度</string>
+    <string name="ongoing_smart_actions_title">智能状态</string>
+    <string name="ongoing_smart_actions_summary">在智能状态显示区域显示手电筒、热点、勿扰等已开启的功能图标</string>
+    <string name="voltage_logo">显示 Voltage Logo</string>
+    <string name="voltage_logo_summary">无活动状态时，显示一个闪电图标作为默认指示器</string>
     <string name="progress_footer_text">
 状态栏进度条可实时显示媒体播放进度以及正在进行的下载/上传进度。
 
@@ -527,16 +527,16 @@
     <string name="freeform_launch_mode_2">LMOFreeForm</string>
     <!-- QS Brightness Slider -->
     <string name="qs_brightness_slider_category">Brightness slider</string>
-    <string name="qs_brightness_slider_title">Show brightness slider</string>
-    <string name="qs_brightness_slider_auto_title">Auto brightness</string>
-    <string name="qs_brightness_slider_auto_summary">Show toggle for adaptive brightness near the slider</string>
-    <string name="qs_brightness_slider_show_never">Never show</string>
-    <string name="qs_brightness_slider_show_expanded">Show when expanded</string>
-    <string name="qs_brightness_slider_show_always">Show always</string>
+    <string name="qs_brightness_slider_title">亮度滑块设置</string>
+    <string name="qs_brightness_slider_auto_title">自动亮度</string>
+    <string name="qs_brightness_slider_auto_summary">在亮度滑块旁显示自动亮度开关</string>
+    <string name="qs_brightness_slider_show_never">在快捷设置永不显示</string>
+    <string name="qs_brightness_slider_show_expanded">在快捷设置展开时显示</string>
+    <string name="qs_brightness_slider_show_always">在快捷设置一直显示</string>
     <!-- QS Brightness Slider Position -->
-    <string name="qs_brightness_slider_position_title">Slider position</string>
-    <string name="qs_brightness_slider_position_top">Top</string>
-    <string name="qs_brightness_slider_position_bottom">Bottom</string>
+    <string name="qs_brightness_slider_position_title">滑块位置</string>
+    <string name="qs_brightness_slider_position_top">顶部</string>
+    <string name="qs_brightness_slider_position_bottom">底部</string>
     <!-- Homepage toasts -->
     <string name="homepage_toast_title">Homepage toast messages</string>
     <string name="homepage_toast_summary">Replace suggestion card with random messages</string>
@@ -615,11 +615,11 @@
     <string name="udfps_recog_animation_effect_title">UDFPS custom animation</string>
     <string name="udfps_recog_animation_effect_summary">Choose animation effect</string>
     <!-- Data usage info in QS footer -->
-    <string name="qs_footer_datausage_title">Data usage</string>
-    <string name="qs_footer_datausage_summary">Display data usage summary in quick settings footer</string>
+    <string name="qs_footer_datausage_title">流量使用情况</string>
+    <string name="qs_footer_datausage_summary">在快捷设置底部显示总流量使用情况</string>
     <!-- Status bar - Clock -->
     <string name="status_bar_clock_title">日期&amp;时间</string>
-    <string name="status_bar_clock_summary">Customize clock &amp; date</string>
+    <string name="status_bar_clock_summary">自定义日期 &amp; 时间</string>
     <string name="status_bar_clock_seconds_title">时间显秒</string>
     <string name="status_bar_clock_seconds_summary">在状态栏时间旁显示秒数</string>
     <string name="status_bar_clock_position_title">时间位置</string>
@@ -658,16 +658,16 @@
     <!-- Battery customizations -->
     <string name="battery_settings_title">电池</string>
     <string name="battery_options">电池</string>
-    <string name="battery_style_title">Battery Style</string>
+    <string name="battery_style_title">电源样式</string>
     <!-- Status bar - Battery -->
-    <string name="status_bar_battery_style_title">Battery style</string>
-    <string name="status_bar_battery_style_icon_portrait">Icon portrait</string>
-    <string name="status_bar_battery_style_icon_rlandscape">Icon landscape (Right)</string>
-    <string name="status_bar_battery_style_icon_landscape">Icon landscape (Left)</string>
-    <string name="status_bar_battery_style_circle">Circle</string>
-    <string name="status_bar_battery_style_dotted_circle">Dotted circle</string>
-    <string name="status_bar_battery_style_filled_circle">Filled circle</string>
-    <string name="status_bar_battery_style_text">Text</string>
+    <string name="status_bar_battery_style_title">电源样式</string>
+    <string name="status_bar_battery_style_icon_portrait">纵向图标</string>
+    <string name="status_bar_battery_style_icon_rlandscape">横向图标（右侧）</string>
+    <string name="status_bar_battery_style_icon_landscape">横向图标（左侧）</string>
+    <string name="status_bar_battery_style_circle">圆环</string>
+    <string name="status_bar_battery_style_dotted_circle">点状圆环</string>
+    <string name="status_bar_battery_style_filled_circle">实心圆</string>
+    <string name="status_bar_battery_style_text">文本</string>
     <string name="status_bar_battery_style_hidden">隐藏</string>
     <string name="status_bar_battery_percent_title">Battery percent</string>
     <string name="status_bar_battery_percent_hidden">隐藏</string>
