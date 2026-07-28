@@ -387,32 +387,32 @@
     <string name="theme_style_fruit_salad">Fruit Salad</string>
     <string name="theme_style_muted">Muted</string>
     <string name="theme_style_content">Content</string>
-    <string name="color_source_title">Color source</string>
-    <string name="color_source_both">Both (Default)</string>
-    <string name="color_source_home">Home wallpaper</string>
-    <string name="color_source_lock">Lock wallpaper</string>
-    <string name="color_source_preset">Preset</string>
-    <string name="accent_color_title">Accent Color</string>
-    <string name="accent_color_summary">Override default accent color</string>
-    <string name="accent_background_title">Accent background</string>
-    <string name="accent_background_summary">Choose a different accent color for background</string>
-    <string name="bg_color_title">Background Color</string>
-    <string name="bg_color_summary">Override default background accent color</string>
-    <string name="luminance_factor_title">Luminance</string>
-    <string name="luminance_factor_summary">Higher values produce brighter colors</string>
+    <string name="color_source_title">颜色来源</string>
+    <string name="color_source_both">我全都要 (默认)</string>
+    <string name="color_source_home">桌面壁纸</string>
+    <string name="color_source_lock">锁屏壁纸</string>
+    <string name="color_source_preset">预设</string>
+    <string name="accent_color_title">配色</string>
+    <string name="accent_color_summary">覆盖默认的主色调</string>
+    <string name="accent_background_title">强调色背景</string>
+    <string name="accent_background_summary">为背景选择不同的强调色</string>
+    <string name="bg_color_title">背景颜色</string>
+    <string name="bg_color_summary">覆盖默认背景颜色</string>
+    <string name="luminance_factor_title">亮度</string>
+    <string name="luminance_factor_summary">数值越高颜色越亮</string>
     <string name="chroma_factor_title">色度</string>
-    <string name="chroma_factor_summary">Higher values produce stronger colors</string>
+    <string name="chroma_factor_summary">数值越高颜色越鲜艳</string>
     <string name="tint_background_title">背景着色</string>
-    <string name="tint_background_summary">Make Luminance and Chroma selection affect background colors as well</string>
-    <string name="qs_blur_category_title">Shade Appearance</string>
-    <string name="dual_tone_shade_title">Use dual-tone shade</string>
-    <string name="dual_tone_shade_summary">Use a secondary background for the notification shade</string>
+    <string name="tint_background_summary">使色度和色彩亮度同时作用于背景色</string>
+    <string name="qs_blur_category_title">快捷设置面板外观</string>
+    <string name="dual_tone_shade_title">使用双色调面板</string>
+    <string name="dual_tone_shade_summary">为通知栏面板使用次要背景</string>
     <!-- Fingerprint Ripple Effect -->
-    <string name="enable_fingerprint_ripple_effect_title">Ripple effect</string>
-    <string name="enable_fingerprint_ripple_effect_summary">Show ripple effect on unlock with fingerprint</string>
+    <string name="enable_fingerprint_ripple_effect_title">波纹效果</string>
+    <string name="enable_fingerprint_ripple_effect_summary">使用指纹解锁时显示波纹效果</string>
     <!-- Lockscreen battery info indicator  -->
-    <string name="lockscreen_battery_info_title">Lockscreen charging info</string>
-    <string name="lockscreen_battery_info_summary">Show charging current, voltage, wattage and battery temperature on lockscreen while charging</string>
+    <string name="lockscreen_battery_info_title">锁屏充电信息</string>
+    <string name="lockscreen_battery_info_summary">在锁屏充电时显示充电电流、电压、功率及电池温度</string>
     <!-- Disable QS -->
     <string name="disable_qs_title">在安全锁屏界面屏蔽快捷设置</string>
     <string name="disable_qs_summary">Hides QS if device is locked. Does not disable notification shade</string>
@@ -427,26 +427,26 @@
     <string name="click_partial_screenshot_summary">Short click Volume Down and Power to take partial screenshot</string>
     <string name="quick_settings_secure_lock_screen_title">安全锁屏下拉快捷设置</string>
     <!-- Lock screen media art -->
-    <string name="ls_media_art_title">Media cover art</string>
-    <string name="ls_media_art_summary">Display media cover art when available</string>
+    <string name="ls_media_art_title">媒体封面</string>
+    <string name="ls_media_art_summary">封面可用时，锁屏显示媒体封面</string>
     <!-- Lock screen media art on Ambient Display -->
-    <string name="ambient_media_art_title">Ambient media cover art</string>
-    <string name="ambient_media_art_summary">Display media cover art on Ambient display when available</string>
+    <string name="ambient_media_art_title">息屏媒体封面</string>
+    <string name="ambient_media_art_summary">有可用封面时，在息屏显示界面显示媒体封面</string>
     <!-- Lock screen album art filter -->
-    <string name="ls_media_art_filter_title">Media cover art filter</string>
-    <string name="ls_media_art_filter_none">None</string>
-    <string name="ls_media_art_filter_blur">Blur</string>
-    <string name="ls_media_art_filter_grayscale">Grayscale</string>
-    <string name="ls_media_art_filter_sepia">Sepia</string>
-    <string name="ls_media_art_filter_tint">Accent tinted</string>
-    <string name="ls_media_art_filter_invert">Invert</string>
-    <string name="ls_media_art_filter_grayblur">Grayscale and blur</string>
+    <string name="ls_media_art_filter_title">媒体封面滤镜</string>
+    <string name="ls_media_art_filter_none">无</string>
+    <string name="ls_media_art_filter_blur">模糊</string>
+    <string name="ls_media_art_filter_grayscale">灰度</string>
+    <string name="ls_media_art_filter_sepia">棕褐色</string>
+    <string name="ls_media_art_filter_tint">强调色着色</string>
+    <string name="ls_media_art_filter_invert">反转</string>
+    <string name="ls_media_art_filter_grayblur">灰度模糊</string>
     <!-- Lock screen media art fade level -->
-    <string name="ls_media_art_fade_level_title">Media cover art fade level</string>
-    <string name="ls_media_art_fade_level_summary">Set media cover art fade level</string>
+    <string name="ls_media_art_fade_level_title">媒体封面淡入淡出程度</string>
+    <string name="ls_media_art_fade_level_summary">设置媒体封面淡入淡出级别</string>
     <!-- Lock screen media art blur level -->
-    <string name="ls_media_art_blur_level_title">Media art blur level</string>
-    <string name="ls_media_art_blur_level_summary">Blur intensity when blur filter is applied</string>
+    <string name="ls_media_art_blur_level_title">锁屏媒体封面模糊程度</string>
+    <string name="ls_media_art_blur_level_summary">应用模糊时的强度</string>
     <!-- Pulse music visualizer -->
     <string name="pulse_settings_title">音乐律动条</string>
     <string name="pulse_settings_summary">音乐播放时在锁屏显示音乐律动条</string>
@@ -478,19 +478,18 @@
     <string name="menu_show_overlay">Show overlay</string>
     <string name="menu_hide_overlay">Hide overlay</string>
     <!-- Wallpaper Styles -->
-    <string name="wallpaper_settings_title">Wallpaper styles</string>
-    <string name="wallpaper_settings_summary">Configure wallpaper styles and settings</string>
-    <string name="wallpaper_blur_title">Wallpaper blur</string>
-    <string name="wallpaper_blur_summary">Enable or disable wallpaper blur effect</string>
-    <string name="wallpaper_blur_filter">Wallpaper blur style</string>
-    <string name="wallpaper_dim_title">Wallpaper dim</string>
-    <string name="wallpaper_dim_level_title">Wallpaper dim level</string>
-    <string name="wallpaper_dim_level_summary">Configure wallpaper dim level</string>
-    <string name="glass_blur">Glass blur</string>
-    <string name="frosted_blur">Frosted blur</string>
+    <string name="wallpaper_settings_title">壁纸样式</string>
+    <string name="wallpaper_settings_summary">配置壁纸样式和设置</string>
+    <string name="wallpaper_blur_title">壁纸模糊</string>
+    <string name="wallpaper_blur_summary">启用或禁用壁纸模糊效果</string>
+    <string name="wallpaper_blur_filter">壁纸模糊样式</string>
+    <string name="wallpaper_dim_title">壁纸模糊</string>
+    <string name="wallpaper_dim_level_title">壁纸调暗级别</string>
+    <string name="wallpaper_dim_level_summary">配置壁纸暗淡级别</string>
+    <string name="glass_blur">玻璃模糊</string>
+    <string name="frosted_blur">磨砂模糊</string>
     <string name="wallpaper_styles_footer">
-        For wallpaper styles to work effectively, users must set the wallpapers for the lockscreen and homescreen at different times.\nThe same wallpaper can be used, but it should not be applied to both the lockscreen and homescreen at the same time.\nThis is optional when using the BOTH OPTION for wallpaper blur and dim styles.
-    </string>
+为了让壁纸样式效果正常生效，用户需在不同时间分别设置锁屏和桌面的壁纸。\n可以使用同一张壁纸，但不应该同时将其应用到锁屏和桌面。\n当使用“两者”选项来控制壁纸模糊和变暗样式时，此操作可选    </string>
     <!-- Ongoing action chip -->
     <string name="ongoing_progress_settings_title">状态栏焦点通知</string>
     <string name="ongoing_progress_settings_summary">状态栏焦点通知选项</string>
@@ -546,22 +545,22 @@
     <string name="notification_sound_vib_screen_on_title">Annoying Notifications</string>
     <string name="notification_sound_vib_screen_on_summary">Play sound and vibration for notifications when screen is on</string>
     <!-- Weather -->
-    <string name="weather_category_title">Weather</string>
-    <string name="weather_settings_title">Weather settings</string>
-    <string name="weather_settings_summary">Setup icon pack and weather service</string>
-    <string name="lockscreen_weather_title">Weather condition</string>
-    <string name="lockscreen_weather_summary">Display current weather condition and temperature</string>
-    <string name="lockscreen_weather_enabled_info">Requires weather service to be enabled</string>
-    <string name="lockscreen_weather_location_title">Weather location</string>
-    <string name="lockscreen_weather_location_summary">Display current weather location</string>
-    <string name="lockscreen_weather_wind_info_title">Wind info</string>
-    <string name="lockscreen_weather_wind_info_summary">Display current wind speed and direction</string>
-    <string name="lockscreen_weather_humidity_info_title">Humidity info</string>
-    <string name="lockscreen_weather_humidity_info_summary">Display current humidity in percentage</string>
+    <string name="weather_category_title">天气</string>
+    <string name="weather_settings_title">天气设置</string>
+    <string name="weather_settings_summary">设置图标包与天气服务</string>
+    <string name="lockscreen_weather_title">天气状况</string>
+    <string name="lockscreen_weather_summary">显示当前天气状况和温度</string>
+    <string name="lockscreen_weather_enabled_info">需要启用天气服务</string>
+    <string name="lockscreen_weather_location_title">天气位置</string>
+    <string name="lockscreen_weather_location_summary">显示当前天气位置</string>
+    <string name="lockscreen_weather_wind_info_title">风力信息</string>
+    <string name="lockscreen_weather_wind_info_summary">显示当前风速和方向</string>
+    <string name="lockscreen_weather_humidity_info_title">湿度信息</string>
+    <string name="lockscreen_weather_humidity_info_summary">以百分比显示当前湿度</string>
     <!-- Weather layout style -->
-    <string name="lockscreen_weather_style_title">Modern layout</string>
-    <string name="lockscreen_weather_style_summary_off">Classic stacked layout below the clock</string>
-    <string name="lockscreen_weather_style_summary_on">Date and weather beside / below the clock face</string>
+    <string name="lockscreen_weather_style_title">现代风格</string>
+    <string name="lockscreen_weather_style_summary_off">时钟下方经典纵向排列</string>
+    <string name="lockscreen_weather_style_summary_on">日期和天气显示在时钟旁或下方</string>
     <!-- Heads up timeout -->
     <string name="notification_heads_up_title">Heads up</string>
     <string name="notification_heads_up_summary">Allow pop up notifications</string>
@@ -569,11 +568,11 @@
     <string name="less_boring_heads_up_title">Less boring</string>
     <string name="less_boring_heads_up_summary">Display popup notifications only for alarm, dialer and messaging app</string>
     <!-- Fingerprint authentication vibration -->
-    <string name="fingerprint_category">Fingerprint</string>
+    <string name="fingerprint_category">指纹</string>
     <string name="fprint_error_vib_title">Fingerprint error vibration</string>
-    <string name="fprint_error_vib_summary">Vibrate on error fingerprint authentication</string>
-    <string name="fprint_success_vib_title">Fingerprint authentication vibration</string>
-    <string name="fprint_success_vib_summary">Vibrate on successful fingerprint authentication</string>
+    <string name="fprint_error_vib_summary">指纹认证错误时振动</string>
+    <string name="fprint_success_vib_title">验证指纹时振动</string>
+    <string name="fprint_success_vib_summary">指纹验证成功时振动</string>
     <!-- Smart Pixels -->
     <string name="smart_pixels_warning_text">Smart pixels is a power saving feature. Depending on how many pixels you decide to turn off, you could see improvement in battery life. Note that in some cases it can result in unresponsive areas on touch screen</string>
     <string name="smart_pixels_title">Smart Pixels</string>
@@ -654,7 +653,7 @@
     <string name="vbmeta_attestation_title">Autofix VBMeta detection</string>
     <string name="vbmeta_attestation_summary">Perform key attestation to generate verified boot hash on boot. Requires system restart.</string>
     <string name="qs_vibrant_shade_title">Vibrant shade elements</string>
-    <string name="qs_vibrant_shade_summary">Use vibrant accent colors for QS tiles and brightness slider</string>
+    <string name="qs_vibrant_shade_summary">为快捷设置磁贴和亮度滑块使用鲜艳的强调色</string>
     <!-- Battery customizations -->
     <string name="battery_settings_title">电池</string>
     <string name="battery_options">电池</string>
