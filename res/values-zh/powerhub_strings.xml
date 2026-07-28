@@ -135,7 +135,7 @@
     <string name="spoof_dashboard_app_spoof_disabled">已为每个应用禁用单独伪装</string>
     <string name="spoofing_system_wide_category">全局</string>
     <string name="spoofing_pixel_props_title">Pixel 属性</string>
-    <string name="spoofing_pixel_props_summary">使选定的Google应用识别设备为最新Pixel设备</string>
+    <string name="spoofing_pixel_props_summary">使选定的 Google 应用识别设备为最新Pixel设备</string>
     <string name="tensor_spoof_title">伪装 Tensor 特性</string>
     <string name="tensor_spoof_summary">解锁 Tensor/Pixel 专属功能</string>
     <string name="gms_spoof_title">Play Integrity 修复</string>
@@ -247,7 +247,7 @@
     <string name="app_spoof_change_profile">更改配置文件</string>
     <string name="app_spoof_remove">移除应用</string>
     <string name="app_spoof_removed">已移除应用</string>
-    <string name="app_spoof_no_profiles">无可用配置文件。请先添加一个。</string>
+    <string name="app_spoof_no_profiles">无可用配置文件，请先添加一个。</string>
     <string name="app_spoof_custom_profile">自定义</string>
     <string name="app_spoof_manage_profiles_title">管理配置文件</string>
     <string name="app_spoof_manage_profiles_summary">添加、编辑或删除设备配置文件</string>
@@ -354,7 +354,7 @@
     <string name="network_traffic_location_title">网络流量监控状态</string>
     <string name="network_traffic_location_disable">禁用</string>
     <string name="network_traffic_location_statusbar">启用</string>
-    <string name="network_traffic_location_quick_statusbar">Quick Statusbar</string>
+    <string name="network_traffic_location_quick_statusbar">快捷设置面板</string>
     <string name="network_traffic_mode_title">显示模式</string>
     <string name="network_traffic_mode_up">仅上传</string>
     <string name="network_traffic_mode_down">仅下载</string>
@@ -363,18 +363,18 @@
     <string name="network_traffic_autohide_summary">网速不活跃时隐藏</string>
     <string name="network_traffic_autohide_kilobits">Kb/s</string>
     <string name="network_traffic_autohide_kilobytes">KB/s</string>
-    <string name="network_traffic_autohide_threshold">Inactivity threshold</string>
-    <string name="network_traffic_refresh_interval_title">Refresh interval</string>
-    <string name="network_traffic_refresh_interval_summary">Duration after which speed is remeasured</string>
-    <string name="network_traffic_units_title">Traffic measurement units</string>
-    <string name="network_traffic_units_bits">Bits per second (b/s)</string>
-    <string name="network_traffic_units_kilobits">Kilobits per second (kb/s)</string>
-    <string name="network_traffic_units_megabits">Megabits per second (Mb/s)</string>
-    <string name="network_traffic_units_bytes">Bytes per second (B/s)</string>
-    <string name="network_traffic_units_kilobytes">Kilobytes per second (kB/s)</string>
-    <string name="network_traffic_units_megabytes">Megabytes per second (MB/s)</string>
-    <string name="network_traffic_hidearrow">Hide arrows</string>
-    <string name="network_traffic_hidearrow_summary">Hide the network traffic indicator arrows</string>
+    <string name="network_traffic_autohide_threshold">不活跃阈值</string>
+    <string name="network_traffic_refresh_interval_title">刷新间隔</string>
+    <string name="network_traffic_refresh_interval_summary">刷新网速的时间间隔</string>
+    <string name="network_traffic_units_title">流量单位</string>
+    <string name="network_traffic_units_bits">比特每秒 (b/s)</string>
+    <string name="network_traffic_units_kilobits">千比特每秒 (kb/s)</string>
+    <string name="network_traffic_units_megabits">兆比特每秒 (Mb/s)</string>
+    <string name="network_traffic_units_bytes">字节每秒 (B/s)</string>
+    <string name="network_traffic_units_kilobytes">千字节每秒 (kB/s)</string>
+    <string name="network_traffic_units_megabytes">兆字节每秒 (MB/s)</string>
+    <string name="network_traffic_hidearrow">隐藏箭头</string>
+    <string name="network_traffic_hidearrow_summary">隐藏网速指示箭头</string>
     <!-- Monet settings -->
     <string name="monet_settings_title">主题</string>
     <string name="monet_settings_sammary">A few extra settings to customize monet engine</string>
@@ -501,27 +501,26 @@
     <string name="show_media_progress_title">Show media progress</string>
     <string name="show_media_progress_summary">Display media playback progress in the status bar</string>
     <string name="ongoing_smart_actions_title">Smart Actions Indicator</string>
-    <string name="ongoing_smart_actions_summary">Show active status icons for Flashlight, Hotspot, DND, etc. in the indicator</string>
+    <string name="ongoing_smart_actions_summary">在状态栏左侧显示手电筒、热点、勿扰等运行的图标</string>
     <string name="voltage_logo">Show Voltage Logo</string>
     <string name="voltage_logo_summary">Display a stylized lightning bolt as a fallback indicator when no actions are active</string>
     <string name="progress_footer_text">
-     The status bar progress bar provides real-time updates for both media playback and active downloads/uploads.
- 
-     - 🎵 Media Progress:
-     • Displays playback progress for music and video when media is playing.
-     • Single tap opens playback controls (Previous, Next track).
-     • Double tap toggles play/pause.
-     • Swipe left skips to the previous track.
-     • Swipe right skips to the next track.
-     • Long press opens the media app. 
- 
-     - 📥Download/Upload Progress:
-     • Shows progress for ongoing downloads and uploads.
-     • Automatically hides when no active transfers are detected.
-     • Single tap opens the app responsible for the download.
- 
-     The progress bar dynamically switches between media and download states, ensuring you always have the most relevant information at a glance.
-     </string>
+状态栏进度条可实时显示媒体播放进度以及正在进行的下载/上传进度。
+
+🎵 媒体进度：
+• 播放音乐或视频时，显示播放进度。
+• 单击可打开播放控件（上一首、下一首）。
+• 双击可切换播放/暂停。
+• 左滑跳至上一首。
+• 右滑跳至下一首。
+• 长按可打开媒体应用。
+
+📥 下载/上传进度：
+• 显示正在进行的下载和上传进度。
+• 当未检测到活动传输时自动隐藏。
+• 单击可打开负责下载的应用。
+
+进度条会在媒体和下载状态之间动态切换，让你一目了然地获取最相关的信息     </string>
     <!-- Freeform launch mode -->
     <string name="freeform_launch_mode_title">Freeform launch mode</string>
     <string name="freeform_launch_mode_1">Native AOSP</string>
@@ -610,7 +609,7 @@
     <string name="udfps_settings_title">UDFPS Customization</string>
     <string name="udfps_settings_summary">Customize under-display fingerprint scanner</string>
     <!-- UDFPS Icons -->
-    <string name="udfps_icon_picker_title">UDFPS icon picker</string>
+    <string name="udfps_icon_picker_title">指纹图标选择器</string>
     <string name="udfps_icon_picker_summary">Choose your favorite fingerprint icon</string>
     <!-- UDFPS Animations -->
     <string name="udfps_recog_animation_effect_title">UDFPS custom animation</string>
@@ -621,34 +620,34 @@
     <!-- Status bar - Clock -->
     <string name="status_bar_clock_title">日期&amp;时间</string>
     <string name="status_bar_clock_summary">Customize clock &amp; date</string>
-    <string name="status_bar_clock_seconds_title">Clock seconds</string>
-    <string name="status_bar_clock_seconds_summary">Display seconds next to clock in status bar</string>
+    <string name="status_bar_clock_seconds_title">时间显秒</string>
+    <string name="status_bar_clock_seconds_summary">在状态栏时间旁显示秒数</string>
     <string name="status_bar_clock_position_title">时间位置</string>
-    <string name="status_bar_clock_position_right">Right</string>
-    <string name="status_bar_clock_position_left">Left</string>
-    <string name="status_bar_clock_position_center">Center</string>
+    <string name="status_bar_clock_position_right">右侧</string>
+    <string name="status_bar_clock_position_left">左侧</string>
+    <string name="status_bar_clock_position_center">中间</string>
     <string name="status_bar_clock_auto_hide_title">自动隐藏</string>
-    <string name="status_bar_clock_auto_hide_summary">Hide clock if launcher is visible</string>
-    <string name="status_bar_am_pm_title">AM/PM style</string>
+    <string name="status_bar_clock_auto_hide_summary">桌面可见时隐藏时间</string>
+    <string name="status_bar_am_pm_title">上午/下午样式</string>
     <string name="status_bar_am_pm_info">24-hour clock is enabled</string>
-    <string name="status_bar_am_pm_normal">Normal</string>
-    <string name="status_bar_am_pm_small">Small</string>
-    <string name="status_bar_am_pm_hidden">Hidden</string>
-    <string name="status_bar_date_title">Date</string>
-    <string name="status_bar_date_none">Hidden</string>
-    <string name="status_bar_date_small">Small</string>
-    <string name="status_bar_date_normal">Normal</string>
+    <string name="status_bar_am_pm_normal">正常</string>
+    <string name="status_bar_am_pm_small">小</string>
+    <string name="status_bar_am_pm_hidden">隐藏</string>
+    <string name="status_bar_date_title">日期</string>
+    <string name="status_bar_date_none">隐藏</string>
+    <string name="status_bar_date_small">小</string>
+    <string name="status_bar_date_normal">正常</string>
     <string name="status_bar_date_format_title">Date format</string>
-    <string name="status_bar_date_style">Date style</string>
-    <string name="status_bar_date_style_normal">Normal</string>
-    <string name="status_bar_date_style_lowercase">Lowercase</string>
-    <string name="status_bar_date_style_uppercase">Uppercase</string>
+    <string name="status_bar_date_style">日期样式</string>
+    <string name="status_bar_date_style_normal">正常</string>
+    <string name="status_bar_date_style_lowercase">小写</string>
+    <string name="status_bar_date_style_uppercase">大写</string>
     <string name="status_bar_date_format_custom">Custom java format</string>
     <string name="status_bar_date_string_edittext_title">Must be in DateFormat eg. MM/dd/yy</string>
     <string name="status_bar_date_string_edittext_summary">Enter string</string>
-    <string name="clock_date_position">Date position</string>
-    <string name="clock_date_right">Right of time</string>
-    <string name="clock_date_left">Left of time</string>
+    <string name="clock_date_position">日期位置</string>
+    <string name="clock_date_right">在时间右侧</string>
+    <string name="clock_date_left">在时间左侧</string>
     <string name="shade_blur_radius_title">Notification shade blur</string>
     <string name="shade_blur_radius_summary">Adjust the blur intensity behind the notification shade</string>
     <!-- Vbmeta hash attestation -->
@@ -669,9 +668,9 @@
     <string name="status_bar_battery_style_dotted_circle">Dotted circle</string>
     <string name="status_bar_battery_style_filled_circle">Filled circle</string>
     <string name="status_bar_battery_style_text">Text</string>
-    <string name="status_bar_battery_style_hidden">Hidden</string>
+    <string name="status_bar_battery_style_hidden">隐藏</string>
     <string name="status_bar_battery_percent_title">Battery percent</string>
-    <string name="status_bar_battery_percent_hidden">Hidden</string>
+    <string name="status_bar_battery_percent_hidden">隐藏</string>
     <string name="status_bar_battery_percent_text_inside">Inside the icon</string>
     <string name="status_bar_battery_percent_text_next">Next to the icon</string>
     <string name="status_bar_battery_percent_text_next_right">Next to the icon (right)</string>
@@ -715,13 +714,13 @@
     <string name="haze_standard_double">双重模糊（模糊-&gt;正常锁屏，正常-&gt;模糊桌面）</string>
     <!-- Split shade QS -->
     <string name="qs_split_shade_title">拆分快速设置</string>
-    <string name="qs_split_shade_summary">横屏时通知和快速设置采用双列布局</string>
+    <string name="qs_split_shade_summary">横屏时通知和快捷设置采用双列布局</string>
     <!-- Network traffic statusbar sub-location -->
     <string name="network_traffic_statusbar_location_title">网速显示位置</string>
-    <string name="network_traffic_full">Statusbar and QS header</string>
-    <string name="network_traffic_location_full">Statusbar and QS header</string>
-    <string name="network_traffic_location_sb">Statusbar only</string>
-    <string name="network_traffic_location_qs">QS header only</string>
+    <string name="network_traffic_full">状态栏和快捷设置</string>
+    <string name="network_traffic_location_full">状态栏和快捷设置</string>
+    <string name="network_traffic_location_sb">状态栏</string>
+    <string name="network_traffic_location_qs">快捷设置</string>
     <string name="nirvana_stats_title">Daily Stats</string>
     <string name="nirvana_stats_total_time">Screen time</string>
     <string name="nirvana_stats_unlocks">Unlocks</string>
