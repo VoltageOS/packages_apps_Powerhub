@@ -637,14 +637,14 @@
     <string name="status_bar_date_none">隐藏</string>
     <string name="status_bar_date_small">小</string>
     <string name="status_bar_date_normal">正常</string>
-    <string name="status_bar_date_format_title">Date format</string>
+    <string name="status_bar_date_format_title">日期格式</string>
     <string name="status_bar_date_style">日期样式</string>
     <string name="status_bar_date_style_normal">正常</string>
     <string name="status_bar_date_style_lowercase">小写</string>
     <string name="status_bar_date_style_uppercase">大写</string>
-    <string name="status_bar_date_format_custom">Custom java format</string>
-    <string name="status_bar_date_string_edittext_title">Must be in DateFormat eg. MM/dd/yy</string>
-    <string name="status_bar_date_string_edittext_summary">Enter string</string>
+    <string name="status_bar_date_format_custom">自定义 Java 格式</string>
+    <string name="status_bar_date_string_edittext_title">需使用 DateFormat 格式，例如 MM/dd/yy</string>
+    <string name="status_bar_date_string_edittext_summary">输入日期格式字符串</string>
     <string name="clock_date_position">日期位置</string>
     <string name="clock_date_right">在时间右侧</string>
     <string name="clock_date_left">在时间左侧</string>
@@ -656,7 +656,7 @@
     <string name="qs_vibrant_shade_title">Vibrant shade elements</string>
     <string name="qs_vibrant_shade_summary">Use vibrant accent colors for QS tiles and brightness slider</string>
     <!-- Battery customizations -->
-    <string name="battery_settings_title">Battery Settings</string>
+    <string name="battery_settings_title">电池</string>
     <string name="battery_options">电池</string>
     <string name="battery_style_title">Battery Style</string>
     <!-- Status bar - Battery -->
