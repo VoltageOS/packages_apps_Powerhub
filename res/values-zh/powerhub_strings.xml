@@ -210,7 +210,7 @@
     <string name="keybox_delete_pref_title">删除 Keybox</string>
     <string name="keybox_delete_summary">移除当前 keybox.xml 文件</string>
     <string name="keybox_delete_title">删除 keybox？</string>
-    <string name="keybox_delete_message">当前 keybox.xml 将从 TrickyStore 中移除。</string>
+    <string name="keybox_delete_message">当前 keybox.xml 将从 TrickyStore 中移除</string>
     <string name="keybox_deleted">Keybox 已删除</string>
     <string name="target_category_title">目标应用（TrickyStore）</string>
     <string name="target_screen_title">目标应用</string>
@@ -234,7 +234,7 @@
     <string name="app_spoof_manage_summary">按应用伪装设备属性</string>
     <string name="app_spoof_enabled_title">启用应用伪装</string>
     <string name="app_spoof_enabled_summary">为已配置的应用伪装设备属性</string>
-    <string name="app_spoof_screen_intro">添加应用并分配设备配置文件，之后可随时返回此处更新或移除。</string>
+    <string name="app_spoof_screen_intro">添加应用并分配设备配置文件，之后可随时返回此处更新或移除</string>
     <string name="app_spoof_add_app">添加软件</string>
     <string name="app_spoof_add_app_summary">选择一个应用并分配一个设备配置文件</string>
     <string name="app_spoof_configured_apps">已配置应用</string>
@@ -266,7 +266,7 @@
     <string name="action_delete">删除</string>
     <string name="game_spoofing_title">游戏伪装</string>
     <string name="game_spoofing_summary">为选定的游戏伪装设备属性</string>
-    <string name="game_spoofing_intro">添加游戏、选择预设，并在需要时编辑属性。</string>
+    <string name="game_spoofing_intro">添加游戏、选择预设，并在需要时编辑属性</string>
     <string name="game_spoofing_enabled">游戏伪装已启用</string>
     <string name="game_spoofing_disabled">游戏伪装已禁用</string>
     <string name="game_spoofing_configured_count">%1$d 个已配置的游戏</string>
@@ -304,9 +304,9 @@
     <!-- Keybox Data -->
     <string name="keybox_data_title">覆盖密钥认证</string>
     <string name="keybox_data_summary">加载自定义 Keybox XML 以覆盖设备密钥认证</string>
-    <string name="keybox_data_loaded_summary">已加载自定义 Keybox XML。删除即可恢复默认。</string>
+    <string name="keybox_data_loaded_summary">已加载自定义 Keybox XML，删除即可恢复默认</string>
     <string name="keybox_delete_content_description">清除 Keybox 数据</string>
-    <string name="keybox_toast_invalid_file_selected">非 XML 文件。请选择有效 Keybox XML。</string>
+    <string name="keybox_toast_invalid_file_selected">非 XML 文件，请选择有效 Keybox XML</string>
     <string name="keybox_toast_missing_data">Keybox XML 无效：缺少必要字段</string>
     <string name="keybox_toast_file_loaded">Keybox 已加载</string>
     <string name="keybox_toast_file_cleared">Keybox 已清除</string>
@@ -474,7 +474,7 @@
     <string name="hide_applist_summary">在应用列表检查里隐藏选择的应用</string>
     <string name="hide_applist_none_selected">未选择任何应用</string>
     <string name="hide_applist_selected_count">选择%1$d个应用</string>
-    <string name="spoof_dashboard_hide_applist_empty_detail">选择要在应用列表检查中隐藏的应用。</string>
+    <string name="spoof_dashboard_hide_applist_empty_detail">选择要在应用列表检查中隐藏的应用</string>
     <string name="menu_show_overlay">显示 overlay</string>
     <string name="menu_hide_overlay">隐藏 overlay</string>
     <!-- Wallpaper Styles -->
@@ -504,7 +504,7 @@
     <string name="voltage_logo">显示 Voltage Logo</string>
     <string name="voltage_logo_summary">无活动状态时，显示一个闪电图标作为默认指示器</string>
     <string name="progress_footer_text">
-状态栏进度条可实时显示媒体播放进度以及正在进行的下载/上传进度。
+状态栏进度条可实时显示媒体播放进度以及正在进行的下载/上传进度
 
 🎵 媒体进度：
 • 播放音乐或视频时，显示播放进度。
@@ -699,7 +699,7 @@
     <string name="nirvana_status_active_manual_scheduled">专注中\n计划：%1$s - %2$s</string>
     <string name="nirvana_force_unsuspend_all">强制启用所有已暂停的应用</string>
     <string name="nirvana_force_unsuspend_dialog_title">强制启用所有已暂停的应用？</string>
-    <string name="nirvana_force_unsuspend_dialog_message">这将尝试为所有用户配置文件中的每个已暂停应用解除暂停状态。如果应用因与数字健康或其他应用管理器的冲突而卡在暂停状态，请使用此功能。</string>
+    <string name="nirvana_force_unsuspend_dialog_message">这将尝试为所有用户配置文件中的每个已暂停应用解除暂停状态。如果应用因与数字健康或其他应用管理器的冲突而卡在暂停状态，请使用此功能</string>
     <string name="nirvana_force_unsuspend_done">完成 — 已尝试对 %1$d 个应用解除暂停状态</string>
     <string name="haze_effects">壁纸雾化</string>
     <string name="haze_effects_summary">使壁纸看起来有空间感和氛围感</string>
