@@ -378,7 +378,7 @@
     <!-- Monet settings -->
     <string name="monet_settings_title">主题</string>
     <string name="monet_settings_sammary">A few extra settings to customize monet engine</string>
-    <string name="theme_style_title">Theme style</string>
+    <string name="theme_style_title">主题样式</string>
     <string name="theme_style_tonal_spot">Tonal Spot (Default)</string>
     <string name="theme_style_vibrant">鲜艳</string>
     <string name="theme_style_expressive">Expressive</string>
@@ -475,7 +475,7 @@
     <string name="hide_applist_none_selected">未选择任何应用</string>
     <string name="hide_applist_selected_count">%1$d apps selected</string>
     <string name="spoof_dashboard_hide_applist_empty_detail">选择要在应用列表检查中隐藏的应用。</string>
-    <string name="menu_show_overlay">Show overlay</string>
+    <string name="menu_show_overlay">显示 overlay</string>
     <string name="menu_hide_overlay">Hide overlay</string>
     <!-- Wallpaper Styles -->
     <string name="wallpaper_settings_title">壁纸样式</string>
@@ -521,9 +521,9 @@
 
 进度条会在媒体和下载状态之间动态切换，让你一目了然地获取最相关的信息     </string>
     <!-- Freeform launch mode -->
-    <string name="freeform_launch_mode_title">Freeform launch mode</string>
-    <string name="freeform_launch_mode_1">Native AOSP</string>
-    <string name="freeform_launch_mode_2">LMOFreeForm</string>
+    <string name="freeform_launch_mode_title">自由窗口启动模式</string>
+    <string name="freeform_launch_mode_1">原生 AOSP</string>
+    <string name="freeform_launch_mode_2">LMO 自由窗口</string>
     <!-- QS Brightness Slider -->
     <string name="qs_brightness_slider_category">Brightness slider</string>
     <string name="qs_brightness_slider_title">亮度滑块设置</string>
@@ -585,34 +585,34 @@
     <string name="smart_pixels_shift_title">Burn-in protection</string>
     <string name="smart_pixels_shift_summary">Prevents burn-in on OLED devices by shifting pixels every so often</string>
     <!--  screen, setting option summary to change custom timeout -->
-    <string name="custom_timeout_summary_never">Never</string>
-    <string name="custom_timeout_summary_5secs">5 seconds</string>
-    <string name="custom_timeout_summary_10secs">10 seconds</string>
-    <string name="custom_timeout_summary_15secs">15 seconds</string>
-    <string name="custom_timeout_summary_30secs">30 seconds</string>
-    <string name="custom_timeout_summary_1min">1 minute</string>
-    <string name="custom_timeout_summary_2mins">2 minutes</string>
-    <string name="custom_timeout_summary_5mins">5 minutes</string>
-    <string name="custom_timeout_summary_10mins">10 minutes</string>
-    <string name="custom_timeout_summary_20mins">20 minutes</string>
-    <string name="custom_timeout_summary_30mins">30 minutes</string>
-    <string name="custom_timeout_summary_1hour">1 hour</string>
-    <string name="custom_timeout_summary_2hours">2 hours</string>
-    <string name="custom_timeout_summary_4hours">4 hours</string>
-    <string name="custom_timeout_summary_8hours">8 hours</string>
+    <string name="custom_timeout_summary_never">从不</string>
+    <string name="custom_timeout_summary_5secs">5 秒</string>
+    <string name="custom_timeout_summary_10secs">10 秒</string>
+    <string name="custom_timeout_summary_15secs">15 秒</string>
+    <string name="custom_timeout_summary_30secs">30 秒</string>
+    <string name="custom_timeout_summary_1min">1 分钟</string>
+    <string name="custom_timeout_summary_2mins">2 分钟</string>
+    <string name="custom_timeout_summary_5mins">5 分钟</string>
+    <string name="custom_timeout_summary_10mins">10 分钟</string>
+    <string name="custom_timeout_summary_20mins">20 分钟</string>
+    <string name="custom_timeout_summary_30mins">30 分钟</string>
+    <string name="custom_timeout_summary_1hour">1 小时</string>
+    <string name="custom_timeout_summary_2hours">2 小时</string>
+    <string name="custom_timeout_summary_4hours">4 小时</string>
+    <string name="custom_timeout_summary_8hours">8 小时</string>
     <!-- Floating rotation button -->
-    <string name="floating_rotation_button_title">Floating rotate button</string>
-    <string name="floating_rotation_button_summary">Show a floating rotate button when device is rotated</string>
+    <string name="floating_rotation_button_title">浮动旋转按钮</string>
+    <string name="floating_rotation_button_summary">旋转设备时显示浮动按钮</string>
     <!-- UDFPS settings -->
-    <string name="udfps_category">UDFPS</string>
+    <string name="udfps_category">屏幕指纹</string>
     <string name="udfps_settings_title">UDFPS Customization</string>
     <string name="udfps_settings_summary">Customize under-display fingerprint scanner</string>
     <!-- UDFPS Icons -->
     <string name="udfps_icon_picker_title">指纹图标选择器</string>
-    <string name="udfps_icon_picker_summary">Choose your favorite fingerprint icon</string>
+    <string name="udfps_icon_picker_summary">选择您最喜欢的指纹图标</string>
     <!-- UDFPS Animations -->
-    <string name="udfps_recog_animation_effect_title">UDFPS custom animation</string>
-    <string name="udfps_recog_animation_effect_summary">Choose animation effect</string>
+    <string name="udfps_recog_animation_effect_title">屏下指纹自定义动画</string>
+    <string name="udfps_recog_animation_effect_summary">选择动画效果</string>
     <!-- Data usage info in QS footer -->
     <string name="qs_footer_datausage_title">流量使用情况</string>
     <string name="qs_footer_datausage_summary">在快捷设置底部显示总流量使用情况</string>
@@ -628,7 +628,7 @@
     <string name="status_bar_clock_auto_hide_title">自动隐藏</string>
     <string name="status_bar_clock_auto_hide_summary">桌面可见时隐藏时间</string>
     <string name="status_bar_am_pm_title">上午/下午样式</string>
-    <string name="status_bar_am_pm_info">24-hour clock is enabled</string>
+    <string name="status_bar_am_pm_info">24小时制已启用</string>
     <string name="status_bar_am_pm_normal">正常</string>
     <string name="status_bar_am_pm_small">小</string>
     <string name="status_bar_am_pm_hidden">隐藏</string>
@@ -650,7 +650,7 @@
     <string name="shade_blur_radius_title">通知面板模糊</string>
     <string name="shade_blur_radius_summary">调节通知面板后面的模糊强度</string>
     <!-- Vbmeta hash attestation -->
-    <string name="vbmeta_attestation_title">Autofix VBMeta detection</string>
+    <string name="vbmeta_attestation_title">自动修复 VBMeta 检测</string>
     <string name="vbmeta_attestation_summary">Perform key attestation to generate verified boot hash on boot. Requires system restart.</string>
     <string name="qs_vibrant_shade_title">鲜艳色调元素</string>
     <string name="qs_vibrant_shade_summary">为快捷设置磁贴和亮度滑块使用鲜艳的强调色</string>
@@ -668,39 +668,39 @@
     <string name="status_bar_battery_style_filled_circle">实心圆</string>
     <string name="status_bar_battery_style_text">文本</string>
     <string name="status_bar_battery_style_hidden">隐藏</string>
-    <string name="status_bar_battery_percent_title">Battery percent</string>
+    <string name="status_bar_battery_percent_title">电量百分比</string>
     <string name="status_bar_battery_percent_hidden">隐藏</string>
     <string name="status_bar_battery_percent_text_inside">图标内</string>
     <string name="status_bar_battery_percent_text_next">图标旁</string>
     <string name="status_bar_battery_percent_text_next_right">图标旁（右侧）</string>
     <string name="status_bar_battery_percent_text_next_left">图标旁（左侧）</string>
     <!-- Bluetooth status -->
-    <string name="bluetooth_battery_title">Bluetooth battery status</string>
-    <string name="bluetooth_battery_summary">Display battery status for the connected bluetooth device, if available</string>
+    <string name="bluetooth_battery_title">蓝牙设备电量</string>
+    <string name="bluetooth_battery_summary">显示当前连接的蓝牙设备电量，如果设备支持</string>
     <!-- Nirvana Mode -->
-    <string name="nirvana_mode_title">Nirvana Mode</string>
-    <string name="nirvana_mode_summary">Create quiet time by pausing distracting apps</string>
-    <string name="nirvana_mode_hero_title">保持专注</string>
-    <string name="nirvana_mode_description">当您需要专注时，可限制使用部分应用并隐藏其通知。</string>
-    <string name="nirvana_mode_set_schedule">设置时间段</string>
+    <string name="nirvana_mode_title">专注模式</string>
+    <string name="nirvana_mode_summary">通过暂停令你分心的应用，创造宁静时段</string>
+    <string name="nirvana_mode_hero_title">专注此刻</string>
+    <string name="nirvana_mode_description">当您需要专注时，可限制令人分心的应用并隐藏其通知</string>
+    <string name="nirvana_mode_set_schedule">设置时间表</string>
     <string name="nirvana_mode_turn_on_now">开启专注模式</string>
     <string name="nirvana_mode_turn_off_now">关闭专注模式</string>
     <string name="nirvana_mode_select_apps">选择限制使用的应用</string>
     <string name="nirvana_mode_dialog_title">专注模式已开启</string>
     <string name="nirvana_mode_dialog_message">专注模式已限制使用此应用。</string>
     <string name="nirvana_mode_schedule_title">时间表</string>
-    <string name="nirvana_mode_schedule_summary">当您需要专注时，可限制使用部分应用并隐藏其通知。</string>
+    <string name="nirvana_mode_schedule_summary">当您需要专注时，可限制令人分心的应用并隐藏其通知</string>
     <string name="nirvana_mode_apps_header">限制使用应用列表</string>
     <string name="nirvana_mode_schedule_start">开始时间</string>
     <string name="nirvana_mode_schedule_end">结束时间</string>
     <string name="nirvana_status_active">专注模式已开启</string>
     <string name="nirvana_status_active_until">将在 %1$s 结束</string>
     <string name="nirvana_status_scheduled">专注模式将会在 %1$s - %2$s 开启</string>
-    <string name="nirvana_status_active_manual_scheduled">Active now\nScheduled: %1$s - %2$s</string>
+    <string name="nirvana_status_active_manual_scheduled">专注中\n计划：%1$s - %2$s</string>
     <string name="nirvana_force_unsuspend_all">强制启用所有已暂停的应用</string>
-    <string name="nirvana_force_unsuspend_dialog_title">强制启用所有已暂停的应用?</string>
-    <string name="nirvana_force_unsuspend_dialog_message">This will attempt to unsuspend every currently suspended app across all profiles. Use this if apps are stuck in suspended state due to a conflict with Digital Wellbeing or another app manager.</string>
-    <string name="nirvana_force_unsuspend_done">Done — attempted to unsuspend %1$d app(s)</string>
+    <string name="nirvana_force_unsuspend_dialog_title">强制启用所有已暂停的应用？</string>
+    <string name="nirvana_force_unsuspend_dialog_message">这将尝试为所有用户配置文件中的每个已暂停应用解除暂停状态。如果应用因与数字健康或其他应用管理器的冲突而卡在暂停状态，请使用此功能。</string>
+    <string name="nirvana_force_unsuspend_done">完成 — 已尝试对 %1$d 个应用解除暂停状态</string>
     <string name="haze_effects">壁纸雾化</string>
     <string name="haze_effects_summary">使壁纸看起来有空间感和氛围感</string>
     <string name="haze_effects_style">效果样式</string>
@@ -720,12 +720,12 @@
     <string name="network_traffic_location_full">状态栏和快捷设置</string>
     <string name="network_traffic_location_sb">状态栏</string>
     <string name="network_traffic_location_qs">快捷设置</string>
-    <string name="nirvana_stats_title">Daily Stats</string>
-    <string name="nirvana_stats_total_time">Screen time</string>
-    <string name="nirvana_stats_unlocks">Unlocks</string>
-    <string name="nirvana_stats_notifications">Interruptions</string>
-    <string name="nirvana_stats_app_breakdown">Usage details</string>
-    <string name="nirvana_time_fmt_hm">%1$dh %2$dm</string>
+    <string name="nirvana_stats_title">每日数据</string>
+    <string name="nirvana_stats_total_time">屏幕使用时间</string>
+    <string name="nirvana_stats_unlocks">解锁</string>
+    <string name="nirvana_stats_notifications">中断</string>
+    <string name="nirvana_stats_app_breakdown">使用明细</string>
+    <string name="nirvana_time_fmt_hm">%1$dh%2$dm</string>
     <string name="nirvana_time_fmt_m">%1$dm</string>
-    <string name="nirvana_time_fmt_less_min">&lt; 1m</string>
+    <string name="nirvana_time_fmt_less_min">&lt;1m</string>
 </resources>
