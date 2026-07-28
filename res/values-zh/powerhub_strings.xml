@@ -32,7 +32,7 @@
     <string name="powermenu_summary">高级重启，电源菜单透明度</string>
     <string name="theme_title">主题</string>
     <string name="theme_summary">系统主题，圆角，切换主题</string>
-    <string name="quicksettings_title">快速设置</string>
+    <string name="quicksettings_title">快捷设置</string>
     <string name="quicksettings_summary">磁贴布局，模糊效果</string>
     <string name="recents_title">最近任务</string>
     <string name="recents_summary">Slim 最近任务</string>
@@ -76,7 +76,7 @@
     <string name="led_color_green">绿</string>
     <string name="led_color_red">红</string>
     <!-- QS settings -->
-    <string name="qs_title">快速设置</string>
+    <string name="qs_title">快捷设置</string>
     <!-- Lockscreen shortcuts -->
     <string name="ls_category">锁屏项目</string>
     <string name="ls_tuner">启用锁屏界面调整</string>
@@ -414,18 +414,18 @@
     <string name="lockscreen_battery_info_title">Lockscreen charging info</string>
     <string name="lockscreen_battery_info_summary">Show charging current, voltage, wattage and battery temperature on lockscreen while charging</string>
     <!-- Disable QS -->
-    <string name="disable_qs_title">Hide QS in secure lockscreen</string>
+    <string name="disable_qs_title">在安全锁屏界面屏蔽快捷设置</string>
     <string name="disable_qs_summary">Hides QS if device is locked. Does not disable notification shade</string>
     <!-- Power menu on secure lockscreen -->
     <string name="lockscreen_enable_power_menu_title">电源菜单</string>
-    <string name="lockscreen_enable_power_menu_summary">Allow accessing power menu on secure lockscreen</string>
+    <string name="lockscreen_enable_power_menu_summary">允许在安全锁屏界面访问电源菜单</string>
     <!-- QSTile requires unlocking before being accessible -->
-    <string name="qstile_requires_unlocking_title">Secure QS tiles require unlocking</string>
-    <string name="qstile_requires_unlocking_summary">The following QS tiles require unlocking before you can access them from the lock screen:\nAirplane, Cellular, NFC, Hotspot, USB tethering and Location</string>
+    <string name="qstile_requires_unlocking_title">安全磁贴需解锁后操作</string>
+    <string name="qstile_requires_unlocking_summary">以下快捷设置磁贴需解锁设备后才可在锁屏界面使用：\n飞行模式、移动数据、NFC、热点、USB 网络共享和位置信息</string>
     <!-- click to take partial SS -->
     <string name="click_partial_screenshot_title">Click to partial screenshot</string>
     <string name="click_partial_screenshot_summary">Short click Volume Down and Power to take partial screenshot</string>
-    <string name="quick_settings_secure_lock_screen_title">QS pull on secure lock screen</string>
+    <string name="quick_settings_secure_lock_screen_title">安全锁屏下拉快捷设置</string>
     <!-- Lock screen media art -->
     <string name="ls_media_art_title">Media cover art</string>
     <string name="ls_media_art_summary">Display media cover art when available</string>
@@ -448,10 +448,10 @@
     <string name="ls_media_art_blur_level_title">Media art blur level</string>
     <string name="ls_media_art_blur_level_summary">Blur intensity when blur filter is applied</string>
     <!-- Pulse music visualizer -->
-    <string name="pulse_settings_title">Pulse Visualizer</string>
-    <string name="pulse_settings_summary">Show a bar visualizer on the lock screen while music is playing</string>
-    <string name="ambient_pulse_enabled_title">Ambient Pulse</string>
-    <string name="ambient_pulse_enabled_summary">Show visualizer on Ambient Display</string>
+    <string name="pulse_settings_title">音乐律动条</string>
+    <string name="pulse_settings_summary">音乐播放时在锁屏显示音乐律动条</string>
+    <string name="ambient_pulse_enabled_title">息屏音乐律动</string>
+    <string name="ambient_pulse_enabled_summary">在息屏显示界面显示音乐律动条</string>
     <string name="pulse_rounded_bars_title">Rounded bars</string>
     <string name="pulse_rounded_bars_summary">Display visualizer bars with rounded corners</string>
     <string name="pulse_color">Visualizer color</string>
@@ -461,14 +461,14 @@
     <string name="pulse_bar_count_title">Number of bars</string>
     <string name="pulse_bar_count_summary">Set how many bars are shown in the visualizer</string>
     <string name="pulse_bar_count_units">bars</string>
-    <string name="pulse_renderer">Visualizer style</string>
-    <string name="pulse_renderer_solid">Solid lines</string>
-    <string name="pulse_renderer_fading">Fading blocks</string>
-    <string name="pulse_renderer_neon_glow">Neon glow</string>
-    <string name="pulse_renderer_retro_vu_meter">Retro VU meter</string>
-    <string name="pulse_renderer_minimal_wave">Minimal wave</string>
-    <string name="pulse_renderer_sparkle">Sparkle</string>
-    <string name="pulse_renderer_matrix">Matrix</string>
+    <string name="pulse_renderer">律动条样式</string>
+    <string name="pulse_renderer_solid">实线</string>
+    <string name="pulse_renderer_fading">渐隐方块</string>
+    <string name="pulse_renderer_neon_glow">霓虹光效</string>
+    <string name="pulse_renderer_retro_vu_meter">复古音量表</string>
+    <string name="pulse_renderer_minimal_wave">极简波浪</string>
+    <string name="pulse_renderer_sparkle">闪烁</string>
+    <string name="pulse_renderer_matrix">矩阵</string>
     <!-- Hide applist -->
     <string name="hide_applist_title">Hide App List</string>
     <string name="hide_applist_summary">Hide selected apps from app list checks</string>
@@ -671,10 +671,10 @@
     <string name="status_bar_battery_style_hidden">隐藏</string>
     <string name="status_bar_battery_percent_title">Battery percent</string>
     <string name="status_bar_battery_percent_hidden">隐藏</string>
-    <string name="status_bar_battery_percent_text_inside">Inside the icon</string>
-    <string name="status_bar_battery_percent_text_next">Next to the icon</string>
-    <string name="status_bar_battery_percent_text_next_right">Next to the icon (right)</string>
-    <string name="status_bar_battery_percent_text_next_left">Next to the icon (left)</string>
+    <string name="status_bar_battery_percent_text_inside">图标内</string>
+    <string name="status_bar_battery_percent_text_next">图标旁</string>
+    <string name="status_bar_battery_percent_text_next_right">图标旁（右侧）</string>
+    <string name="status_bar_battery_percent_text_next_left">图标旁（左侧）</string>
     <!-- Bluetooth status -->
     <string name="bluetooth_battery_title">Bluetooth battery status</string>
     <string name="bluetooth_battery_summary">Display battery status for the connected bluetooth device, if available</string>
@@ -713,7 +713,7 @@
     <string name="haze_frosted_reversed">反向毛玻璃</string>
     <string name="haze_standard_double">双重模糊（模糊-&gt;正常锁屏，正常-&gt;模糊桌面）</string>
     <!-- Split shade QS -->
-    <string name="qs_split_shade_title">拆分快速设置</string>
+    <string name="qs_split_shade_title">拆分快捷设置</string>
     <string name="qs_split_shade_summary">横屏时通知和快捷设置采用双列布局</string>
     <!-- Network traffic statusbar sub-location -->
     <string name="network_traffic_statusbar_location_title">网速显示位置</string>
