@@ -351,16 +351,16 @@
     <!-- Network traffic -->
     <string name="network_traffic_settings_title">网络流量监控</string>
     <string name="network_traffic_settings_summary">显示并自定义当前网速</string>
-    <string name="network_traffic_location_title">Network traffic monitor status</string>
+    <string name="network_traffic_location_title">网络流量监控状态</string>
     <string name="network_traffic_location_disable">禁用</string>
-    <string name="network_traffic_location_statusbar">Enabled</string>
+    <string name="network_traffic_location_statusbar">启用</string>
     <string name="network_traffic_location_quick_statusbar">Quick Statusbar</string>
-    <string name="network_traffic_mode_title">Display mode</string>
-    <string name="network_traffic_mode_up">Upload only</string>
-    <string name="network_traffic_mode_down">Download only</string>
-    <string name="network_traffic_mode_all">Upload and download</string>
-    <string name="network_traffic_autohide">Auto hide</string>
-    <string name="network_traffic_autohide_summary">Hide the traffic monitor when inactive</string>
+    <string name="network_traffic_mode_title">显示模式</string>
+    <string name="network_traffic_mode_up">仅上传</string>
+    <string name="network_traffic_mode_down">仅下载</string>
+    <string name="network_traffic_mode_all">上传和下载</string>
+    <string name="network_traffic_autohide">自动隐藏</string>
+    <string name="network_traffic_autohide_summary">网速不活跃时隐藏</string>
     <string name="network_traffic_autohide_kilobits">Kb/s</string>
     <string name="network_traffic_autohide_kilobytes">KB/s</string>
     <string name="network_traffic_autohide_threshold">Inactivity threshold</string>
@@ -627,7 +627,7 @@
     <string name="status_bar_clock_position_right">Right</string>
     <string name="status_bar_clock_position_left">Left</string>
     <string name="status_bar_clock_position_center">Center</string>
-    <string name="status_bar_clock_auto_hide_title">Auto hide</string>
+    <string name="status_bar_clock_auto_hide_title">自动隐藏</string>
     <string name="status_bar_clock_auto_hide_summary">Hide clock if launcher is visible</string>
     <string name="status_bar_am_pm_title">AM/PM style</string>
     <string name="status_bar_am_pm_info">24-hour clock is enabled</string>
@@ -717,7 +717,7 @@
     <string name="qs_split_shade_title">拆分快速设置</string>
     <string name="qs_split_shade_summary">横屏时通知和快速设置采用双列布局</string>
     <!-- Network traffic statusbar sub-location -->
-    <string name="network_traffic_statusbar_location_title">Network traffic  location</string>
+    <string name="network_traffic_statusbar_location_title">网速显示位置</string>
     <string name="network_traffic_full">Statusbar and QS header</string>
     <string name="network_traffic_location_full">Statusbar and QS header</string>
     <string name="network_traffic_location_sb">Statusbar only</string>
