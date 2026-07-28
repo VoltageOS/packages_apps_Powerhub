@@ -214,9 +214,9 @@
     <string name="keybox_deleted">Keybox 已删除</string>
     <string name="target_category_title">目标应用（TrickyStore）</string>
     <string name="target_screen_title">目标应用</string>
-    <string name="target_apps_intro">选择使用 TrickyStore 的应用，并为其设置模式。</string>
+    <string name="target_apps_intro">选择使用 TrickyStore 的应用，并为其设置模式</string>
     <string name="target_manage_title">管理目标应用</string>
-    <string name="target_no_apps">没有软件使用当前配置</string>
+    <string name="target_no_apps">未配置任何应用</string>
     <string name="target_apps_count">%1$d 个应用已配置</string>
     <string name="target_selected_count">已选择 %1$d 个</string>
     <string name="target_import_title">导入 target.txt</string>
@@ -236,10 +236,10 @@
     <string name="app_spoof_enabled_summary">为已配置的应用伪装设备属性</string>
     <string name="app_spoof_screen_intro">添加应用并分配设备配置文件，之后可随时返回此处更新或移除。</string>
     <string name="app_spoof_add_app">添加软件</string>
-    <string name="app_spoof_add_app_summary">选择应用并分配设备配置文件</string>
+    <string name="app_spoof_add_app_summary">选择一个应用并分配一个设备配置文件</string>
     <string name="app_spoof_configured_apps">已配置应用</string>
     <string name="app_spoof_configured_apps_count">已配置 %1$d 个应用</string>
-    <string name="app_spoof_no_apps">没有软件使用当前配置</string>
+    <string name="app_spoof_no_apps">未配置任何应用</string>
     <string name="app_spoof_select_app">选择应用</string>
     <string name="app_spoof_select_profile">选择设备配置文件</string>
     <string name="app_spoof_app_added">已添加 %1$s</string>
@@ -272,7 +272,7 @@
     <string name="game_spoofing_configured_count">%1$d 个已配置的游戏</string>
     <string name="game_spoof_add_game">添加游戏</string>
     <string name="game_spoof_no_games">未配置游戏</string>
-    <string name="game_spoof_select_game">选择游戏</string>
+    <string name="game_spoof_select_game">选择一个游戏</string>
     <string name="game_spoof_select_preset">选择预设</string>
     <string name="game_spoof_no_presets">没有可用的预设</string>
     <string name="game_spoof_game_added">已添加 %1$s</string>
@@ -423,8 +423,8 @@
     <string name="qstile_requires_unlocking_title">安全磁贴需解锁后操作</string>
     <string name="qstile_requires_unlocking_summary">以下快捷设置磁贴需解锁设备后才可在锁屏界面使用：\n飞行模式、移动数据、NFC、热点、USB 网络共享和位置信息</string>
     <!-- click to take partial SS -->
-    <string name="click_partial_screenshot_title">Click to partial screenshot</string>
-    <string name="click_partial_screenshot_summary">Short click Volume Down and Power to take partial screenshot</string>
+    <string name="click_partial_screenshot_title">点击以进行局部截图</string>
+    <string name="click_partial_screenshot_summary">同时短按音量减键与电源键以进行区域截图</string>
     <string name="quick_settings_secure_lock_screen_title">安全锁屏下拉快捷设置</string>
     <!-- Lock screen media art -->
     <string name="ls_media_art_title">媒体封面</string>
@@ -470,11 +470,11 @@
     <string name="pulse_renderer_sparkle">闪烁</string>
     <string name="pulse_renderer_matrix">矩阵</string>
     <!-- Hide applist -->
-    <string name="hide_applist_title">Hide App List</string>
+    <string name="hide_applist_title">隐藏应用列表</string>
     <string name="hide_applist_summary">Hide selected apps from app list checks</string>
-    <string name="hide_applist_none_selected">No apps selected</string>
+    <string name="hide_applist_none_selected">未选择任何应用</string>
     <string name="hide_applist_selected_count">%1$d apps selected</string>
-    <string name="spoof_dashboard_hide_applist_empty_detail">Choose which apps should be hidden from app list checks.</string>
+    <string name="spoof_dashboard_hide_applist_empty_detail">选择要在应用列表检查中隐藏的应用。</string>
     <string name="menu_show_overlay">Show overlay</string>
     <string name="menu_hide_overlay">Hide overlay</string>
     <!-- Wallpaper Styles -->
@@ -537,13 +537,13 @@
     <string name="qs_brightness_slider_position_top">顶部</string>
     <string name="qs_brightness_slider_position_bottom">底部</string>
     <!-- Homepage toasts -->
-    <string name="homepage_toast_title">Homepage toast messages</string>
-    <string name="homepage_toast_summary">Replace suggestion card with random messages</string>
-    <string name="homepage_toast_text_title">Custom message</string>
-    <string name="homepage_toast_text_summary">Set a personal message to display</string>
+    <string name="homepage_toast_title">主页彩蛋</string>
+    <string name="homepage_toast_summary">用随机文字替换设置主页的建议卡片</string>
+    <string name="homepage_toast_text_title">自定义信息</string>
+    <string name="homepage_toast_text_summary">设置要显示的个性提示语</string>
     <!-- Annoying Notifications -->
-    <string name="notification_sound_vib_screen_on_title">Annoying Notifications</string>
-    <string name="notification_sound_vib_screen_on_summary">Play sound and vibration for notifications when screen is on</string>
+    <string name="notification_sound_vib_screen_on_title">亮屏通知提醒</string>
+    <string name="notification_sound_vib_screen_on_summary">屏幕开启时，为通知播放声音和振动</string>
     <!-- Weather -->
     <string name="weather_category_title">天气</string>
     <string name="weather_settings_title">天气设置</string>
@@ -562,11 +562,11 @@
     <string name="lockscreen_weather_style_summary_off">时钟下方经典纵向排列</string>
     <string name="lockscreen_weather_style_summary_on">日期和天气显示在时钟旁或下方</string>
     <!-- Heads up timeout -->
-    <string name="notification_heads_up_title">Heads up</string>
-    <string name="notification_heads_up_summary">Allow pop up notifications</string>
+    <string name="notification_heads_up_title">横幅通知</string>
+    <string name="notification_heads_up_summary">允许弹出式通知</string>
     <!-- Less boring heads up -->
-    <string name="less_boring_heads_up_title">Less boring</string>
-    <string name="less_boring_heads_up_summary">Display popup notifications only for alarm, dialer and messaging app</string>
+    <string name="less_boring_heads_up_title">限制弹出通知</string>
+    <string name="less_boring_heads_up_summary">仅对闹钟、电话和短信应用显示弹出式通知</string>
     <!-- Fingerprint authentication vibration -->
     <string name="fingerprint_category">指纹</string>
     <string name="fprint_error_vib_title">Fingerprint error vibration</string>
@@ -697,8 +697,8 @@
     <string name="nirvana_status_active_until">将在 %1$s 结束</string>
     <string name="nirvana_status_scheduled">专注模式将会在 %1$s - %2$s 开启</string>
     <string name="nirvana_status_active_manual_scheduled">Active now\nScheduled: %1$s - %2$s</string>
-    <string name="nirvana_force_unsuspend_all">Force enable all suspended apps</string>
-    <string name="nirvana_force_unsuspend_dialog_title">Force enable all suspended apps?</string>
+    <string name="nirvana_force_unsuspend_all">强制启用所有已暂停的应用</string>
+    <string name="nirvana_force_unsuspend_dialog_title">强制启用所有已暂停的应用?</string>
     <string name="nirvana_force_unsuspend_dialog_message">This will attempt to unsuspend every currently suspended app across all profiles. Use this if apps are stuck in suspended state due to a conflict with Digital Wellbeing or another app manager.</string>
     <string name="nirvana_force_unsuspend_done">Done — attempted to unsuspend %1$d app(s)</string>
     <string name="haze_effects">壁纸雾化</string>
