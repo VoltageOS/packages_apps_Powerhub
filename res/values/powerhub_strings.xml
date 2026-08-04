@@ -20,6 +20,7 @@
 
     <!-- Categories -->
     <string name="button_title">Buttons</string>
+    <string name="button_category_summary">Hardware keys and gestures</string>
     <string name="button_summary">Hardware keys, Navigation bar</string>
     <string name="gestures_title">Gestures</string>
     <string name="gestures_summary">Jump to camera, swipe to screenshot</string>
@@ -96,6 +97,7 @@
     <!-- Statusbar Items -->
     <string name="sb_icons">Statusbar Icons</string>
     <string name="statusbar_items_category">Statusbar items</string>
+    <string name="statusbar_items_summary">Configure standard status bar icons</string>
 
 	<!-- Status bar - icons -->
     <string name="status_bar_icons_title">Status bar icons</string>
@@ -362,6 +364,14 @@
     <string name="power_menu_emergency_title">Emergency</string>
     <string name="power_menu_devicecontrols_title">Device controls</string>
 
+    <!-- Secure UI -->
+    <string name="secure_category_title">Secure UI</string>
+    <string name="secure_category_summary">Quick settings and power menu on lock screen</string>
+
+    <!-- Media -->
+    <string name="media_category_title">Media &amp; Visualizer</string>
+    <string name="media_category_summary">Pulse visualizer and cover art</string>
+
     <!-- Advanced restart options -->
     <string name="advanced_reboot_title">Advanced restart</string>
     <string name="advanced_reboot_summary">When unlocked, include options in the power menu for restarting into recovery or bootloader</string>
@@ -443,6 +453,7 @@
     <string name="tint_background_summary">Make Luminance and Chroma selection affect background colors as well</string>
 
     <string name="qs_blur_category_title">Shade Appearance</string>
+    <string name="qs_blur_category_summary">Dual-tone, split shade and blur customization</string>
 
     <string name="dual_tone_shade_title">Use dual-tone shade</string>
     <string name="dual_tone_shade_summary">Use a secondary background for the notification shade</string>
@@ -546,6 +557,12 @@
         For wallpaper styles to work effectively, users must set the wallpapers for the lockscreen and homescreen at different times.\nThe same wallpaper can be used, but it should not be applied to both the lockscreen and homescreen at the same time.\nThis is optional when using the BOTH OPTION for wallpaper blur and dim styles.
     </string>
 
+    <!-- Monet Settings -->
+    <string name="color_engine_category_title">Color Engine</string>
+    <string name="color_engine_category_summary">Palette generation and base colors</string>
+    <string name="advanced_color_category_title">Advanced Colors</string>
+    <string name="advanced_color_category_summary">Luminance, chroma, and surface tinting</string>
+
     <!-- Ongoing action chip -->
      <string name="ongoing_progress_settings_title">Statusbar action chip</string>
      <string name="ongoing_progress_settings_summary">Statusbar action chip options</string>
@@ -555,6 +572,8 @@
      <string name="compact_progress_mode_summary">Use a compact circular indicator for ongoing actions</string>
      <string name="show_media_progress_title">Show media progress</string>
      <string name="show_media_progress_summary">Display media playback progress in the status bar</string>
+     <string name="progress_bar_opacity_title">Progress Bar Opacity</string>
+     <string name="progress_bar_opacity_summary">Adjust the opacity of the progress bar chip</string>
      <string name="ongoing_smart_actions_title">Smart Actions Indicator</string>
      <string name="ongoing_smart_actions_summary">Show active status icons for Flashlight, Hotspot, DND, etc. in the indicator</string>
      <string name="voltage_logo">Show Voltage Logo</string>
@@ -586,6 +605,7 @@
     <!-- QS Brightness Slider -->
     <string name="qs_brightness_slider_category">Brightness slider</string>
     <string name="qs_brightness_slider_title">Show brightness slider</string>
+    <string name="qs_brightness_slider_summary">Customize slider position and auto-brightness</string>
     <string name="qs_brightness_slider_auto_title">Auto brightness</string>
     <string name="qs_brightness_slider_auto_summary">Show toggle for adaptive brightness near the slider</string>
     <string name="qs_brightness_slider_show_never">Never show</string>
@@ -599,6 +619,7 @@
 
     <!-- Homepage toasts -->
     <string name="homepage_toast_title">Homepage toast messages</string>
+    <string name="homepage_toast_category_summary">Custom text popup messages</string>
     <string name="homepage_toast_summary">Replace suggestion card with random messages</string>
     <string name="homepage_toast_text_title">Custom message</string>
     <string name="homepage_toast_text_summary">Set a personal message to display</string>
@@ -609,6 +630,7 @@
 
     <!-- Weather -->
     <string name="weather_category_title">Weather</string>
+    <string name="weather_category_summary">OmniJaws weather integration</string>
     <string name="weather_settings_title">Weather settings</string>
     <string name="weather_settings_summary">Setup icon pack and weather service</string>
     <string name="lockscreen_weather_title">Weather condition</string>
@@ -622,12 +644,15 @@
     <string name="lockscreen_weather_humidity_info_summary">Display current humidity in percentage</string>
 
     <!-- Weather layout style -->
-    <string name="lockscreen_weather_style_title">Modern layout</string>
+    <string name="lockscreen_weather_style_title">Layout</string>
+    <string name="lockscreen_weather_style_entries_classic">Classic</string>
+    <string name="lockscreen_weather_style_entries_modern">Modern</string>
     <string name="lockscreen_weather_style_summary_off">Classic stacked layout below the clock</string>
     <string name="lockscreen_weather_style_summary_on">Date and weather beside / below the clock face</string>
 
     <!-- Heads up timeout -->
     <string name="notification_heads_up_title">Heads up</string>
+    <string name="notification_heads_up_category_summary">Peek behaviors and screen-on alerts</string>
     <string name="notification_heads_up_summary">Allow pop up notifications</string>
 
     <!-- Less boring heads up -->
@@ -636,6 +661,7 @@
 
     <!-- Fingerprint authentication vibration -->
     <string name="fingerprint_category">Fingerprint</string>
+    <string name="fingerprint_summary">Ripple effect and haptics</string>
     <string name="fprint_error_vib_title">Fingerprint error vibration</string>
     <string name="fprint_error_vib_summary">Vibrate on error fingerprint authentication</string>
     <string name="fprint_success_vib_title">Fingerprint authentication vibration</string>
@@ -644,6 +670,7 @@
     <!-- Smart Pixels -->
     <string name="smart_pixels_warning_text">Smart pixels is a power saving feature. Depending on how many pixels you decide to turn off, you could see improvement in battery life. Note that in some cases it can result in unresponsive areas on touch screen</string>
     <string name="smart_pixels_title">Smart Pixels</string>
+    <string name="smart_pixels_category_summary">Save battery using burn-in protection</string>
     <string name="smart_pixels_summary">Save battery by shutting off extra pixels</string>
     <string name="smart_pixels_enable_title">Enable Smart Pixels</string>
     <string name="smart_pixels_enable_summary">Shut off pixels to reduce power consumption</string>
@@ -686,6 +713,8 @@
     <string name="udfps_recog_animation_effect_summary">Choose animation effect</string>
 
     <!-- Data usage info in QS footer -->
+    <string name="qs_footer_settings_title">Footer settings</string>
+    <string name="qs_footer_settings_summary">Data usage indicators</string>
     <string name="qs_footer_datausage_title">Data usage</string>
     <string name="qs_footer_datausage_summary">Display data usage summary in quick settings footer</string>
 
@@ -732,7 +761,8 @@
     <string name="qs_vibrant_shade_summary">Use vibrant accent colors for QS tiles and brightness slider</string>
 
     <!-- Battery customizations -->
-    <string name="battery_settings_title">Battery Settings</string>   
+    <string name="battery_settings_title">Battery Settings</string>
+    <string name="battery_settings_summary">Configure battery icon and percentage</string>
     <string name="battery_options">Battery</string>
     <string name="battery_style_title">Battery Style</string>
     <!-- Status bar - Battery -->

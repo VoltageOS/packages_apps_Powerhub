@@ -16,7 +16,7 @@
 -->
 <PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:title="Secure UI"
+    android:title="@string/secure_category_title"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
     <!-- Hide on secure lock screen -->

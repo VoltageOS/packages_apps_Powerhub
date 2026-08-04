@@ -28,22 +28,22 @@
 
     <Preference
         android:key="color_engine_settings"
-        android:title="Color Engine"
-        android:summary="Palette generation and base colors"
+        android:title="@string/color_engine_category_title"
+        android:summary="@string/color_engine_category_summary"
         android:icon="@drawable/ic_powerhub_color_expressive"
         android:fragment="com.power.hub.fragments.ColorEngineSettings" />
 
     <Preference
         android:key="advanced_color_settings"
-        android:title="Advanced Colors"
-        android:summary="Luminance, chroma, and surface tinting"
+        android:title="@string/advanced_color_category_title"
+        android:summary="@string/advanced_color_category_summary"
         android:icon="@drawable/ic_powerhub_advancedcolor_expressive"
         android:fragment="com.power.hub.fragments.AdvancedColorSettings" />
 
     <Preference
         android:key="qs_style_settings"
         android:title="@string/qs_blur_category_title"
-        android:summary="Dual-tone, split shade and blur customization"
+        android:summary="@string/qs_blur_category_summary"
         android:icon="@drawable/ic_powerhub_qsstyle_expressive"
         android:fragment="com.power.hub.fragments.QuickSettingsStyle" />
 

@@ -425,8 +425,8 @@
     </string-array>
 
     <string-array name="lockscreen_weather_style_entries">
-        <item>Classic</item>
-        <item>Modern</item>
+        <item>@string/lockscreen_weather_style_entries_classic</item>
+        <item>@string/lockscreen_weather_style_entries_modern</item>
     </string-array>
     <string-array name="lockscreen_weather_style_values">
         <item>0</item>

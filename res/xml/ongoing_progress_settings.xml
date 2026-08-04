@@ -56,8 +56,8 @@
  
      <com.voltage.support.preferences.SystemSettingSeekBarPreference
          android:key="progress_bar_opacity"
-         android:title="Progress Bar Opacity"
-         android:summary="Adjust the opacity of the progress bar chip"
+         android:title="@string/progress_bar_opacity_title"
+         android:summary="@string/progress_bar_opacity_summary"
          android:dependency="ongoing_action_chip"
          android:defaultValue="100"
          settings:units="%"
