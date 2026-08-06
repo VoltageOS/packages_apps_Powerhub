@@ -22,7 +22,7 @@
     <Preference
         android:key="systemui_tuner_statusbar"
         android:title="@string/statusbar_items_category"
-        android:summary="Configure standard status bar icons"
+        android:summary="@string/statusbar_items_summary"
         android:icon="@drawable/ic_powerhub_statusbar_items_expressive" >
         <intent android:action="com.android.settings.action.STATUS_BAR_TUNER" />
         </Preference>
@@ -39,19 +39,19 @@
         android:fragment="com.power.hub.fragments.BatterySettings"
         android:icon="@drawable/ic_powerhub_battery_expressive"
         android:title="@string/battery_settings_title"
-        android:summary="Configure battery icon and percentage" />
+        android:summary="@string/battery_settings_summary" />
 
     <Preference
         android:key="qs_brightness_settings"
         android:title="@string/qs_brightness_slider_title"
-        android:summary="Customize slider position and auto-brightness"
+        android:summary="@string/qs_brightness_slider_summary"
         android:icon="@drawable/ic_powerhub_brightness_expressive"
         android:fragment="com.power.hub.fragments.StatusBarBrightnessSettings" />
 
     <Preference
         android:key="qs_footer_settings"
-        android:title="Footer settings"
-        android:summary="Data usage indicators"
+        android:title="@string/qs_footer_settings_title"
+        android:summary="@string/qs_footer_settings_summary"
         android:icon="@drawable/ic_powerhub_qs_footer_expressive"
         android:fragment="com.power.hub.fragments.StatusBarFooterSettings" />
 
