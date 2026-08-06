@@ -365,18 +365,18 @@
     <string name="power_menu_devicecontrols_title">设备控制</string>
 
     <!-- Secure UI -->
-    <string name="secure_category_title">安全 UI</string>
-    <string name="secure_category_summary">锁屏时的快速设置和电源菜单</string>
+    <string name="secure_category_title">安全性</string>
+    <string name="secure_category_summary">锁屏时的快捷设置和电源菜单</string>
 
     <!-- Media -->
-    <string name="media_category_title">媒体 &amp; 可视化器</string>
-    <string name="media_category_summary">律动可视化器和艺术封面</string>
+    <string name="media_category_title">媒体 &amp; 可视化</string>
+    <string name="media_category_summary">媒体封面壁纸和频谱可视化</string>
 
     <!-- Advanced restart options -->
     <string name="advanced_reboot_title">高级重启</string>
     <string name="advanced_reboot_summary">解锁时，在电源菜单中包含重启到恢复模式或引导加载程序的选项</string>
-    <string name="advanced_reboot_secured_title">安全锁屏</string>
-    <string name="advanced_reboot_secured_summary">在安全锁屏上显示高级重启选项</string>
+    <string name="advanced_reboot_secured_title">锁屏界面</string>
+    <string name="advanced_reboot_secured_summary">在锁屏界面上显示高级重启选项</string>
 
     <!-- Text shown for the title of the restart systemui option -->
     <string name="power_menu_restart_systemui_title">重启系统界面</string>
@@ -400,7 +400,7 @@
     <string name="network_traffic_location_title">网络流量监视器位置</string>
     <string name="network_traffic_location_disable">已禁用</string>
     <string name="network_traffic_location_statusbar">已启用</string>
-    <string name="network_traffic_location_quick_statusbar">快速状态栏</string>
+    <string name="network_traffic_location_quick_statusbar">快捷状态栏</string>
     <string name="network_traffic_mode_title">显示模式</string>
     <string name="network_traffic_mode_up">仅上传</string>
     <string name="network_traffic_mode_down">仅下载</string>
@@ -464,36 +464,36 @@
 
     <!-- Lockscreen battery info indicator  -->
     <string name="lockscreen_battery_info_title">锁屏充电信息</string>
-    <string name="lockscreen_battery_info_summary">充电时在锁屏上显示充电电流、电压、功率和电池温度</string>
+    <string name="lockscreen_battery_info_summary">充电时在锁屏界面上显示充电电流、电压、功率和电池温度</string>
 
     <!-- Disable QS -->
-    <string name="disable_qs_title">在安全锁屏上隐藏快捷设置</string>
+    <string name="disable_qs_title">在锁屏界面上隐藏快捷设置</string>
     <string name="disable_qs_summary">设备锁定时隐藏快捷设置。不会禁用通知面板</string>
 
     <!-- Power menu on secure lockscreen -->
     <string name="lockscreen_enable_power_menu_title">电源菜单</string>
-    <string name="lockscreen_enable_power_menu_summary">允许在安全锁屏上访问电源菜单</string>
+    <string name="lockscreen_enable_power_menu_summary">允许在锁屏界面上访问电源菜单</string>
 
     <!-- QSTile requires unlocking before being accessible -->
-    <string name="qstile_requires_unlocking_title">安全快捷设置磁贴需要解锁</string>
+    <string name="qstile_requires_unlocking_title">限制部分快捷设置磁贴的访问</string>
     <string name="qstile_requires_unlocking_summary">以下快捷设置磁贴需要解锁后才能从锁屏访问：\n飞行模式、蜂窝网络、NFC、热点、USB 网络共享和位置</string>
 
     <!-- click to take partial SS -->
     <string name="click_partial_screenshot_title">点击区域截屏</string>
     <string name="click_partial_screenshot_summary">短按音量减 + 电源键进行区域截屏</string>
 
-    <string name="quick_settings_secure_lock_screen_title">安全锁屏上快捷设置下拉</string>
+    <string name="quick_settings_secure_lock_screen_title">在锁屏界面上下拉显示快捷设置</string>
 
     <!-- Lock screen media art -->
-    <string name="ls_media_art_title">媒体封面艺术</string>
-    <string name="ls_media_art_summary">有可用时显示媒体封面艺术</string>
+    <string name="ls_media_art_title">媒体封面壁纸</string>
+    <string name="ls_media_art_summary">媒体封面可用时在锁屏界面上作为壁纸显示</string>
 
     <!-- Lock screen media art on Ambient Display -->
-    <string name="ambient_media_art_title">息屏显示媒体封面艺术</string>
-    <string name="ambient_media_art_summary">有可用时在息屏显示上显示媒体封面艺术</string>
+    <string name="ambient_media_art_title">在息屏界面上启用</string>
+    <string name="ambient_media_art_summary">媒体封面可用时在息屏界面上作为壁纸显示</string>
 
     <!-- Lock screen album art filter -->
-    <string name="ls_media_art_filter_title">媒体封面艺术滤镜</string>
+    <string name="ls_media_art_filter_title">媒体壁纸滤镜</string>
     <string name="ls_media_art_filter_none">无</string>
     <string name="ls_media_art_filter_blur">模糊</string>
     <string name="ls_media_art_filter_grayscale">灰度</string>
@@ -503,28 +503,28 @@
     <string name="ls_media_art_filter_grayblur">灰度和模糊</string>
 
     <!-- Lock screen media art fade level -->
-    <string name="ls_media_art_fade_level_title">媒体封面艺术淡出级别</string>
-    <string name="ls_media_art_fade_level_summary">设置媒体封面艺术淡出级别</string>
+    <string name="ls_media_art_fade_level_title">媒体壁纸淡出级别</string>
+    <string name="ls_media_art_fade_level_summary">设置媒体壁纸淡出级别</string>
 
     <!-- Lock screen media art blur level -->
-    <string name="ls_media_art_blur_level_title">媒体艺术模糊级别</string>
-    <string name="ls_media_art_blur_level_summary">应用模糊滤镜时的模糊强度</string>
+    <string name="ls_media_art_blur_level_title">媒体壁纸模糊级别</string>
+    <string name="ls_media_art_blur_level_summary">应用模糊滤镜时媒体壁纸的模糊强度</string>
 
     <!-- Pulse music visualizer -->
-    <string name="pulse_settings_title">律动可视化</string>
-    <string name="pulse_settings_summary">播放音乐时在锁屏上显示条形可视化</string>
-    <string name="ambient_pulse_enabled_title">息屏律动</string>
-    <string name="ambient_pulse_enabled_summary">在息屏显示上显示可视化</string>
-    <string name="pulse_rounded_bars_title">圆角条</string>
-    <string name="pulse_rounded_bars_summary">显示带圆角的可视化条</string>
-    <string name="pulse_color">可视化颜色</string>
+    <string name="pulse_settings_title">可视化频谱</string>
+    <string name="pulse_settings_summary">媒体播放时在锁屏界面上显示可视化频谱</string>
+    <string name="ambient_pulse_enabled_title">息屏频谱</string>
+    <string name="ambient_pulse_enabled_summary">在息屏界面上显示可视化频谱</string>
+    <string name="pulse_rounded_bars_title">圆角的条型频谱</string>
+    <string name="pulse_rounded_bars_summary">显示带圆角的条型可视化频谱</string>
+    <string name="pulse_color">频谱颜色</string>
     <string name="pulse_color_lavalamp">熔岩灯</string>
     <string name="pulse_color_album">专辑封面</string>
     <string name="pulse_color_accent">强调色</string>
     <string name="pulse_bar_count_title">条数</string>
-    <string name="pulse_bar_count_summary">设置可视化中显示的条数</string>
+    <string name="pulse_bar_count_summary">设置条型可视化频谱的显示数量</string>
     <string name="pulse_bar_count_units">条</string>
-    <string name="pulse_renderer">可视化样式</string>
+    <string name="pulse_renderer">频谱样式</string>
     <string name="pulse_renderer_solid">实线</string>
     <string name="pulse_renderer_fading">渐隐块</string>
     <string name="pulse_renderer_neon_glow">霓虹光晕</string>
