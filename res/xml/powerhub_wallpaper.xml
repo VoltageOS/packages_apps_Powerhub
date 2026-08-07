@@ -56,39 +56,9 @@
             android:max="100"
             android:min="1" />
     </PreferenceCategory>
-
-    <PreferenceCategory
-            android:key="haze_category"
-            android:title="@string/haze_effects">
-
-            <com.voltage.support.preferences.SystemSettingSwitchPreference
-                android:key="haze_enabled"
-                android:title="@string/haze_effects"
-                android:summary="@string/haze_effects_summary"
-                android:defaultValue="false" />
-
-            <com.voltage.support.preferences.SystemSettingListPreference
-                android:key="haze_style"
-                android:title="@string/haze_effects_style"
-                android:summary="@string/haze_effects_style_summary"
-                android:entries="@array/haze_effects_style_entries"
-                android:entryValues="@array/haze_effects_style_values"
-                android:defaultValue="0"
-                android:dependency="haze_enabled" />
-
-            <com.voltage.support.preferences.SystemSettingSeekBarPreference
-                android:key="haze_intensity"
-                android:title="@string/haze_effects_intensity"
-                android:max="100"
-                android:min="10"
-                android:defaultValue="50"
-                android:dependency="haze_enabled" />
-
-    </PreferenceCategory>
     <com.android.settingslib.widget.FooterPreference
         android:key="wallpaper_styles_footer"
         android:title="@string/wallpaper_styles_footer"
         android:selectable="false"
         settings:searchable="false" />
-
 </PreferenceScreen>

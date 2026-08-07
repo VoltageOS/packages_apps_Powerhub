@@ -783,17 +783,6 @@
     <string name="nirvana_force_unsuspend_dialog_message">This will attempt to unsuspend every currently suspended app across all profiles. Use this if apps are stuck in suspended state due to a conflict with Digital Wellbeing or another app manager.</string>
     <string name="nirvana_force_unsuspend_done">Done — attempted to unsuspend %1$d app(s)</string>
 
-    <string name="haze_effects">Haze effects</string>
-    <string name="haze_effects_summary">Atmosphere-like wallpaper effects</string>
-    <string name="haze_effects_style">Effect styles</string>
-    <string name="haze_effects_style_summary">Choose how the effect behaves between the Lockscreen and Homescreen</string>
-    <string name="haze_effects_intensity">Effect intensity</string>
-    <string name="haze_standard">Standard Atmosphere</string>
-    <string name="haze_standard_reversed">Reverse Atmosphere</string>
-    <string name="haze_frosted">Simple Frosted</string>
-    <string name="haze_frosted_reversed">Reverse Frosted</string>
-    <string name="haze_standard_double">Double Haze (Haze->Sharp Lock, Sharp->Haze Home)</string>
-
     <!-- Split shade QS -->
     <string name="qs_split_shade_title">Split Quick Settings</string>
     <string name="qs_split_shade_summary">Use a two-column layout for notifications and Quick Settings in landscape</string>
