@@ -19,6 +19,7 @@ package com.power.hub.fragments
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
+import android.os.UserHandle
 
 /**
  * Receives Boot Complete, Alarm intents, and User actions to enforce Nirvana Mode.
@@ -27,6 +28,8 @@ import android.content.Intent
 class NirvanaModeReceiver : BroadcastReceiver() {
     companion object {
         const val ACTION_UPDATE_NIRVANA_SCHEDULE = "com.power.hub.action.UPDATE_NIRVANA_SCHEDULE"
+        const val ACTION_NIRVANA_TIME_LIMIT_REACHED = "com.power.hub.action.NIRVANA_TIME_LIMIT_REACHED"
+        const val ACTION_NIRVANA_DAILY_RESET = "com.power.hub.action.NIRVANA_DAILY_RESET"
         private const val TAG = "NirvanaModeReceiver"
     }
 
@@ -36,6 +39,7 @@ class NirvanaModeReceiver : BroadcastReceiver() {
     ) {
         val action = intent.action
         val utils = NirvanaModeUtils(context)
+        val timeLimitUtils = NirvanaTimeLimitUtils(context)
 
         when (action) {
             Intent.ACTION_BOOT_COMPLETED,
@@ -51,6 +55,31 @@ class NirvanaModeReceiver : BroadcastReceiver() {
                 if (utils.isScheduleEnabled()) {
                     utils.scheduleNextAlarm()
                 }
+
+                if (Intent.ACTION_BOOT_COMPLETED == action) {
+                    timeLimitUtils.onBoot()
+                } else {
+                    timeLimitUtils.refresh()
+                }
+            }
+
+            ACTION_NIRVANA_TIME_LIMIT_REACHED -> {
+                val packageName = intent.getStringExtra(NirvanaTimeLimitUtils.EXTRA_LIMIT_PACKAGE)
+                val userId =
+                    intent.getIntExtra(NirvanaTimeLimitUtils.EXTRA_LIMIT_USER, UserHandle.myUserId())
+                if (!packageName.isNullOrEmpty()) {
+                    timeLimitUtils.onLimitReached(packageName, userId)
+                }
+            }
+
+            ACTION_NIRVANA_DAILY_RESET -> {
+                timeLimitUtils.onDailyReset()
+            }
+
+            Intent.ACTION_PACKAGE_FULLY_REMOVED,
+            Intent.ACTION_PACKAGE_REMOVED,
+            -> {
+                timeLimitUtils.onPackagesChanged()
             }
 
             Intent.ACTION_PACKAGES_UNSUSPENDED,
@@ -74,6 +103,8 @@ class NirvanaModeReceiver : BroadcastReceiver() {
                         utils.enforcePackages(candidates)
                     }
                 }
+
+                timeLimitUtils.onPackagesChanged()
             }
         }
     }

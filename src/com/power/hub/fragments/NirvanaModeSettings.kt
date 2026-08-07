@@ -37,6 +37,7 @@ import android.widget.CheckBox
 import android.widget.CompoundButton
 import android.widget.ImageView
 import android.widget.LinearLayout
+import android.widget.NumberPicker
 import android.widget.SearchView
 import android.widget.TextView
 import android.widget.Toast
@@ -61,6 +62,8 @@ class NirvanaModeSettings : Fragment(R.layout.nirvana_mode_fragment) {
     private lateinit var adapter: AppListAdapter
     private lateinit var packageList: List<PackageInfo>
     private lateinit var nirvanaUtils: NirvanaModeUtils
+    private lateinit var timeLimitUtils: NirvanaTimeLimitUtils
+    private var limitSnapshot: Map<String, Int> = emptyMap()
 
     private lateinit var scheduleSwitch: CompoundButton
     private lateinit var scheduleCard: LinearLayout
@@ -79,6 +82,7 @@ class NirvanaModeSettings : Fragment(R.layout.nirvana_mode_fragment) {
         packageManager = requireContext().packageManager
         packageList = packageManager.getInstalledPackages(PackageManager.MATCH_ANY_USER)
         nirvanaUtils = NirvanaModeUtils(requireContext())
+        timeLimitUtils = NirvanaTimeLimitUtils(requireContext())
     }
 
     override fun onResume() {
@@ -110,6 +114,59 @@ class NirvanaModeSettings : Fragment(R.layout.nirvana_mode_fragment) {
         initManualToggleUI()
         refreshAppList()
         updateHeroStatus()
+        refreshTimeLimits()
+    }
+
+    private fun refreshTimeLimits() {
+        Thread {
+            timeLimitUtils.refresh()
+        }.start()
+    }
+
+    private fun showTimeLimitDialog(info: AppInfo) {
+        val context = requireContext()
+        val dialogView = LayoutInflater.from(context).inflate(R.layout.nirvana_time_limit_dialog, null)
+        val hourPicker = dialogView.findViewById<NumberPicker>(R.id.picker_hours)
+        val minutePicker = dialogView.findViewById<NumberPicker>(R.id.picker_minutes)
+
+        val current = limitSnapshot[info.packageName] ?: 0
+
+        hourPicker.minValue = 0
+        hourPicker.maxValue = 23
+        hourPicker.value = current / 60
+        hourPicker.wrapSelectorWheel = false
+
+        minutePicker.minValue = 0
+        minutePicker.maxValue = 59
+        minutePicker.value = current % 60
+        minutePicker.wrapSelectorWheel = false
+
+        AlertDialog.Builder(context)
+            .setTitle(getString(R.string.nirvana_time_limit_picker_title, info.label))
+            .setView(dialogView)
+            .setPositiveButton(android.R.string.ok) { _, _ ->
+                applyTimeLimit(info.packageName, hourPicker.value * 60 + minutePicker.value)
+            }
+            .setNeutralButton(R.string.nirvana_time_limit_remove) { _, _ ->
+                applyTimeLimit(info.packageName, 0)
+            }
+            .setNegativeButton(android.R.string.cancel, null)
+            .show()
+    }
+
+    private fun applyTimeLimit(
+        packageName: String,
+        minutes: Int,
+    ) {
+        Thread {
+            timeLimitUtils.setLimit(packageName, minutes)
+            Handler(Looper.getMainLooper()).post {
+                if (!isAdded) return@post
+                packageList = requireContext().packageManager
+                    .getInstalledPackages(PackageManager.MATCH_ANY_USER)
+                refreshAppList()
+            }
+        }.start()
     }
 
     /**
@@ -349,6 +406,8 @@ class NirvanaModeSettings : Fragment(R.layout.nirvana_mode_fragment) {
     }
 
     private fun refreshAppList() {
+        limitSnapshot = timeLimitUtils.getLimits()
+
         val filtered =
             packageList.filter {
                 val appInfo = it.applicationInfo!!
@@ -388,6 +447,7 @@ class NirvanaModeSettings : Fragment(R.layout.nirvana_mode_fragment) {
             packageInfo.packageName,
             getLabel(packageInfo),
             packageInfo.applicationInfo!!.loadIcon(packageManager),
+            limitSnapshot[packageInfo.packageName] ?: 0,
         )
 
     private fun onListUpdate(
@@ -432,6 +492,11 @@ class NirvanaModeSettings : Fragment(R.layout.nirvana_mode_fragment) {
 
                 holder.checkBox.isChecked = !isSelected
             }
+
+            holder.itemView.setOnLongClickListener {
+                showTimeLimitDialog(item)
+                true
+            }
         }
 
         override fun submitList(list: List<AppInfo>?) {
@@ -454,11 +519,29 @@ class NirvanaModeSettings : Fragment(R.layout.nirvana_mode_fragment) {
             icon.setImageDrawable(info.icon)
             checkBox.isChecked = isChecked
 
-            pkg.text = info.packageName
+            pkg.text =
+                if (info.limitMinutes > 0) {
+                    val hours = info.limitMinutes / 60
+                    val minutes = info.limitMinutes % 60
+                    val limitText =
+                        if (hours > 0) {
+                            itemView.context.getString(R.string.nirvana_time_limit_row_hm, hours, minutes)
+                        } else {
+                            itemView.context.getString(R.string.nirvana_time_limit_row_m, minutes)
+                        }
+                    "${info.packageName} • $limitText"
+                } else {
+                    info.packageName
+                }
         }
     }
 
-    data class AppInfo(val packageName: String, val label: String, val icon: Drawable)
+    data class AppInfo(
+        val packageName: String,
+        val label: String,
+        val icon: Drawable,
+        val limitMinutes: Int = 0,
+    )
 
     object DiffCallback : DiffUtil.ItemCallback<AppInfo>() {
         override fun areItemsTheSame(

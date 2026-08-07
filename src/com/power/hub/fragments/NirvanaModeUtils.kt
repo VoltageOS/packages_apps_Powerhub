@@ -264,7 +264,7 @@ class NirvanaModeUtils(private val context: Context) {
         return count
     }
 
-    private fun applyBatchSuspension(
+    fun applyBatchSuspension(
         pkgs: Array<String>,
         suspend: Boolean,
         userId: Int,
@@ -293,7 +293,7 @@ class NirvanaModeUtils(private val context: Context) {
         }
     }
 
-    private fun isPackageSuspendedForUser(
+    fun isPackageSuspendedForUser(
         pkg: String,
         userId: Int,
     ): Boolean {
@@ -304,7 +304,7 @@ class NirvanaModeUtils(private val context: Context) {
         }
     }
 
-    private fun isSuspendedByMe(
+    fun isSuspendedByMe(
         pkg: String,
         userId: Int,
     ): Boolean {

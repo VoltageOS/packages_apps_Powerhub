@@ -56,6 +56,7 @@ class NirvanaStatsFragment : Fragment(R.layout.nirvana_stats_fragment) {
     private lateinit var totalNotifsText: TextView
 
     private var statsAdapter: StatsAdapter? = null
+    private var limitMap: Map<String, Int> = emptyMap()
     private val density by lazy { resources.displayMetrics.density }
 
     private val donutPalette =
@@ -102,6 +103,8 @@ class NirvanaStatsFragment : Fragment(R.layout.nirvana_stats_fragment) {
                 scrollToApp(packageName)
             }
         }
+
+        limitMap = NirvanaTimeLimitUtils(requireContext()).getLimits()
 
         loadStats()
     }
@@ -340,7 +343,18 @@ class NirvanaStatsFragment : Fragment(R.layout.nirvana_stats_fragment) {
             val item = list[position]
 
             holder.name.text = item.label
-            holder.time.text = formatDuration(item.timeMillis, false)
+
+            val limitMinutes = limitMap[item.packageName] ?: 0
+            holder.time.text =
+                if (limitMinutes > 0) {
+                    getString(
+                        R.string.nirvana_time_limit_used_of_total,
+                        formatDuration(item.timeMillis, false),
+                        formatDuration(limitMinutes * 60000L, false),
+                    )
+                } else {
+                    formatDuration(item.timeMillis, false)
+                }
             item.icon?.let { holder.icon.setImageDrawable(it) }
 
             val dominantColor = item.dominantColor ?: extractDominantColor(item).also { item.dominantColor = it }
@@ -359,7 +373,15 @@ class NirvanaStatsFragment : Fragment(R.layout.nirvana_stats_fragment) {
                 holder.notificationContainer.visibility = View.GONE
             }
 
-            val targetProgress = if (maxTime > 0) ((item.timeMillis / maxTime) * 100).toInt() else 0
+            val limitMillis = limitMinutes * 60000f
+            val targetProgress =
+                if (limitMillis > 0f) {
+                    ((item.timeMillis / limitMillis) * 100).toInt().coerceIn(0, 100)
+                } else if (maxTime > 0) {
+                    ((item.timeMillis / maxTime) * 100).toInt()
+                } else {
+                    0
+                }
             val safeProgress = targetProgress.coerceAtLeast(if (item.timeMillis > 0) 1 else 0)
 
             holder.progress.progress = 0
