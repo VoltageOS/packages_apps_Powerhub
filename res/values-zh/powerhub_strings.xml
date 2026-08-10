@@ -701,16 +701,6 @@
     <string name="nirvana_force_unsuspend_dialog_title">强制启用所有已暂停的应用？</string>
     <string name="nirvana_force_unsuspend_dialog_message">这将尝试为所有用户配置文件中的每个已暂停应用解除暂停状态。如果应用因与数字健康或其他应用管理器的冲突而卡在暂停状态，请使用此功能</string>
     <string name="nirvana_force_unsuspend_done">完成 — 已尝试对 %1$d 个应用解除暂停状态</string>
-    <string name="haze_effects">壁纸雾化</string>
-    <string name="haze_effects_summary">使壁纸看起来有空间感和氛围感</string>
-    <string name="haze_effects_style">效果样式</string>
-    <string name="haze_effects_style_summary">选择锁屏界面到主屏幕时的效果样式</string>
-    <string name="haze_effects_intensity">效果强度</string>
-    <string name="haze_standard">正向雾化</string>
-    <string name="haze_standard_reversed">反向雾化</string>
-    <string name="haze_frosted">正向毛玻璃</string>
-    <string name="haze_frosted_reversed">反向毛玻璃</string>
-    <string name="haze_standard_double">双重模糊（模糊-&gt;正常锁屏，正常-&gt;模糊桌面）</string>
     <!-- Split shade QS -->
     <string name="qs_split_shade_title">横屏时通知与快捷设置显示方式</string>
     <string name="qs_split_shade_summary">横屏时通知和快捷设置采用双列布局</string>
@@ -728,4 +718,14 @@
     <string name="nirvana_time_fmt_hm">%1$dh%2$dm</string>
     <string name="nirvana_time_fmt_m">%1$dm</string>
     <string name="nirvana_time_fmt_less_min">&lt;1m</string>
+    <string name="nirvana_time_limit_menu_title">App timers</string>
+    <string name="nirvana_time_limit_picker_title">Daily limit for %1$s</string>
+    <string name="nirvana_time_limit_remove">Remove limit</string>
+    <string name="nirvana_time_limit_hours_label">h</string>
+    <string name="nirvana_time_limit_minutes_label">m</string>
+    <string name="nirvana_time_limit_row_hm">%1$dh %2$dm/day</string>
+    <string name="nirvana_time_limit_row_m">%1$dm/day</string>
+    <string name="nirvana_time_limit_used_of_total">%1$s / %2$s</string>
+    <string name="nirvana_time_limit_dialog_title">Daily limit reached</string>
+    <string name="nirvana_time_limit_dialog_message">You\'ve reached your daily limit for %1$s. It will be available again tomorrow.</string>
 </resources>
