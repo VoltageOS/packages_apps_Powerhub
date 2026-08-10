@@ -703,16 +703,6 @@
     <string name="nirvana_force_unsuspend_dialog_title">Принудительно включить все приложения?</string>
     <string name="nirvana_force_unsuspend_dialog_message">Это попытается разблокировать каждое приложение в настоящее время заблокировано во всех профилях. Используйте это, если приложения застряли в приостановленном состоянии из-за конфликта с Digital Wellbeing или другим менеджером приложений.</string>
     <string name="nirvana_force_unsuspend_done">Готово — попытка разблокировать %1$d приложения(ов)</string>
-    <string name="haze_effects">Эффект дымки</string>
-    <string name="haze_effects_summary">Эффекты атмосферных обоев</string>
-    <string name="haze_effects_style">Стиль эффектов</string>
-    <string name="haze_effects_style_summary">Выберите, как эффект работает между экраном блокировки и домашним экраном</string>
-    <string name="haze_effects_intensity">Интенсивность эффекта</string>
-    <string name="haze_standard">Стандартная Атмосфера</string>
-    <string name="haze_standard_reversed">Обратная Атмосфера</string>
-    <string name="haze_frosted">Простой мастер</string>
-    <string name="haze_frosted_reversed">Обратный мастер</string>
-    <string name="haze_standard_double">Двойная ось (Haze-&gt;Резкий замок, Остроконечность-&gt;Haze Home)</string>
     <!-- Split shade QS -->
     <string name="qs_split_shade_title">Разделить Быстрые Настройки</string>
     <string name="qs_split_shade_summary">Использовать макет в виде двух колонок для уведомлений и быстрых настроек в ландшафтном режиме</string>
@@ -730,4 +720,14 @@
     <string name="nirvana_time_fmt_hm">%1$dч %2$dмин</string>
     <string name="nirvana_time_fmt_m">%1$dмин</string>
     <string name="nirvana_time_fmt_less_min">&lt; 1 минута</string>
+    <string name="nirvana_time_limit_menu_title">App timers</string>
+    <string name="nirvana_time_limit_picker_title">Daily limit for %1$s</string>
+    <string name="nirvana_time_limit_remove">Remove limit</string>
+    <string name="nirvana_time_limit_hours_label">h</string>
+    <string name="nirvana_time_limit_minutes_label">m</string>
+    <string name="nirvana_time_limit_row_hm">%1$dh %2$dm/day</string>
+    <string name="nirvana_time_limit_row_m">%1$dm/day</string>
+    <string name="nirvana_time_limit_used_of_total">%1$s / %2$s</string>
+    <string name="nirvana_time_limit_dialog_title">Daily limit reached</string>
+    <string name="nirvana_time_limit_dialog_message">You\'ve reached your daily limit for %1$s. It will be available again tomorrow.</string>
 </resources>
