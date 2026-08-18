@@ -85,7 +85,7 @@
         android:entries="@array/freeform_launch_mode_entries"
         android:entryValues="@array/freeform_launch_mode_values"
         android:icon="@drawable/ic_powerhub_freeform_expressive"
-        android:defaultValue="0"
+        android:defaultValue="1"
         android:summary="%s" />
 
 </PreferenceScreen>
