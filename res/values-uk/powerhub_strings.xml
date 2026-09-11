@@ -24,7 +24,7 @@
     <string name="gestures_summary">Перейти до камери, свайп для знімку екрану</string>
     <string name="lockscreen_title">Екран блокування</string>
     <string name="lockscreen_summary">Візуалізатор музики, анімація зарядки, стиль годинника</string>
-    <string name="misc_title">Advanced</string>
+    <string name="misc_title">Розширені</string>
     <string name="misc_summary">Ігровий режим, регулятори гучності</string>
     <string name="animations_title">Анімації</string>
     <string name="animations_summary">Системні анімації</string>
@@ -60,9 +60,9 @@
     <string name="unit_milliseconds">мілісекунд</string>
     <string name="unit_pixels">dp</string>
     <!-- Custom seekbar -->
-    <string name="custom_seekbar_value">Value: <xliff:g id="v">%s</xliff:g></string>
+    <string name="custom_seekbar_value">Значення: <xliff:g id="v">%s</xliff:g></string>
     <string name="custom_seekbar_default_value">За замовчуванням</string>
-    <string name="custom_seekbar_default_value_to_set">Default value: <xliff:g id="v">%s</xliff:g>\nLong press to set</string>
+    <string name="custom_seekbar_default_value_to_set">Типове значення: <xliff:g id="v">%s</xliff:g>\nДовге натискання для встановлення</string>
     <string name="custom_seekbar_default_value_is_set">Значення за замовчуванням встановлено</string>
     <!-- Color Picker -->
     <string name="dialog_color_picker">Вибір кольору</string>
@@ -71,69 +71,69 @@
     <string name="arrow_down">↓</string>
     <string name="hex">Hex:</string>
     <string name="hex_hint">#ff000000</string>
-    <string name="set">Set</string>
+    <string name="set">Встановити</string>
     <string name="color_default">За замовчуванням</string>
-    <string name="led_color_green">Green</string>
-    <string name="led_color_red">Red</string>
+    <string name="led_color_green">Зелений</string>
+    <string name="led_color_red">Червоний</string>
     <!-- QS settings -->
-    <string name="qs_title">Quick settings</string>
+    <string name="qs_title">Швидкі налаштування</string>
     <!-- Lockscreen shortcuts -->
-    <string name="ls_category">Lockscreen Items</string>
-    <string name="ls_tuner">Enable Lockscreen tuner</string>
-    <string name="lockscreen_shortcuts">Lockscreen shortcuts</string>
-    <string name="ls_shortcut_summary">Customize Lockscreen shortcuts</string>
+    <string name="ls_category">Елементи екрану блокування</string>
+    <string name="ls_tuner">Увімкнути налаштування екрана блокування</string>
+    <string name="lockscreen_shortcuts">Ярлики екрану блокування</string>
+    <string name="ls_shortcut_summary">Налаштування ярликів екрану блокування</string>
     <!-- Lockscreen icons -->
-    <string name="lockscreen_tuner_title">Lockscreen tuner</string>
+    <string name="lockscreen_tuner_title">Налаштування екрану блокування</string>
     <!-- Statusbar Items -->
-    <string name="sb_icons">Statusbar Icons</string>
-    <string name="statusbar_items_category">Statusbar items</string>
+    <string name="sb_icons">Іконки статус бару</string>
+    <string name="statusbar_items_category">Елементи статус бару</string>
     <!-- Status bar - icons -->
-    <string name="status_bar_icons_title">Status bar icons</string>
+    <string name="status_bar_icons_title">Іконки статус бару</string>
     <!-- Lock screen visualizer -->
-    <string name="visualizer_title">Display music visualizer</string>
+    <string name="visualizer_title">Показувати візуалізатор музики</string>
     <!-- Power menu and dialogs opacity -->
     <!-- AOKP custom system animations -->
     <!-- Power menu Animations  -->
     <string name="power_menu_animation">Меню живлення</string>
     <!-- QS header image -->
     <!-- Lockscreen -->
-    <string name="lockscreen_category">Lockscreen</string>
+    <string name="lockscreen_category">Екран блокування</string>
     <!-- Themes -->
-    <string name="theme_type_title">System theme</string>
-    <string name="theme_type_summary">Select theme</string>
+    <string name="theme_type_title">Системна тема</string>
+    <string name="theme_type_summary">Обрати тему</string>
     <!--Accenter -->
     <string name="themes_hub_title">Теми</string>
-    <string name="themes_hub_summary">Accents-Gradients-Themes</string>
-    <string name="rgb_accent_picker_title_dark">Accent Picker</string>
-    <string name="rgb_accent_picker_summary">Choose the accent color yourself</string>
-    <string name="theme_option_reset_title">Reset Theme Options</string>
-    <string name="theme_option_reset_message">Are you sure you want to reset themes-accent to default?</string>
+    <string name="themes_hub_summary">Акценти-Градієнти-Теми</string>
+    <string name="rgb_accent_picker_title_dark">Піпетка Акценту</string>
+    <string name="rgb_accent_picker_summary">Виберіть колір акценту самостійно</string>
+    <string name="theme_option_reset_title">Скинути налаштування теми</string>
+    <string name="theme_option_reset_message">Ви впевнені, що хочете скинути акценти тем до початкового значення?</string>
     <!--ThemePicker-->
-    <string name="theme_select_title">Styles and Wallpapers</string>
-    <string name="theme_select_summary">Browse and select installed themes</string>
+    <string name="theme_select_title">Стилі та Шпалери</string>
+    <string name="theme_select_summary">Подивитись та вибрати встановлені теми</string>
     <!-- Battery light -->
-    <string name="battery_light_settings">Battery charging light</string>
-    <string name="notification_light_settings">Notifications light</string>
+    <string name="battery_light_settings">LED індикатор батареї</string>
+    <string name="notification_light_settings">LED індикатор повідомлень</string>
     <!-- Volume rocker wake -->
-    <string name="volume_rocker_wake_title">Volume rocker wake</string>
+    <string name="volume_rocker_wake_title">Пробудження регулятором гучності</string>
     <!-- Miscellaneous -->
-    <string name="miscellaneous_spoofing_category">Spoofing</string>
+    <string name="miscellaneous_spoofing_category">Підміна</string>
     <!-- Miscellaneous/Spoofing -->
-    <string name="spoofing_title">Component spoofing</string>
-    <string name="spoofing_summary">Bypass app restrictions by spoofing components</string>
-    <string name="spoof_screen_title">Spoofing</string>
-    <string name="spoof_screen_summary">Manage Play Integrity Fix, TrickyStore, game spoofing, and app list hiding</string>
-    <string name="spoof_dashboard_pif_summary">Manage the active Play Integrity Fix configuration.</string>
-    <string name="spoof_dashboard_trickystore_summary">Manage the TrickyStore keybox and target apps.</string>
-    <string name="spoof_dashboard_app_spoof_summary">Manage spoofed device profiles for selected games.</string>
-    <string name="spoof_dashboard_pif_empty_detail">Import a config or fetch a new profile.</string>
-    <string name="spoof_dashboard_pif_detail">%1$s\nSecurity patch: %2$s</string>
-    <string name="spoof_dashboard_target_empty_detail">No TrickyStore targets selected yet.</string>
-    <string name="spoof_dashboard_keybox_present_detail">Custom keybox installed.</string>
-    <string name="spoof_dashboard_target_present_detail">Review target apps or import a target list.</string>
-    <string name="spoof_dashboard_app_spoof_enabled">Per-app spoofing is enabled</string>
-    <string name="spoof_dashboard_app_spoof_disabled">Per-app spoofing is disabled</string>
-    <string name="spoofing_system_wide_category">System-Wide</string>
+    <string name="spoofing_title">Підміна компонентів</string>
+    <string name="spoofing_summary">Обходьте обмеження додатків шляхом підміни компонентів</string>
+    <string name="spoof_screen_title">Підміна</string>
+    <string name="spoof_screen_summary">Керування Google Play-Integrity Fix, TrickyStore, підміною  ігор та приховуванням списку програм</string>
+    <string name="spoof_dashboard_pif_summary">Управління конфігурацією Play Integrity Fix.</string>
+    <string name="spoof_dashboard_trickystore_summary">Керуйте TrickyStore keybox і цільовими додатками.</string>
+    <string name="spoof_dashboard_app_spoof_summary">Керування підміненими профілями пристою для обраних ігор.</string>
+    <string name="spoof_dashboard_pif_empty_detail">Імпортуйте конфігурацію або завантажте новий профіль.</string>
+    <string name="spoof_dashboard_pif_detail">%1$s\nПатч безпеки: %2$s</string>
+    <string name="spoof_dashboard_target_empty_detail">Ще не вибрано жодної цілі TrickyStore.</string>
+    <string name="spoof_dashboard_keybox_present_detail">Користувацький Keybox встановлено.</string>
+    <string name="spoof_dashboard_target_present_detail">Переглянути цільові програми або імпортувати  список цілей.</string>
+    <string name="spoof_dashboard_app_spoof_enabled">Підміну під додаток увімкнено</string>
+    <string name="spoof_dashboard_app_spoof_disabled">Підміну під додаток вимкнено</string>
+    <string name="spoofing_system_wide_category">Загальносистемний</string>
     <string name="spoofing_pixel_props_title">Pixel props</string>
     <string name="spoofing_pixel_props_summary">Spoof a select group of Google apps to the latest Pixel device</string>
     <string name="tensor_spoof_title">Spoof tensor features</string>
@@ -194,59 +194,59 @@
     <string name="pif_spoof_photos_summary">Appear as Pixel XL for unlimited original quality backup</string>
     <string name="pif_spoof_props_title">Spoof properties</string>
     <string name="pif_spoof_props_summary">Spoof device properties based on PIF config</string>
-    <string name="pif_spoof_provider_title">Spoof provider</string>
-    <string name="pif_spoof_provider_summary">Spoof GMS provider context</string>
-    <string name="pif_spoof_signature_title">Spoof signature</string>
-    <string name="pif_spoof_signature_summary">Spoof framework signature to pass Play Integrity</string>
-    <string name="pif_spoof_vending_build_title">Spoof Play Store build</string>
-    <string name="pif_spoof_vending_build_summary">Spoof build properties for Google Play Store</string>
+    <string name="pif_spoof_provider_title">Провайдер підміни</string>
+    <string name="pif_spoof_provider_summary">Підмінити контекст GSM провайдера</string>
+    <string name="pif_spoof_signature_title">Підмінити підпис</string>
+    <string name="pif_spoof_signature_summary">Підмінити сигнатуру фреймворку для проходження Play Integrity</string>
+    <string name="pif_spoof_vending_build_title">Підмінити збірку Play Store</string>
+    <string name="pif_spoof_vending_build_summary">Підмінити параметри збірки Google Play Store</string>
     <string name="keybox_category_title">Keybox (TrickyStore)</string>
     <string name="trickystore_screen_title">TrickyStore</string>
-    <string name="keybox_import_title">Import Keybox</string>
-    <string name="keybox_installed">Keybox installed</string>
-    <string name="keybox_not_found">No keybox found</string>
-    <string name="keybox_import_success">Keybox imported</string>
-    <string name="keybox_import_failed">Import failed: %1$s</string>
-    <string name="keybox_delete_pref_title">Delete Keybox</string>
-    <string name="keybox_delete_summary">Remove the current keybox.xml file</string>
-    <string name="keybox_delete_title">Delete keybox?</string>
-    <string name="keybox_delete_message">The current keybox.xml will be removed from TrickyStore.</string>
-    <string name="keybox_deleted">Keybox deleted</string>
-    <string name="target_category_title">Target Apps (TrickyStore)</string>
-    <string name="target_screen_title">Target Apps</string>
-    <string name="target_apps_intro">Choose which apps use TrickyStore and set a mode for each one.</string>
-    <string name="target_manage_title">Manage Target Apps</string>
-    <string name="target_no_apps">No apps configured</string>
-    <string name="target_apps_count">%1$d apps configured</string>
-    <string name="target_selected_count">%1$d selected</string>
-    <string name="target_import_title">Import target.txt</string>
-    <string name="target_import_summary">Import a target list from file</string>
-    <string name="target_import_success">Target list imported</string>
-    <string name="target_import_failed">Import failed: %1$s</string>
-    <string name="target_search_hint">Search apps</string>
-    <string name="target_mode_auto">Auto</string>
+    <string name="keybox_import_title">Імпортувати Keybox</string>
+    <string name="keybox_installed">Keybox встановлено</string>
+    <string name="keybox_not_found">Не знайдено Keybox</string>
+    <string name="keybox_import_success">Keybox імпортовано</string>
+    <string name="keybox_import_failed">Помилка імпортування: %1$s</string>
+    <string name="keybox_delete_pref_title">Видалити Keybox</string>
+    <string name="keybox_delete_summary">Видалити поточний файл keybox.xml</string>
+    <string name="keybox_delete_title">Видалити Keybox?</string>
+    <string name="keybox_delete_message">Поточний keybox.xml буде видалено з TrickyStore.</string>
+    <string name="keybox_deleted">Keybox видалено</string>
+    <string name="target_category_title">Цільові програми (TrickyStore)</string>
+    <string name="target_screen_title">Цільові програми</string>
+    <string name="target_apps_intro">Виберіть, які програми використовують TrickyStore і встановити режим для кожного з них.</string>
+    <string name="target_manage_title">Керування цільовими додатками</string>
+    <string name="target_no_apps">Немає налаштованих додатків</string>
+    <string name="target_apps_count">Налаштовано додатків: %1$d</string>
+    <string name="target_selected_count">%1$d обрано</string>
+    <string name="target_import_title">Імпортувати target.txt</string>
+    <string name="target_import_summary">Імпортувати список цілей з файлу</string>
+    <string name="target_import_success">Цільовий список імпортовано</string>
+    <string name="target_import_failed">Помилка імпортування: %1$s</string>
+    <string name="target_search_hint">Пошук додатків</string>
+    <string name="target_mode_auto">Автоматично</string>
     <string name="target_mode_leaf_hack">Leaf Hack</string>
     <string name="target_mode_cert_gen">Cert Gen</string>
-    <string name="show_system_apps">Show system apps</string>
-    <string name="app_spoof_screen_title">App Spoofing</string>
-    <string name="app_spoof_category_title">App Spoofing</string>
-    <string name="app_spoof_manage_title">Manage App Spoofing</string>
-    <string name="app_spoof_manage_summary">Spoof device properties per app</string>
-    <string name="app_spoof_enabled_title">Enable App Spoofing</string>
-    <string name="app_spoof_enabled_summary">Override device properties for configured apps</string>
-    <string name="app_spoof_screen_intro">Add an app, assign a device profile, then come back here anytime to update or remove it.</string>
-    <string name="app_spoof_add_app">Add App</string>
-    <string name="app_spoof_add_app_summary">Choose an app and assign a device profile</string>
-    <string name="app_spoof_configured_apps">Configured Apps</string>
-    <string name="app_spoof_configured_apps_count">%1$d configured apps</string>
-    <string name="app_spoof_no_apps">No apps configured</string>
-    <string name="app_spoof_select_app">Select an app</string>
-    <string name="app_spoof_select_profile">Select device profile</string>
-    <string name="app_spoof_app_added">%1$s added</string>
-    <string name="app_spoof_app_updated">%1$s updated</string>
-    <string name="app_spoof_change_profile">Change Profile</string>
-    <string name="app_spoof_remove">Remove App</string>
-    <string name="app_spoof_removed">App removed</string>
+    <string name="show_system_apps">Показати системні програми</string>
+    <string name="app_spoof_screen_title">Підміна додатка</string>
+    <string name="app_spoof_category_title">Підміна додатка</string>
+    <string name="app_spoof_manage_title">Керування підміною додатків</string>
+    <string name="app_spoof_manage_summary">Підмінювати характеристики пристрою під кожний додаток</string>
+    <string name="app_spoof_enabled_title">Увімкнути підміну додатків</string>
+    <string name="app_spoof_enabled_summary">Перезаписати властивості пристрою для налаштованих додатків</string>
+    <string name="app_spoof_screen_intro">Додати програму, призначити профіль пристрою, а потім повернутися сюди в будь-який час, щоб оновити або видалити його.</string>
+    <string name="app_spoof_add_app">Додати застосунок</string>
+    <string name="app_spoof_add_app_summary">Виберіть додаток і призначте профіль пристрою</string>
+    <string name="app_spoof_configured_apps">Настроєні додатки</string>
+    <string name="app_spoof_configured_apps_count">%1$d налаштовані додатки</string>
+    <string name="app_spoof_no_apps">Немає налаштованих додатків</string>
+    <string name="app_spoof_select_app">Виберіть додаток</string>
+    <string name="app_spoof_select_profile">Виберіть профіль пристрою</string>
+    <string name="app_spoof_app_added">%1$s додано</string>
+    <string name="app_spoof_app_updated">%1$s оновлено</string>
+    <string name="app_spoof_change_profile">Змінити профіль</string>
+    <string name="app_spoof_remove">Вилучити додаток</string>
+    <string name="app_spoof_removed">Додаток вилучено</string>
     <string name="app_spoof_no_profiles">No profiles available. Add one first.</string>
     <string name="app_spoof_custom_profile">Custom</string>
     <string name="app_spoof_manage_profiles_title">Manage Profiles</string>
@@ -275,8 +275,8 @@
     <string name="game_spoof_select_game">Select a game</string>
     <string name="game_spoof_select_preset">Select preset</string>
     <string name="game_spoof_no_presets">No presets available</string>
-    <string name="game_spoof_game_added">%1$s added</string>
-    <string name="game_spoof_game_updated">%1$s updated</string>
+    <string name="game_spoof_game_added">%1$s додано</string>
+    <string name="game_spoof_game_updated">%1$s оновлено</string>
     <string name="game_spoof_game_removed">Game removed</string>
     <string name="game_spoof_change_preset">Change Preset</string>
     <string name="game_spoof_remove_game">Remove Game</string>
