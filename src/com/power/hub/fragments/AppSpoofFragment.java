@@ -81,7 +81,7 @@ public class AppSpoofFragment extends SettingsPreferenceFragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requireActivity().setTitle(R.string.game_spoofing_title);
+        requireActivity().setTitle(R.string.app_spoof_screen_title);
         loadProfiles();
         migrateLegacyConfigIfNeeded(requireContext());
         loadConfig();
@@ -721,6 +721,9 @@ public class AppSpoofFragment extends SettingsPreferenceFragment {
             while (packages.hasNext()) {
                 String packageName = packages.next();
                 JSONObject propsJson = apps.getJSONObject(packageName);
+                if (propsJson.has("props")) {
+                    propsJson = propsJson.optJSONObject("props");
+                }
                 Map<String, String> props = new LinkedHashMap<>();
                 Iterator<String> propKeys = propsJson.keys();
                 while (propKeys.hasNext()) {
@@ -736,7 +739,8 @@ public class AppSpoofFragment extends SettingsPreferenceFragment {
                     appName = packageName;
                 }
 
-                mConfigs.add(new AppConfig(packageName, appName, matchProfileName(props), props));
+                mConfigs.add(new AppConfig(packageName, appName,
+                        matchProfileName(props), props));
             }
         } catch (Exception e) {
             Log.e(TAG, "Failed to load game spoof config", e);
