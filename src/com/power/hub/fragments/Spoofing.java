@@ -36,6 +36,7 @@ public class Spoofing extends SettingsPreferenceFragment {
     private static final String KEY_PIF = "spoofing_pif";
     private static final String KEY_TRICKYSTORE = "spoofing_trickystore";
     private static final String KEY_APP_SPOOF = "spoofing_app_spoof";
+    private static final String KEY_APP_STATE = "spoofing_app_state";
     private static final String KEY_HIDE_APPLIST = "spoofing_hide_applist";
 
     private PifManager mPifManager;
@@ -44,6 +45,7 @@ public class Spoofing extends SettingsPreferenceFragment {
     private Preference mPifPreference;
     private Preference mTrickyStorePreference;
     private Preference mAppSpoofPreference;
+    private Preference mAppStatePreference;
     private Preference mHideAppListPreference;
 
     @Override
@@ -58,6 +60,7 @@ public class Spoofing extends SettingsPreferenceFragment {
         mPifPreference = findPreference(KEY_PIF);
         mTrickyStorePreference = findPreference(KEY_TRICKYSTORE);
         mAppSpoofPreference = findPreference(KEY_APP_SPOOF);
+        mAppStatePreference = findPreference(KEY_APP_STATE);
         mHideAppListPreference = findPreference(KEY_HIDE_APPLIST);
 
         mPifPreference.setOnPreferenceClickListener(preference -> {
@@ -69,7 +72,11 @@ public class Spoofing extends SettingsPreferenceFragment {
             return true;
         });
         mAppSpoofPreference.setOnPreferenceClickListener(preference -> {
-            openFragment(AppSpoofFragment.class, getString(R.string.game_spoofing_title));
+            openFragment(AppSpoofFragment.class, getString(R.string.app_spoof_screen_title));
+            return true;
+        });
+        mAppStatePreference.setOnPreferenceClickListener(preference -> {
+            openFragment(AppStateFragment.class, getString(R.string.app_state_screen_title));
             return true;
         });
         mHideAppListPreference.setOnPreferenceClickListener(preference -> {
@@ -88,6 +95,7 @@ public class Spoofing extends SettingsPreferenceFragment {
         bindPifSummary();
         bindTrickyStoreSummary();
         bindAppSpoofSummary();
+        bindAppStateSummary();
         bindHideAppListSummary();
     }
 
@@ -139,6 +147,19 @@ public class Spoofing extends SettingsPreferenceFragment {
                 ? getString(R.string.game_spoofing_configured_count, appCount)
                 : getString(R.string.game_spoof_no_games);
         mAppSpoofPreference.setSummary(status + "\n" + detail);
+    }
+
+    private void bindAppStateSummary() {
+        boolean enabled = AppStateFragment.isConfigEnabled(requireContext());
+        int appCount = AppStateFragment.getConfiguredAppCount(requireContext());
+
+        String status = enabled
+                ? getString(R.string.app_state_enabled)
+                : getString(R.string.app_state_disabled);
+        String detail = appCount > 0
+                ? getString(R.string.app_state_configured_count, appCount)
+                : getString(R.string.app_state_no_apps);
+        mAppStatePreference.setSummary(status + "\n" + detail);
     }
 
     private void bindHideAppListSummary() {
