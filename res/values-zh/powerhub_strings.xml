@@ -499,148 +499,147 @@
     <string name="compact_progress_mode_title">Compact Progress Indicator</string>
     <string name="compact_progress_mode_summary">Use a compact circular indicator for ongoing actions</string>
     <string name="show_media_progress_title">Show media progress</string>
-    <string name="show_media_progress_summary">Display media playback progress in the status bar</string>
-    <string name="ongoing_smart_actions_title">Smart Actions Indicator</string>
-    <string name="ongoing_smart_actions_summary">Show active status icons for Flashlight, Hotspot, DND, etc. in the indicator</string>
-    <string name="voltage_logo">Show Voltage Logo</string>
-    <string name="voltage_logo_summary">Display a stylized lightning bolt as a fallback indicator when no actions are active</string>
+    <string name="show_media_progress_summary">在状态栏显示媒体播放进度</string>
+    <string name="ongoing_smart_actions_title">智能状态</string>
+    <string name="ongoing_smart_actions_summary">在智能状态显示区域显示手电筒、热点、勿扰等已开启的功能图标</string>
+    <string name="voltage_logo">显示 Voltage Logo</string>
+    <string name="voltage_logo_summary">无活动状态时，显示一个闪电图标作为默认指示器</string>
     <string name="progress_footer_text">
-     The status bar progress bar provides real-time updates for both media playback and active downloads/uploads.
- 
-     - 🎵 Media Progress:
-     • Displays playback progress for music and video when media is playing.
-     • Single tap opens playback controls (Previous, Next track).
-     • Double tap toggles play/pause.
-     • Swipe left skips to the previous track.
-     • Swipe right skips to the next track.
-     • Long press opens the media app. 
- 
-     - 📥Download/Upload Progress:
-     • Shows progress for ongoing downloads and uploads.
-     • Automatically hides when no active transfers are detected.
-     • Single tap opens the app responsible for the download.
- 
-     The progress bar dynamically switches between media and download states, ensuring you always have the most relevant information at a glance.
-     </string>
+状态栏进度条可实时显示媒体播放进度以及正在进行的下载/上传进度
+
+🎵 媒体进度：
+• 播放音乐或视频时，显示播放进度。
+• 单击可打开播放控件（上一首、下一首）。
+• 双击可切换播放/暂停。
+• 左滑跳至上一首。
+• 右滑跳至下一首。
+• 长按可打开媒体应用。
+
+📥 下载/上传进度：
+• 显示正在进行的下载和上传进度。
+• 当未检测到活动传输时自动隐藏。
+• 单击可打开负责下载的应用。
+
+进度条会在媒体和下载状态之间动态切换，让你一目了然地获取最相关的信息</string>
     <!-- Freeform launch mode -->
-    <string name="freeform_launch_mode_title">Freeform launch mode</string>
-    <string name="freeform_launch_mode_1">Native AOSP</string>
-    <string name="freeform_launch_mode_2">LMOFreeForm</string>
+    <string name="freeform_launch_mode_title">自由窗口启动模式</string>
+    <string name="freeform_launch_mode_1">原生 AOSP</string>
+    <string name="freeform_launch_mode_2">LMO 自由窗口</string>
     <!-- QS Brightness Slider -->
-    <string name="qs_brightness_slider_category">Brightness slider</string>
-    <string name="qs_brightness_slider_title">Show brightness slider</string>
-    <string name="qs_brightness_slider_auto_title">Auto brightness</string>
-    <string name="qs_brightness_slider_auto_summary">Show toggle for adaptive brightness near the slider</string>
-    <string name="qs_brightness_slider_show_never">Never show</string>
-    <string name="qs_brightness_slider_show_expanded">Show when expanded</string>
-    <string name="qs_brightness_slider_show_always">Show always</string>
+    <string name="qs_brightness_slider_category">亮度滑块</string>
+    <string name="qs_brightness_slider_title">亮度滑块设置</string>
+    <string name="qs_brightness_slider_auto_title">自动亮度</string>
+    <string name="qs_brightness_slider_auto_summary">在亮度滑块旁显示自动亮度开关</string>
+    <string name="qs_brightness_slider_show_never">从不显示</string>
+    <string name="qs_brightness_slider_show_expanded">展开时显示</string>
+    <string name="qs_brightness_slider_show_always">始终显示</string>
     <!-- QS Brightness Slider Position -->
-    <string name="qs_brightness_slider_position_title">Slider position</string>
-    <string name="qs_brightness_slider_position_top">Top</string>
-    <string name="qs_brightness_slider_position_bottom">Bottom</string>
+    <string name="qs_brightness_slider_position_title">滑块位置</string>
+    <string name="qs_brightness_slider_position_top">顶部</string>
+    <string name="qs_brightness_slider_position_bottom">底部</string>
     <!-- Homepage toasts -->
-    <string name="homepage_toast_title">Homepage toast messages</string>
-    <string name="homepage_toast_summary">Replace suggestion card with random messages</string>
-    <string name="homepage_toast_text_title">Custom message</string>
-    <string name="homepage_toast_text_summary">Set a personal message to display</string>
+    <string name="homepage_toast_title">设置主页彩蛋</string>
+    <string name="homepage_toast_summary">随机消息将显示在设置主页顶部</string>
+    <string name="homepage_toast_text_title">自定义信息</string>
+    <string name="homepage_toast_text_summary">设置要显示的个性提示语</string>
     <!-- Annoying Notifications -->
-    <string name="notification_sound_vib_screen_on_title">Annoying Notifications</string>
-    <string name="notification_sound_vib_screen_on_summary">Play sound and vibration for notifications when screen is on</string>
+    <string name="notification_sound_vib_screen_on_title">亮屏通知提醒</string>
+    <string name="notification_sound_vib_screen_on_summary">屏幕开启时，为通知播放声音和振动</string>
     <!-- Weather -->
-    <string name="weather_category_title">Weather</string>
-    <string name="weather_settings_title">Weather settings</string>
-    <string name="weather_settings_summary">Setup icon pack and weather service</string>
-    <string name="lockscreen_weather_title">Weather condition</string>
-    <string name="lockscreen_weather_summary">Display current weather condition and temperature</string>
-    <string name="lockscreen_weather_enabled_info">Requires weather service to be enabled</string>
-    <string name="lockscreen_weather_location_title">Weather location</string>
-    <string name="lockscreen_weather_location_summary">Display current weather location</string>
-    <string name="lockscreen_weather_wind_info_title">Wind info</string>
-    <string name="lockscreen_weather_wind_info_summary">Display current wind speed and direction</string>
-    <string name="lockscreen_weather_humidity_info_title">Humidity info</string>
-    <string name="lockscreen_weather_humidity_info_summary">Display current humidity in percentage</string>
+    <string name="weather_category_title">天气</string>
+    <string name="weather_settings_title">天气设置</string>
+    <string name="weather_settings_summary">设置图标包与天气服务</string>
+    <string name="lockscreen_weather_title">天气状况</string>
+    <string name="lockscreen_weather_summary">显示当前天气状况和温度</string>
+    <string name="lockscreen_weather_enabled_info">需要启用天气服务</string>
+    <string name="lockscreen_weather_location_title">天气位置</string>
+    <string name="lockscreen_weather_location_summary">显示当前天气位置</string>
+    <string name="lockscreen_weather_wind_info_title">风力信息</string>
+    <string name="lockscreen_weather_wind_info_summary">显示当前风速和方向</string>
+    <string name="lockscreen_weather_humidity_info_title">湿度信息</string>
+    <string name="lockscreen_weather_humidity_info_summary">以百分比显示当前湿度</string>
     <!-- Weather layout style -->
-    <string name="lockscreen_weather_style_title">Modern layout</string>
-    <string name="lockscreen_weather_style_summary_off">Classic stacked layout below the clock</string>
-    <string name="lockscreen_weather_style_summary_on">Date and weather beside / below the clock face</string>
+    <string name="lockscreen_weather_style_title">现代风格</string>
+    <string name="lockscreen_weather_style_summary_off">时钟下方经典纵向排列</string>
+    <string name="lockscreen_weather_style_summary_on">日期和天气显示在时钟旁或下方</string>
     <!-- Heads up timeout -->
-    <string name="notification_heads_up_title">Heads up</string>
-    <string name="notification_heads_up_summary">Allow pop up notifications</string>
+    <string name="notification_heads_up_title">浮动通知</string>
+    <string name="notification_heads_up_summary">允许弹出式通知</string>
     <!-- Less boring heads up -->
-    <string name="less_boring_heads_up_title">Less boring</string>
-    <string name="less_boring_heads_up_summary">Display popup notifications only for alarm, dialer and messaging app</string>
+    <string name="less_boring_heads_up_title">限制弹出通知</string>
+    <string name="less_boring_heads_up_summary">仅对闹钟、电话和短信应用显示弹出式通知</string>
     <!-- Fingerprint authentication vibration -->
-    <string name="fingerprint_category">Fingerprint</string>
-    <string name="fprint_error_vib_title">Fingerprint error vibration</string>
-    <string name="fprint_error_vib_summary">Vibrate on error fingerprint authentication</string>
-    <string name="fprint_success_vib_title">Fingerprint authentication vibration</string>
-    <string name="fprint_success_vib_summary">Vibrate on successful fingerprint authentication</string>
+    <string name="fingerprint_category">指纹</string>
+    <string name="fprint_error_vib_title">指纹验证错误时振动</string>
+    <string name="fprint_error_vib_summary">指纹认证错误时振动</string>
+    <string name="fprint_success_vib_title">验证指纹时振动</string>
+    <string name="fprint_success_vib_summary">指纹验证成功时振动</string>
     <!-- Smart Pixels -->
-    <string name="smart_pixels_warning_text">Smart pixels is a power saving feature. Depending on how many pixels you decide to turn off, you could see improvement in battery life. Note that in some cases it can result in unresponsive areas on touch screen</string>
-    <string name="smart_pixels_title">Smart Pixels</string>
-    <string name="smart_pixels_summary">Save battery by shutting off extra pixels</string>
-    <string name="smart_pixels_enable_title">Enable Smart Pixels</string>
-    <string name="smart_pixels_enable_summary">Shut off pixels to reduce power consumption</string>
-    <string name="smart_pixels_on_power_save_title">Auto-enable on battery saver</string>
-    <string name="smart_pixels_on_power_save_summary">Enable Smart Pixels when battery saver is enabled</string>
-    <string name="smart_pixels_percent">Percent of pixels to disable</string>
-    <string name="smart_pixels_shift_title">Burn-in protection</string>
-    <string name="smart_pixels_shift_summary">Prevents burn-in on OLED devices by shifting pixels every so often</string>
+    <string name="smart_pixels_warning_text">智能像素是一项省电功能。根据您选择关闭的像素数量，可能会看到电池续航的改善。请注意，在某些情况下，这可能会导致触摸屏部分区域无响应</string>
+    <string name="smart_pixels_title">智能像素</string>
+    <string name="smart_pixels_summary">通过关闭多余像素来节省电量</string>
+    <string name="smart_pixels_enable_title">启用智能像素</string>
+    <string name="smart_pixels_enable_summary">减少像素以省电</string>
+    <string name="smart_pixels_on_power_save_title">省电模式时自动启用</string>
+    <string name="smart_pixels_on_power_save_summary">开启省电模式时自动启用智能像素</string>
+    <string name="smart_pixels_percent">关闭像素百分比</string>
+    <string name="smart_pixels_shift_title">烧屏保护</string>
+    <string name="smart_pixels_shift_summary">通过定期微移像素来防止 OLED 屏幕烧屏</string>
     <!--  screen, setting option summary to change custom timeout -->
-    <string name="custom_timeout_summary_never">Never</string>
-    <string name="custom_timeout_summary_5secs">5 seconds</string>
-    <string name="custom_timeout_summary_10secs">10 seconds</string>
-    <string name="custom_timeout_summary_15secs">15 seconds</string>
-    <string name="custom_timeout_summary_30secs">30 seconds</string>
-    <string name="custom_timeout_summary_1min">1 minute</string>
-    <string name="custom_timeout_summary_2mins">2 minutes</string>
-    <string name="custom_timeout_summary_5mins">5 minutes</string>
-    <string name="custom_timeout_summary_10mins">10 minutes</string>
-    <string name="custom_timeout_summary_20mins">20 minutes</string>
-    <string name="custom_timeout_summary_30mins">30 minutes</string>
-    <string name="custom_timeout_summary_1hour">1 hour</string>
-    <string name="custom_timeout_summary_2hours">2 hours</string>
-    <string name="custom_timeout_summary_4hours">4 hours</string>
-    <string name="custom_timeout_summary_8hours">8 hours</string>
+    <string name="custom_timeout_summary_never">从不</string>
+    <string name="custom_timeout_summary_5secs">5 秒</string>
+    <string name="custom_timeout_summary_10secs">10 秒</string>
+    <string name="custom_timeout_summary_15secs">15 秒</string>
+    <string name="custom_timeout_summary_30secs">30 秒</string>
+    <string name="custom_timeout_summary_1min">1 分钟</string>
+    <string name="custom_timeout_summary_2mins">2 分钟</string>
+    <string name="custom_timeout_summary_5mins">5 分钟</string>
+    <string name="custom_timeout_summary_10mins">10 分钟</string>
+    <string name="custom_timeout_summary_20mins">20 分钟</string>
+    <string name="custom_timeout_summary_30mins">30 分钟</string>
+    <string name="custom_timeout_summary_1hour">1 小时</string>
+    <string name="custom_timeout_summary_2hours">2 小时</string>
+    <string name="custom_timeout_summary_4hours">4 小时</string>
+    <string name="custom_timeout_summary_8hours">8 小时</string>
     <!-- Floating rotation button -->
-    <string name="floating_rotation_button_title">Floating rotate button</string>
-    <string name="floating_rotation_button_summary">Show a floating rotate button when device is rotated</string>
+    <string name="floating_rotation_button_title">浮动旋转按钮</string>
+    <string name="floating_rotation_button_summary">旋转设备时显示浮动按钮</string>
     <!-- UDFPS settings -->
-    <string name="udfps_category">UDFPS</string>
-    <string name="udfps_settings_title">UDFPS Customization</string>
-    <string name="udfps_settings_summary">Customize under-display fingerprint scanner</string>
+    <string name="udfps_category">屏下指纹</string>
+    <string name="udfps_settings_title">屏下指纹自定义</string>
+    <string name="udfps_settings_summary">自定义屏下指纹</string>
     <!-- UDFPS Icons -->
-    <string name="udfps_icon_picker_title">UDFPS icon picker</string>
-    <string name="udfps_icon_picker_summary">Choose your favorite fingerprint icon</string>
+    <string name="udfps_icon_picker_title">屏下指纹图标选择器</string>
+    <string name="udfps_icon_picker_summary">选择您最喜欢的指纹图标</string>
     <!-- UDFPS Animations -->
-    <string name="udfps_recog_animation_effect_title">UDFPS custom animation</string>
-    <string name="udfps_recog_animation_effect_summary">Choose animation effect</string>
+    <string name="udfps_recog_animation_effect_title">屏下指纹自定义动画</string>
+    <string name="udfps_recog_animation_effect_summary">选择动画效果</string>
     <!-- Data usage info in QS footer -->
-    <string name="qs_footer_datausage_title">Data usage</string>
-    <string name="qs_footer_datausage_summary">Display data usage summary in quick settings footer</string>
+    <string name="qs_footer_datausage_title">流量使用情况</string>
+    <string name="qs_footer_datausage_summary">在快捷设置底部显示流量使用情况</string>
     <!-- Status bar - Clock -->
-    <string name="status_bar_clock_title">Clock &amp; date</string>
-    <string name="status_bar_clock_summary">Customize clock &amp; date</string>
-    <string name="status_bar_clock_seconds_title">Clock seconds</string>
-    <string name="status_bar_clock_seconds_summary">Display seconds next to clock in status bar</string>
-    <string name="status_bar_clock_position_title">Clock style</string>
-    <string name="status_bar_clock_position_right">Right</string>
-    <string name="status_bar_clock_position_left">Left</string>
-    <string name="status_bar_clock_position_center">Center</string>
+    <string name="status_bar_clock_title">日期 &amp; 时间</string>
+    <string name="status_bar_clock_summary">自定义日期 &amp; 时间</string>
+    <string name="status_bar_clock_seconds_title">时间显秒</string>
+    <string name="status_bar_clock_seconds_summary">在状态栏时间旁显示秒数</string>
+    <string name="status_bar_clock_position_title">时间位置</string>
+    <string name="status_bar_clock_position_right">右侧</string>
+    <string name="status_bar_clock_position_left">左侧</string>
+    <string name="status_bar_clock_position_center">中间</string>
     <string name="status_bar_clock_auto_hide_title">Auto hide</string>
-    <string name="status_bar_clock_auto_hide_summary">Hide clock if launcher is visible</string>
-    <string name="status_bar_am_pm_title">AM/PM style</string>
-    <string name="status_bar_am_pm_info">24-hour clock is enabled</string>
-    <string name="status_bar_am_pm_normal">Normal</string>
-    <string name="status_bar_am_pm_small">Small</string>
-    <string name="status_bar_am_pm_hidden">Hidden</string>
-    <string name="status_bar_date_title">Date</string>
-    <string name="status_bar_date_none">Hidden</string>
-    <string name="status_bar_date_small">Small</string>
-    <string name="status_bar_date_normal">Normal</string>
+    <string name="status_bar_clock_auto_hide_summary">桌面可见时隐藏时间</string>
+    <string name="status_bar_am_pm_title">上午/下午样式</string>
+    <string name="status_bar_am_pm_info">24小时制已启用</string>
+    <string name="status_bar_am_pm_normal">正常</string>
+    <string name="status_bar_am_pm_small">小</string>
+    <string name="status_bar_am_pm_hidden">隐藏</string>
+    <string name="status_bar_date_title">日期</string>
+    <string name="status_bar_date_none">隐藏</string>
+    <string name="status_bar_date_small">小</string>
+    <string name="status_bar_date_normal">正常</string>
     <string name="status_bar_date_format_title">日期格式</string>
     <string name="status_bar_date_style">日期样式</string>
-    <string name="status_bar_date_style_normal">Normal</string>
+    <string name="status_bar_date_style_normal">正常</string>
     <string name="status_bar_date_style_lowercase">小写</string>
     <string name="status_bar_date_style_uppercase">大写</string>
     <string name="status_bar_date_format_custom">自定义 Java 格式</string>
@@ -654,49 +653,49 @@
     <!-- Vbmeta hash attestation -->
     <string name="vbmeta_attestation_title">自动修复 VBMeta 检测</string>
     <string name="vbmeta_attestation_summary">在启动时执行密钥认证以生成验证启动哈希值，需要重启系统</string>
-    <string name="qs_vibrant_shade_title">Vibrant shade elements</string>
-    <string name="qs_vibrant_shade_summary">Use vibrant accent colors for QS tiles and brightness slider</string>
+    <string name="qs_vibrant_shade_title">快捷设置图标启用鲜艳色调</string>
+    <string name="qs_vibrant_shade_summary">为快捷设置磁贴和亮度滑块使用鲜艳的强调色</string>
     <!-- Battery customizations -->
-    <string name="battery_settings_title">Battery Settings</string>
-    <string name="battery_options">Battery</string>
-    <string name="battery_style_title">Battery Style</string>
+    <string name="battery_settings_title">电池设置</string>
+    <string name="battery_options">电池</string>
+    <string name="battery_style_title">电源样式</string>
     <!-- Status bar - Battery -->
-    <string name="status_bar_battery_style_title">Battery style</string>
-    <string name="status_bar_battery_style_icon_portrait">Icon portrait</string>
-    <string name="status_bar_battery_style_icon_rlandscape">Icon landscape (Right)</string>
-    <string name="status_bar_battery_style_icon_landscape">Icon landscape (Left)</string>
-    <string name="status_bar_battery_style_circle">Circle</string>
-    <string name="status_bar_battery_style_dotted_circle">Dotted circle</string>
-    <string name="status_bar_battery_style_filled_circle">Filled circle</string>
-    <string name="status_bar_battery_style_text">Text</string>
-    <string name="status_bar_battery_style_hidden">Hidden</string>
-    <string name="status_bar_battery_percent_title">Battery percent</string>
-    <string name="status_bar_battery_percent_hidden">Hidden</string>
-    <string name="status_bar_battery_percent_text_inside">Inside the icon</string>
-    <string name="status_bar_battery_percent_text_next">Next to the icon</string>
-    <string name="status_bar_battery_percent_text_next_right">Next to the icon (right)</string>
-    <string name="status_bar_battery_percent_text_next_left">Next to the icon (left)</string>
+    <string name="status_bar_battery_style_title">电源样式</string>
+    <string name="status_bar_battery_style_icon_portrait">纵向图标</string>
+    <string name="status_bar_battery_style_icon_rlandscape">横向图标（右侧）</string>
+    <string name="status_bar_battery_style_icon_landscape">横向图标（左侧）</string>
+    <string name="status_bar_battery_style_circle">圆环</string>
+    <string name="status_bar_battery_style_dotted_circle">虚线圆环</string>
+    <string name="status_bar_battery_style_filled_circle">实心圆</string>
+    <string name="status_bar_battery_style_text">文本</string>
+    <string name="status_bar_battery_style_hidden">隐藏</string>
+    <string name="status_bar_battery_percent_title">电量百分比</string>
+    <string name="status_bar_battery_percent_hidden">隐藏</string>
+    <string name="status_bar_battery_percent_text_inside">图标内</string>
+    <string name="status_bar_battery_percent_text_next">图标旁</string>
+    <string name="status_bar_battery_percent_text_next_right">图标旁（右侧）</string>
+    <string name="status_bar_battery_percent_text_next_left">图标旁（左侧）</string>
     <!-- Bluetooth status -->
-    <string name="bluetooth_battery_title">Bluetooth battery status</string>
-    <string name="bluetooth_battery_summary">Display battery status for the connected bluetooth device, if available</string>
+    <string name="bluetooth_battery_title">蓝牙设备电量</string>
+    <string name="bluetooth_battery_summary">显示当前连接的蓝牙设备电量，如果可用</string>
     <!-- Nirvana Mode -->
-    <string name="nirvana_mode_title">Nirvana Mode</string>
-    <string name="nirvana_mode_summary">Create quiet time by pausing distracting apps</string>
-    <string name="nirvana_mode_hero_title">Find your focus</string>
-    <string name="nirvana_mode_description">When you need time to focus, you can pause distracting apps and hide their notifications.</string>
-    <string name="nirvana_mode_set_schedule">Set a schedule</string>
-    <string name="nirvana_mode_turn_on_now">Turn on now</string>
-    <string name="nirvana_mode_turn_off_now">Turn off now</string>
-    <string name="nirvana_mode_select_apps">Select distracting apps</string>
-    <string name="nirvana_mode_dialog_title">Nirvana Mode is active</string>
-    <string name="nirvana_mode_dialog_message">This app is paused while Nirvana Mode is on.</string>
-    <string name="nirvana_mode_schedule_title">Schedule</string>
-    <string name="nirvana_mode_schedule_summary">When you need time to focus, you can pause distracting apps and hide their notifications.</string>
-    <string name="nirvana_mode_apps_header">Distracting apps</string>
-    <string name="nirvana_mode_schedule_start">Start time</string>
-    <string name="nirvana_mode_schedule_end">End time</string>
-    <string name="nirvana_status_active">Active now</string>
-    <string name="nirvana_status_active_until">Active until %1$s</string>
+    <string name="nirvana_mode_title">专注模式</string>
+    <string name="nirvana_mode_summary">通过暂停令你分心的应用，创造宁静时段</string>
+    <string name="nirvana_mode_hero_title">专注此刻</string>
+    <string name="nirvana_mode_description">当您需要专注时，可限制令人分心的应用并隐藏其通知。</string>
+    <string name="nirvana_mode_set_schedule">设置时间表</string>
+    <string name="nirvana_mode_turn_on_now">开启专注模式</string>
+    <string name="nirvana_mode_turn_off_now">关闭专注模式</string>
+    <string name="nirvana_mode_select_apps">选择限制使用的应用</string>
+    <string name="nirvana_mode_dialog_title">专注模式已开启</string>
+    <string name="nirvana_mode_dialog_message">专注模式已限制使用此应用。</string>
+    <string name="nirvana_mode_schedule_title">时间表</string>
+    <string name="nirvana_mode_schedule_summary">当您需要专注时，可限制令人分心的应用并隐藏其通知。</string>
+    <string name="nirvana_mode_apps_header">限制使用的应用</string>
+    <string name="nirvana_mode_schedule_start">开始时间</string>
+    <string name="nirvana_mode_schedule_end">结束时间</string>
+    <string name="nirvana_status_active">专注模式已开启</string>
+    <string name="nirvana_status_active_until">将在 %1$s 结束</string>
     <string name="nirvana_status_scheduled">专注模式将会在 %1$s - %2$s 开启</string>
     <string name="nirvana_status_active_manual_scheduled">已专注\n计划：%1$s - %2$s</string>
     <string name="nirvana_force_unsuspend_all">强制启用所有已暂停的应用</string>
