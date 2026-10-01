@@ -192,7 +192,25 @@ public class LockScreenSettings extends SettingsPreferenceFragment implements
                 @Override
                 public List<String> getNonIndexableKeys(Context context) {
                     List<String> keys = super.getNonIndexableKeys(context);
+                    if (!UdfpsUtils.hasUdfpsSupport(context)
+                            || !hasFingerprintHardware(context)) {
+                        keys.add("udfps_settings");
+                    }
                     return keys;
+                }
+
+                private boolean hasFingerprintHardware(Context context) {
+                    if (!context.getPackageManager().hasSystemFeature(
+                            PackageManager.FEATURE_FINGERPRINT)) {
+                        return false;
+                    }
+                    try {
+                        FingerprintManager fm = context.getSystemService(
+                                FingerprintManager.class);
+                        return fm != null && fm.isHardwareDetected();
+                    } catch (Exception e) {
+                        return false;
+                    }
                 }
     };
 
