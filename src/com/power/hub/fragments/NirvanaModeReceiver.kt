@@ -20,91 +20,64 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.os.UserHandle
+import com.android.internal.util.voltage.nirvana.NirvanaConstants
+import com.android.internal.util.voltage.nirvana.NirvanaState
 
-/**
- * Receives Boot Complete, Alarm intents, and User actions to enforce Nirvana Mode.
- * Acts as a watchdog to prevent unauthorized unsuspension of apps.
- */
 class NirvanaModeReceiver : BroadcastReceiver() {
     companion object {
         const val ACTION_UPDATE_NIRVANA_SCHEDULE = "com.power.hub.action.UPDATE_NIRVANA_SCHEDULE"
         const val ACTION_NIRVANA_TIME_LIMIT_REACHED = "com.power.hub.action.NIRVANA_TIME_LIMIT_REACHED"
         const val ACTION_NIRVANA_DAILY_RESET = "com.power.hub.action.NIRVANA_DAILY_RESET"
-        private const val TAG = "NirvanaModeReceiver"
     }
 
     override fun onReceive(
         context: Context,
         intent: Intent,
     ) {
-        val action = intent.action
-        val utils = NirvanaModeUtils(context)
-        val timeLimitUtils = NirvanaTimeLimitUtils(context)
-
+        val action = intent.action ?: return
         when (action) {
             Intent.ACTION_BOOT_COMPLETED,
             ACTION_UPDATE_NIRVANA_SCHEDULE,
             Intent.ACTION_USER_PRESENT,
+            NirvanaConstants.ACTION_UPDATE,
             -> {
-                if (Intent.ACTION_BOOT_COMPLETED == action) {
-                    utils.validateTrackedState()
-                }
-
-                utils.reconcileState()
-
-                if (utils.isScheduleEnabled()) {
-                    utils.scheduleNextAlarm()
-                }
-
-                if (Intent.ACTION_BOOT_COMPLETED == action) {
-                    timeLimitUtils.onBoot()
-                } else {
-                    timeLimitUtils.refresh()
-                }
+                NirvanaState.sendUpdateBroadcast(context)
             }
-
-            ACTION_NIRVANA_TIME_LIMIT_REACHED -> {
+            ACTION_NIRVANA_TIME_LIMIT_REACHED,
+            NirvanaConstants.ACTION_LIMIT_REACHED,
+            -> {
                 val packageName = intent.getStringExtra(NirvanaTimeLimitUtils.EXTRA_LIMIT_PACKAGE)
-                val userId =
+                    ?: intent.getStringExtra(NirvanaConstants.EXTRA_LIMIT_PACKAGE)
+                val userId = if (intent.hasExtra(NirvanaTimeLimitUtils.EXTRA_LIMIT_USER)) {
                     intent.getIntExtra(NirvanaTimeLimitUtils.EXTRA_LIMIT_USER, UserHandle.myUserId())
-                if (!packageName.isNullOrEmpty()) {
-                    timeLimitUtils.onLimitReached(packageName, userId)
+                } else {
+                    intent.getIntExtra(NirvanaConstants.EXTRA_LIMIT_USER, UserHandle.myUserId())
                 }
+                if (!packageName.isNullOrEmpty()) {
+                    val forward = Intent(NirvanaConstants.ACTION_LIMIT_REACHED).apply {
+                        setPackage(NirvanaConstants.TARGET_PACKAGE)
+                        putExtra(NirvanaConstants.EXTRA_LIMIT_PACKAGE, packageName)
+                        putExtra(NirvanaConstants.EXTRA_LIMIT_USER, userId)
+                    }
+                    context.sendBroadcastAsUser(forward, UserHandle.CURRENT)
+                }
+                NirvanaState.sendUpdateBroadcast(context)
             }
-
-            ACTION_NIRVANA_DAILY_RESET -> {
-                timeLimitUtils.onDailyReset()
+            ACTION_NIRVANA_DAILY_RESET,
+            NirvanaConstants.ACTION_DAILY_RESET,
+            -> {
+                val forward = Intent(NirvanaConstants.ACTION_DAILY_RESET).apply {
+                    setPackage(NirvanaConstants.TARGET_PACKAGE)
+                }
+                context.sendBroadcastAsUser(forward, UserHandle.CURRENT)
             }
-
             Intent.ACTION_PACKAGE_FULLY_REMOVED,
             Intent.ACTION_PACKAGE_REMOVED,
-            -> {
-                timeLimitUtils.onPackagesChanged()
-            }
-
             Intent.ACTION_PACKAGES_UNSUSPENDED,
             Intent.ACTION_PACKAGE_ADDED,
             Intent.ACTION_PACKAGE_REPLACED,
             -> {
-                if (utils.shouldNirvanaModeBeActive()) {
-                    val changedPackages = intent.getStringArrayExtra(Intent.EXTRA_CHANGED_PACKAGE_LIST)
-
-                    val singlePkg = intent.data?.schemeSpecificPart
-
-                    val candidates = mutableListOf<String>()
-                    if (!changedPackages.isNullOrEmpty()) {
-                        candidates.addAll(changedPackages)
-                    }
-                    if (singlePkg != null) {
-                        candidates.add(singlePkg)
-                    }
-
-                    if (candidates.isNotEmpty()) {
-                        utils.enforcePackages(candidates)
-                    }
-                }
-
-                timeLimitUtils.onPackagesChanged()
+                NirvanaState.sendUpdateBroadcast(context)
             }
         }
     }

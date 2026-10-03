@@ -40,6 +40,7 @@ import androidx.core.widget.NestedScrollView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.android.internal.util.voltage.nirvana.NirvanaUsage
 import com.android.settings.R
 import java.util.ArrayList
 import java.util.HashMap
@@ -127,7 +128,7 @@ class NirvanaStatsFragment : Fragment(R.layout.nirvana_stats_fragment) {
             val resolveInfo = packageManager.resolveActivity(intent, PackageManager.MATCH_DEFAULT_ONLY)
             val launcherPackage = resolveInfo?.activityInfo?.packageName
 
-            val dailySummary = NirvanaUsageStatsHelper.queryTodaySummary(usageManager)
+            val dailySummary = NirvanaUsage.queryTodaySummary(usageManager)
             val usageMap = HashMap(dailySummary.usageByPackage)
             val notificationMap = HashMap(dailySummary.notificationCountByPackage)
             val unlockCount = dailySummary.unlockCount
