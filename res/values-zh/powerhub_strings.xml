@@ -76,7 +76,7 @@
     <string name="led_color_green">绿</string>
     <string name="led_color_red">红</string>
     <!-- QS settings -->
-    <string name="qs_title">Quick settings</string>
+    <string name="qs_title">快捷设置</string>
     <!-- Lockscreen shortcuts -->
     <string name="ls_category">锁屏项目</string>
     <string name="ls_tuner">启用锁屏界面调整</string>
@@ -743,7 +743,7 @@
     <string name="nirvana_stats_unlocks">解锁</string>
     <string name="nirvana_stats_notifications">中断</string>
     <string name="nirvana_stats_app_breakdown">使用明细</string>
-    <string name="nirvana_time_fmt_hm">%1$dh %2$dm</string>
+    <string name="nirvana_time_fmt_hm">%1$dh%2$dm</string>
     <string name="nirvana_time_fmt_m">%1$dm</string>
     <string name="nirvana_time_fmt_less_min">&lt;1m</string>
     <string name="nirvana_time_limit_menu_title">应用使用限制</string>
