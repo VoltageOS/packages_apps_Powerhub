@@ -16,184 +16,111 @@
  */
 package com.power.hub.fragments;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.provider.Settings;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
-import androidx.preference.Preference;
+import androidx.fragment.app.FragmentTransaction;
 
-import com.android.internal.logging.nano.MetricsProto;
 import com.android.settings.R;
-import com.android.settings.SettingsPreferenceFragment;
-import com.android.settings.SubSettings;
 
-import java.util.Map;
+/** Hosts the spoofing pages behind a minimal segmented control. */
+public class Spoofing extends Fragment {
 
-public class Spoofing extends SettingsPreferenceFragment {
+    private static final String STATE_SEGMENT = "spoof_segment";
+    private static final int PAGE_INTEGRITY = 0;
+    private static final int PAGE_PER_APP = 1;
+    private static final int PAGE_HIDDEN = 2;
 
-    private static final String KEY_PIF = "spoofing_pif";
-    private static final String KEY_TRICKYSTORE = "spoofing_trickystore";
-    private static final String KEY_APP_SPOOF = "spoofing_app_spoof";
-    private static final String KEY_APP_STATE = "spoofing_app_state";
-    private static final String KEY_HIDE_APPLIST = "spoofing_hide_applist";
-
-    private PifManager mPifManager;
-    private KeyboxManager mKeyboxManager;
-
-    private Preference mPifPreference;
-    private Preference mTrickyStorePreference;
-    private Preference mAppSpoofPreference;
-    private Preference mAppStatePreference;
-    private Preference mHideAppListPreference;
+    private int mSegment = PAGE_INTEGRITY;
+    private TextView[] mSegmentViews;
 
     @Override
-    public void onCreate(Bundle icicle) {
-        super.onCreate(icicle);
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         requireActivity().setTitle(R.string.spoof_screen_title);
-        mPifManager = new PifManager(requireContext());
-        mKeyboxManager = new KeyboxManager(requireContext());
+    }
 
-        addPreferencesFromResource(R.xml.spoofing);
-
-        mPifPreference = findPreference(KEY_PIF);
-        mTrickyStorePreference = findPreference(KEY_TRICKYSTORE);
-        mAppSpoofPreference = findPreference(KEY_APP_SPOOF);
-        mAppStatePreference = findPreference(KEY_APP_STATE);
-        mHideAppListPreference = findPreference(KEY_HIDE_APPLIST);
-
-        mPifPreference.setOnPreferenceClickListener(preference -> {
-            openFragment(PifFragment.class, getString(R.string.pif_category_title));
-            return true;
-        });
-        mTrickyStorePreference.setOnPreferenceClickListener(preference -> {
-            openFragment(TrickyStoreFragment.class, getString(R.string.trickystore_screen_title));
-            return true;
-        });
-        mAppSpoofPreference.setOnPreferenceClickListener(preference -> {
-            openFragment(AppSpoofFragment.class, getString(R.string.app_spoof_screen_title));
-            return true;
-        });
-        mAppStatePreference.setOnPreferenceClickListener(preference -> {
-            openFragment(AppStateFragment.class, getString(R.string.app_state_screen_title));
-            return true;
-        });
-        mHideAppListPreference.setOnPreferenceClickListener(preference -> {
-            openFragment(HideAppListSettings.class, getString(R.string.hide_applist_title));
-            return true;
-        });
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
+            @Nullable Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.fragment_spoofing, container, false);
     }
 
     @Override
-    public void onResume() {
-        super.onResume();
-        refreshDashboard();
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        mSegmentViews = new TextView[] {
+                view.findViewById(R.id.spoof_segment_integrity),
+                view.findViewById(R.id.spoof_segment_per_app),
+                view.findViewById(R.id.spoof_segment_hidden)
+        };
+        for (int i = 0; i < mSegmentViews.length; i++) {
+            final int index = i;
+            mSegmentViews[i].setOnClickListener(v -> selectSegment(index));
+        }
+
+        if (savedInstanceState != null) {
+            mSegment = savedInstanceState.getInt(STATE_SEGMENT, PAGE_INTEGRITY);
+        }
+        if (savedInstanceState == null
+                || getChildFragmentManager().findFragmentById(R.id.spoof_content) == null) {
+            showPage(mSegment);
+        }
+        updateSegments();
     }
 
-    private void refreshDashboard() {
-        bindPifSummary();
-        bindTrickyStoreSummary();
-        bindAppSpoofSummary();
-        bindAppStateSummary();
-        bindHideAppListSummary();
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt(STATE_SEGMENT, mSegment);
     }
 
-    private void bindPifSummary() {
-        String activeConfig = mPifManager.getActiveConfigName();
-        Map<String, String> props = mPifManager.getCurrentProperties();
-        String model = props.get("MODEL");
-        String patch = props.get("SECURITY_PATCH");
-
-        if (activeConfig.isEmpty()) {
-            mPifPreference.setSummary(getString(R.string.pif_no_config_loaded) + "\n"
-                    + getString(R.string.spoof_dashboard_pif_empty_detail));
+    private void selectSegment(int index) {
+        if (index == mSegment) {
             return;
         }
+        mSegment = index;
+        showPage(index);
+        updateSegments();
+    }
 
-        if (model == null || model.isEmpty()) {
-            model = getString(R.string.pif_no_props);
+    private void showPage(int index) {
+        Fragment page;
+        switch (index) {
+            case PAGE_PER_APP:
+                page = new AppSpoofFragment();
+                break;
+            case PAGE_HIDDEN:
+                page = new HideAppListSettings();
+                break;
+            case PAGE_INTEGRITY:
+            default:
+                page = new IntegritySpoofFragment();
+                break;
         }
-        if (patch == null || patch.isEmpty()) {
-            mPifPreference.setSummary(getString(R.string.pif_active_config, activeConfig) + "\n"
-                    + model);
-        } else {
-            mPifPreference.setSummary(getString(R.string.pif_active_config, activeConfig) + "\n"
-                    + getString(R.string.spoof_dashboard_pif_detail, model, patch));
+        FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
+        transaction.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out);
+        transaction.replace(R.id.spoof_content, page);
+        transaction.commit();
+    }
+
+    private void updateSegments() {
+        for (int i = 0; i < mSegmentViews.length; i++) {
+            boolean selected = i == mSegment;
+            mSegmentViews[i].setBackgroundResource(selected
+                    ? R.drawable.powerhub_spoof_segment_selected
+                    : android.R.color.transparent);
+            mSegmentViews[i].setTextColor(ContextCompat.getColor(mSegmentViews[i].getContext(),
+                    selected ? R.color.powerhub_spoof_accent
+                            : R.color.powerhub_spoof_text_secondary));
         }
-    }
-
-    private void bindTrickyStoreSummary() {
-        boolean keyboxExists = mKeyboxManager.keyboxExists();
-        int targetCount = mKeyboxManager.getTargetAppCount();
-
-        String status = keyboxExists
-                ? getString(R.string.keybox_installed)
-                : getString(R.string.keybox_not_found);
-        String detail = targetCount > 0
-                ? getString(R.string.target_apps_count, targetCount)
-                : getString(R.string.spoof_dashboard_target_empty_detail);
-        mTrickyStorePreference.setSummary(status + "\n" + detail);
-    }
-
-    private void bindAppSpoofSummary() {
-        boolean enabled = AppSpoofFragment.isConfigEnabled(requireContext());
-        int appCount = AppSpoofFragment.getConfiguredAppCount(requireContext());
-
-        String status = enabled
-                ? getString(R.string.game_spoofing_enabled)
-                : getString(R.string.game_spoofing_disabled);
-        String detail = appCount > 0
-                ? getString(R.string.game_spoofing_configured_count, appCount)
-                : getString(R.string.game_spoof_no_games);
-        mAppSpoofPreference.setSummary(status + "\n" + detail);
-    }
-
-    private void bindAppStateSummary() {
-        boolean enabled = AppStateFragment.isConfigEnabled(requireContext());
-        int appCount = AppStateFragment.getConfiguredAppCount(requireContext());
-
-        String status = enabled
-                ? getString(R.string.app_state_enabled)
-                : getString(R.string.app_state_disabled);
-        String detail = appCount > 0
-                ? getString(R.string.app_state_configured_count, appCount)
-                : getString(R.string.app_state_no_apps);
-        mAppStatePreference.setSummary(status + "\n" + detail);
-    }
-
-    private void bindHideAppListSummary() {
-        String hiddenApps = Settings.Secure.getString(requireContext().getContentResolver(),
-                Settings.Secure.HIDE_APPLIST);
-        int appCount = 0;
-
-        if (hiddenApps != null && !hiddenApps.trim().isEmpty()) {
-            for (String packageName : hiddenApps.split(",")) {
-                if (!packageName.trim().isEmpty()) {
-                    appCount++;
-                }
-            }
-        }
-
-        String status = appCount > 0
-                ? getString(R.string.hide_applist_selected_count, appCount)
-                : getString(R.string.hide_applist_none_selected);
-        String detail = appCount > 0
-                ? getString(R.string.hide_applist_summary)
-                : getString(R.string.spoof_dashboard_hide_applist_empty_detail);
-        mHideAppListPreference.setSummary(status + "\n" + detail);
-    }
-
-    private void openFragment(@NonNull Class<? extends Fragment> fragmentClass,
-            @NonNull String title) {
-        Intent intent = new Intent(requireActivity(), SubSettings.class);
-        intent.putExtra(":settings:show_fragment", fragmentClass.getName());
-        intent.putExtra(":settings:show_fragment_title", title);
-        startActivity(intent);
-    }
-
-    @Override
-    public int getMetricsCategory() {
-        return MetricsProto.MetricsEvent.VOLTAGE;
     }
 }

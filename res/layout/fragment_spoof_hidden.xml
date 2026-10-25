@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipToPadding="false"
+    android:fillViewport="true"
+    android:overScrollMode="never"
+    android:theme="@style/Theme.Powerhub.Spoof">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingStart="16dp"
+        android:paddingTop="12dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="32dp">
+
+        <LinearLayout
+            style="@style/Widget.Powerhub.Spoof.Card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    style="@style/Widget.Powerhub.Spoof.HeroIcon"
+                    android:layout_width="@dimen/spoof_hero_icon_size"
+                    android:layout_height="@dimen/spoof_hero_icon_size"
+                    android:contentDescription="@null"
+                    android:src="@drawable/ic_blacklist" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="14dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/Widget.Powerhub.Spoof.CardTitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/spoof_hidden_title" />
+
+                    <TextView
+                        android:id="@+id/hero_summary"
+                        style="@style/Widget.Powerhub.Spoof.RowSummary"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="@string/spoof_hidden_summary" />
+
+                    <TextView
+                        android:id="@+id/app_status_pill"
+                        style="@style/Widget.Powerhub.Spoof.StatusPill"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/Widget.Powerhub.Spoof.Card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp">
+
+            <TextView
+                style="@style/Widget.Powerhub.Spoof.Section"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/spoof_hidden_apps_title" />
+
+            <LinearLayout
+                android:id="@+id/apps_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:orientation="vertical" />
+
+            <TextView
+                android:id="@+id/apps_empty"
+                style="@style/Widget.Powerhub.Spoof.RowSummary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/spoof_hidden_empty"
+                android:visibility="gone" />
+
+            <include
+                android:id="@+id/row_add"
+                layout="@layout/row_spoof_action"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp" />
+        </LinearLayout>
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

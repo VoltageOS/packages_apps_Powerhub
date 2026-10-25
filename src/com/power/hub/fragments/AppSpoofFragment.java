@@ -16,918 +16,563 @@
  */
 package com.power.hub.fragments;
 
+import android.app.ActivityManager;
 import android.content.Context;
-import android.content.pm.ApplicationInfo;
-import android.content.pm.PackageManager;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.provider.Settings;
-import android.text.InputType;
-import android.util.Log;
-import android.widget.EditText;
+import android.os.UserHandle;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
-import androidx.preference.Preference;
-import androidx.preference.PreferenceCategory;
-import androidx.preference.SwitchPreferenceCompat;
+import androidx.fragment.app.Fragment;
 
-import com.android.internal.logging.nano.MetricsProto;
 import com.android.settings.R;
-import com.android.settings.SettingsPreferenceFragment;
+import com.google.android.material.materialswitch.MaterialSwitch;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
-
-import java.io.File;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
-import java.util.Iterator;
 import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
-public class AppSpoofFragment extends SettingsPreferenceFragment {
+/** Per-app device property spoofing and app-state options in one page. */
+public class AppSpoofFragment extends Fragment {
 
-    private static final String TAG = "GameSpoofing";
+    private static final String REQ_PICK_APP = "spoof:perapp_pick";
+    private static final String REQ_APP_SHEET = "spoof:perapp_sheet";
+    private static final String REQ_APP_REMOVE = "spoof:perapp_remove";
+    private static final String REQ_PROFILE_PICK = "spoof:perapp_profile_pick";
+    private static final String REQ_PROFILE_MANAGE = "spoof:perapp_manage";
+    private static final String REQ_PROFILE_EDIT = "spoof:perapp_profile_edit";
+    private static final String REQ_PROFILE_DELETE = "spoof:perapp_profile_delete";
+    private static final String REQ_PROPERTY_EDIT = "spoof:perapp_props";
+    private static final Set<String> PIF_ONLY_KEYS = new LinkedHashSet<>(Arrays.asList(
+            "spoofBuild", "spoofProps", "spoofProvider", "spoofSignature",
+            "spoofVendingBuild", "spoofVendingSdk", "DEBUG", "verboseLogs"));
 
-    private static final String LEGACY_CONFIG_DIR = "/data/system/gameprops";
-    private static final String LEGACY_CONFIG_FILE = "gameprops.json";
-    private static final String CONFIG_KEY = "spoof_gameprops_config";
-    private static final String PRESETS_KEY = "game_spoofing_user_presets";
-    private static final String KEY_STATUS = "app_spoof_status";
-    private static final String KEY_ENABLED = "app_spoof_enabled";
-    private static final String KEY_ADD_APP = "app_spoof_add_app";
-    private static final String KEY_MANAGE_PROFILES = "app_spoof_manage_profiles";
-    private static final String KEY_APP_CATEGORY = "app_spoof_app_list_category";
-
-    private final List<AppConfig> mConfigs = new ArrayList<>();
-    private final List<DeviceProfile> mProfiles = new ArrayList<>();
-
-    private boolean mEnabled;
-    private Preference mStatusPreference;
-    private SwitchPreferenceCompat mEnabledSwitch;
-    private Preference mAddGamePreference;
-    private Preference mManagePresetsPreference;
-    private PreferenceCategory mAppCategory;
+    private AppSpoofStore mStore;
+    private AppStateStore mStateStore;
+    private PifManager mPifManager;
+    private TextView mHeroSummary;
+    private TextView mStatusPill;
+    private LinearLayout mAppsContainer;
+    private TextView mEmptyView;
+    private View mRowMaster;
+    private View mRowDebug;
+    private View mRowAdd;
+    private View mRowManage;
+    private MaterialSwitch mMasterSwitch;
+    private String mReopenPackage;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requireActivity().setTitle(R.string.app_spoof_screen_title);
-        loadProfiles();
-        migrateLegacyConfigIfNeeded(requireContext());
-        loadConfig();
-        addPreferencesFromResource(R.xml.app_spoof_settings);
+        mStore = new AppSpoofStore(requireContext());
+        mStateStore = new AppStateStore(requireContext());
+        mPifManager = new PifManager(requireContext());
+    }
 
-        mStatusPreference = findPreference(KEY_STATUS);
-        mEnabledSwitch = findPreference(KEY_ENABLED);
-        mAddGamePreference = findPreference(KEY_ADD_APP);
-        mManagePresetsPreference = findPreference(KEY_MANAGE_PROFILES);
-        mAppCategory = findPreference(KEY_APP_CATEGORY);
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
+            @Nullable Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.fragment_spoof_apps, container, false);
+    }
 
-        mEnabledSwitch.setOnPreferenceChangeListener((preference, newValue) -> {
-            mEnabled = (Boolean) newValue;
-            saveConfig();
-            refreshUi();
-            return true;
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        mHeroSummary = view.findViewById(R.id.hero_summary);
+        mStatusPill = view.findViewById(R.id.app_status_pill);
+        mAppsContainer = view.findViewById(R.id.apps_container);
+        mEmptyView = view.findViewById(R.id.apps_empty);
+        mRowMaster = view.findViewById(R.id.row_master);
+        mRowDebug = view.findViewById(R.id.row_debug);
+        mRowAdd = view.findViewById(R.id.row_add);
+        mRowManage = view.findViewById(R.id.row_manage_profiles);
+
+        mMasterSwitch = mRowMaster.findViewById(R.id.row_switch);
+        mRowMaster.setOnClickListener(v -> mMasterSwitch.toggle());
+
+        mRowAdd.setOnClickListener(v -> {
+            if (isEnabled()) {
+                showAppPicker();
+            } else {
+                toast(R.string.spoof_enable_first);
+            }
         });
-        mAddGamePreference.setOnPreferenceClickListener(preference -> {
-            showAddAppDialog();
-            return true;
+        mRowManage.setOnClickListener(v -> {
+            if (isEnabled()) {
+                showManageProfiles();
+            } else {
+                toast(R.string.spoof_enable_first);
+            }
         });
-        mManagePresetsPreference.setOnPreferenceClickListener(preference -> {
-            showManageProfilesDialog();
-            return true;
-        });
+
+        registerListeners();
+        refresh();
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        loadProfiles();
-        loadConfig();
-        refreshUi();
+        reloadAll();
+        refresh();
     }
 
-    public static boolean isConfigEnabled(@NonNull Context context) {
-        try {
-            migrateLegacyConfigIfNeeded(context);
-            String content = Settings.Secure.getString(
-                    context.getContentResolver(), CONFIG_KEY);
-            if (content == null || content.isEmpty()) {
-                return false;
-            }
-            return new JSONObject(content).optBoolean("enabled", false);
-        } catch (Exception e) {
-            Log.e(TAG, "Failed to read enabled state", e);
-            return false;
-        }
+    private void reloadAll() {
+        mStore.reload();
+        mStateStore.reload();
     }
 
-    public static int getConfiguredAppCount(@NonNull Context context) {
-        try {
-            migrateLegacyConfigIfNeeded(context);
-            String content = Settings.Secure.getString(
-                    context.getContentResolver(), CONFIG_KEY);
-            if (content == null || content.isEmpty()) {
-                return 0;
-            }
-            JSONObject root = new JSONObject(content);
-            JSONObject apps = root.optJSONObject("games");
-            return apps != null ? apps.length() : 0;
-        } catch (Exception e) {
-            Log.e(TAG, "Failed to count configs", e);
-            return 0;
-        }
+    private boolean isEnabled() {
+        return mStore.isEnabled() || mStateStore.isEnabled();
     }
 
-    private void refreshUi() {
-        if (mEnabledSwitch == null) {
-            return;
-        }
-
-        mStatusPreference.setTitle(mEnabled
-                ? getString(R.string.game_spoofing_enabled)
-                : getString(R.string.game_spoofing_disabled));
-        mStatusPreference.setSummary(mConfigs.isEmpty()
-                ? getString(R.string.game_spoof_no_games)
-                : getString(R.string.game_spoofing_configured_count, mConfigs.size()));
-
-        mEnabledSwitch.setOnPreferenceChangeListener(null);
-        mEnabledSwitch.setChecked(mEnabled);
-        mEnabledSwitch.setOnPreferenceChangeListener((preference, newValue) -> {
-            mEnabled = (Boolean) newValue;
-            saveConfig();
-            refreshUi();
-            return true;
-        });
-
-        mAddGamePreference.setEnabled(mEnabled);
-        mManagePresetsPreference.setEnabled(mEnabled);
-        bindConfiguredApps();
-    }
-
-    private void bindConfiguredApps() {
-        mAppCategory.removeAll();
-        mAppCategory.setTitle(getString(R.string.app_spoof_configured_apps));
-
-        if (mConfigs.isEmpty()) {
-            Preference emptyPreference = new Preference(requireContext());
-            emptyPreference.setTitle(R.string.game_spoof_no_games);
-            emptyPreference.setSelectable(false);
-            mAppCategory.addPreference(emptyPreference);
-            return;
-        }
-
-        List<AppConfig> sorted = new ArrayList<>(mConfigs);
-        Collections.sort(sorted, (left, right) -> left.appName.compareToIgnoreCase(right.appName));
-        PackageManager packageManager = requireContext().getPackageManager();
-
-        for (AppConfig config : sorted) {
-            Preference preference = new Preference(requireContext());
-            preference.setTitle(config.appName);
-            preference.setSummary(config.packageName + "\n"
-                    + getString(R.string.game_spoof_preset_summary, config.profileName));
-            preference.setEnabled(mEnabled);
-            preference.setIcon(resolveAppIcon(packageManager, config.packageName));
-            preference.setOnPreferenceClickListener(clicked -> {
-                showEditAppDialog(config);
-                return true;
-            });
-            mAppCategory.addPreference(preference);
-        }
-    }
-
-    private Drawable resolveAppIcon(PackageManager packageManager, String packageName) {
-        try {
-            ApplicationInfo appInfo = packageManager.getApplicationInfo(packageName, 0);
-            return appInfo.loadIcon(packageManager);
-        } catch (Exception ignored) {
-            return requireContext().getDrawable(android.R.drawable.sym_def_app_icon);
-        }
-    }
-
-    private void showAddAppDialog() {
-        if (!mEnabled) {
-            return;
-        }
-        new Thread(() -> {
-            PackageManager packageManager = requireContext().getPackageManager();
-            List<ApplicationInfo> installedApps =
-                    packageManager.getInstalledApplications(PackageManager.GET_META_DATA);
-            List<ApplicationInfo> availableApps = new ArrayList<>();
-
-            for (ApplicationInfo appInfo : installedApps) {
-                boolean isSystem = (appInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0;
-                if (isSystem) {
-                    continue;
-                }
-
-                boolean alreadyAdded = false;
-                for (AppConfig config : mConfigs) {
-                    if (config.packageName.equals(appInfo.packageName)) {
-                        alreadyAdded = true;
-                        break;
+    private void registerListeners() {
+        getChildFragmentManager().setFragmentResultListener(REQ_PICK_APP,
+                getViewLifecycleOwner(), (key, result) -> {
+                    String packageName = result.getString(SpoofAppPickerSheet.RESULT_PACKAGE);
+                    if (packageName != null) {
+                        post(() -> showPerAppSheet(packageName));
                     }
-                }
-                if (!alreadyAdded) {
-                    availableApps.add(appInfo);
-                }
-            }
-
-            availableApps.sort((a, b) -> packageManager.getApplicationLabel(a).toString()
-                    .compareToIgnoreCase(packageManager.getApplicationLabel(b).toString()));
-
-            String[] labels = new String[availableApps.size()];
-            for (int i = 0; i < availableApps.size(); i++) {
-                labels[i] = packageManager.getApplicationLabel(availableApps.get(i)).toString();
-            }
-
-            requireActivity().runOnUiThread(() -> new AlertDialog.Builder(requireContext())
-                    .setTitle(R.string.game_spoof_select_game)
-                    .setItems(labels,
-                            (dialog, which) -> showPresetPickerDialog(
-                                    availableApps.get(which), packageManager, null))
-                    .setNegativeButton(android.R.string.cancel, null)
-                    .show());
-        }).start();
-    }
-
-    private void showPresetPickerDialog(ApplicationInfo appInfo, PackageManager packageManager,
-            AppConfig replacing) {
-        if (mProfiles.isEmpty()) {
-            Toast.makeText(requireContext(), R.string.game_spoof_no_presets,
-                    Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        ScrollView scrollView = new ScrollView(requireContext());
-        LinearLayout root = new LinearLayout(requireContext());
-        root.setOrientation(LinearLayout.VERTICAL);
-        root.setPadding(dp(24), dp(12), dp(24), dp(12));
-        scrollView.addView(root);
-
-        AlertDialog dialog = new AlertDialog.Builder(requireContext())
-                .setTitle(R.string.game_spoof_select_preset)
-                .setView(scrollView)
-                .setNeutralButton(R.string.game_spoof_preset_add, null)
-                .setNegativeButton(android.R.string.cancel, null)
-                .create();
-
-        for (DeviceProfile profile : new ArrayList<>(mProfiles)) {
-            LinearLayout row = new LinearLayout(requireContext());
-            row.setOrientation(LinearLayout.HORIZONTAL);
-            row.setPadding(0, dp(10), 0, dp(10));
-            row.setGravity(android.view.Gravity.CENTER_VERTICAL);
-
-            TextView name = new TextView(requireContext());
-            name.setText(profile.name);
-            name.setTextSize(16f);
-            name.setLayoutParams(new LinearLayout.LayoutParams(
-                    0, LinearLayout.LayoutParams.WRAP_CONTENT, 1f));
-            row.addView(name);
-
-            if (profile.isCustom) {
-                TextView delete = new TextView(requireContext());
-                delete.setText(R.string.action_delete);
-                delete.setTextColor(requireContext().getColor(android.R.color.holo_red_light));
-                delete.setPadding(dp(12), 0, 0, 0);
-                delete.setOnClickListener(v -> {
-                    mProfiles.remove(profile);
-                    saveProfiles();
-                    loadProfiles();
-                    loadConfig();
-                    refreshUi();
-                    dialog.dismiss();
-                    showPresetPickerDialog(appInfo, packageManager, replacing);
                 });
-                row.addView(delete);
-            }
 
-            row.setOnClickListener(v -> {
-                dialog.dismiss();
-                applyPresetToApp(appInfo, packageManager, replacing, profile);
-            });
-            root.addView(row);
-        }
-
-        dialog.setOnShowListener(ignored -> dialog.getButton(AlertDialog.BUTTON_NEUTRAL)
-                .setOnClickListener(v -> {
-                    dialog.dismiss();
-                    showInlinePresetCreationDialog(appInfo, packageManager, replacing);
-                }));
-        dialog.show();
-    }
-
-    private void showEditAppDialog(AppConfig config) {
-        if (!mEnabled) {
-            return;
-        }
-        String[] options = {
-                getString(R.string.game_spoof_edit_properties),
-                getString(R.string.game_spoof_change_preset),
-                getString(R.string.game_spoof_remove_game)
-        };
-
-        new AlertDialog.Builder(requireContext())
-                .setTitle(config.appName)
-                .setItems(options, (dialog, which) -> {
-                    if (which == 0) {
-                        showPropertyEditorDialog(config);
-                    } else if (which == 1) {
-                        PackageManager packageManager = requireContext().getPackageManager();
-                        try {
-                            ApplicationInfo appInfo =
-                                    packageManager.getApplicationInfo(config.packageName, 0);
-                            showPresetPickerDialog(appInfo, packageManager, config);
-                        } catch (Exception ignored) {
+        getChildFragmentManager().setFragmentResultListener(REQ_APP_SHEET,
+                getViewLifecycleOwner(), (key, result) -> {
+                    String packageName = result.getString(PerAppSheet.RESULT_PACKAGE);
+                    String action = result.getString(PerAppSheet.RESULT_ACTION);
+                    if (packageName != null && action != null) {
+                        mReopenPackage = packageName;
+                        if (PerAppSheet.ACTION_PROFILE.equals(action)) {
+                            post(() -> showProfilePicker(packageName));
+                        } else if (PerAppSheet.ACTION_PROPERTIES.equals(action)) {
+                            post(() -> showPropertyEditor(packageName));
+                        } else if (PerAppSheet.ACTION_COPY_PIF.equals(action)) {
+                            copyPifProfile(packageName);
+                        } else if (PerAppSheet.ACTION_REMOVE.equals(action)) {
+                            mReopenPackage = null;
+                            post(() -> showRemoveConfirm(packageName));
                         }
-                    } else {
-                        mConfigs.remove(config);
-                        saveConfig();
-                        refreshUi();
-                        Toast.makeText(requireContext(), R.string.game_spoof_game_removed,
-                                Toast.LENGTH_SHORT).show();
-                    }
-                })
-                .setNegativeButton(android.R.string.cancel, null)
-                .show();
-    }
-
-    private void showPropertyEditorDialog(AppConfig config) {
-        ScrollView scrollView = new ScrollView(requireContext());
-        LinearLayout root = new LinearLayout(requireContext());
-        root.setOrientation(LinearLayout.VERTICAL);
-        root.setPadding(dp(24), dp(12), dp(24), dp(12));
-        scrollView.addView(root);
-
-        List<EditText[]> propRows = new ArrayList<>();
-        LinearLayout propsContainer = new LinearLayout(requireContext());
-        propsContainer.setOrientation(LinearLayout.VERTICAL);
-        root.addView(propsContainer);
-
-        if (!config.props.isEmpty()) {
-            for (Map.Entry<String, String> entry : config.props.entrySet()) {
-                addPropRow(propsContainer, propRows, entry.getKey(), entry.getValue());
-            }
-        } else {
-            addPropRow(propsContainer, propRows, "MODEL", "");
-            addPropRow(propsContainer, propRows, "MANUFACTURER", "");
-        }
-
-        TextView addPropertyButton = new TextView(requireContext());
-        addPropertyButton.setText(R.string.game_spoof_add_property);
-        addPropertyButton.setPadding(0, dp(12), 0, dp(8));
-        addPropertyButton.setOnClickListener(v -> addPropRow(propsContainer, propRows, "", ""));
-        root.addView(addPropertyButton);
-
-        AlertDialog dialog = new AlertDialog.Builder(requireContext())
-                .setTitle(getString(R.string.game_spoof_edit_title, config.appName))
-                .setView(scrollView)
-                .setNeutralButton(R.string.game_spoof_save_as_preset, null)
-                .setPositiveButton(android.R.string.ok, null)
-                .setNegativeButton(android.R.string.cancel, null)
-                .create();
-
-        dialog.setOnShowListener(ignored -> {
-            dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(v -> {
-                Map<String, String> props = collectProps(propRows);
-                mConfigs.remove(config);
-                mConfigs.add(new AppConfig(config.packageName, config.appName,
-                        matchProfileName(props), props));
-                saveConfig();
-                refreshUi();
-                Toast.makeText(requireContext(), R.string.game_spoof_config_saved,
-                        Toast.LENGTH_SHORT).show();
-                dialog.dismiss();
-            });
-            dialog.getButton(AlertDialog.BUTTON_NEUTRAL).setOnClickListener(v ->
-                    showSaveAsPresetDialog(propRows));
-        });
-        dialog.show();
-    }
-
-    private void showInlinePresetCreationDialog(ApplicationInfo appInfo,
-            PackageManager packageManager, @Nullable AppConfig replacing) {
-        showPresetEditorDialogInternal(null, createdPreset -> {
-            loadProfiles();
-            applyPresetToApp(appInfo, packageManager, replacing, createdPreset);
-        });
-    }
-
-    private void showSaveAsPresetDialog(List<EditText[]> propRows) {
-        EditText nameView = new EditText(requireContext());
-        nameView.setHint(getString(R.string.game_spoof_preset_name));
-        nameView.setInputType(InputType.TYPE_CLASS_TEXT);
-
-        AlertDialog dialog = new AlertDialog.Builder(requireContext())
-                .setTitle(R.string.game_spoof_save_as_preset)
-                .setView(nameView)
-                .setPositiveButton(android.R.string.ok, null)
-                .setNegativeButton(android.R.string.cancel, null)
-                .create();
-
-        dialog.setOnShowListener(ignored -> dialog.getButton(AlertDialog.BUTTON_POSITIVE)
-                .setOnClickListener(v -> {
-                    String name = nameView.getText().toString().trim();
-                    if (name.isEmpty()) {
-                        Toast.makeText(requireContext(), R.string.game_spoof_preset_name_empty,
-                                Toast.LENGTH_SHORT).show();
                         return;
                     }
-
-                    mProfiles.add(new DeviceProfile(name, collectProps(propRows), true));
-                    saveProfiles();
-                    loadProfiles();
-                    loadConfig();
-                    refreshUi();
-                    Toast.makeText(requireContext(), R.string.game_spoof_preset_saved,
-                            Toast.LENGTH_SHORT).show();
-                    dialog.dismiss();
-                }));
-        dialog.show();
-    }
-
-    private void showManageProfilesDialog() {
-        if (!mEnabled) {
-            return;
-        }
-        String[] options = {
-                getString(R.string.game_spoof_preset_add),
-                getString(R.string.game_spoof_preset_edit),
-                getString(R.string.game_spoof_preset_delete)
-        };
-
-        new AlertDialog.Builder(requireContext())
-                .setTitle(R.string.game_spoof_manage_presets)
-                .setItems(options, (dialog, which) -> {
-                    if (which == 0) {
-                        showPresetEditorDialog(null);
-                    } else if (which == 1) {
-                        showPickProfileToEdit();
-                    } else {
-                        showPickProfileToDelete();
+                    if (result.getBoolean(SpoofSheetFragment.RESULT_CLOSED, false)) {
+                        reloadAll();
+                        refresh();
                     }
-                })
-                .setNegativeButton(android.R.string.cancel, null)
-                .show();
-    }
+                });
 
-    private void showPickProfileToEdit() {
-        if (mProfiles.isEmpty()) {
-            Toast.makeText(requireContext(), R.string.game_spoof_no_presets,
-                    Toast.LENGTH_SHORT).show();
-            return;
-        }
+        getChildFragmentManager().setFragmentResultListener(REQ_APP_REMOVE,
+                getViewLifecycleOwner(), (key, result) -> {
+                    String packageName = result.getString(SpoofConfirmSheet.RESULT_CONTEXT);
+                    if (packageName == null
+                            || !result.getBoolean(SpoofConfirmSheet.RESULT_CONFIRMED)) {
+                        return;
+                    }
+                    mStore.removeConfig(packageName);
+                    mStateStore.removeEntry(packageName);
+                    reloadAll();
+                    refresh();
+                    toast(R.string.spoof_app_removed);
+                });
 
-        new AlertDialog.Builder(requireContext())
-                .setTitle(R.string.game_spoof_preset_edit)
-                .setItems(getProfileNames(),
-                        (dialog, which) -> showPresetEditorDialog(mProfiles.get(which)))
-                .setNegativeButton(android.R.string.cancel, null)
-                .show();
-    }
+        getChildFragmentManager().setFragmentResultListener(REQ_PROFILE_PICK,
+                getViewLifecycleOwner(), (key, result) -> {
+                    String packageName = result.getString(SpoofChoiceSheet.RESULT_CONTEXT);
+                    if (packageName == null) {
+                        return;
+                    }
+                    if (result.getBoolean(SpoofChoiceSheet.RESULT_ACTION, false)) {
+                        showProfileEditor(null, packageName);
+                        return;
+                    }
+                    String profileName = result.getString(SpoofChoiceSheet.RESULT_ID);
+                    if (profileName == null) {
+                        return;
+                    }
+                    AppSpoofStore.Profile profile = mStore.findProfile(profileName);
+                    if (profile == null) {
+                        toast(R.string.spoof_profiles_empty);
+                        return;
+                    }
+                    boolean replacing = mStore.findConfig(packageName) != null;
+                    String label = SpoofUi.appLabel(requireContext(), packageName);
+                    mStore.applyProfile(packageName, label, profile);
+                    restartApp(packageName);
+                    reloadAll();
+                    refresh();
+                    toast(replacing ? R.string.spoof_app_updated : R.string.spoof_app_added, label);
+                    reopenIfPending(packageName);
+                });
 
-    private void showPickProfileToDelete() {
-        if (mProfiles.isEmpty()) {
-            Toast.makeText(requireContext(), R.string.game_spoof_no_presets,
-                    Toast.LENGTH_SHORT).show();
-            return;
-        }
+        getChildFragmentManager().setFragmentResultListener(REQ_PROPERTY_EDIT,
+                getViewLifecycleOwner(), (key, result) -> {
+                    String packageName = result.getString(PropertyEditorSheet.RESULT_CONTEXT);
+                    Serializable serialized = result.getSerializable(
+                            PropertyEditorSheet.RESULT_PROPERTIES);
+                    if (packageName == null || !(serialized instanceof Map)) {
+                        return;
+                    }
+                    //noinspection unchecked
+                    Map<String, String> properties = (Map<String, String>) serialized;
+                    String profileName = result.getString(PropertyEditorSheet.RESULT_PROFILE_NAME);
+                    if (profileName != null) {
+                        mStore.saveProfile(null, profileName, properties);
+                    }
+                    mStore.updateProperties(packageName, properties);
+                    restartApp(packageName);
+                    reloadAll();
+                    refresh();
+                    toast(R.string.game_spoof_config_saved);
+                    reopenIfPending(packageName);
+                });
 
-        new AlertDialog.Builder(requireContext())
-                .setTitle(R.string.game_spoof_preset_delete)
-                .setItems(getProfileNames(), (dialog, which) -> {
-                    DeviceProfile profile = mProfiles.get(which);
+        getChildFragmentManager().setFragmentResultListener(REQ_PROFILE_MANAGE,
+                getViewLifecycleOwner(), (key, result) -> {
+                    if (result.getBoolean(SpoofChoiceSheet.RESULT_ACTION, false)) {
+                        showProfileEditor(null, null);
+                        return;
+                    }
+                    String deleted = result.getString(SpoofChoiceSheet.RESULT_DELETE);
+                    if (deleted != null) {
+                        showDeleteProfileConfirm(deleted);
+                        return;
+                    }
+                    String profileName = result.getString(SpoofChoiceSheet.RESULT_ID);
+                    if (profileName == null) {
+                        return;
+                    }
+                    AppSpoofStore.Profile profile = mStore.findProfile(profileName);
+                    if (profile == null) {
+                        return;
+                    }
                     if (!profile.isCustom) {
-                        Toast.makeText(requireContext(), R.string.game_spoof_builtin_preset,
-                                Toast.LENGTH_SHORT).show();
+                        toast(R.string.spoof_profile_builtin_locked);
                         return;
                     }
-                    new AlertDialog.Builder(requireContext())
-                            .setTitle(R.string.game_spoof_preset_delete)
-                            .setMessage(getString(
-                                    R.string.game_spoof_preset_delete_confirm, profile.name))
-                            .setPositiveButton(R.string.action_delete, (confirmDialog, ignored) -> {
-                                mProfiles.remove(profile);
-                                saveProfiles();
-                                loadProfiles();
-                                loadConfig();
-                                refreshUi();
-                                Toast.makeText(requireContext(),
-                                        R.string.game_spoof_preset_deleted,
-                                        Toast.LENGTH_SHORT).show();
-                            })
-                            .setNegativeButton(android.R.string.cancel, null)
-                            .show();
-                })
-                .setNegativeButton(android.R.string.cancel, null)
-                .show();
-    }
+                    showProfileEditor(profile, null);
+                });
 
-    private void showPresetEditorDialog(DeviceProfile editing) {
-        showPresetEditorDialogInternal(editing, null);
-    }
-
-    private void showPresetEditorDialogInternal(@Nullable DeviceProfile editing,
-            @Nullable PresetCreatedCallback callback) {
-        ScrollView scrollView = new ScrollView(requireContext());
-        LinearLayout root = new LinearLayout(requireContext());
-        root.setOrientation(LinearLayout.VERTICAL);
-        root.setPadding(dp(24), dp(12), dp(24), dp(12));
-        scrollView.addView(root);
-
-        EditText nameView = new EditText(requireContext());
-        nameView.setHint(getString(R.string.game_spoof_preset_name));
-        nameView.setInputType(InputType.TYPE_CLASS_TEXT);
-        if (editing != null) {
-            nameView.setText(editing.name);
-        }
-        root.addView(nameView);
-
-        List<EditText[]> propRows = new ArrayList<>();
-        LinearLayout propsContainer = new LinearLayout(requireContext());
-        propsContainer.setOrientation(LinearLayout.VERTICAL);
-        root.addView(propsContainer);
-
-        if (editing != null && !editing.props.isEmpty()) {
-            for (Map.Entry<String, String> entry : editing.props.entrySet()) {
-                addPropRow(propsContainer, propRows, entry.getKey(), entry.getValue());
-            }
-        } else {
-            addPropRow(propsContainer, propRows, "MODEL", "");
-            addPropRow(propsContainer, propRows, "MANUFACTURER", "");
-        }
-
-        TextView addPropertyButton = new TextView(requireContext());
-        addPropertyButton.setText(R.string.game_spoof_add_property);
-        addPropertyButton.setPadding(0, dp(12), 0, dp(8));
-        addPropertyButton.setOnClickListener(v -> addPropRow(propsContainer, propRows, "", ""));
-        root.addView(addPropertyButton);
-
-        AlertDialog dialog = new AlertDialog.Builder(requireContext())
-                .setTitle(editing == null
-                        ? R.string.game_spoof_preset_add
-                        : R.string.game_spoof_preset_edit)
-                .setView(scrollView)
-                .setPositiveButton(android.R.string.ok, null)
-                .setNegativeButton(android.R.string.cancel, null)
-                .create();
-
-        dialog.setOnShowListener(ignored -> dialog.getButton(AlertDialog.BUTTON_POSITIVE)
-                .setOnClickListener(v -> {
-                    String name = nameView.getText().toString().trim();
-                    if (name.isEmpty()) {
-                        Toast.makeText(requireContext(), R.string.game_spoof_preset_name_empty,
-                                Toast.LENGTH_SHORT).show();
+        getChildFragmentManager().setFragmentResultListener(REQ_PROFILE_EDIT,
+                getViewLifecycleOwner(), (key, result) -> {
+                    String name = result.getString(ProfileEditorSheet.RESULT_NAME);
+                    String original = result.getString(ProfileEditorSheet.RESULT_ORIGINAL);
+                    String context = result.getString(ProfileEditorSheet.RESULT_CONTEXT);
+                    Serializable serialized = result.getSerializable(
+                            ProfileEditorSheet.RESULT_PROPERTIES);
+                    if (name == null || !(serialized instanceof Map)) {
                         return;
                     }
-
-                    Map<String, String> props = new LinkedHashMap<>();
-                    for (EditText[] row : propRows) {
-                        String key = row[0].getText().toString().trim();
-                        String value = row[1].getText().toString().trim();
-                        if (!key.isEmpty()) {
-                            props.put(key, value);
+                    //noinspection unchecked
+                    Map<String, String> properties = (Map<String, String>) serialized;
+                    mStore.saveProfile(original, name, properties);
+                    mStore.reload();
+                    if (context != null) {
+                        AppSpoofStore.Profile profile = mStore.findProfile(name);
+                        if (profile != null) {
+                            boolean replacing = mStore.findConfig(context) != null;
+                            String label = SpoofUi.appLabel(requireContext(), context);
+                            mStore.applyProfile(context, label, profile);
+                            mStore.reload();
+                            restartApp(context);
+                            toast(replacing ? R.string.spoof_app_updated
+                                    : R.string.spoof_app_added, label);
+                            reopenIfPending(context);
                         }
+                    } else {
+                        toast(original == null ? R.string.game_spoof_preset_saved_named
+                                : R.string.game_spoof_preset_updated_named, name);
                     }
+                    refresh();
+                });
 
-                    if (editing != null) {
-                        mProfiles.remove(editing);
+        getChildFragmentManager().setFragmentResultListener(REQ_PROFILE_DELETE,
+                getViewLifecycleOwner(), (key, result) -> {
+                    String name = result.getString(SpoofConfirmSheet.RESULT_CONTEXT);
+                    if (name == null || !result.getBoolean(SpoofConfirmSheet.RESULT_CONFIRMED)) {
+                        return;
                     }
-                    DeviceProfile created = new DeviceProfile(name, props, true);
-                    mProfiles.add(created);
-                    saveProfiles();
-                    loadProfiles();
-                    loadConfig();
-                    refreshUi();
-                    Toast.makeText(requireContext(),
-                            editing == null
-                                    ? getString(R.string.game_spoof_preset_saved_named, name)
-                                    : getString(R.string.game_spoof_preset_updated_named, name),
-                            Toast.LENGTH_SHORT).show();
-                    if (callback != null) {
-                        callback.onPresetCreated(created);
-                    }
-                    dialog.dismiss();
-                }));
-        dialog.show();
+                    mStore.deleteProfile(name);
+                    mStore.reload();
+                    refresh();
+                    toast(R.string.app_spoof_profile_deleted);
+                });
     }
 
-    private void addPropRow(LinearLayout container, List<EditText[]> rows,
-            String key, String value) {
-        LinearLayout row = new LinearLayout(requireContext());
-        row.setOrientation(LinearLayout.HORIZONTAL);
-        row.setPadding(0, dp(4), 0, dp(4));
-
-        EditText keyView = new EditText(requireContext());
-        keyView.setHint(R.string.game_spoof_property_key_hint);
-        keyView.setText(key);
-        keyView.setInputType(InputType.TYPE_CLASS_TEXT);
-        LinearLayout.LayoutParams keyParams = new LinearLayout.LayoutParams(
-                0, LinearLayout.LayoutParams.WRAP_CONTENT, 1f);
-        keyParams.setMarginEnd(dp(8));
-        keyView.setLayoutParams(keyParams);
-
-        EditText valueView = new EditText(requireContext());
-        valueView.setHint(R.string.game_spoof_property_value_hint);
-        valueView.setText(value);
-        valueView.setInputType(InputType.TYPE_CLASS_TEXT);
-        valueView.setLayoutParams(new LinearLayout.LayoutParams(
-                0, LinearLayout.LayoutParams.WRAP_CONTENT, 1f));
-
-        row.addView(keyView);
-        row.addView(valueView);
-        container.addView(row);
-        rows.add(new EditText[] {keyView, valueView});
-    }
-
-    private void applyPresetToApp(ApplicationInfo appInfo, PackageManager packageManager,
-            @Nullable AppConfig replacing, DeviceProfile profile) {
-        String appLabel = packageManager.getApplicationLabel(appInfo).toString();
-
-        if (replacing != null) {
-            mConfigs.remove(replacing);
-        }
-
-        mConfigs.add(new AppConfig(
-                appInfo.packageName,
-                appLabel,
-                profile.name,
-                new LinkedHashMap<>(profile.props)));
-
-        saveConfig();
-        refreshUi();
-        Toast.makeText(requireContext(),
-                replacing == null
-                        ? getString(R.string.game_spoof_game_added, appLabel)
-                        : getString(R.string.game_spoof_game_updated, appLabel),
-                Toast.LENGTH_SHORT).show();
-    }
-
-    private Map<String, String> collectProps(List<EditText[]> propRows) {
-        Map<String, String> props = new LinkedHashMap<>();
-        for (EditText[] row : propRows) {
-            String key = row[0].getText().toString().trim();
-            String value = row[1].getText().toString().trim();
-            if (!key.isEmpty()) {
-                props.put(key, value);
-            }
-        }
-        return props;
-    }
-
-    private int dp(int value) {
-        float density = requireContext().getResources().getDisplayMetrics().density;
-        return Math.round(value * density);
-    }
-
-    private String[] getProfileNames() {
-        String[] names = new String[mProfiles.size()];
-        for (int i = 0; i < mProfiles.size(); i++) {
-            names[i] = mProfiles.get(i).name;
-        }
-        return names;
-    }
-
-    private void loadConfig() {
-        mConfigs.clear();
-        mEnabled = false;
-
-        String content = Settings.Secure.getString(
-                requireContext().getContentResolver(), CONFIG_KEY);
-        if (content == null || content.isEmpty()) {
+    private void refresh() {
+        if (!isAdded() || getView() == null) {
             return;
         }
+        boolean enabled = isEnabled();
+        List<PerAppRow> rows = buildRows();
 
-        try {
-            JSONObject json = new JSONObject(content);
-            mEnabled = json.optBoolean("enabled", false);
-            JSONObject apps = json.optJSONObject("games");
-            if (apps == null) {
-                return;
-            }
+        mHeroSummary.setText(getString(R.string.app_spoof_configured_apps_count, rows.size()));
+        SpoofUi.bindStatusPill(mStatusPill,
+                getString(enabled ? R.string.spoof_status_enabled_count
+                        : R.string.spoof_status_disabled_count, rows.size()),
+                enabled ? SpoofUi.TONE_ACCENT : SpoofUi.TONE_MUTED);
 
-            PackageManager packageManager = requireContext().getPackageManager();
-            Iterator<String> packages = apps.keys();
-            while (packages.hasNext()) {
-                String packageName = packages.next();
-                JSONObject propsJson = apps.getJSONObject(packageName);
-                if (propsJson.has("props")) {
-                    propsJson = propsJson.optJSONObject("props");
+        SpoofUi.bindSwitchRow(mRowMaster, getString(R.string.app_spoof_enabled_title),
+                getString(R.string.app_spoof_enabled_summary), enabled, true);
+        mMasterSwitch = mRowMaster.findViewById(R.id.row_switch);
+        mMasterSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            mStore.setEnabled(isChecked);
+            mStateStore.setEnabled(isChecked);
+            refresh();
+        });
+
+        SpoofUi.bindSwitchRow(mRowDebug, getString(R.string.app_spoof_debug_title),
+                getString(R.string.app_spoof_debug_summary), mStore.isDebug(), true);
+        MaterialSwitch debugSwitch = mRowDebug.findViewById(R.id.row_switch);
+        debugSwitch.setOnCheckedChangeListener((buttonView, isChecked) ->
+                mStore.setDebug(isChecked));
+
+        SpoofUi.bindActionRow(mRowAdd, R.drawable.ic_plus, getString(R.string.app_spoof_add_app),
+                getString(R.string.app_spoof_add_app_summary));
+        SpoofUi.bindActionRow(mRowManage, R.drawable.ic_edit,
+                getString(R.string.app_spoof_manage_profiles_title),
+                getString(R.string.app_spoof_manage_profiles_summary));
+        setRowEnabled(mRowAdd, enabled);
+        setRowEnabled(mRowManage, enabled);
+
+        mAppsContainer.removeAllViews();
+        mEmptyView.setVisibility(rows.isEmpty() ? View.VISIBLE : View.GONE);
+        for (PerAppRow info : rows) {
+            View row = LayoutInflater.from(mAppsContainer.getContext())
+                    .inflate(R.layout.row_spoof_app, mAppsContainer, false);
+            ImageView icon = row.findViewById(R.id.row_icon);
+            TextView title = row.findViewById(R.id.row_title);
+            TextView summary = row.findViewById(R.id.row_summary);
+            icon.setImageDrawable(SpoofUi.loadAppIcon(requireContext(), info.packageName));
+            title.setText(info.appName);
+            summary.setText(rowSummary(info));
+            row.setAlpha(enabled ? 1f : 0.45f);
+            row.setOnClickListener(v -> {
+                if (isEnabled()) {
+                    showPerAppSheet(info.packageName);
                 }
-                Map<String, String> props = new LinkedHashMap<>();
-                Iterator<String> propKeys = propsJson.keys();
-                while (propKeys.hasNext()) {
-                    String key = propKeys.next();
-                    props.put(key, propsJson.getString(key));
-                }
-
-                String appName;
-                try {
-                    ApplicationInfo appInfo = packageManager.getApplicationInfo(packageName, 0);
-                    appName = packageManager.getApplicationLabel(appInfo).toString();
-                } catch (Exception e) {
-                    appName = packageName;
-                }
-
-                mConfigs.add(new AppConfig(packageName, appName,
-                        matchProfileName(props), props));
-            }
-        } catch (Exception e) {
-            Log.e(TAG, "Failed to load game spoof config", e);
+            });
+            mAppsContainer.addView(row);
         }
     }
 
-    private void saveConfig() {
-        try {
-            JSONObject root = new JSONObject();
-            JSONObject apps = new JSONObject();
-            root.put("enabled", mEnabled);
-
-            for (AppConfig config : mConfigs) {
-                JSONObject props = new JSONObject();
-                for (Map.Entry<String, String> entry : config.props.entrySet()) {
-                    props.put(entry.getKey(), entry.getValue());
-                }
-                apps.put(config.packageName, props);
+    private List<PerAppRow> buildRows() {
+        Map<String, PerAppRow> rows = new LinkedHashMap<>();
+        for (AppSpoofStore.Config config : mStore.getConfigs()) {
+            PerAppRow info = rows.get(config.packageName);
+            if (info == null) {
+                info = new PerAppRow(config.packageName, config.appName);
+                rows.put(config.packageName, info);
             }
-
-            root.put("games", apps);
-            Settings.Secure.putString(
-                    requireContext().getContentResolver(),
-                    CONFIG_KEY,
-                    root.toString(2));
-        } catch (Exception e) {
-            Log.e(TAG, "Failed to save game spoof config", e);
+            info.profileName = config.profileName;
         }
+        for (AppStateStore.Entry entry : mStateStore.getEntries()) {
+            PerAppRow info = rows.get(entry.packageName);
+            if (info == null) {
+                info = new PerAppRow(entry.packageName, entry.appName);
+                rows.put(entry.packageName, info);
+            }
+            info.hideAccessibility = entry.hideAccessibility;
+            info.isolation = entry.isolation;
+            info.showRealSettings = entry.showRealSettings;
+        }
+        List<PerAppRow> sorted = new ArrayList<>(rows.values());
+        Collections.sort(sorted, (left, right) ->
+                left.appName.compareToIgnoreCase(right.appName));
+        return sorted;
     }
 
-    private void loadProfiles() {
-        mProfiles.clear();
-        mProfiles.addAll(defaultProfiles());
-
-        try {
-            String jsonString = Settings.Secure.getString(
-                    requireContext().getContentResolver(), PRESETS_KEY);
-            if (jsonString == null || jsonString.isEmpty()) {
-                return;
-            }
-
-            JSONArray jsonArray = new JSONArray(jsonString);
-            for (int i = 0; i < jsonArray.length(); i++) {
-                JSONObject obj = jsonArray.getJSONObject(i);
-                String profileName = obj.getString("name");
-                JSONObject propsJson = obj.getJSONObject("props");
-                Map<String, String> props = new LinkedHashMap<>();
-                Iterator<String> propKeys = propsJson.keys();
-                while (propKeys.hasNext()) {
-                    String key = propKeys.next();
-                    props.put(key, propsJson.getString(key));
-                }
-                mProfiles.add(new DeviceProfile(profileName, props, true));
-            }
-        } catch (Exception e) {
-            Log.e(TAG, "Failed to load custom presets", e);
+    private String rowSummary(PerAppRow info) {
+        String profile = info.profileName != null ? info.profileName
+                : getString(R.string.spoof_per_app_no_profile);
+        List<String> flags = new ArrayList<>();
+        if (info.hideAccessibility) {
+            flags.add(getString(R.string.app_spoof_hide_a11y_title));
         }
+        if (info.isolation) {
+            flags.add(getString(R.string.app_spoof_isolation_title));
+        }
+        if (info.showRealSettings) {
+            flags.add(getString(R.string.app_spoof_real_settings_title));
+        }
+        String flagText = flags.isEmpty() ? getString(R.string.spoof_app_state_no_flags)
+                : TextUtils.join(" · ", flags);
+        return profile + " · " + flagText;
     }
 
-    private void saveProfiles() {
-        try {
-            JSONArray root = new JSONArray();
-            for (DeviceProfile profile : mProfiles) {
-                if (!profile.isCustom) {
-                    continue;
-                }
-                JSONObject preset = new JSONObject();
-                JSONObject props = new JSONObject();
-                for (Map.Entry<String, String> entry : profile.props.entrySet()) {
-                    props.put(entry.getKey(), entry.getValue());
-                }
-                preset.put("name", profile.name);
-                preset.put("props", props);
-                root.put(preset);
-            }
-            Settings.Secure.putString(requireContext().getContentResolver(),
-                    PRESETS_KEY, root.toString());
-        } catch (Exception e) {
-            Log.e(TAG, "Failed to save custom presets", e);
-        }
+    private void setRowEnabled(View row, boolean enabled) {
+        row.setAlpha(enabled ? 1f : 0.45f);
     }
 
-    private String matchProfileName(Map<String, String> props) {
-        for (DeviceProfile profile : mProfiles) {
-            if (profile.props.equals(props)) {
-                return profile.name;
-            }
+    private void copyPifProfile(String packageName) {
+        Map<String, String> properties = new LinkedHashMap<>(mPifManager.getCurrentProperties());
+        for (String key : PIF_ONLY_KEYS) {
+            properties.remove(key);
         }
-
-        String manufacturer = props.get("MANUFACTURER");
-        String model = props.get("MODEL");
-        if (manufacturer != null && model != null) {
-            return manufacturer + " " + model;
-        }
-        if (model != null) {
-            return model;
-        }
-        return getString(R.string.game_spoof_custom);
-    }
-
-    private static String readFileStatic(File file) throws Exception {
-        return new String(Files.readAllBytes(file.toPath()), StandardCharsets.UTF_8);
-    }
-
-    private static void migrateLegacyConfigIfNeeded(@NonNull Context context) {
-        String current = Settings.Secure.getString(context.getContentResolver(), CONFIG_KEY);
-        if (current != null && !current.isEmpty()) {
+        if (properties.isEmpty()) {
+            toast(R.string.pif_no_props);
             return;
         }
+        String label = SpoofUi.appLabel(requireContext(), packageName);
+        mStore.setProperties(packageName, label, properties);
+        restartApp(packageName);
+        reloadAll();
+        refresh();
+        toast(R.string.app_spoof_pif_copied, label);
+        reopenIfPending(packageName);
+    }
 
-        File file = new File(LEGACY_CONFIG_DIR, LEGACY_CONFIG_FILE);
-        if (!file.exists() || !file.canRead()) {
+    private void restartApp(String packageName) {
+        try {
+            ActivityManager activityManager = (ActivityManager)
+                    requireContext().getSystemService(Context.ACTIVITY_SERVICE);
+            if (activityManager != null) {
+                activityManager.forceStopPackageAsUser(packageName, UserHandle.myUserId());
+            }
+        } catch (Exception ignored) {
+        }
+    }
+
+    private void showAppPicker() {
+        Set<String> excluded = new LinkedHashSet<>();
+        for (AppSpoofStore.Config config : mStore.getConfigs()) {
+            excluded.add(config.packageName);
+        }
+        for (AppStateStore.Entry entry : mStateStore.getEntries()) {
+            excluded.add(entry.packageName);
+        }
+        SpoofAppPickerSheet.newInstance(REQ_PICK_APP, getString(R.string.spoof_app_picker_title),
+                SpoofAppAdapter.MODE_SINGLE, null, new ArrayList<>(excluded), false, false, false)
+                .show(getChildFragmentManager(), "perapp_picker");
+    }
+
+    private void showPerAppSheet(String packageName) {
+        PerAppSheet.newInstance(REQ_APP_SHEET, packageName,
+                SpoofUi.appLabel(requireContext(), packageName))
+                .show(getChildFragmentManager(), "perapp_sheet");
+    }
+
+    private void showRemoveConfirm(String packageName) {
+        SpoofConfirmSheet.newInstance(REQ_APP_REMOVE,
+                getString(R.string.spoof_remove_app_title),
+                getString(R.string.spoof_remove_app_message),
+                getString(R.string.action_delete), packageName)
+                .show(getChildFragmentManager(), "perapp_remove");
+    }
+
+    private void showProfilePicker(String packageName) {
+        List<AppSpoofStore.Profile> profiles = mStore.getProfiles();
+        if (profiles.isEmpty()) {
+            toast(R.string.spoof_profiles_empty);
             return;
         }
+        ArrayList<SpoofChoiceSheet.Item> items = new ArrayList<>();
+        for (AppSpoofStore.Profile profile : profiles) {
+            items.add(new SpoofChoiceSheet.Item(profile.name, profile.name,
+                    getString(profile.isCustom ? R.string.spoof_custom_profile
+                            : R.string.spoof_builtin_profile)));
+        }
+        SpoofChoiceSheet.newInstance(REQ_PROFILE_PICK,
+                getString(R.string.spoof_choose_profile),
+                SpoofUi.appLabel(requireContext(), packageName),
+                items, getString(R.string.app_spoof_profile_add), packageName)
+                .show(getChildFragmentManager(), "perapp_profiles");
+    }
 
-        try {
-            Settings.Secure.putString(
-                    context.getContentResolver(),
-                    CONFIG_KEY,
-                    readFileStatic(file));
-        } catch (Exception e) {
-            Log.e(TAG, "Failed to migrate legacy game spoof config", e);
+    private void showPropertyEditor(String packageName) {
+        AppSpoofStore.Config config = mStore.findConfig(packageName);
+        Map<String, String> properties = new LinkedHashMap<>();
+        if (config != null && !config.props.isEmpty()) {
+            properties.putAll(config.props);
+        } else {
+            properties.put("MODEL", "");
+            properties.put("MANUFACTURER", "");
+        }
+        String label = config != null ? config.appName
+                : SpoofUi.appLabel(requireContext(), packageName);
+        PropertyEditorSheet.newInstance(REQ_PROPERTY_EDIT,
+                getString(R.string.spoof_property_editor_title, label), properties, packageName)
+                .show(getChildFragmentManager(), "perapp_props");
+    }
+
+    private void showManageProfiles() {
+        List<AppSpoofStore.Profile> profiles = mStore.getProfiles();
+        ArrayList<SpoofChoiceSheet.Item> items = new ArrayList<>();
+        for (AppSpoofStore.Profile profile : profiles) {
+            items.add(new SpoofChoiceSheet.Item(profile.name, profile.name,
+                    getString(profile.isCustom ? R.string.spoof_custom_profile
+                            : R.string.spoof_builtin_profile), 0, false, profile.isCustom));
+        }
+        SpoofChoiceSheet.newInstance(REQ_PROFILE_MANAGE, getString(R.string.spoof_profiles_title),
+                null, items, getString(R.string.app_spoof_profile_add))
+                .show(getChildFragmentManager(), "perapp_manage");
+    }
+
+    private void showProfileEditor(@Nullable AppSpoofStore.Profile profile,
+            @Nullable String packageName) {
+        Map<String, String> properties = profile == null
+                ? new LinkedHashMap<>() : new LinkedHashMap<>(profile.props);
+        if (properties.isEmpty()) {
+            properties.put("MODEL", "");
+            properties.put("MANUFACTURER", "");
+        }
+        String title = getString(profile == null ? R.string.app_spoof_profile_add
+                : R.string.app_spoof_profile_edit);
+        ProfileEditorSheet.newInstance(REQ_PROFILE_EDIT, title,
+                profile == null ? null : profile.name, properties, packageName)
+                .show(getChildFragmentManager(), "perapp_profile_edit");
+    }
+
+    private void showDeleteProfileConfirm(String name) {
+        SpoofConfirmSheet.newInstance(REQ_PROFILE_DELETE,
+                getString(R.string.app_spoof_profile_delete),
+                getString(R.string.app_spoof_profile_delete_confirm_msg, name),
+                getString(R.string.action_delete), name)
+                .show(getChildFragmentManager(), "perapp_profile_delete");
+    }
+
+    private void reopenIfPending(String packageName) {
+        if (packageName.equals(mReopenPackage)) {
+            mReopenPackage = null;
+            post(() -> showPerAppSheet(packageName));
         }
     }
 
-    private static List<DeviceProfile> defaultProfiles() {
-        List<DeviceProfile> profiles = new ArrayList<>();
-        profiles.add(new DeviceProfile("ROG Phone 8 Pro",
-                mapOf("MODEL", "ASUS_AI2401_A", "MANUFACTURER", "asus")));
-        profiles.add(new DeviceProfile("Galaxy S24 Ultra",
-                mapOf("MODEL", "SM-S928B", "MANUFACTURER", "samsung")));
-        profiles.add(new DeviceProfile("Xiaomi 13 Pro",
-                mapOf("MODEL", "2210132C", "MANUFACTURER", "Xiaomi")));
-        profiles.add(new DeviceProfile("OnePlus 9 Pro",
-                mapOf("MODEL", "LE2101", "MANUFACTURER", "OnePlus")));
-        profiles.add(new DeviceProfile("Black Shark 4",
-                mapOf("MODEL", "2SM-X706B", "MANUFACTURER", "blackshark")));
-        profiles.add(new DeviceProfile("Lenovo Y700",
-                mapOf("MODEL", "Lenovo TB-9707F", "MANUFACTURER", "Lenovo")));
-        return profiles;
-    }
-
-    private static Map<String, String> mapOf(String... keyValues) {
-        Map<String, String> map = new LinkedHashMap<>();
-        for (int i = 0; i + 1 < keyValues.length; i += 2) {
-            map.put(keyValues[i], keyValues[i + 1]);
+    private void post(Runnable action) {
+        View view = getView();
+        if (view != null) {
+            view.post(action);
         }
-        return map;
     }
 
-    @Override
-    public int getMetricsCategory() {
-        return MetricsProto.MetricsEvent.VOLTAGE;
+    private void toast(int resId, Object... args) {
+        if (isAdded()) {
+            Toast.makeText(requireContext(), getString(resId, args), Toast.LENGTH_SHORT).show();
+        }
     }
 
-    private static final class AppConfig {
+    private static final class PerAppRow {
         final String packageName;
         final String appName;
-        final String profileName;
-        final Map<String, String> props;
+        String profileName;
+        boolean hideAccessibility;
+        boolean isolation;
+        boolean showRealSettings;
 
-        AppConfig(String packageName, String appName, String profileName,
-                Map<String, String> props) {
+        PerAppRow(String packageName, String appName) {
             this.packageName = packageName;
             this.appName = appName;
-            this.profileName = profileName;
-            this.props = props;
         }
-    }
-
-    private static final class DeviceProfile {
-        final String name;
-        final Map<String, String> props;
-        final boolean isCustom;
-
-        DeviceProfile(String name, Map<String, String> props) {
-            this(name, props, false);
-        }
-
-        DeviceProfile(String name, Map<String, String> props, boolean isCustom) {
-            this.name = name;
-            this.props = props;
-            this.isCustom = isCustom;
-        }
-    }
-
-    private interface PresetCreatedCallback {
-        void onPresetCreated(DeviceProfile preset);
     }
 }

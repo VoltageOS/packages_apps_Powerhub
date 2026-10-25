@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2026 VoltageOS
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources>
+
+    <!-- Theme -->
+
+    <style name="Theme.Powerhub.Spoof" parent="Theme.Material3.DynamicColors.DayNight" />
+
+    <style name="Theme.Powerhub.Spoof.Sheet" parent="Theme.Powerhub.Spoof">
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowSoftInputMode">adjustResize</item>
+        <item name="android:backgroundDimAmount">0.45</item>
+    </style>
+
+    <!-- Text appearances -->
+
+    <style name="Powerhub.Spoof.TextAppearance.PageTitle" parent="@android:style/TextAppearance.DeviceDefault">
+        <item name="android:textSize">22sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/powerhub_spoof_text_primary</item>
+        <item name="android:fontFamily">@*android:string/config_headlineFontFamily</item>
+    </style>
+
+    <style name="Powerhub.Spoof.TextAppearance.CardTitle" parent="@android:style/TextAppearance.DeviceDefault">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/powerhub_spoof_text_primary</item>
+        <item name="android:fontFamily">@*android:string/config_headlineFontFamily</item>
+    </style>
+
+    <style name="Powerhub.Spoof.TextAppearance.RowTitle" parent="@android:style/TextAppearance.DeviceDefault">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/powerhub_spoof_text_primary</item>
+        <item name="android:fontFamily">@*android:string/config_headlineFontFamilyMedium</item>
+    </style>
+
+    <style name="Powerhub.Spoof.TextAppearance.RowSummary" parent="@android:style/TextAppearance.DeviceDefault">
+        <item name="android:textSize">13sp</item>
+        <item name="android:textColor">@color/powerhub_spoof_text_secondary</item>
+        <item name="android:fontFamily">@*android:string/config_bodyFontFamily</item>
+    </style>
+
+    <style name="Powerhub.Spoof.TextAppearance.Section" parent="@android:style/TextAppearance.DeviceDefault">
+        <item name="android:textSize">11sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:letterSpacing">0.08</item>
+        <item name="android:textColor">@color/powerhub_spoof_text_secondary</item>
+        <item name="android:fontFamily">@*android:string/config_headlineFontFamilyMedium</item>
+    </style>
+
+    <style name="Powerhub.Spoof.TextAppearance.Pill" parent="@android:style/TextAppearance.DeviceDefault">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/powerhub_spoof_text_secondary</item>
+        <item name="android:fontFamily">@*android:string/config_headlineFontFamilyMedium</item>
+    </style>
+
+    <style name="Powerhub.Spoof.TextAppearance.Button" parent="@android:style/TextAppearance.DeviceDefault">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:fontFamily">@*android:string/config_headlineFontFamilyMedium</item>
+    </style>
+
+    <!-- Surfaces and structure -->
+
+    <!-- Base style for implicit dot-name parents; intentionally empty. -->
+    <style name="Widget.Powerhub.Spoof" parent="" />
+
+    <style name="Widget.Powerhub.Spoof.Card">
+        <item name="android:background">@drawable/powerhub_spoof_card_bg</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:padding">@dimen/spoof_card_padding</item>
+        <item name="android:clipToOutline">true</item>
+    </style>
+
+    <style name="Widget.Powerhub.Spoof.Card.Clickable" parent="Widget.Powerhub.Spoof.Card">
+        <item name="android:background">@drawable/powerhub_spoof_card_ripple</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+    </style>
+
+    <style name="Widget.Powerhub.Spoof.SheetSurface">
+        <item name="android:background">@drawable/powerhub_spoof_sheet_bg</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:clipToOutline">true</item>
+    </style>
+
+    <style name="Widget.Powerhub.Spoof.Handle">
+        <item name="android:background">@drawable/powerhub_spoof_handle</item>
+    </style>
+
+    <style name="Widget.Powerhub.Spoof.Divider">
+        <item name="android:background">@drawable/powerhub_spoof_divider</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:layout_width">match_parent</item>
+    </style>
+
+    <style name="Widget.Powerhub.Spoof.HeroIcon">
+        <item name="android:background">@drawable/powerhub_spoof_hero_icon_bg</item>
+        <item name="android:padding">@dimen/spoof_hero_icon_padding</item>
+        <item name="android:scaleType">fitCenter</item>
+        <item name="android:tint">@color/powerhub_spoof_accent</item>
+    </style>
+
+    <!-- Text widgets -->
+
+    <style name="Widget.Powerhub.Spoof.CardTitle">
+        <item name="android:textAppearance">@style/Powerhub.Spoof.TextAppearance.CardTitle</item>
+    </style>
+
+    <style name="Widget.Powerhub.Spoof.Section">
+        <item name="android:textAppearance">@style/Powerhub.Spoof.TextAppearance.Section</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+
+    <style name="Widget.Powerhub.Spoof.RowTitle">
+        <item name="android:textAppearance">@style/Powerhub.Spoof.TextAppearance.RowTitle</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <style name="Widget.Powerhub.Spoof.RowSummary">
+        <item name="android:textAppearance">@style/Powerhub.Spoof.TextAppearance.RowSummary</item>
+        <item name="android:maxLines">2</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <!-- Controls -->
+
+    <style name="Widget.Powerhub.Spoof.PrimaryButton" parent="Widget.Material3.Button">
+        <item name="android:textAppearance">@style/Powerhub.Spoof.TextAppearance.Button</item>
+        <item name="android:textColor">@color/powerhub_spoof_on_accent</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:minHeight">48dp</item>
+        <item name="cornerRadius">@dimen/spoof_button_radius</item>
+        <item name="backgroundTint">?attr/colorPrimary</item>
+        <item name="iconTint">@color/powerhub_spoof_on_accent</item>
+    </style>
+
+    <style name="Widget.Powerhub.Spoof.SecondaryButton" parent="Widget.Material3.Button.OutlinedButton">
+        <item name="android:textAppearance">@style/Powerhub.Spoof.TextAppearance.Button</item>
+        <item name="android:textColor">@color/powerhub_spoof_accent</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:minHeight">48dp</item>
+        <item name="cornerRadius">@dimen/spoof_button_radius</item>
+        <item name="backgroundTint">@android:color/transparent</item>
+        <item name="strokeColor">?attr/colorOutlineVariant</item>
+        <item name="strokeWidth">1dp</item>
+        <item name="iconTint">@color/powerhub_spoof_accent</item>
+    </style>
+
+    <style name="Widget.Powerhub.Spoof.TextButton" parent="Widget.Material3.Button.TextButton">
+        <item name="android:textAppearance">@style/Powerhub.Spoof.TextAppearance.Button</item>
+        <item name="android:textColor">@color/powerhub_spoof_accent</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:minHeight">40dp</item>
+        <item name="cornerRadius">@dimen/spoof_button_radius</item>
+        <item name="backgroundTint">@android:color/transparent</item>
+        <item name="iconTint">@color/powerhub_spoof_accent</item>
+    </style>
+
+    <style name="Widget.Powerhub.Spoof.DestructiveButton" parent="Widget.Powerhub.Spoof.TextButton">
+        <item name="android:textColor">@color/powerhub_spoof_error</item>
+        <item name="iconTint">@color/powerhub_spoof_error</item>
+    </style>
+
+    <style name="Widget.Powerhub.Spoof.StatusPill">
+        <item name="android:textAppearance">@style/Powerhub.Spoof.TextAppearance.Pill</item>
+        <item name="android:background">@drawable/powerhub_spoof_pill_bg</item>
+        <item name="android:paddingStart">10dp</item>
+        <item name="android:paddingEnd">10dp</item>
+        <item name="android:paddingTop">4dp</item>
+        <item name="android:paddingBottom">4dp</item>
+        <item name="android:textColor">@color/powerhub_spoof_text_secondary</item>
+        <item name="android:maxLines">1</item>
+    </style>
+
+    <style name="Widget.Powerhub.Spoof.StatusPill.Accent" parent="Widget.Powerhub.Spoof.StatusPill">
+        <item name="android:background">@drawable/powerhub_spoof_pill_accent_bg</item>
+        <item name="android:textColor">@color/powerhub_spoof_accent</item>
+    </style>
+
+    <style name="Widget.Powerhub.Spoof.StatusPill.Error" parent="Widget.Powerhub.Spoof.StatusPill">
+        <item name="android:background">@drawable/powerhub_spoof_pill_error_bg</item>
+        <item name="android:textColor">@color/powerhub_spoof_error</item>
+    </style>
+
+    <style name="Widget.Powerhub.Spoof.Segment">
+        <item name="android:textSize">13sp</item>
+        <item name="android:fontFamily">@*android:string/config_headlineFontFamilyMedium</item>
+        <item name="android:textColor">@color/powerhub_spoof_text_secondary</item>
+        <item name="android:gravity">center</item>
+        <item name="android:minHeight">38dp</item>
+        <item name="android:paddingStart">6dp</item>
+        <item name="android:paddingEnd">6dp</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+        <item name="android:maxLines">1</item>
+    </style>
+
+    <style name="Widget.Powerhub.Spoof.FilterPill">
+        <item name="android:textAppearance">@style/Powerhub.Spoof.TextAppearance.Pill</item>
+        <item name="android:background">@drawable/powerhub_spoof_mode_unselected</item>
+        <item name="android:textColor">@color/powerhub_spoof_text_secondary</item>
+        <item name="android:paddingStart">12dp</item>
+        <item name="android:paddingEnd">12dp</item>
+        <item name="android:paddingTop">6dp</item>
+        <item name="android:paddingBottom">6dp</item>
+        <item name="android:layout_marginEnd">8dp</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+    </style>
+
+    <style name="Widget.Powerhub.Spoof.ModePill">
+        <item name="android:textSize">11sp</item>
+        <item name="android:fontFamily">@*android:string/config_headlineFontFamilyMedium</item>
+        <item name="android:background">@drawable/powerhub_spoof_mode_unselected</item>
+        <item name="android:textColor">@color/powerhub_spoof_text_secondary</item>
+        <item name="android:paddingStart">10dp</item>
+        <item name="android:paddingEnd">10dp</item>
+        <item name="android:paddingTop">4dp</item>
+        <item name="android:paddingBottom">4dp</item>
+        <item name="android:layout_marginEnd">6dp</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+    </style>
+
+    <style name="Widget.Powerhub.Spoof.SearchField">
+        <item name="android:background">@drawable/powerhub_spoof_search_bg</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/powerhub_spoof_text_primary</item>
+        <item name="android:textColorHint">@color/powerhub_spoof_text_secondary</item>
+        <item name="android:drawableStart">@drawable/ic_search_bar</item>
+        <item name="android:drawablePadding">10dp</item>
+        <item name="android:drawableTint">@color/powerhub_spoof_text_secondary</item>
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:paddingEnd">16dp</item>
+        <item name="android:paddingTop">11dp</item>
+        <item name="android:paddingBottom">11dp</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:imeOptions">actionSearch</item>
+    </style>
+
+    <style name="Widget.Powerhub.Spoof.TextField">
+        <item name="android:background">@drawable/powerhub_spoof_field_bg</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/powerhub_spoof_text_primary</item>
+        <item name="android:textColorHint">@color/powerhub_spoof_text_secondary</item>
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:paddingEnd">16dp</item>
+        <item name="android:paddingTop">12dp</item>
+        <item name="android:paddingBottom">12dp</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:focusable">true</item>
+        <item name="android:focusableInTouchMode">true</item>
+        <item name="android:cursorVisible">true</item>
+    </style>
+
+</resources>

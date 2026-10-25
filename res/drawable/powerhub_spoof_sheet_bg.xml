@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <corners
+        android:topLeftRadius="@dimen/spoof_sheet_radius"
+        android:topRightRadius="@dimen/spoof_sheet_radius"
+        android:bottomLeftRadius="0dp"
+        android:bottomRightRadius="0dp" />
+    <solid android:color="?attr/colorSurfaceContainerLow" />
+</shape>

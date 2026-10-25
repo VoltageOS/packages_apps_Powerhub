@@ -18,9 +18,13 @@ package com.power.hub.fragments;
 
 import android.app.ActivityManager;
 import android.content.Context;
+import android.os.UserHandle;
 import android.provider.Settings;
 import android.util.Log;
 
+import com.android.settings.R;
+
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.File;
@@ -33,6 +37,7 @@ import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 public class PifManager {
 
@@ -44,19 +49,36 @@ public class PifManager {
     private static final String GMS_PKG = "com.google.android.gms";
     private static final String PHOTOS_PKG = "com.google.android.apps.photos";
     private static final String PHOTOS_SPOOF_SECURE_KEY = "spoof_pif_photos";
-    private static final String PROPS_SPOOF_SECURE_KEY = "pif_spoof_props";
-    private static final String PROVIDER_SPOOF_SECURE_KEY = "pif_spoof_provider";
-    private static final String SIGNATURE_SPOOF_SECURE_KEY = "pif_spoof_signature";
-    private static final String VENDING_BUILD_SPOOF_SECURE_KEY = "pif_spoof_vending_build";
+    private static final String PRESETS_KEY = "spoof_pif_presets";
 
-    private static final java.util.Set<String> BOOLEAN_FLAG_KEYS = new java.util.HashSet<>(
-            Arrays.asList("spoofProps", "spoofProvider", "spoofSignature", "spoofVendingBuild"));
+    private static final List<String> FLAG_KEYS = Arrays.asList(
+            "spoofBuild", "spoofProps", "spoofProvider", "spoofSignature",
+            "spoofVendingBuild", "spoofVendingSdk",
+            "DEBUG", "verboseLogs");
+
+    private static final Map<String, String> DEFAULT_FLAGS = new LinkedHashMap<>();
+    static {
+        DEFAULT_FLAGS.put("spoofBuild", "true");
+        DEFAULT_FLAGS.put("spoofProps", "true");
+        DEFAULT_FLAGS.put("spoofProvider", "false");
+        DEFAULT_FLAGS.put("spoofSignature", "false");
+        DEFAULT_FLAGS.put("spoofVendingBuild", "true");
+        DEFAULT_FLAGS.put("spoofVendingSdk", "false");
+        DEFAULT_FLAGS.put("DEBUG", "false");
+    }
 
     private static final List<String> LEGACY_CONFIG_FILES = Arrays.asList(
             "custom.pif.prop",
             "custom.pif.json",
             "pif.prop",
             "pif.json");
+
+    private static final List<String> INT_KEYS = Arrays.asList("DEVICE_INITIAL_SDK_INT", "SDK_INT");
+    private static final List<String> FINGERPRINT_KEYS = Arrays.asList(
+            "BRAND", "PRODUCT", "DEVICE", "RELEASE", "ID", "INCREMENTAL", "TYPE", "TAGS");
+    private static final Pattern FINGERPRINT_PATTERN = Pattern.compile(
+            "[^/:\\s]+/[^/:\\s]+/[^/:\\s]+:[^/:\\s]+/[^/:\\s]+/[^/:\\s]+:[^/:\\s]+/[^/:\\s]+");
+    private static final Pattern DATE_PATTERN = Pattern.compile("\\d{4}-\\d{2}-\\d{2}");
 
     private final Context mContext;
 
@@ -105,20 +127,33 @@ public class PifManager {
             throw new IllegalArgumentException("Config contains no readable properties");
         }
 
+        String fingerprint = props.get("FINGERPRINT");
+        if (fingerprint == null || fingerprint.trim().isEmpty()) {
+            throw new IllegalArgumentException("Config is missing FINGERPRINT");
+        }
+
         writeStoredConfig(props);
-        killPackage(VENDING_PKG);
         Log.i(TAG, "Imported PIF config into Settings.Secure");
         return PIF_CONFIG_NAME;
     }
 
     public void writeJsonConfig(String fileName, JSONObject pifData) throws Exception {
         writeStoredConfig(jsonToMap(pifData));
-        killPackage(VENDING_PKG);
     }
 
     public String writeAutoSelectedJsonConfig(JSONObject pifData) throws Exception {
+        Map<String, String> existing = getCurrentProperties();
+        for (String key : FLAG_KEYS) {
+            if (!pifData.has(key) && existing.containsKey(key)) {
+                pifData.put(key, existing.get(key));
+            }
+        }
+        for (Map.Entry<String, String> entry : DEFAULT_FLAGS.entrySet()) {
+            if (!pifData.has(entry.getKey())) {
+                pifData.put(entry.getKey(), entry.getValue());
+            }
+        }
         writeStoredConfig(jsonToMap(pifData));
-        killPackage(VENDING_PKG);
         Log.i(TAG, "Applied generated PIF config into Settings.Secure");
         return PIF_CONFIG_NAME;
     }
@@ -128,63 +163,276 @@ public class PifManager {
             return;
         }
         Settings.Secure.putString(mContext.getContentResolver(), PIF_CONFIG_KEY, null);
-        killPackage(VENDING_PKG);
+    }
+
+    public void saveProperties(Map<String, String> properties) {
+        Map<String, String> normalized = new LinkedHashMap<>();
+        for (Map.Entry<String, String> entry : properties.entrySet()) {
+            String key = entry.getKey() == null ? "" : entry.getKey().trim();
+            String value = entry.getValue() == null ? "" : entry.getValue().trim();
+            if (key.isEmpty()) {
+                continue;
+            }
+            if (value.isEmpty()) {
+                throw new IllegalArgumentException(mContext.getString(R.string.pif_value_empty));
+            }
+            if (INT_KEYS.contains(key) && !isInteger(value)) {
+                throw new IllegalArgumentException(
+                        mContext.getString(R.string.pif_value_not_integer));
+            }
+            if ("SECURITY_PATCH".equals(key) && !DATE_PATTERN.matcher(value).matches()) {
+                throw new IllegalArgumentException(
+                        mContext.getString(R.string.pif_invalid_patch_date));
+            }
+            if ("FINGERPRINT".equals(key) && !isValidFingerprint(value)) {
+                throw new IllegalArgumentException(
+                        mContext.getString(R.string.pif_invalid_fingerprint));
+            }
+            normalized.put(key, value);
+        }
+        if (normalized.isEmpty()) {
+            throw new IllegalArgumentException(mContext.getString(R.string.pif_value_empty));
+        }
+        String fingerprint = normalized.get("FINGERPRINT");
+        if (fingerprint != null) {
+            normalized.putAll(fingerprintFields(fingerprint));
+        }
+        writeStoredConfig(normalized);
+        Log.i(TAG, "Saved PIF properties");
+    }
+
+    public static boolean isValidFingerprint(String value) {
+        return value != null && FINGERPRINT_PATTERN.matcher(value.trim()).matches();
+    }
+
+    public static Map<String, String> fingerprintFields(String fingerprint) {
+        String[] parts = fingerprint.trim().split("[/:]");
+        Map<String, String> fields = new LinkedHashMap<>();
+        for (int i = 0; i < FINGERPRINT_KEYS.size() && i < parts.length; i++) {
+            if (!parts[i].isEmpty()) {
+                fields.put(FINGERPRINT_KEYS.get(i), parts[i]);
+            }
+        }
+        return fields;
+    }
+
+    private static boolean isInteger(String value) {
+        try {
+            Integer.parseInt(value);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
+
+    public List<String> getConfigWarnings() {
+        Map<String, String> props = getCurrentProperties();
+        List<String> warnings = new ArrayList<>();
+        if (props.isEmpty()) {
+            return warnings;
+        }
+        checkMissing(props, warnings, "FINGERPRINT");
+        checkMissing(props, warnings, "MODEL");
+        checkMissing(props, warnings, "SECURITY_PATCH");
+        return warnings;
+    }
+
+    private static void checkMissing(Map<String, String> props, List<String> warnings, String key) {
+        String value = props.get(key);
+        if (value == null || value.trim().isEmpty()) {
+            warnings.add(key);
+        }
+    }
+
+    private String getSecureKey(String key) {
+        return Settings.Secure.getString(mContext.getContentResolver(), key);
+    }
+
+    private void putSecureKey(String key, boolean enabled) {
+        Settings.Secure.putString(mContext.getContentResolver(), key,
+                String.valueOf(enabled));
     }
 
     public boolean isSpoofPhotosEnabled() {
-        String val = Settings.Secure.getString(
-                mContext.getContentResolver(), PHOTOS_SPOOF_SECURE_KEY);
-        return isTruthy(val);
+        String val = getSecureKey(PHOTOS_SPOOF_SECURE_KEY);
+        return val == null || isTruthy(val);
     }
 
     public void setSpoofPhotos(boolean enabled) {
-        Settings.Secure.putString(mContext.getContentResolver(), PHOTOS_SPOOF_SECURE_KEY,
-                String.valueOf(enabled));
-        killPackage(PHOTOS_PKG);
+        putSecureKey(PHOTOS_SPOOF_SECURE_KEY, enabled);
+    }
+
+    private boolean getConfigFlag(String key, boolean defaultValue) {
+        String value = getCurrentProperties().get(key);
+        return value == null ? defaultValue : isTruthy(value);
+    }
+
+    private void setConfigFlag(String key, boolean enabled) {
+        setConfigValue(key, String.valueOf(enabled));
+    }
+
+    private void setConfigValue(String key, String value) {
+        String content = Settings.Secure.getString(
+                mContext.getContentResolver(), PIF_CONFIG_KEY);
+        if (content == null || content.trim().isEmpty()) {
+            return;
+        }
+        try {
+            Map<String, String> props = parseStoredConfig(content);
+            if (props.isEmpty()) {
+                return;
+            }
+            props.put(key, value);
+            Settings.Secure.putString(mContext.getContentResolver(), PIF_CONFIG_KEY,
+                    serializeJsonConfig(props));
+        } catch (Exception e) {
+            Log.e(TAG, "Failed to update PIF flag " + key, e);
+        }
+    }
+
+    public boolean isSpoofBuildEnabled() {
+        return getConfigFlag("spoofBuild", true);
+    }
+
+    public void setSpoofBuild(boolean enabled) {
+        setConfigFlag("spoofBuild", enabled);
+    }
+
+    public boolean isDebugEnabled() {
+        return getConfigFlag("DEBUG", false);
+    }
+
+    public void setDebugEnabled(boolean enabled) {
+        setConfigFlag("DEBUG", enabled);
+    }
+
+    public int getVerboseLogsLevel() {
+        String value = getCurrentProperties().get("verboseLogs");
+        if (value == null) {
+            return 0;
+        }
+        try {
+            return Integer.parseInt(value.trim());
+        } catch (NumberFormatException e) {
+            return 0;
+        }
+    }
+
+    public void setVerboseLogsLevel(int level) {
+        setConfigValue("verboseLogs", String.valueOf(level));
     }
 
     public boolean isSpoofPropsEnabled() {
-        String val = Settings.Secure.getString(mContext.getContentResolver(), PROPS_SPOOF_SECURE_KEY);
-        return val == null || isTruthy(val);
+        return getConfigFlag("spoofProps", true);
     }
 
     public void setSpoofProps(boolean enabled) {
-        Settings.Secure.putString(mContext.getContentResolver(), PROPS_SPOOF_SECURE_KEY,
-                String.valueOf(enabled));
-        killPackage(GMS_PKG);
+        setConfigFlag("spoofProps", enabled);
     }
 
     public boolean isSpoofProviderEnabled() {
-        String val = Settings.Secure.getString(mContext.getContentResolver(), PROVIDER_SPOOF_SECURE_KEY);
-        return val == null || isTruthy(val);
+        return getConfigFlag("spoofProvider", false);
     }
 
     public void setSpoofProvider(boolean enabled) {
-        Settings.Secure.putString(mContext.getContentResolver(), PROVIDER_SPOOF_SECURE_KEY,
-                String.valueOf(enabled));
-        killPackage(GMS_PKG);
+        setConfigFlag("spoofProvider", enabled);
     }
 
     public boolean isSpoofSignatureEnabled() {
-        String val = Settings.Secure.getString(mContext.getContentResolver(), SIGNATURE_SPOOF_SECURE_KEY);
-        return val != null && isTruthy(val);
+        return getConfigFlag("spoofSignature", false);
     }
 
     public void setSpoofSignature(boolean enabled) {
-        Settings.Secure.putString(mContext.getContentResolver(), SIGNATURE_SPOOF_SECURE_KEY,
-                String.valueOf(enabled));
-        killPackage(GMS_PKG);
+        setConfigFlag("spoofSignature", enabled);
     }
 
     public boolean isSpoofVendingBuildEnabled() {
-        String val = Settings.Secure.getString(mContext.getContentResolver(), VENDING_BUILD_SPOOF_SECURE_KEY);
-        return val == null || isTruthy(val);
+        return getConfigFlag("spoofVendingBuild", true);
     }
 
     public void setSpoofVendingBuild(boolean enabled) {
-        Settings.Secure.putString(mContext.getContentResolver(), VENDING_BUILD_SPOOF_SECURE_KEY,
-                String.valueOf(enabled));
-        killPackage(VENDING_PKG);
+        setConfigFlag("spoofVendingBuild", enabled);
+    }
+
+    public void restartPifTargets() {
+        stopPackage(VENDING_PKG);
+        stopPackage(GMS_PKG);
+    }
+
+    public List<Preset> getPresets() {
+        List<Preset> presets = new ArrayList<>();
+        String raw = Settings.Secure.getString(mContext.getContentResolver(), PRESETS_KEY);
+        if (raw == null || raw.isEmpty()) {
+            return presets;
+        }
+        try {
+            JSONArray array = new JSONArray(raw);
+            for (int i = 0; i < array.length(); i++) {
+                JSONObject obj = array.optJSONObject(i);
+                JSONObject propsJson = obj == null ? null : obj.optJSONObject("props");
+                String name = obj == null ? "" : obj.optString("name");
+                if (propsJson == null || name.isEmpty()) {
+                    continue;
+                }
+                presets.add(new Preset(name, jsonToMap(propsJson)));
+            }
+        } catch (Exception e) {
+            Log.e(TAG, "Failed to load PIF presets", e);
+        }
+        return presets;
+    }
+
+    public void savePreset(String name, Map<String, String> props) {
+        List<Preset> presets = getPresets();
+        presets.removeIf(preset -> preset.name.equals(name));
+        presets.add(new Preset(name, new LinkedHashMap<>(props)));
+        writePresets(presets);
+    }
+
+    public void deletePreset(String name) {
+        List<Preset> presets = getPresets();
+        presets.removeIf(preset -> preset.name.equals(name));
+        writePresets(presets);
+    }
+
+    private void writePresets(List<Preset> presets) {
+        try {
+            JSONArray array = new JSONArray();
+            for (Preset preset : presets) {
+                JSONObject obj = new JSONObject();
+                JSONObject propsJson = new JSONObject();
+                for (Map.Entry<String, String> entry : preset.props.entrySet()) {
+                    propsJson.put(entry.getKey(), entry.getValue());
+                }
+                obj.put("name", preset.name);
+                obj.put("props", propsJson);
+                array.put(obj);
+            }
+            Settings.Secure.putString(mContext.getContentResolver(), PRESETS_KEY,
+                    array.toString());
+        } catch (Exception e) {
+            Log.e(TAG, "Failed to save PIF presets", e);
+        }
+    }
+
+    public boolean applyPreset(String name) {
+        for (Preset preset : getPresets()) {
+            if (preset.name.equals(name)) {
+                writeStoredConfig(preset.props);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static final class Preset {
+        public final String name;
+        public final Map<String, String> props;
+
+        Preset(String name, Map<String, String> props) {
+            this.name = name;
+            this.props = props;
+        }
     }
 
     public static boolean looksLikeJson(String fileName, String content) {
@@ -264,12 +512,10 @@ public class PifManager {
 
     private void writeStoredConfig(Map<String, String> props) {
         try {
-            Map<String, String> filtered = new LinkedHashMap<>(props);
-            filtered.keySet().removeAll(BOOLEAN_FLAG_KEYS);
             Settings.Secure.putString(
                     mContext.getContentResolver(),
                     PIF_CONFIG_KEY,
-                    serializeJsonConfig(filtered));
+                    serializeJsonConfig(props));
         } catch (Exception e) {
             Log.e(TAG, "Failed to store PIF config", e);
         }
@@ -341,12 +587,12 @@ public class PifManager {
         return "1".equals(value) || "true".equalsIgnoreCase(value);
     }
 
-    private void killPackage(String packageName) {
+    private void stopPackage(String packageName) {
         try {
             ActivityManager activityManager = (ActivityManager)
                     mContext.getSystemService(Context.ACTIVITY_SERVICE);
             if (activityManager != null) {
-                activityManager.forceStopPackage(packageName);
+                activityManager.forceStopPackageAsUser(packageName, UserHandle.USER_CURRENT);
             }
         } catch (Exception e) {
             Log.w(TAG, "Failed to stop package: " + packageName, e);
