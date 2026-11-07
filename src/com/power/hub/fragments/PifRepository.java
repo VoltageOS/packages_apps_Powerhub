@@ -488,8 +488,8 @@ public class PifRepository {
             case "comet":
                 return "34";
             case "tegu":
-            case "stallion":
                 return "35";
+            case "stallion":
             case "frankel":
             case "blazer":
             case "mustang":
