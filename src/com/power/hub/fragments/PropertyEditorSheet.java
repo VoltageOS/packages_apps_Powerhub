@@ -105,6 +105,10 @@ public class PropertyEditorSheet extends SpoofSheetFragment {
         form.addView(mPropertyContainer, new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
 
+        mDottedHint = new TextView(form.getContext(), null, 0,
+                R.style.Widget_Powerhub_Spoof_RowSummary);
+        mDottedHint.setVisibility(View.GONE);
+
         Serializable serialized = args == null ? null : args.getSerializable(ARG_PROPERTIES);
         if (serialized instanceof Map) {
             //noinspection unchecked
@@ -124,13 +128,11 @@ public class PropertyEditorSheet extends SpoofSheetFragment {
         addProperty.setOnClickListener(v -> addPropertyRow("", ""));
         form.addView(addProperty);
 
-        mDottedHint = new TextView(form.getContext(), null, 0,
-                R.style.Widget_Powerhub_Spoof_RowSummary);
+        updateDottedHint();
         LinearLayout.LayoutParams hintParams = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         hintParams.topMargin = SpoofUi.dp(form.getContext(), 6);
         form.addView(mDottedHint, hintParams);
-        mDottedHint.setVisibility(View.GONE);
 
         mProfileNameField = addField(form, getString(R.string.app_spoof_profile_name_hint),
                 "", getString(R.string.app_spoof_profile_name_hint));
@@ -215,6 +217,9 @@ public class PropertyEditorSheet extends SpoofSheetFragment {
     }
 
     private void updateDottedHint() {
+        if (mDottedHint == null || mPropertyContainer == null) {
+            return;
+        }
         boolean dotted = false;
         for (int i = 0; i < mPropertyContainer.getChildCount() && !dotted; i++) {
             EditText keyField = mPropertyContainer.getChildAt(i).findViewById(R.id.prop_key);
