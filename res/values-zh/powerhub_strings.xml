@@ -76,7 +76,7 @@
     <string name="led_color_green">绿</string>
     <string name="led_color_red">红</string>
     <!-- QS settings -->
-    <string name="qs_title">快捷设置</string>
+    <string name="qs_title">Quick settings</string>
     <!-- Lockscreen shortcuts -->
     <string name="ls_category">锁屏项目</string>
     <string name="ls_tuner">启用锁屏界面调整</string>
@@ -122,7 +122,7 @@
     <string name="spoofing_title">组件伪装</string>
     <string name="spoofing_summary">通过伪装组件来绕过应用限制</string>
     <string name="spoof_screen_title">伪装</string>
-    <string name="spoof_screen_summary">Play Integrity, per-app spoofing, isolation, and hidden apps</string>
+    <string name="spoof_screen_summary">Play 完整性，应用单独伪装，应用隔离和隐藏应用</string>
     <string name="spoof_dashboard_pif_summary">管理当前 Play Integrity Fix 配置</string>
     <string name="spoof_dashboard_trickystore_summary">管理 TrickyStore keybox 及目标应用</string>
     <string name="spoof_dashboard_app_spoof_summary">管理所选游戏的设备伪装信息</string>
@@ -175,7 +175,7 @@
     <string name="pif_security_patch_label">安全补丁：%1$s</string>
     <string name="pif_not_available">不可用</string>
     <string name="pif_fetching">正在获取 Pixel Canary 配置…</string>
-    <string name="pif_fetching_retail">Fetching Pixel retail profile...</string>
+    <string name="pif_fetching_retail">正在获取 Pixel Canary 配置…</string>
     <string name="pif_fetching_voltage">正在获取 Voltage 配置…</string>
     <string name="pif_fetch_success">已更新至 %1$s</string>
     <string name="pif_fetch_success_named">已将 %2$s 更新为 %1$s</string>
@@ -820,7 +820,7 @@
     <string name="nirvana_stats_unlocks">解锁</string>
     <string name="nirvana_stats_notifications">中断</string>
     <string name="nirvana_stats_app_breakdown">使用明细</string>
-    <string name="nirvana_time_fmt_hm">%1$dh%2$dm</string>
+    <string name="nirvana_time_fmt_hm">%1$dh %2$dm</string>
     <string name="nirvana_time_fmt_m">%1$dm</string>
     <string name="nirvana_time_fmt_less_min">&lt;1m</string>
     <string name="nirvana_time_limit_menu_title">应用使用限制</string>
